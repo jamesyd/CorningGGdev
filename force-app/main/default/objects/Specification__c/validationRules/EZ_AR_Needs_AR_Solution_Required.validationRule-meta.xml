@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EZ_AR_Needs_AR_Solution_Required</fullName>
+    <active>true</active>
+    <description>If Innovation includes EZ/AR, AR Solution is a required field.</description>
+    <errorConditionFormula>INCLUDES(Innovation_Type__c, &apos;EZ/AR&apos;) &amp;&amp; (IsBlank( TEXT(arSolution__c)) )</errorConditionFormula>
+    <errorMessage>If innovation includes EZ/AR, AR Solution is a required field.</errorMessage>
+</ValidationRule>

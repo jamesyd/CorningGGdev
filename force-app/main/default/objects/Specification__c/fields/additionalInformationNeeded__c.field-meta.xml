@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>additionalInformationNeeded__c</fullName>
+    <externalId>false</externalId>
+    <label>Additional Information Needed</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Missing SP Artwork</fullName>
+                <default>false</default>
+                <label>Missing SP Artwork</label>
+            </value>
+            <value>
+                <fullName>CNC tolerance to be clarified</fullName>
+                <default>false</default>
+                <label>CNC tolerance to be clarified</label>
+            </value>
+            <value>
+                <fullName>Missing CAD drawing</fullName>
+                <default>false</default>
+                <label>Missing CAD drawing</label>
+            </value>
+            <value>
+                <fullName>Ink type to be defined</fullName>
+                <default>false</default>
+                <label>Ink type to be defined</label>
+            </value>
+            <value>
+                <fullName>IR Tr% to be defined</fullName>
+                <default>false</default>
+                <label>IR Tr% to be defined</label>
+            </value>
+            <value>
+                <fullName>Other concerns address in mail</fullName>
+                <default>false</default>
+                <label>Other concerns address in mail</label>
+            </value>
+            <value>
+                <fullName>SP tolerance to be clarified</fullName>
+                <default>false</default>
+                <label>SP tolerance to be clarified</label>
+            </value>
+            <value>
+                <fullName>VI standard to be clarified</fullName>
+                <default>false</default>
+                <label>VI standard to be clarified</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

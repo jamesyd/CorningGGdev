@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>dsSingleSourceReason__c</fullName>
+    <externalId>false</externalId>
+    <label>Single Source Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>dsSource__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Demo / Testing / Study / Development Purpose</fullName>
+                <default>false</default>
+                <label>Demo / Testing / Study / Development Purpose</label>
+            </value>
+            <value>
+                <fullName>Low Touch Program (Revenue Recognition)</fullName>
+                <default>false</default>
+                <label>Low Touch Program (Revenue Recognition)</label>
+            </value>
+            <value>
+                <fullName>OEM Constraints</fullName>
+                <default>false</default>
+                <label>OEM Constraints</label>
+            </value>
+            <value>
+                <fullName>Small Volume (IT / Large &lt; 5K / month; HH / Wearable &lt; 50K / month)</fullName>
+                <default>false</default>
+                <label>Small Volume (IT / Large &lt; 5K / month; HH / Wearable &lt; 50K / month)</label>
+            </value>
+            <value>
+                <fullName>Others (Please attach BT Approval Email in the File Section)</fullName>
+                <default>false</default>
+                <label>Others (Please attach BT Approval Email in the File Section)</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Single Source Only</controllingFieldValue>
+            <valueName>Demo / Testing / Study / Development Purpose</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Single Source Only</controllingFieldValue>
+            <valueName>Low Touch Program (Revenue Recognition)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Single Source Only</controllingFieldValue>
+            <valueName>OEM Constraints</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Single Source Only</controllingFieldValue>
+            <valueName>Small Volume (IT / Large &lt; 5K / month; HH / Wearable &lt; 50K / month)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Single Source Only</controllingFieldValue>
+            <valueName>Others (Please attach BT Approval Email in the File Section)</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

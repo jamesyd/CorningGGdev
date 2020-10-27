@@ -1,0 +1,16 @@
+.THIS .myCheckbox {
+  display: inline-block;
+  float: left;
+}
+.THIS.spinnerHolder{
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+.THIS .slds-textarea {
+    height:60px !important;
+}
+.THIS .wraptext{
+    word-wrap:break-word;
+}

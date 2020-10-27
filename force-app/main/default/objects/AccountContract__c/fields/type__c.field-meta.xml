@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>type__c</fullName>
+    <externalId>false</externalId>
+    <label>Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Non-disclosure Agreement (NDA)</fullName>
+                <default>false</default>
+                <label>Non-disclosure Agreement (NDA)</label>
+            </value>
+            <value>
+                <fullName>Technical License Agreement (TLA)</fullName>
+                <default>false</default>
+                <label>Technical License Agreement (TLA)</label>
+            </value>
+            <value>
+                <fullName>Memorandum of Understanding (MOU)</fullName>
+                <default>false</default>
+                <label>Memorandum of Understanding (MOU)</label>
+            </value>
+            <value>
+                <fullName>Commercial Framework Agreement (CFA)</fullName>
+                <default>false</default>
+                <label>Commercial Framework Agreement (CFA)</label>
+            </value>
+            <value>
+                <fullName>Capacity Access Agreement (CAA)</fullName>
+                <default>false</default>
+                <label>Capacity Access Agreement (CAA)</label>
+            </value>
+            <value>
+                <fullName>Limited Trademark License Agreement (LTLA)</fullName>
+                <default>false</default>
+                <label>Limited Trademark License Agreement (LTLA)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

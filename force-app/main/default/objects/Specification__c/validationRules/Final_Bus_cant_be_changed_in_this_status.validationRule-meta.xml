@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Final_Bus_cant_be_changed_in_this_status</fullName>
+    <active>true</active>
+    <description>Final Business Case can&apos;t be changed once set.</description>
+    <errorConditionFormula>( $Profile.Name &lt;&gt; &apos;System Administrator&apos;) &amp;&amp; ISCHANGED(  finalBusinessCaseComplete__c ) &amp;&amp; (TEXT(status__c) &lt;&gt; &apos;Business Case Finalization&apos;)</errorConditionFormula>
+    <errorMessage>Final Business Case can only be changed in Business Case Finalization status.</errorMessage>
+</ValidationRule>

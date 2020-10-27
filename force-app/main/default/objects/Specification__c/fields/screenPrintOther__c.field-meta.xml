@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>screenPrintOther__c</fullName>
+    <externalId>false</externalId>
+    <label>Screen Print Other</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>screenPrint__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>P/N</fullName>
+                <default>false</default>
+                <label>P/N</label>
+            </value>
+            <value>
+                <fullName>Alignment Mark</fullName>
+                <default>false</default>
+                <label>Alignment Mark</label>
+            </value>
+            <value>
+                <fullName>NCVM</fullName>
+                <default>false</default>
+                <label>NCVM</label>
+            </value>
+            <value>
+                <fullName>Photo BM</fullName>
+                <default>false</default>
+                <label>Photo BM</label>
+            </value>
+            <value>
+                <fullName>Other Code</fullName>
+                <default>false</default>
+                <label>Other Code</label>
+            </value>
+            <value>
+                <fullName>Deco Film</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Deco Film</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Yes</controllingFieldValue>
+            <valueName>P/N</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Yes</controllingFieldValue>
+            <valueName>Alignment Mark</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Yes</controllingFieldValue>
+            <valueName>NCVM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Yes</controllingFieldValue>
+            <valueName>Photo BM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Yes</controllingFieldValue>
+            <valueName>Other Code</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

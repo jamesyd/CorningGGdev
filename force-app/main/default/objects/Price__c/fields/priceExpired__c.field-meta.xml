@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>priceExpired__c</fullName>
+    <description>Has price expired?</description>
+    <externalId>false</externalId>
+    <formula>TODAY() &gt;  priceExpirationDate__c  &amp;&amp;   NOT(BEGINS(product__r.Name,&apos;ST&apos;) )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Has price expired?</inlineHelpText>
+    <label>Has Price Expired</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,19 @@
+<aura:component controller="TripReportEmailController" implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:lightningQuickAction" description="Trip Report Email Component" >
+	<aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:attribute name="stdExceptionMsg" type="string"/>
+    <aura:attribute name="message" type="string"/>
+    
+	<p aura:id="stdExceptionMsg" class="slds-text-title">{!v.stdExceptionMsg}</p>
+	
+    <!-- In progress Spinner -->
+	<div>
+  		<lightning:spinner aura:id="waitSpinner" class="slds-show" alternativeText="Processing Emails">
+        </lightning:spinner>        
+    </div>
+    
+    <!-- Completed -->
+	<div>
+        <div aura:id="completed" class="slds-text-title">{!v.message}</div>
+  		<!--<lightning:badge aura:id="completed" class="slds-hide" label="Emails Sent..." />-->       
+    </div>
+</aura:component>

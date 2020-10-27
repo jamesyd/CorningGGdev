@@ -1,0 +1,45 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+	<lightning:card >
+		<p class="slds-align--absolute-center">
+        <h2><span class="slds-text-heading_small">User References</span></h2>
+        </p>
+        <p class="slds-align--absolute-center">
+        <dl>
+            <dd><a href="{!$Label.c.HomePageLCCMURL}" target="_blank">Corning Gorilla Glass LCCM Lot ID Rule</a></dd>
+            <dd><a href="{!$Label.c.HomePageCsrURL}" target="_blank">CSR Regional Coverage</a></dd>
+            
+            <dd>Customer Spec. Templates: <br/>&nbsp;&nbsp;&nbsp;&nbsp;(
+            	<a href="{!$Label.c.HomePageCustSpecHHURL}" target="_blank">HH</a> | 
+                <a href="{!$Label.c.HomePageCustSpecITURL}" target="_blank">IT</a> | 
+                <a href="{!$Label.c.HomePageSpecLCG}" target="_blank">LCG</a> | 
+                <a href="{!$Label.c.HomePageCustSpecNextSRURL}" target="_blank">DX+/DX_HH/SW </a> | 
+                <a href="{!$Label.c.HomePageCustSpecDXCURL}" target="_blank">DXC_IT</a> |
+                <a href="{!$Label.c.HomePageCustSpecAMURL}" target="_blank">AM</a> |
+                <a href="{!$Label.c.HomePageCustSpecConcoreURL}" target="_blank">Concore</a>)
+                
+            </dd>
+           
+
+            <dd><a href="{!$Label.c.HomePageAE_PE}" target="_blank">AE_PE Technical Documents (Requires Corning network access)</a></dd>
+            <!--<dd><a href="{!$Label.c.HomePageGlassSupplyPlan}" target="_blank">Glass Supply Plan (For Internal use only)</a></dd>-->
+
+            <dd><a href="{!$Label.c.HomePageGlassLatest}" target="_blank">Gorilla Glass latest product offering</a></dd>
+          
+            <dd><a href="{!$Label.c.HomePageInventoryURL}" target="_blank">Parts Inventory List</a></dd>
+            <dd><a href="{!$Label.c.HomePageProductCodes}" target="_blank">Parts Product Code File</a></dd>
+            <dd><a href="{!$Label.c.HomePageRFIURL}" target="_blank">Parts RFI (Request for Information)</a></dd>            
+            <dd><a href="{!$Label.c.HomePageWWPERespURL}" target="_blank">Responsibility and Approvers List</a></dd>            
+            <dd><a href="{!$Label.c.HomePageStandardMatrixURL}" target="_blank">Standard/Capable Matrix</a></dd>
+            <dd><a href="{!$Label.c.HomePageOutlookURL}" target="_blank">Salesforce For Outlook Configuration</a></dd>
+            <dd><a href="{!$Label.c.HomePageReferenceURL}" target="_blank">Salesforce User Reference Guide</a></dd>
+            
+            <dd>Exchange Rates Effective October 1, 2020 @ 3:00 AM EDT: <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp; USD/RMB: 6.8171 (VAT: 13%)<br/>
+            	&nbsp;&nbsp;&nbsp;&nbsp; USD/JPY: 105.5100<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp; USD/VND: 23,185.00000 (VAT: 10%)
+            </dd>
+
+        </dl>
+        </p>
+    </lightning:card>
+</aura:component>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>account__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>Is account trigger on?</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Is account trigger on?</inlineHelpText>
+    <label>Account</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

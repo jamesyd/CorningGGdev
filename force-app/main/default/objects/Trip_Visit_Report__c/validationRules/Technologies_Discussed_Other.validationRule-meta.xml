@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Technologies_Discussed_Other</fullName>
+    <active>true</active>
+    <description>If Technologies Discussed contains &quot;Other/Can Create Own&quot; then Technologies Discussed Other is Required.</description>
+    <errorConditionFormula>INCLUDES( technolgiesDiscussed__c , &quot;Other/Can Create Own&quot;) &amp;&amp;
+ISBLANK(  technologiesDiscussedOther__c   )</errorConditionFormula>
+    <errorDisplayField>technologiesDiscussedOther__c</errorDisplayField>
+    <errorMessage>If Technologies Discussed contains &quot;Other/Can Create Own&quot; then Technologies Discussed Other is Required</errorMessage>
+</ValidationRule>

@@ -1,0 +1,7 @@
+<apex:page standardController="InfongenNews__c" showHeader="true" sidebar="true" standardStylesheets="false">
+
+<apex:sectionHeader title="InfoNgen" subtitle="News" />
+« <a href="javascript:history.go(-1)">Back to List: InfoNgen News</a>
+<apex:outputField value="{!InfongenNews__c.Body__c}" />
+
+</apex:page>

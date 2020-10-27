@@ -1,0 +1,89 @@
+<aura:component controller="AddProductsController" implements="flexipage:availableForAllPageTypes" access="global">
+    <aura:attribute name="recordId" type="string"/>
+    <aura:attribute name="resultSet" type="sObject"/>
+    <aura:attribute name="fieldsToShow" type="string[]" />
+    <aura:attribute name="prodType" type="String" />
+    <aura:attribute name="searchResults" type="sObject[]"/>
+    <aura:attribute name="rawSearchResults" type="sObject[]"/>
+    <aura:attribute name="partsSearchResults" type="sObject[]"/>
+    <aura:attribute name="selectedProducts" type="string[]" />
+    
+    <aura:attribute name="scheduleProducts" type="SObject[]"/>
+    <aura:attribute name="pageNumber" type="integer" default="1"/>
+    <aura:attribute name="pageCount" type="integer" default="10"/>
+    <aura:attribute name="totalResults" type="integer" default="200"/>
+    <aura:attribute name="isProgramOpty" type="Boolean" default="false"/>
+    <aura:attribute name="canbeScheduled" type="String" default=""/>
+    <aura:attribute name="isSampleOpportunity" type="boolean" default="false"/>
+    <aura:attribute name="isSampleQuote" type="boolean" default="false"/>
+    <aura:attribute name="resultsPerPage" type="string" default="10" /> 
+    <aura:attribute name="searchHeaderMessage" type="string" default="" />
+	<aura:handler name="GGSearchLISelected" event="c:GGSearchLISelected" action="{!c.handleSelectedLI}"/>
+    
+    <!--<aura:handler event="c:ShowSearchResults" action="{!c.handleApplicationEvent}"/>-->
+    <aura:method name="updateSearchResults" action="{!c.handleApplicationEvent}" 
+  			description="Updates search results"> 
+        <aura:attribute name="resultSet" type="SearchResult[]"/>
+    	<aura:attribute name="fieldsToShow" type="string[]"/>
+    	<aura:attribute name="recordId" type="string"/>
+    	<aura:attribute name="isSampleOpportunity" type="boolean"/>
+    	<aura:attribute name="isSampleQuote" type="boolean"/>
+    	<aura:attribute name="showZeroRecordMessage" type="boolean"/>
+        <aura:attribute name="isPartsSearch" type="Boolean"/>
+        <aura:attribute name="isProgramOpty" type="Boolean"/>
+	</aura:method>
+    <aura:handler event="c:AddSelected" action="{!c.addLineItems}"/>
+    <aura:attribute name="saveMessage" type="string"/>
+    <aura:attribute name="searchMessage" type="string" default=""/>
+    <aura:attribute name="accountStyle" type="String"/>
+    <aura:attribute name="specStyle" type="String"/>
+    <aura:attribute name="isPartsSearch" type="Boolean"/>
+    <aura:attribute name="isQuote" type="Boolean" default="false"/>
+    <aura:registerEvent name="SampleProductAdded" type="c:SampleProductAdded"/>
+   	<div aura:id="searchMsg" class="slds-hide"><p class="slds-align--absolute-center">{!v.searchMessage}</p></div>	
+	<div class="slds-card slds-p-top--medium slds-hide" aura:id="resultsBlock">
+        <!--<div class="slds-hide">-->
+        <div>
+            <div class="slds-card__header slds-grid">
+                <div class="slds-media slds-media--center slds-has-flexi-truncate">
+                    <div class="slds-media__figure">
+                    </div>
+                    <div class="slds-media__body">
+                        <h2 class="slds-text-heading--small slds-truncate">{!v.searchHeaderMessage}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-card__body">
+                <section class="slds-card__body">
+                    <div class="slds-scrollable--x">
+                        <table class="slds-table slds-table--bordered slds-max-medium-table--stacked" >
+                            <thead>
+                                <tr class="slds-text-heading--label">
+                                    <aura:iteration items="{!v.fieldsToShow}" var="field" >
+                                        <th class="slds-is-sortable" scope="col">
+                                            <div class="slds-truncate" >{!field}</div>
+                                        </th>
+                                    </aura:iteration>
+                                    <th class="slds-cell-shrink"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="dataDisplay">
+                                <aura:iteration items="{!v.partsSearchResults}" var="searchLI" indexVar="cIndex">
+                                    <c:SearchLineItem searchLI="{!searchLI}" cIndex="{!cIndex}" canbeScheduled="{!v.canbeScheduled}"/>
+                                </aura:iteration>
+                                <aura:iteration items="{!v.rawSearchResults}" var="rawsearchLI" indexVar="cIndex2">
+                                    <c:RawSearchLineItem searchLI="{!rawsearchLI}" cIndex="{!cIndex2}" canbeScheduled="{!v.canbeScheduled}" isQuote="{!v.isQuote}"/>
+                                </aura:iteration>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                <p>{!v.saveMessage}</p>
+            </div>
+            <center>
+                <c:Paginator page="{!v.pageNumber}" pages="{!v.pageCount}" total="{!v.totalResults}"/>
+            </center>
+        </div>
+    </div>
+
+</aura:component>

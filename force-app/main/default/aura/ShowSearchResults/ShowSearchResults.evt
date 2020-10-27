@@ -1,0 +1,8 @@
+<aura:event type="APPLICATION" description="Show Search results event" >
+	<aura:attribute name="resultSet" type="SearchResult[]"/>
+    <aura:attribute name="fieldsToShow" type="string[]"/>
+    <aura:attribute name="recordId" type="string"/>
+    <aura:attribute name="isSampleOpportunity" type="boolean"/>
+    <aura:attribute name="isSampleQuote" type="boolean"/>
+    <aura:attribute name="showZeroRecordMessage" type="boolean"/>
+</aura:event>

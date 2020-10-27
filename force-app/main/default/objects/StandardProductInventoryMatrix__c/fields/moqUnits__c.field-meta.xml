@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>moqUnits__c</fullName>
+    <externalId>false</externalId>
+    <label>Units</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Each</fullName>
+                <default>true</default>
+                <label>Each</label>
+            </value>
+            <value>
+                <fullName>Sq Ft</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Sq Ft</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

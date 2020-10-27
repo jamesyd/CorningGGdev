@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>arSolution__c</fullName>
+    <externalId>false</externalId>
+    <label>AR Solution</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>AR Only – One Side</fullName>
+                <default>false</default>
+                <label>AR Only – One Side</label>
+            </value>
+            <value>
+                <fullName>AR Only – Double Side</fullName>
+                <default>false</default>
+                <label>AR Only – Double Side</label>
+            </value>
+            <value>
+                <fullName>AR Only – Hole</fullName>
+                <default>false</default>
+                <label>AR Only – Hole</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

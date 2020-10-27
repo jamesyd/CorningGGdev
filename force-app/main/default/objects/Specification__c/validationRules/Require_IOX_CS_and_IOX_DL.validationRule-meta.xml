@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Require_IOX_CS_and_IOX_DL</fullName>
+    <active>true</active>
+    <description>If selectIoxDolCsValueTarget__c is &apos;Customized&apos; then require IOX CS and IOX DL.</description>
+    <errorConditionFormula>TEXT(selectIoxDolCsValueTarget__c) = &apos;Customized&apos; &amp;&amp; (ISBLANK(ioxCs__c) || ISBLANK(ioxDol__c))</errorConditionFormula>
+    <errorMessage>Please enter both Minimal IOX CS and Minimal IOX DOL.</errorMessage>
+</ValidationRule>

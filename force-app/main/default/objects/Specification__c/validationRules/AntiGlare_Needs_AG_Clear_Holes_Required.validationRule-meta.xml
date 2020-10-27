@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AntiGlare_Needs_AG_Clear_Holes_Required</fullName>
+    <active>true</active>
+    <description>If innovation includes AntiGlare (AG), Number of Clear AG Holes is a required field.</description>
+    <errorConditionFormula>INCLUDES(Innovation_Type__c, &apos;AntiGlare (AG)&apos;) &amp;&amp; (IsBlank( TEXT(numberOfClearAgHoles__c)) )</errorConditionFormula>
+    <errorMessage>If innovation includes AntiGlare (AG), Number of Clear AG Holes is a required field.</errorMessage>
+</ValidationRule>

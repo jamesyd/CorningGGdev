@@ -1,0 +1,33 @@
+<aura:component description="AccountContractList"
+      implements="flexipage:availableForAllPageTypes,force:hasRecordId"
+      controller="ContractController"
+      access="global">
+    
+    	<aura:handler name="init" value="{!this}" action="{!c.myAction}"/>
+    	<aura:attribute name="contracts" type="AccountContract__c[]" />
+    
+    	<table class="slds-table slds-table--bordered slds-table--striped slds-table--cell-buffer slds-table--fixed-layout">
+            <thead>
+                <tr class="slds-text-heading--label">
+                    <th scope="col"><div class="slds-truncate" title="ACCOUNT NAME"><B>ACCOUNT NAME</B></div></th>
+                    <th scope="col"><div class="slds-truncate" title="TYPE"><B>TYPE</B></div></th>
+					<th scope="col"><div class="slds-truncate" title="EXPIRATION DATE"><B>EXPIRATION DATE</B></div></th>
+        			<th scope="col"><div class="slds-truncate" title="EVERGREEN"><B>EVERGREEN</B></div></th>
+                    <th scope="col"><div class="slds-truncate" title="ACTIVE"><B>ACTIVE</B></div></th>
+			    </tr>
+			</thead>
+			<tbody>
+    
+        		<aura:iteration items="{!v.contracts}" var="contract">
+           			<tr>
+                        <td><div class="slds-truncate" title="{!contract.accountName__c}">{!contract.accountName__c}</div></td>
+          				<td><div class="slds-truncate" title="{!contract.type__c}">{!contract.type__c}</div></td>
+						<td><div class="slds-truncate" title="{!contract.expirationDate__c}">{!contract.expirationDate__c}</div></td>
+            			<td><div class="slds-truncate" title="{!contract.isEvergreen__c}">{!contract.isEvergreen__c}</div></td>
+                        <td><div class="slds-truncate" title="{!contract.isActive__c}">{!contract.isActive__c}</div></td>
+                    </tr>
+        		</aura:iteration>
+			</tbody>
+	</table>
+
+</aura:component>

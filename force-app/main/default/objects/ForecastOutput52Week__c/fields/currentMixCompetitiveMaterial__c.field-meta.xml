@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>currentMixCompetitiveMaterial__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(INCLUDES( opportunity__r.Competitive_Material__c , &quot;Plastic&quot;), &quot;Plastic; &quot;, NULL)  + 
+IF(INCLUDES( opportunity__r.Competitive_Material__c , &quot;Glastic&quot;), &quot;Glastic; &quot;, NULL)  +  
+IF(INCLUDES( opportunity__r.Competitive_Material__c , &quot;Metal&quot;), &quot;Metal; &quot;, NULL)  + 
+IF(INCLUDES( opportunity__r.Competitive_Material__c , &quot;Ceramic&quot;), &quot;Ceramic;&quot;, NULL)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Current Competitive Material</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

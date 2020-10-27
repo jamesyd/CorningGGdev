@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>riskOwnerRole__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE( qualityEngineerApproval__c , 
+&quot;Reviewed - More Information Required&quot;, &quot;AE&quot;, 
+&quot;Approved - Requires Plant Eng Approval&quot;, &quot;PE&quot;, 
+&quot;Approved - Includes Plant Eng Approval&quot;, &quot;&quot;, 
+&quot;Not Approved&quot;, &quot;&quot;, 
+&quot;Reassign CM&quot;, &quot;&quot;, 
+&quot;Not Required&quot;, &quot;&quot;, 
+&quot;Customer Responded - QA to Confirm&quot;, &quot;QA&quot;, 
+&quot;QA&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Primary Risk Owner Role</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

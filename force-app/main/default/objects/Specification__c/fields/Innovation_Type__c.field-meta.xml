@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Innovation_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Innovation Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>AntiGlare (AG)</fullName>
+                <default>false</default>
+                <label>AntiGlare (AG)</label>
+            </value>
+            <value>
+                <fullName>AntiMicrobial</fullName>
+                <default>false</default>
+                <label>AntiMicrobial</label>
+            </value>
+            <value>
+                <fullName>ArtEng</fullName>
+                <default>false</default>
+                <label>ArtEng</label>
+            </value>
+            <value>
+                <fullName>DAR2.0</fullName>
+                <default>false</default>
+                <label>DAR2.0</label>
+            </value>
+            <value>
+                <fullName>DX</fullName>
+                <default>false</default>
+                <label>DX</label>
+            </value>
+            <value>
+                <fullName>DXPlus</fullName>
+                <default>false</default>
+                <label>DX+</label>
+            </value>
+            <value>
+                <fullName>DXC</fullName>
+                <default>false</default>
+                <label>DXC</label>
+            </value>
+            <value>
+                <fullName>EZ/AR</fullName>
+                <default>false</default>
+                <label>EZ/AR</label>
+            </value>
+            <value>
+                <fullName>AR – Camera Hole</fullName>
+                <default>false</default>
+                <label>AR – Camera Hole</label>
+            </value>
+            <value>
+                <fullName>FPS</fullName>
+                <default>false</default>
+                <label>FPS</label>
+            </value>
+            <value>
+                <fullName>Glass Back</fullName>
+                <default>false</default>
+                <label>Glass Back</label>
+            </value>
+            <value>
+                <fullName>Glass Ceramics</fullName>
+                <default>false</default>
+                <label>Glass Ceramics</label>
+            </value>
+            <value>
+                <fullName>IT Size 3D</fullName>
+                <default>false</default>
+                <label>IT Size 3D</label>
+            </value>
+            <value>
+                <fullName>Large Cover Glass</fullName>
+                <default>false</default>
+                <label>Large Cover Glass</label>
+            </value>
+            <value>
+                <fullName>NextGenSRPlus</fullName>
+                <default>false</default>
+                <label>Next Gen SR+</label>
+            </value>
+            <value>
+                <fullName>non-CE AR</fullName>
+                <default>false</default>
+                <label>non-CE AR</label>
+            </value>
+            <value>
+                <fullName>Corning Bendable Glass</fullName>
+                <default>false</default>
+                <label>Corning Bendable Glass</label>
+            </value>
+            <value>
+                <fullName>Screen Protector</fullName>
+                <default>false</default>
+                <label>Screen Protector</label>
+            </value>
+            <value>
+                <fullName>SRPlus</fullName>
+                <default>false</default>
+                <label>SR+</label>
+            </value>
+            <value>
+                <fullName>Vibrant</fullName>
+                <default>false</default>
+                <label>Vibrant</label>
+            </value>
+            <value>
+                <fullName>Phire 2.0</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Phire 2.0</label>
+            </value>
+            <value>
+                <fullName>Phire 3.0</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Phire 3.0</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>7</visibleLines>
+</CustomField>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Require_Opty_Part_Type_for_Parts_Submit</fullName>
+    <active>true</active>
+    <errorConditionFormula>RecordType.Name = &apos;Parts&apos; &amp;&amp; productLine__c = &apos;Parts&apos; &amp;&amp; submitForApproval__c  = True &amp;&amp; TEXT(opportunity__r.Type) != &apos;Parts&apos;</errorConditionFormula>
+    <errorMessage>The Opportunity Type is not set to Parts. Please update the opportunity before submitting.</errorMessage>
+</ValidationRule>

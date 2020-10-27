@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>QE_Approval_AE_Response_limitation</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( 
+     OR(ISPICKVAL(qualityEngineerApproval__c, &apos;Not Required&apos;),
+        ISPICKVAL( qualityEngineerApproval__c,&apos;Approved - Includes Plant Eng Approval&apos;)), 
+     ISCHANGED(qualityEngineerApproval__c), 
+     OR($User.ProfileId = &apos;00e1J000000h0j6&apos;,
+        $User.ProfileId = &apos;00e1J000000h0j3&apos;,
+        $User.ProfileId = &apos;00e1J000001Quad&apos;
+)
+
+)</errorConditionFormula>
+    <errorDisplayField>qualityEngineerApproval__c</errorDisplayField>
+    <errorMessage>Account Managers and Account Engineers cannot select the value for this field.</errorMessage>
+</ValidationRule>

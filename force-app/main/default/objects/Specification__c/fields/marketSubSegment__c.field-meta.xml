@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>marketSubSegment__c</fullName>
+    <externalId>false</externalId>
+    <label>Market Sub-Segment</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>marketSegment__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetName>marketSubSegment</valueSetName>
+        <valueSettings>
+            <controllingFieldValue>Handheld (Phone)</controllingFieldValue>
+            <valueName>Feature Phone</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Handheld (Phone)</controllingFieldValue>
+            <valueName>Smartphone</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wearable</controllingFieldValue>
+            <valueName>AR Head Mounted Device</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wearable</controllingFieldValue>
+            <valueName>Glasses</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wearable</controllingFieldValue>
+            <valueName>VR Head Mounted Device</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wearable</controllingFieldValue>
+            <valueName>Watch</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Notebook</controllingFieldValue>
+            <valueName>Clamshell</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Notebook</controllingFieldValue>
+            <valueName>Convertible</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Notebook</controllingFieldValue>
+            <valueName>Non-touch NB</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Tablet</controllingFieldValue>
+            <valueName>Detachable 2-in-1</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Tablet</controllingFieldValue>
+            <valueName>Slate</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>LCG</controllingFieldValue>
+            <valueName>IFPD</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>LCG</controllingFieldValue>
+            <valueName>Marker Board</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>LCG</controllingFieldValue>
+            <valueName>Signage</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>LCG</controllingFieldValue>
+            <valueName>TV</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Appliance (refrigerator, oven, etc.)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Camcorder</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Camera</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Digital Assistant/Scanner</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Gaming Device</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Keyboard</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Medical Device</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Monitor</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Music Device</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Navigation Device</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>POS Signature Pad</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Projector</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Screen Protector</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Smart Remote</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Solar Technology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Trackpad</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

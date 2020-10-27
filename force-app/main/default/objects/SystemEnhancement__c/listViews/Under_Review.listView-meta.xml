@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Under_Review</fullName>
+    <columns>NAME</columns>
+    <columns>subject__c</columns>
+    <columns>priority__c</columns>
+    <columns>Status__c</columns>
+    <columns>category__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Under Review</value>
+    </filters>
+    <label>Under Review</label>
+    <language>en_US</language>
+</ListView>

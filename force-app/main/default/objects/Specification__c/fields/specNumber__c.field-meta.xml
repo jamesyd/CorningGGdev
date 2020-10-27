@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>specNumber__c</fullName>
+    <externalId>false</externalId>
+    <formula>if (IsBlank(originalSpecification__c), specAutoNumber__c &amp;&apos;-01&apos;,  originalSpecification__r.specAutoNumber__c &amp;&apos;-&apos;&amp; (IF(version__c &lt; 10, &apos;0&apos;&amp;TEXT(version__c), TEXT(version__c) )))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Spec Number</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

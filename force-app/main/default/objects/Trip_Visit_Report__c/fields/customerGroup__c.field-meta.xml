@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>customerGroup__c</fullName>
+    <externalId>false</externalId>
+    <label>Customer Group</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>AGbC Screen Protectors Standard Accounts(8)</fullName>
+                <default>false</default>
+                <label>AGbC Screen Protectors Standard Accounts(8)</label>
+            </value>
+            <value>
+                <fullName>AGI Blue(1)</fullName>
+                <default>false</default>
+                <label>AGI Blue(1)</label>
+            </value>
+            <value>
+                <fullName>AGI Standard Accounts(31)</fullName>
+                <default>false</default>
+                <label>AGI Standard Accounts(31)</label>
+            </value>
+            <value>
+                <fullName>CDTC Standard Accounts(18)</fullName>
+                <default>false</default>
+                <label>CDTC Standard Accounts(18)</label>
+            </value>
+            <value>
+                <fullName>CDTT Standard Accounts(8)</fullName>
+                <default>false</default>
+                <label>CDTT Standard Accounts(8)</label>
+            </value>
+            <value>
+                <fullName>CGT SHARED ACCOUNTS(51)</fullName>
+                <default>false</default>
+                <label>CGT SHARED ACCOUNTS(51)</label>
+            </value>
+            <value>
+                <fullName>CJKK Standard Accounts(14)</fullName>
+                <default>false</default>
+                <label>CJKK Standard Accounts(14)</label>
+            </value>
+            <value>
+                <fullName>CPM Standard Accounts(9)</fullName>
+                <default>false</default>
+                <label>CPM Standard Accounts(9)</label>
+            </value>
+            <value>
+                <fullName>GG Blue(1)</fullName>
+                <default>false</default>
+                <label>GG Blue(1)</label>
+            </value>
+            <value>
+                <fullName>GG Google X(1)</fullName>
+                <default>false</default>
+                <label>GG Google X(1)</label>
+            </value>
+            <value>
+                <fullName>GG Microsoft(1)</fullName>
+                <default>false</default>
+                <label>GG Microsoft(1)</label>
+            </value>
+            <value>
+                <fullName>GG Samsung Private(1)</fullName>
+                <default>false</default>
+                <label>GG Samsung Private(1)</label>
+            </value>
+            <value>
+                <fullName>GG Standard Accounts(339)</fullName>
+                <default>false</default>
+                <label>GG Standard Accounts(339)</label>
+            </value>
+            <value>
+                <fullName>New Customer Group(1)</fullName>
+                <default>false</default>
+                <label>New Customer Group(1)</label>
+            </value>
+            <value>
+                <fullName>SGP Blue(1)</fullName>
+                <default>false</default>
+                <label>SGP Blue(1)</label>
+            </value>
+            <value>
+                <fullName>SGP Standard Accounts(57)</fullName>
+                <default>false</default>
+                <label>SGP Standard Accounts(57)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

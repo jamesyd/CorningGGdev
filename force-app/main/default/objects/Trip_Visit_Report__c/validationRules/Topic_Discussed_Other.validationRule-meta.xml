@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Topic_Discussed_Other</fullName>
+    <active>true</active>
+    <description>Topic Discussed Other is required if Topic Discussed is set to &quot;Other/Can Create Own&quot;</description>
+    <errorConditionFormula>INCLUDES(topicsDiscussed__c, &quot;Other/Can Create Own&quot;) &amp;&amp;
+ISBLANK(topicsDiscussedOther__c )</errorConditionFormula>
+    <errorDisplayField>topicsDiscussedOther__c</errorDisplayField>
+    <errorMessage>Topic Discussed Other is required if Topic Discussed is set to &quot;Other/Can Create Own&quot;</errorMessage>
+</ValidationRule>

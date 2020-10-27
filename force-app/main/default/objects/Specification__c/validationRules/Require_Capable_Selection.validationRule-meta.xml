@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Require_Capable_Selection</fullName>
+    <active>true</active>
+    <description>Capable selection can&apos;t be checked until assessment is complete</description>
+    <errorConditionFormula>TEXT( capable__c ) = &quot;&quot;  
+&amp;&amp;
+ capabilityAssessmentComplete__c  = True</errorConditionFormula>
+    <errorMessage>You must select Capable Yes or No before checking the Capable Complete box.</errorMessage>
+</ValidationRule>

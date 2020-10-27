@@ -1,0 +1,47 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global">
+    <aura:attribute name="fields" type="String[]" default="ProductId, ProductName" />
+    <aura:attribute name="latestRecords" type="sObject[]"/>
+    <aura:attribute name="page" type="integer" default="1"/>
+    <aura:attribute name="pages" type="integer" default="10"/>
+    <aura:attribute name="total" type="integer" default="200"/>
+    <aura:attribute name="pageSize" type="String" default="10" /> 
+    
+    <aura:handler event="c:ShowSearchResults" action="{!c.handleApplicationEvent}"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:handler event="c:PageChange" action="{!c.pageChange}"/>
+
+    <div class="slds-card slds-p-top--medium">
+        <div class="slds-card__header slds-grid">
+            <div class="slds-media slds-media--center slds-has-flexi-truncate">
+                <div class="slds-media__figure">
+                </div>
+                <div class="slds-media__body">
+                    <h2 class="slds-text-heading--small slds-truncate">Search Results</h2>
+                </div>
+            </div>
+        </div>
+        <div class="slds-card__body">
+            <section class="slds-card__body">
+                <div class="slds-scrollable--x">
+                    <table class="slds-table slds-table--bordered slds-max-medium-table--stacked" >
+                        <thead>
+                            <tr class="slds-text-heading--label">
+                                <aura:iteration items="{!v.fields}" var="field" >
+                                    <th class="slds-is-sortable" scope="col">
+                                        <div class="slds-truncate" >{!field}</div>
+                                    </th>
+                                </aura:iteration>
+                                <th class="slds-cell-shrink"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="data">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+        <center>
+            <c:Paginator page="{!v.page}" pages="{!v.pages}" total="{!v.total}"/>
+        </center>
+    </div>
+</aura:component>

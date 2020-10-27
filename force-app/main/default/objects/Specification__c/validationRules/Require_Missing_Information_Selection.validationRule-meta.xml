@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Require_Missing_Information_Selection</fullName>
+    <active>true</active>
+    <errorConditionFormula>TEXT(missingInformation__c) = &quot;&quot;  
+&amp;&amp;
+missingInformationAssessmentComplete__c = True</errorConditionFormula>
+    <errorMessage>You must select whether or not this Specification is missing information before checking the Missing Information Assessment Complete box.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>isInnovation__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(INCLUDES(Innovation_Type__c, &quot;Glass Ceramics&quot;),TRUE, 
+IF(INCLUDES(Innovation_Type__c, &quot;AntiGlare (AG)&quot;),TRUE, 
+IF(INCLUDES(Innovation_Type__c, &quot;Screen Protector&quot;),TRUE, 
+IF(INCLUDES(Innovation_Type__c, &quot;SR+&quot;),TRUE, 
+IF(INCLUDES(Innovation_Type__c, &quot;Next Gen SR+&quot;),TRUE,
+IF(INCLUDES(Innovation_Type__c, &quot;SRPlus&quot;),TRUE, 
+IF(INCLUDES(Innovation_Type__c, &quot;NextGenSRPlus&quot;),TRUE,
+IF(INCLUDES(Innovation_Type__c, &quot;FPS&quot;),TRUE, 
+IF(INCLUDES(Innovation_Type__c, &quot;Vibrant&quot;),TRUE, 
+IF(INCLUDES(Innovation_Type__c, &quot;ArtEng&quot;),TRUE,
+IF(INCLUDES(Innovation_Type__c, &quot;Phyllo&quot;),TRUE,
+IF(INCLUDES(Innovation_Type__c, &quot;DAR2.0&quot;),TRUE,
+IF(INCLUDES(Innovation_Type__c, &quot;Glass Back&quot;),TRUE,FALSE)))))))))))))</formula>
+    <label>IsInnovation</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

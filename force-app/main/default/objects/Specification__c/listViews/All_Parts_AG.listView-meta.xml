@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Parts_AG</fullName>
+    <booleanFilter>1 AND 2</booleanFilter>
+    <columns>NAME</columns>
+    <columns>opportunity__c</columns>
+    <columns>status__c</columns>
+    <columns>statusChangeDate__c</columns>
+    <columns>RECORDTYPE</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Specification__c.Parts_Final,Specification__c.Parts,Specification__c.Parts_Submitted</value>
+    </filters>
+    <filters>
+        <field>Innovation_Type__c</field>
+        <operation>includes</operation>
+        <value>AntiGlare (AG)</value>
+    </filters>
+    <label>All - AG Parts Specifications</label>
+</ListView>

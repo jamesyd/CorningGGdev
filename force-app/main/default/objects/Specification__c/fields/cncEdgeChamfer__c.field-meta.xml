@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>cncEdgeChamfer__c</fullName>
+    <externalId>false</externalId>
+    <label>CNC Edge Chamfer</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>cncNeeded__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>In Drawing</fullName>
+                <default>false</default>
+                <label>In Drawing</label>
+            </value>
+            <value>
+                <fullName>Corning Standard</fullName>
+                <default>false</default>
+                <label>Corning Standard</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Yes</controllingFieldValue>
+            <valueName>In Drawing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Yes</controllingFieldValue>
+            <valueName>Corning Standard</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

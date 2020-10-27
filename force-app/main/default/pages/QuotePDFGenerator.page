@@ -1,0 +1,1202 @@
+<!--
+  @description       : 
+  @author            : Arquimidez Mora
+  @group             : 
+  @last modified on  : 08-27-2020
+  @last modified by  : Edgar Santillana
+  Modifications Log 
+  Ver   Date         Author            Modification
+  1.0   07-21-2020   Arquimidez Mora   Initial Version
+  1.2   07-13-2020	 Edgar Santillana  Rendered Spec ID Field
+-->
+<apex:page standardController="Quote" extensions="QuotePDFController" action="{!GenerateQuotePDF}" renderAs="pdf" language="{!IF(ISNULL(language),'en_US',language)}" applyBodyTag="false">
+    <head>
+        <style type="text/css">  
+            @page {
+            letter portrait;
+            @bottom-left { font-family: Arial Unicode MS, sans-serif; font-size: 9px; content: "{!theText.corningSellingEntityLabel__c}"; }
+            @bottom-center { font-family: Arial Unicode MS, sans-serif; font-size: 9px; content: "{!$ObjectType.Quote.fields.QuoteNumber.label & " " & theQuote.quoteNumber & " - " & $ObjectType.Quote.fields.Version__c.label & " " & TEXT(theQuote.Version__c) & " ** " & theQuote.quoteTypeCode__c}"; }
+            @bottom-right { font-family: Arial Unicode MS, sans-serif; font-size: 9px; content: "{!securityString} Page " counter(page) " of " counter(pages); }
+            }
+            
+            @media print {
+            #tc { 
+            page-break-before: always;
+            } 
+            }
+            table { font-family: Arial Unicode MS, sans-serif; width: 100%; border-collapse:collapse; }
+            td { font-family: Arial Unicode MS, sans-serif; font-size:11px; }
+            td.outlined { font-family: Arial Unicode MS, sans-serif; border:1px solid black; font-size:11px;}
+            th { font-family: Arial Unicode MS, sans-serif; font-size:11px;}
+            .dTableHeader { font-family: Arial Unicode MS, sans-serif; background-color: silver; border:1px solid black; text-align:center; font-size:11px;}  
+            .dTableColumn { font-family: Arial Unicode MS, sans-serif; background-color: white; border:1px solid black; text-align:center; font-size:11px;}  
+            .dTableColumnLeft { font-family: Arial Unicode MS, sans-serif; background-color: white; border:1px solid black; text-align:left; font-size:11px;}              
+        </style>
+    </head>  
+    <body>
+        
+        <!-- page break -->
+        <div style="page-break-after:always;">
+            
+            <table WIDTH="100%">
+                <tr>
+                    <td align="left" width="50%" valign="top"><apex:image width="175" height="24" url="{!$Resource.CorningLogo}" /></td> 
+                    <td align="left" width="15%">&nbsp;</td>
+                    <td align="left" width="35%"><apex:outputText escape="false" value="{!theText.returnAddress__c}" /></td>
+                </tr>
+            </table>         
+            <BR/><BR/>
+            
+            <div style="width:100%; display:block;">
+                <apex:pageBlock >
+                    <apex:pageBlockSection columns="1">{!theText.preparedFor__c}</apex:pageBlockSection>
+                </apex:pageBlock>
+            </div>
+            
+            <div style="width:45%;display:inline-block;">
+                <apex:pageBlock >
+                    <!--<apex:pageBlockSection columns="1">
+<apex:outputField value="{!theQuote.contact.Name}"/>
+<apex:outputField value="{!theQuote.contact.Account.Name}"/>
+
+<apex:outputField value="{!theQuote.contact.Account.BillingStreet}"/>
+<apex:pageBlockSectionItem >
+<apex:outputLabel for="city" value=""/> 
+<apex:outputText id="city" value="{!theQuote.contact.Account.BillingCity}"/>
+</apex:pageBlockSectionItem>
+<apex:pageBlockSectionItem >
+<apex:outputLabel for="country" value=""/> 
+
+<apex:outputText id="country" value="{!theQuote.contact.Account.BillingCountry}"/>
+</apex:pageBlockSectionItem>
+<apex:outputField value="{!theQuote.contact.Phone}" />
+<apex:outputText value="{!theQuote.contact.Email}" />
+</apex:pageBlockSection>-->
+                    <apex:pageBlockSection columns="1">
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="cName" value="{!$Label.GGQuoteContactLabel}:"/> 
+                            <apex:outputText id="cName" value="{!theQuote.contact.Name}"/>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="cAName" value="{!$ObjectType.Account.fields.Name.label}:"/> 
+                            <apex:outputText id="cAName" value="{!theQuote.contact.Account.Name}"/>
+                        </apex:pageBlockSectionItem>
+                        
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="bStreet" value="{!$Label.GGQuoteAddressLabel}:"/> 
+                            <apex:outputText id="bStreet" value="{!theQuote.contact.Account.BillingStreet}"/>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="city" value=""/> 
+                            <apex:outputText id="city" value="{!theQuote.contact.Account.BillingCity}"/>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="country" value=""/> 
+                            <apex:outputText id="country" value="{!theQuote.contact.Account.BillingCountry}"/>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="cPhone" value="{!$Label.GGQuotePhoneLabel}:"/> 
+                            <apex:outputText id="cPhone" value="{!theQuote.contact.Phone}"/>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="cEmail" value="{!$ObjectType.Contact.fields.Email.label}:"/> 
+                            <apex:outputText id="cEmail" value="{!theQuote.contact.Email}"/>
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                </apex:pageBlock>
+            </div>
+            
+            <div style="width:10%;display:inline-block;">
+                <apex:pageBlock >
+                    <apex:pageBlockSection columns="1">&nbsp;</apex:pageBlockSection>
+                </apex:pageBlock>
+            </div>
+            
+            <div style="width:40%;display:inline-block;">
+                <apex:pageBlock >
+                    <!--<apex:pageBlockSection columns="1">
+<apex:outputField value="{!theQuote.quoteNumber}"/>
+<apex:outputField value="{!theQuote.Version__c}"/>
+<apex:pageBlockSectionItem>
+<apex:outputLabel style="display:block;width:120px;" for="inq" value="{!$ObjectType.Quote.fields.customerInquiryDate__c.label}"/> 
+<apex:outputText id="inq" value="{0,date,dd-MMM-yyyy}">
+<apex:param value="{!theQuote.customerInquiryDate__c}" /> 
+</apex:outputText>
+</apex:pageBlockSectionItem>
+<apex:pageBlockSectionItem >
+<apex:outputLabel for="request" value="{!$ObjectType.Quote.fields.dateOfQuote__c.label}"/> 
+<apex:outputText id="request" value="{0,date,dd-MMM-yyyy}">
+<apex:param value="{!theQuote.dateOfQuote__c}" /> 
+</apex:outputText>
+</apex:pageBlockSectionItem>
+<apex:pageBlockSectionItem >
+<apex:outputLabel for="effective" value="{!$ObjectType.Quote.fields.effectiveDate__c.label}"/> 
+<apex:outputText id="effective" value="{0,date,dd-MMM-yyyy}">
+<apex:param value="{!theQuote.effectiveDate__c}" /> 
+</apex:outputText>
+</apex:pageBlockSectionItem> 
+<apex:pageBlockSectionItem >
+<apex:outputLabel for="expire" value="{!$ObjectType.Quote.fields.ExpirationDate.label}"/> 
+<apex:outputText id="expire" value="{0,date,dd-MMM-yyyy}">
+<apex:param value="{!theQuote.ExpirationDate}" /> 
+</apex:outputText>
+</apex:pageBlockSectionItem>
+<apex:pageBlockSectionItem >
+<apex:outputLabel for="progName" value="{!$Label.GGQuoteProgramName}" />
+<apex:outputText id="progName" value="{!theQuote.Opportunity.Name}" />
+</apex:pageBlockSectionItem> 
+</apex:pageBlockSection>-->
+                    <apex:pageBlockSection columns="1">
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="qN" value="{!$ObjectType.Quote.fields.QuoteNumber.label}:"/> 
+                            <apex:outputText id="qN" value="{!theQuote.quoteNumber}"/>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="qV" value="{!$ObjectType.Quote.fields.Version__c.label}:"/> 
+                            <apex:outputText id="qV" value="{!theQuote.Version__c}"/>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel style="display:block;width:120px;" for="inq" value="{!$ObjectType.Quote.fields.customerInquiryDate__c.label}:"/> 
+                            <apex:outputText id="inq" value="{0,date,dd-MMM-yyyy}">
+                                <apex:param value="{!theQuote.customerInquiryDate__c}" /> 
+                            </apex:outputText>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="request" value="{!$ObjectType.Quote.fields.dateOfQuote__c.label}:"/> 
+                            <apex:outputText id="request" value="{0,date,dd-MMM-yyyy}">
+                                <apex:param value="{!theQuote.dateOfQuote__c}" /> 
+                            </apex:outputText>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="effective" value="{!$ObjectType.Quote.fields.effectiveDate__c.label}:"/> 
+                            <apex:outputText id="effective" value="{0,date,dd-MMM-yyyy}">
+                                <apex:param value="{!theQuote.effectiveDate__c}" /> 
+                            </apex:outputText>
+                        </apex:pageBlockSectionItem> 
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="expire" value="{!$ObjectType.Quote.fields.ExpirationDate.label}:"/> 
+                            <apex:outputText id="expire" value="{0,date,dd-MMM-yyyy}">
+                                <apex:param value="{!theQuote.ExpirationDate}" /> 
+                            </apex:outputText>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel for="progName" value="{!$Label.GGQuoteProgramName}:" />
+                            <apex:outputText id="progName" value="{!theQuote.Opportunity.Name}" />
+                        </apex:pageBlockSectionItem> 
+                    </apex:pageBlockSection>
+                </apex:pageBlock>
+            </div> 
+            <BR/>
+            <BR/>
+            
+            <table>
+                <tr>
+                    <td class="outlined"><apex:outputText escape="false" value="{!theText.thankYou__c}"/></td>
+                </tr>
+            </table>
+            
+            <BR/>
+            <!-- RAW GLASS WITH NO VAT --> 
+            <apex:outputPanel id="Raw" rendered="{!lineItemType=='Raw' && !vatFlag}">  
+                <TABLE WIDTH="95%">
+                    <TR class="dTableHeader">
+                        <TD class="dTableColumn">#</TD>
+                        <TD class="dTableColumn" style="display:{!IF(rawGlassMass , '', 'None')}">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteSpecId}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteComposition}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$ObjectType.Product2.fields.Thickness__c.label}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteSheetDimension}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteMOQ}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteUnitPrice + ' (' + currencyString + ')'}" />
+                        </TD>
+                    </TR>
+                    <apex:repeat value="{!qliList}" var="item" id="itemRaw">
+                        <TR>
+                            <TD class="dTableColumn"><apex:outputText value="{!item.lineItem.LineNumber}"/></TD>
+                            <TD class="dTableColumn"  style="display:{!IF(rawGlassMass , '', 'None')}"><apex:outputText value="{!item.lineItem.specification__r.Name}"/></TD>
+                            <TD class="dTableColumn"><apex:outputText value="{!item.lineItem.Product2.glassComposition__c}"/></TD>
+                            <TD class="dTableColumn"><apex:outputText value="{!item.lineItem.Product2.Thickness__c}"/></TD>
+                            <TD class="dTableColumn"><apex:outputText value="{!item.lineItem.Product2.quoteSheetDimensionMm__c}"/></TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{0, number, ###,###,###,###}">
+                                    <apex:param value="{!item.lineItem.moq__c}"/>
+                                </apex:outputText>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{0, number, ###,###,###,##0.00}">
+                                    <apex:param value="{!item.unitPrice}"/>
+                                </apex:outputText>
+                            </TD>
+                        </TR>
+                        <apex:repeat value="{!item.descriptions}" var="desc" id="descRaw">
+                            <TR>
+                                <TD class="dTableColumn">&nbsp;</TD>
+                                <TD class="dTableColumn" COLSPAN="5" STYLE="text-align:left;">
+                                    <apex:outputText escape="false" value="{!desc}"/>
+                                </TD>
+                            </TR>
+                        </apex:repeat>
+                    </apex:repeat>
+                </TABLE><BR/> 
+            </apex:outputPanel>       
+            
+            <!-- RAW GLASS WITH VAT -->  
+            <apex:outputPanel id="RawVat" rendered="{!lineItemType=='Raw' && vatFlag}">
+                <TABLE WIDTH="95%">
+                    <TR class="dTableHeader">
+                        <TD class="dTableColumn">#</TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteSpecId}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteComposition}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$ObjectType.Product2.fields.Thickness__c.label}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteSheetDimension}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteMOQ}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteUnitPrice + ' (' + currencyString + ')'}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteUnitPriceVAT + ' (' + currencyString + ')'}" />
+                        </TD>
+                    </TR>
+                    <apex:repeat value="{!qliList}" var="item" id="itemRaw2">
+                        <TR>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{!item.lineItem.LineNumber}"/>
+                            </TD>
+                            <TD class="dTableColumn"><apex:outputText value="{!item.lineItem.specification__r.Name}"/></TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{!item.lineItem.Product2.glassComposition__c}"/>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{!item.lineItem.Product2.Thickness__c}"/>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{!item.lineItem.Product2.quoteSheetDimensionMm__c}"/>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{0, number, ###,###,###,###}">
+                                    <apex:param value="{!item.lineItem.moq__c}"/>
+                                </apex:outputText>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{0, number, ###,###,###,##0.00}" rendered="{!theQuote.currency__c!='Dong'}">
+                                    <apex:param value="{!item.unitPrice}"/>
+                                </apex:outputText>
+                                <apex:outputText value="{0, number, ###,###,###,##0}" rendered="{!theQuote.currency__c=='Dong'}">
+                                    <apex:param value="{!item.unitPrice}"/>
+                                </apex:outputText>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{0, number, ###,###,###,##0.0000}" rendered="{!theQuote.currency__c!='Dong'}">
+                                    <apex:param value="{!item.vatUnitPrice}"/>
+                                </apex:outputText>
+                                <apex:outputText value="{0, number, ###,###,###,##0}" rendered="{!theQuote.currency__c=='Dong'}">
+                                    <apex:param value="{!item.vatUnitPrice}"/>
+                                </apex:outputText>
+                            </TD>
+                        </TR>
+                        <apex:repeat value="{!item.descriptions}" var="desc" id="descRaw2">
+                            <TR>
+                                <TD class="dTableColumn">&nbsp;</TD>
+                                <TD class="dTableColumn" COLSPAN="6" STYLE="text-align:left;">
+                                    <apex:outputText escape="false" value="{!desc}"/>
+                                </TD>
+                            </TR>
+                        </apex:repeat>
+                    </apex:repeat>
+                </TABLE><BR/> 
+            </apex:outputPanel>
+            
+            <!-- CONCORE WITH NO VAT -->        
+            <apex:outputPanel id="Concore" rendered="{!lineItemType=='Concore' && !vatFlag}">
+                <TABLE WIDTH="95%">
+                    <TR class="dTableHeader">
+                        <TD class="dTableColumn">#</TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteSpecId}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteComposition}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$ObjectType.Product2.fields.Thickness__c.label}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteSheetDimension}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteCTLevel}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$ObjectType.Product2.fields.includeCorningPackaging__c.label}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteMOQ}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$ObjectType.Product2.fields.packingOption__c.label}" />
+                        </TD>
+                        
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteUnitPrice + ' (' + currencyString + ')'}" />
+                        </TD>
+                    </TR>
+                    <apex:repeat value="{!qliList}" var="item" id="itemConcore">
+                        <TR>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{!item.lineItem.LineNumber}"/>
+                            </TD>
+                            <TD class="dTableColumn"><apex:outputText value="{!item.lineItem.specification__r.Name}"/></TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{!item.lineItem.Product2.glassComposition__c}"/>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{!item.lineItem.Product2.Thickness__c}"/>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{!item.lineItem.Product2.quoteSheetDimensionMm__c}"/>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{!item.lineItem.Product2.ctLevel__c}"/>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{!item.lineItem.Product2.includeCorningPackaging__c}"/>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{0, number, ###,###,###,###}">
+                                    <apex:param value="{!item.lineItem.moq__c}"/>
+                                </apex:outputText>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{!item.lineItem.Product2.packingOption__c}"/>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{0, number, ###,###,###,##0.00}">
+                                    <apex:param value="{!item.unitPrice}"/>
+                                </apex:outputText>
+                            </TD>
+                        </TR>
+                        <apex:repeat value="{!item.descriptions}" var="desc" id="descConcore">
+                            <TR>
+                                <TD class="dTableColumn">&nbsp;</TD>
+                                <TD class="dTableColumn" COLSPAN="8" STYLE="text-align:left;">
+                                    <apex:outputText escape="false" value="{!desc}"/>
+                                </TD>
+                            </TR>
+                        </apex:repeat>
+                    </apex:repeat>
+                </TABLE><BR/> 
+            </apex:outputPanel>
+            
+            <!-- CONCORE WITH VAT --> 
+            <apex:outputPanel id="ConcoreVat" rendered="{!lineItemType=='Concore' && vatFlag}">
+                <TABLE WIDTH="95%">
+                    <TR class="dTableHeader">
+                        <TD class="dTableColumn">#</TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteSpecId}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteComposition}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$ObjectType.Product2.fields.Thickness__c.label}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteSheetDimension}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteCTLevel}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$ObjectType.Product2.fields.includeCorningPackaging__c.label}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteMOQ}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$ObjectType.Product2.fields.packingOption__c.label}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteUnitPrice + ' (' + currencyString + ')'}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteUnitPriceVAT + ' (' + currencyString + ')'}" />
+                        </TD>
+                    </TR>
+                    <apex:repeat value="{!qliList}" var="item" id="itemConcore2">
+                        <TR>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{!item.lineItem.LineNumber}"/>
+                            </TD>
+                            <TD class="dTableColumn"><apex:outputText value="{!item.lineItem.specification__r.Name}"/></TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{!item.lineItem.Product2.glassComposition__c}"/>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{!item.lineItem.Product2.Thickness__c}"/>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{!item.lineItem.Product2.quoteSheetDimensionMm__c}"/>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{!item.lineItem.Product2.ctLevel__c}"/>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{!item.lineItem.Product2.includeCorningPackaging__c}"/>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{0, number, ###,###,###,###}">
+                                    <apex:param value="{!item.lineItem.moq__c}"/>
+                                </apex:outputText>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{!item.lineItem.Product2.packingOption__c}"/>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{0, number, ###,###,###,##0.00}" rendered="{!theQuote.currency__c!='Dong'}">
+                                    <apex:param value="{!item.unitPrice}"/>
+                                </apex:outputText>
+                                <apex:outputText value="{0, number, ###,###,###,##0}" rendered="{!theQuote.currency__c=='Dong'}">
+                                    <apex:param value="{!item.unitPrice}"/>
+                                </apex:outputText>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{0, number, ###,###,###,##0.0000}" rendered="{!theQuote.currency__c!='Dong'}">
+                                    <apex:param value="{!item.vatUnitPrice}"/>
+                                </apex:outputText>
+                                <apex:outputText value="{0, number, ###,###,###,##0}" rendered="{!theQuote.currency__c=='Dong'}">
+                                    <apex:param value="{!item.vatUnitPrice}"/>
+                                </apex:outputText>
+                            </TD>
+                        </TR>
+                        <apex:repeat value="{!item.descriptions}" var="desc" id="descConcore2">
+                            <TR>
+                                <TD class="dTableColumn">&nbsp;</TD>
+                                <TD class="dTableColumn" COLSPAN="9" STYLE="text-align:left;">
+                                    <apex:outputText escape="false" value="{!desc}"/>
+                                </TD>
+                            </TR>
+                        </apex:repeat>
+                    </apex:repeat>
+                </TABLE><BR/> 
+            </apex:outputPanel>
+            
+            <!-- MASS PARTS NO VAT -->
+            <apex:outputPanel id="MassParts" rendered="{!lineItemType=='MassParts' && !vatFlag}">
+                <!-- MP Lines rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}" -->
+                
+                <apex:repeat value="{!qliMassPartsList}" var="product" id="prodMassParts">
+                    <apex:outputPanel rendered="{!NOT(sampleOnlyFlag)}"><!-- 9.24 -->
+                        <TABLE WIDTH="95%">
+                            <TR><TD colspan="6"><apex:outputText escape="false" value="{!$Label.GGQuoteMassProduction}" /></TD></TR>
+                            <TR class="dTableHeader">
+                                <TD class="dTableColumn">
+                                    <apex:outputText escape="false" value="{!$ObjectType.QuoteLineItem.fields.corningSpecificationNumber__c.label}"/>
+                                </TD>
+                                <TD class="dTableColumn">
+                                    <apex:outputText escape="false" value="{!$ObjectType.QuoteLineItem.fields.customerDrawingNumber__c.label}" />
+                                </TD>
+                                <TD class="dTableColumn">
+                                    <apex:outputText escape="false" value="{!$Label.GGQuoteDimensions}" />
+                                </TD>
+                                <TD class="dTableColumn">
+                                    <apex:outputText escape="false" value="{!$Label.GGQuotePartsDescription}" />
+                                </TD>
+                                <TD class="dTableColumn">
+                                    <apex:outputText escape="false" value="{!$Label.GGQuoteUnitPrice + ' (' + currencyString + ')'}" />
+                                </TD>
+                                <TD class="dTableColumn">
+                                    <apex:outputText escape="false" value="{!$Label.GGQuoteCumulativeProgVolume}" />
+                                </TD>
+                            </TR>
+                            
+                            <apex:repeat value="{!product.lineItems}" var="item" id="itemMassParts">
+                                <apex:outputText value="<TR>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>                                
+                                <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>                        
+                                <apex:outputText escape="false" value="{!item.lineItem.corningSpecificationNumber__c}" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>
+                                <apex:outputText value="</TD>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>                                
+                                <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>                        
+                                <apex:outputText value="{!item.lineItem.customerDrawingNumber__c}" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>
+                                <apex:outputText value="</TD>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>                                
+                                <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/> 
+                                <apex:outputText value="{!item.lineItem.Product2.quoteDimensionsMM__c}" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>
+                                <apex:outputText value="</TD>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>                                
+                                <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>            
+                                <apex:outputText value="{!item.qliDescriptionString}" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>
+                                <apex:outputText value="<br/>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>
+                                <apex:outputText value="{!item.lineItem.Product2.specialRequirements__c}" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>
+                                <apex:outputText value="</TD>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>                                               
+                                <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>
+                                <apex:outputText value="{0, number, ###,###,###,##0.00}" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}">
+                                    <apex:param value="{!item.unitPrice}"/>
+                                </apex:outputText>                             
+                                <apex:outputText value="</TD>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>                                
+                                <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>
+                                <apex:outputText value="{!item.lineItem.partsPricingTier__c}" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>     
+                                <apex:outputText value="</TD>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>    
+                                <apex:outputText value="</TR>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>
+                                
+                                <apex:repeat value="{!item.descriptions}" var="desc" id="descMassParts">
+                                    
+                                    <apex:outputText value="<TR>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>                                
+                                    <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>           
+                                    <apex:outputText value="</TD>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>    
+                                    
+                                    <apex:outputText value="<TD class=dTableColumn colspan=5 style=text-align:left;>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>                       
+                                    <apex:outputText escape="false" value="&nbsp;" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>    
+                                    <apex:outputText escape="false" value="{!desc}" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>
+                                    <apex:outputText value="</TD>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>    
+                                    <apex:outputText value="</TR>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>                            
+                                </apex:repeat>
+                                
+                            </apex:repeat> 
+                        </TABLE><BR/>
+                    </apex:outputPanel><!-- 9.24 -->
+                </apex:repeat> 
+                
+                <!-- SMAPLE LINES rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}" -->
+                <apex:repeat value="{!qliMassPartsList}" var="product" id="prodSampleParts">
+                    <apex:outputPanel rendered="{!OR(sampleFlag && containsSampleRow,sampleOnlyFlag)}"><!-- 9.24 -->
+                        <TABLE WIDTH="95%">
+                            <TR><TD colspan="6"><apex:outputText escape="false" value="{!$Label.GGQuoteSampleQuotation}" /></TD></TR>
+                            <TR class="dTableHeader">
+                                <TD class="dTableColumn">
+                                    <apex:outputText escape="false" value="{!$ObjectType.QuoteLineItem.fields.corningSpecificationNumber__c.label}"/>
+                                </TD>
+                                <TD class="dTableColumn">
+                                    <apex:outputText escape="false" value="{!$ObjectType.QuoteLineItem.fields.customerDrawingNumber__c.label}" />
+                                </TD>
+                                <TD class="dTableColumn">
+                                    <apex:outputText escape="false" value="{!$Label.GGQuoteDimensions}" />
+                                </TD>
+                                <TD class="dTableColumn">
+                                    <apex:outputText escape="false" value="{!$Label.GGQuotePartsDescription}" />
+                                </TD>
+                                <TD class="dTableColumn">
+                                    <apex:outputText escape="false" value="{!$Label.GGQuoteSamplePricePc + ' (' + currencyString + ')'}" />
+                                </TD>
+                                <TD class="dTableColumn">
+                                    <apex:outputText escape="false" value="{!$Label.GGQuoteSampleQuantity}" />
+                                </TD>
+                            </TR>
+                            <apex:repeat value="{!product.lineItems}" var="item" id="itemSampleParts">
+                                
+                                <apex:outputText value="<TR>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>                        
+                                <apex:outputText escape="false" value="{!item.lineItem.corningSpecificationNumber__c}" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="</TD>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>                        
+                                <apex:outputText value="{!item.lineItem.customerDrawingNumber__c}" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="</TD>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>                        
+                                <apex:outputText value="{!item.lineItem.Product2.quoteDimensionsMM__c}" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="</TD>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>                        
+                                <apex:outputText value="{!item.qliDescriptionString}" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="<br/>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="{!item.lineItem.Product2.specialRequirements__c}" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="</TD>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>                        
+                                <apex:outputText value="{0, number, ###,###,###,##0.00}" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}">
+                                    <apex:param value="{!item.unitPrice}"/>
+                                </apex:outputText>
+                                <apex:outputText value="</TD>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>                        
+                                <apex:outputText value="{!item.lineItem.partsPricingTier__c}" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="</TD>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="</TR>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>                        
+                                
+                                <apex:repeat value="{!item.descriptions}" var="desc" id="descSampleParts">
+                                    
+                                    <apex:outputText value="<TR>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>                                
+                                    <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>           
+                                    <apex:outputText value="</TD>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>    
+                                    
+                                    <apex:outputText value="<TD class=dTableColumn colspan=5 style=text-align:left;>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>                       
+                                    <apex:outputText escape="false" value="&nbps;" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                    <apex:outputText escape="false" value="{!desc}" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                    <apex:outputText value="</TD>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>    
+                                    <apex:outputText value="</TR>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>  
+                                    
+                                </apex:repeat>
+                                
+                            </apex:repeat> 
+                        </TABLE><BR/>
+                    </apex:outputPanel>
+                </apex:repeat>      
+                
+            </apex:outputPanel>
+            
+            <!-- MASS PARTS VAT -->
+            <apex:outputPanel id="MassPartsVat" rendered="{!lineItemType=='MassParts' && vatFlag}">
+                <apex:repeat value="{!qliMassPartsList}" var="product" id="prodMassParts2">
+                    <apex:outputPanel rendered="{!NOT(sampleOnlyFlag)}"><!-- 9.24 -->
+                        <TABLE WIDTH="95%">
+                            <TR><TD colspan="6"><apex:outputText escape="false" value="{!$Label.GGQuoteMassProduction}" /></TD></TR>
+                            <TR class="dTableHeader">
+                                <TD class="dTableColumn">
+                                    <apex:outputText escape="false" value="{!$ObjectType.QuoteLineItem.fields.corningSpecificationNumber__c.label}"/>
+                                </TD>
+                                <TD class="dTableColumn">
+                                    <apex:outputText escape="false" value="{!$ObjectType.QuoteLineItem.fields.customerDrawingNumber__c.label}" />
+                                </TD>
+                                <TD class="dTableColumn">
+                                    <apex:outputText escape="false" value="{!$Label.GGQuoteDimensions}" />
+                                </TD>
+                                <TD class="dTableColumn">
+                                    <apex:outputText escape="false" value="{!$Label.GGQuotePartsDescription}" />
+                                </TD>
+                                <TD class="dTableColumn">
+                                    <apex:outputText escape="false" value="{!$Label.GGQuoteUnitPrice + ' (' + currencyString + ')'}" />
+                                </TD>
+                                <TD class="dTableColumn">
+                                    <apex:outputText escape="false" value="{!$Label.GGQuoteUnitPriceVAT + ' (' + currencyString + ')'}" />
+                                </TD>
+                                <TD class="dTableColumn">
+                                    <apex:outputText escape="false" value="{!$Label.GGQuoteCumulativeProgVolume}" />
+                                </TD>
+                            </TR>
+                            <apex:repeat value="{!product.LineItems}" var="item" id="itemMassParts2">
+                                <apex:outputText value="<TR>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>                                
+                                <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>                        
+                                <apex:outputText escape="false" value="{!item.lineItem.corningSpecificationNumber__c}" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>
+                                <apex:outputText value="</TD>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>                                
+                                <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>                        
+                                <apex:outputText value="{!item.lineItem.customerDrawingNumber__c}" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>
+                                <apex:outputText value="</TD>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>                                
+                                <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/> 
+                                <apex:outputText value="{!item.lineItem.Product2.quoteDimensionsMM__c}" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>
+                                <apex:outputText value="</TD>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>                                
+                                <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>            
+                                <apex:outputText value="{!item.qliDescriptionString}" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>
+                                <apex:outputText value="<br/>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>
+                                <apex:outputText value="{!item.lineItem.Product2.specialRequirements__c}" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>
+                                <apex:outputText value="</TD>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>                                               
+                                
+                                <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>
+                                <apex:outputText value="{0, number, ###,###,###,##0.00}" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0')) && theQuote.currency__c!='Dong'}">
+                                    <apex:param value="{!item.unitPrice}"/>
+                                </apex:outputText>                             
+                                <apex:outputText value="{0, number, ###,###,###,##0}" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0')) && theQuote.currency__c=='Dong'}">
+                                    <apex:param value="{!item.unitPrice}"/>
+                                </apex:outputText>                             
+                                <apex:outputText value="</TD>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>                                
+                                
+                                <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>
+                                <apex:outputText value="{0, number, ###,###,###,##0.0000}" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0')) && theQuote.currency__c!='Dong'}">
+                                    <apex:param value="{!item.vatUnitPrice}"/>
+                                </apex:outputText>       
+                                <apex:outputText value="{0, number, ###,###,###,##0}" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0')) && theQuote.currency__c=='Dong'}">
+                                    <apex:param value="{!item.vatUnitPrice}"/>
+                                </apex:outputText>       
+                                
+                                <apex:outputText value="</TD>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>                                                            
+                                <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>
+                                <apex:outputText value="{!item.lineItem.partsPricingTier__c}" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>     
+                                <apex:outputText value="</TD>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>    
+                                <apex:outputText value="</TR>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>
+                                
+                                <apex:repeat value="{!item.descriptions}" var="desc" id="descMassParts2">
+                                    
+                                    <apex:outputText value="<TR>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>                                
+                                    <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>           
+                                    <apex:outputText value="</TD>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>    
+                                    
+                                    <apex:outputText value="<TD class=dTableColumn colspan=6 style=text-align:left;>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>                       
+                                    <apex:outputText escape="false" value="&nbsp;" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>
+                                    <apex:outputText escape="false" value="{!desc}" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>
+                                    <apex:outputText value="</TD>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>    
+                                    <apex:outputText value="</TR>" escape="false" rendered="{!NOT(CONTAINS(item.lineItem.partsTierMap__c,'0'))}"/>                            
+                                </apex:repeat>
+                                
+                            </apex:repeat> 
+                        </TABLE><BR/>
+                    </apex:outputPanel>
+                </apex:repeat> 
+                
+                <!-- SMAPLE LINES rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}" -->
+                <apex:repeat value="{!qliMassPartsList}" var="product" id="prodSampleParts2">
+                    <apex:outputPanel rendered="{!OR(sampleFlag && containsSampleRow,sampleOnlyFlag)}"><!-- 9.24 -->
+                        <TABLE WIDTH="95%">
+                            <TR><TD colspan="6"><apex:outputText escape="false" value="{!$Label.GGQuoteSampleQuotation}" /></TD></TR>
+                            <TR class="dTableHeader">
+                                <TD class="dTableColumn">
+                                    <apex:outputText escape="false" value="{!$ObjectType.QuoteLineItem.fields.corningSpecificationNumber__c.label}"/>
+                                </TD>
+                                <TD class="dTableColumn">
+                                    <apex:outputText escape="false" value="{!$ObjectType.QuoteLineItem.fields.customerDrawingNumber__c.label}" />
+                                </TD>
+                                <TD class="dTableColumn">
+                                    <apex:outputText escape="false" value="{!$Label.GGQuoteDimensions}" />
+                                </TD>
+                                <TD class="dTableColumn">
+                                    <apex:outputText escape="false" value="{!$Label.GGQuotePartsDescription}" />
+                                </TD>
+                                <TD class="dTableColumn">
+                                    <apex:outputText escape="false" value="{!$Label.GGQuoteSamplePricePc + ' (' + currencyString + ')'}" />
+                                </TD>
+                                <TD class="dTableColumn">
+                                    <apex:outputText escape="false" value="{!$Label.GGQuoteUnitPriceVAT + ' (' + currencyString + ')'}" />
+                                </TD>                        
+                                <TD class="dTableColumn">
+                                    <apex:outputText escape="false" value="{!$Label.GGQuoteSampleQuantity}" />
+                                </TD>
+                            </TR>
+                            <apex:repeat value="{!product.lineItems}" var="item" id="itemSampleParts2">
+                                
+                                <apex:outputText value="<TR>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>                        
+                                <apex:outputText escape="false" value="{!item.lineItem.corningSpecificationNumber__c}" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="</TD>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>                        
+                                <apex:outputText value="{!item.lineItem.customerDrawingNumber__c}" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="</TD>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>                        
+                                <apex:outputText value="{!item.lineItem.Product2.quoteDimensionsMM__c}" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="</TD>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>                        
+                                <apex:outputText value="{!item.qliDescriptionString}" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="<br/>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="{!item.lineItem.Product2.specialRequirements__c}" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="</TD>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                
+                                <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>                        
+                                <apex:outputText value="{0, number, ###,###,###,##0.00}" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0') && theQuote.currency__c!='Dong'}">
+                                    <apex:param value="{!item.unitPrice}"/>
+                                </apex:outputText>
+                                <apex:outputText value="{0, number, ###,###,###,##0}" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0') && theQuote.currency__c=='Dong'}">
+                                    <apex:param value="{!item.unitPrice}"/>
+                                </apex:outputText>
+                                <apex:outputText value="</TD>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                
+                                <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="{0, number, ###,###,###,##0.0000}" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0') && theQuote.currency__c!='Dong'}">
+                                    <apex:param value="{!item.vatUnitPrice}"/>
+                                </apex:outputText>       
+                                <apex:outputText value="{0, number, ###,###,###,##0}" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0') && theQuote.currency__c=='Dong'}">
+                                    <apex:param value="{!item.vatUnitPrice}"/>
+                                </apex:outputText>       
+                                
+                                <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>                        
+                                <apex:outputText value="{!item.lineItem.partsPricingTier__c}" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="</TD>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                <apex:outputText value="</TR>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>                        
+                                
+                                <apex:repeat value="{!item.descriptions}" var="desc" id="descSampleParts2">
+                                    
+                                    <apex:outputText value="<TR>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>                                
+                                    <apex:outputText value="<TD class=dTableColumn>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>           
+                                    <apex:outputText value="</TD>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>    
+                                    
+                                    <apex:outputText value="<TD class=dTableColumn colspan=6 style=text-align:left;>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>                       
+                                    <apex:outputText escape="false" value="&nbsp;" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                    <apex:outputText escape="false" value="{!desc}" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>
+                                    <apex:outputText value="</TD>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>    
+                                    <apex:outputText value="</TR>" escape="false" rendered="{!CONTAINS(item.lineItem.partsTierMap__c,'0')}"/>  
+                                    
+                                </apex:repeat>
+                                
+                            </apex:repeat> 
+                        </TABLE><BR/>
+                    </apex:outputPanel>
+                </apex:repeat>      
+                
+            </apex:outputPanel>
+            
+            <!-- SAMPLE PARTS NO VAT -->
+            <apex:outputPanel id="SampleParts" rendered="{!lineItemType=='SampleParts' && !vatFlag && !phylloFlag}">
+                <TABLE WIDTH="95%">
+                    <TR class="dTableHeader">
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$ObjectType.QuoteLineItem.fields.corningSpecificationNumber__c.label}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$ObjectType.QuoteLineItem.fields.customerDrawingNumber__c.label}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteDimensions}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuotePartsDescription}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteTotalPrice + ' (' + currencyString + ')'}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteVolumeQuantity}" />
+                        </TD>
+                    </TR>
+                    <apex:repeat value="{!qliList}" var="item" id="itemSampleParts">
+                        <TR>
+                            <TD class="dTableColumn">
+                                <apex:outputText escape="false" value="{!item.lineItem.specification__r.Name}"/>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{!item.lineItem.customerDrawingNumber__c}"/>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <!--
+                                <apex:outputText value="{!item.lineItem.Product2.quoteDimensionsMM__c}"/>
+                                -->
+                                <apex:outputText value="{!item.lineItem.specification__r.thickness__c}"/>mm;&nbsp;
+                                <apex:outputText value="{!item.lineItem.specification__r.width__c}"/>mm&nbsp;x&nbsp;
+                                <apex:outputText value="{!item.lineItem.specification__r.length__c}"/>mm
+                            </TD>
+                            <TD class="dTableColumnLeft">
+                                <!--  <apex:outputText value="{!item.qliDescriptionString}"/><br/><apex:outputText value="{!IF(ISNULL(item.lineItem.specification__r.specialRequirements__c),
+                                ';(Due to it is empty in the Special Requirement field in)' + item.lineItem.specification__r.Name
+                                ,item.lineItem.specification__r.specialRequirements__c)}"/>
+                                <TD class="dTableColumnLeft">
+
+                                <apex:outputText value="{!item.qliDescriptionString}"/><br/><apex:outputText value="{!item.lineItem.Product2.specialRequirements__c}"/>
+                                -->
+                                <apex:outputText value="{!item.lineItem.specification__r.glassComposition__c}"/>;&nbsp;
+                                <apex:outputText value="{!item.lineItem.specification__r.specialShapes__c}"/>;&nbsp;
+                                <apex:outputText value="{!IF(ISNULL(item.lineItem.specification__r.specialRequirements__c)
+                                                        ,''
+                                                        ,item.lineItem.specification__r.specialRequirements__c)}"/>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{0, number, ###,###,###,##0.00}">
+                                    <apex:param value="{!item.totalPrice}"/>
+                                </apex:outputText>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{0, number, ###,###,###,###}">
+                                    <!--<apex:param value="{!item.lineItem.Product2.specification__r.productionVolume__c}"/>-->
+                                    <apex:param value="{!item.lineItem.sampleQuantity__c}"/>
+                                </apex:outputText>
+                                <!--<apex:outputText value="{!' ' + item.lineItem.Product2.specification__r.productionVolumeType__c}"/>-->
+                            </TD>
+                        </TR>
+                        <apex:repeat value="{!item.descriptions}" var="desc" id="descSampleParts">
+                            <TR>
+                                <TD class="dTableColumn">&nbsp;</TD>
+                                <TD class="dTableColumn" COLSPAN="5" STYLE="text-align:left;">
+                                    <apex:outputText escape="false" value="{!desc}"/>
+                                </TD>
+                            </TR>
+                        </apex:repeat>
+                    </apex:repeat>
+                </TABLE><BR/> 
+            </apex:outputPanel>
+
+            <!-- SAMPLE PARTS NO VAT PHYLLO-->
+            <apex:outputPanel id="SamplePartsPhyllo" rendered="{!lineItemType=='SampleParts' && phylloFlag}">
+                <TABLE WIDTH="95%">
+                    <TR class="dTableHeader">
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$ObjectType.Product2.fields.Name.label}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteTotalPrice + ' (' + currencyString + ')'}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteVolumeQuantity}" />
+                        </TD>
+                    </TR>
+                    <apex:repeat value="{!qliList}" var="item" id="itemSamplePartsPhyllo">
+                        <TR>
+                            <TD class="dTableColumn">
+                                <apex:outputText escape="false" value="{!item.lineItem.Product2.Name}"/>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{0, number, ###,###,###,##0.00}">
+                                    <apex:param value="{!item.totalPrice}"/>
+                                </apex:outputText>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{0, number, ###,###,###,###}">
+                                    <!--<apex:param value="{!item.lineItem.Product2.specification__r.productionVolume__c}"/>-->
+                                    <apex:param value="{!item.lineItem.sampleQuantity__c}"/>
+                                </apex:outputText>
+                                <!--<apex:outputText value="{!' ' + item.lineItem.Product2.specification__r.productionVolumeType__c}"/>-->
+                            </TD>
+                        </TR>
+                        <apex:repeat value="{!item.descriptions}" var="desc" id="descSampleParts">
+                            <TR>
+                                <TD class="dTableColumn">&nbsp;</TD>
+                                <TD class="dTableColumn" COLSPAN="5" STYLE="text-align:left;">
+                                    <apex:outputText escape="false" value="{!desc}"/>
+                                </TD>
+                            </TR>
+                        </apex:repeat>
+                    </apex:repeat>
+                </TABLE><BR/> 
+            </apex:outputPanel>
+            
+            <!-- SAMPLE PARTS VAT -->
+            <apex:outputPanel id="SamplePartsVat" rendered="{!lineItemType=='SampleParts' && vatFlag && !phylloFlag}">
+                <TABLE WIDTH="95%">
+                    <TR class="dTableHeader">
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$ObjectType.QuoteLineItem.fields.corningSpecificationNumber__c.label}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$ObjectType.QuoteLineItem.fields.customerDrawingNumber__c.label}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteDimensions}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuotePartsDescription}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteTotalPrice + ' (' + currencyString + ')'}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteTotalPriceVAT + ' (' + currencyString + ')'}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteVolumeQuantity}" />
+                        </TD>
+                    </TR>
+                    <apex:repeat value="{!qliList}" var="item" id="itemSampleParts2">
+                        <TR>
+                            <TD class="dTableColumn">
+                                <apex:outputText escape="false" value="{!item.lineItem.corningSpecificationNumber__c}"/>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{!item.lineItem.customerDrawingNumber__c}"/>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{!item.lineItem.Product2.quoteDimensionsMM__c}"/>
+                            </TD>
+                            <TD class="dTableColumnLeft">
+                                <apex:outputText value="{!item.qliDescriptionString}"/><br/><apex:outputText value="{!item.lineItem.Product2.specialRequirements__c}"/>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{0, number, ###,###,###,##0.00}">
+                                    <apex:param value="{!item.totalPrice}"/>
+                                </apex:outputText>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{0, number, ###,###,###,##0.0000}">
+                                    <apex:param value="{!item.vatTotalPrice}"/>
+                                </apex:outputText>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{0, number, ###,###,###,###}">
+                                    <!--<apex:param value="{!item.lineItem.Product2.specification__r.productionVolume__c}"/>-->
+                                    <apex:param value="{!item.lineItem.sampleQuantity__c}"/>
+                                </apex:outputText>
+                                <!--<apex:outputText value="{!' ' + item.lineItem.Product2.specification__r.productionVolumeType__c}"/>-->
+                            </TD>
+                        </TR>
+                        <apex:repeat value="{!item.descriptions}" var="desc" id="descSampleParts2">
+                            <TR>
+                                <TD class="dTableColumn">&nbsp;</TD>
+                                <TD class="dTableColumn" COLSPAN="6" STYLE="text-align:left;">
+                                    <apex:outputText escape="false" value="{!desc}"/>
+                                </TD>
+                            </TR>
+                        </apex:repeat>
+                    </apex:repeat>
+                </TABLE><BR/> 
+            </apex:outputPanel>
+            
+            <!--  BLUE -->
+            <apex:outputPanel id="Blue" rendered="{!lineItemType=='Blue'}"> <!--  ONLY CSMI --> 
+                <TABLE WIDTH="95%">
+                    <TR class="dTableHeader">
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteComposition}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$ObjectType.Product2.fields.Thickness__c.label}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteSheetDimension}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteBlueGlassPrice + ' (' + currencyString + '/Sq. ft.)'}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$ObjectType.QuoteLineItem.fields.freight__c.label + ' (' + currencyString + '/Sq. ft.)'}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteBlueTotalPrice + ' (' + currencyString + '/Sq. ft.)'}" />
+                        </TD>
+                        <TD class="dTableColumn">
+                            <apex:outputText escape="false" value="{!$Label.GGQuoteNumSheets + '<BR/>' + $Label.GGQuoteSqFtCrate}" />
+                        </TD>
+                    </TR>
+                    <apex:repeat value="{!qliList}" var="item" id="itemBlue">
+                        <TR>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{!item.lineItem.Product2.glassComposition__c}"/>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{!item.lineItem.Product2.Thickness__c}"/>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{!item.lineItem.Product2.quoteSheetDimensionMm__c}"/>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{0, number, ###,###,###,##0.00}">
+                                    <apex:param value="{!item.unitPrice - item.freight}"/>
+                                </apex:outputText>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{0, number, ###,###,###,##0.00}">
+                                    <apex:param value="{!item.freight}"/>
+                                </apex:outputText>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{0, number, ###,###,###,##0.00}">
+                                    <apex:param value="{!item.unitPrice}"/>
+                                </apex:outputText>
+                            </TD>
+                            <TD class="dTableColumn">
+                                <apex:outputText value="{!item.lineItem.quoteSheetsSqFtPerCrate__c}"/>
+                            </TD>
+                        </TR>
+                        <apex:repeat value="{!item.descriptions}" var="desc" id="descBlue">
+                            <TR>
+                                <TD class="dTableColumn">&nbsp;</TD>
+                                <TD class="dTableColumn" COLSPAN="9" STYLE="text-align:left;">
+                                    <apex:outputText escape="false" value="{!desc}"/>
+                                </TD>
+                            </TR>
+                        </apex:repeat>
+                    </apex:repeat>
+                </TABLE><BR/> 
+            </apex:outputPanel>      
+            <table>
+                <tr>
+                    <td class="outlined">
+                        <table>
+                            <tr>
+                                <td width="20%">
+                                    <apex:outputText escape="false" value="{!$ObjectType.Quote.fields.shippingTerm__c.label}:"/>
+                                </td>
+                                <td width="80%">
+                                    <apex:outputText escape="false" value="{!shippingString}" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="20%">
+                                    <apex:outputText escape="false" value="{!$ObjectType.Quote.fields.shippingTermsComment__c.label}:"/>
+                                </td>
+                                <td width="80%">
+                                    <apex:outputText escape="false" value="{!theQuote.shippingTermsComment__c}" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="20%">
+                                    <apex:outputText escape="false" value="{!$ObjectType.Quote.fields.paymentTerm__c.label}:"/>
+                                </td>
+                                <td width="80%">
+                                    <apex:outputText escape="false" value="{!theQuote.paymentTerm__c}" />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <BR/>
+            <table WIDTH="100%">
+                <tr>
+                    <td><apex:outputText escape="false" value="{!$Label.GGQuoteRemarks}"/></td>
+                </tr>
+                <apex:outputPanel rendered="{!lineItemType=='Raw'}"> 
+                    <tr>
+                        <td class="outlined" style="font-family: Arial Unicode MS, sans-serif;">
+                            <apex:outputText escape="false" value="{!theText.rawRemarks__c}" />   
+                        </td>
+                    </tr>
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!lineItemType=='Concore'}"> 
+                    <tr>
+                        <td class="outlined" style="font-family: Arial Unicode MS, sans-serif;">
+                            <apex:outputText escape="false" value="{!theText.concoreRemarks__c}" />   
+                        </td>
+                    </tr>
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!lineItemType=='MassParts' || lineItemType=='SampleParts'}"> 
+                    <tr>
+                        <td class="outlined" style="font-family: Arial Unicode MS, sans-serif;">
+                            <apex:outputText escape="false" value="{!theText.partsRemarks__c}" />   
+                        </td>
+                    </tr>
+                </apex:outputPanel>
+            </table>  
+            <apex:outputPanel rendered="{!theQuote.additionalComments__c <> ''}">
+                <table WIDTH="100%">
+                    <tr>
+                        <td class="outlined"> 
+                            <apex:outputText escape="false" value="{!theQuote.additionalComments__c}" />
+                        </td>
+                    </tr>
+                </table>
+            </apex:outputPanel>
+            <BR/>
+            
+        </div> <!-- pagebreak div -->
+        
+        <div style="width:100%; display:block;">
+            <apex:pageBlock >
+                <apex:pageBlockSection columns="1">{!theText.preparedBy__c}</apex:pageBlockSection>
+            </apex:pageBlock>
+        </div>
+        
+        <div id="requestedBy" style="width:100%;display:inline-block;">
+            <apex:pageBlock >
+                <apex:pageBlockSection columns="1">
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel for="address" value="{!$Label.GGQuoteUserName}:"/> 
+                        <apex:outputField value="{!theQuote.corningContact__r.Name}"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel for="address" value="{!$Label.GGQuoteUserTitle}:"/> 
+                        <apex:outputField value="{!theQuote.corningContact__r.Title}"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel for="address" value="{!$Label.GGQuoteUserEmail}:"/> 
+                        <apex:outputField value="{!theQuote.corningContact__r.Email}" />
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel for="address" value="{!$Label.GGQuoteUserPhone}:"/> 
+                        <apex:outputField value="{!theQuote.corningContact__r.Phone}" />
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel for="address" value="{!$Label.GGQuoteUserFax}:"/> 
+                        <apex:outputField value="{!theQuote.corningContact__r.Fax}" />
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel for="address" value="{!$Label.GGQuoteUserAddress}:"/> 
+                        <apex:outputText id="address" value="{!ccAddressString}"/>        
+                    </apex:pageBlockSectionItem>    
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </div>
+        
+        <table id="tc" WIDTH="100%">
+            <tr>
+                <td style="padding: 10px 0px 0px 10px;" >
+                    <apex:outputText escape="false" value="{!theText.termsAndConditions__c}" />
+                </td>
+            </tr>
+        </table>
+    </body>
+</apex:page>

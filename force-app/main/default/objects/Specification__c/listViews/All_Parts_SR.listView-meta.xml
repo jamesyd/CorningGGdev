@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Parts_SR</fullName>
+    <columns>NAME</columns>
+    <columns>opportunity__c</columns>
+    <columns>status__c</columns>
+    <columns>specialRequirements__c</columns>
+    <columns>RECORDTYPE</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Specification__c.Parts_Final</value>
+    </filters>
+    <filters>
+        <field>Innovation_Type__c</field>
+        <operation>includes</operation>
+        <value>DAR2.0,DXPlus,DXC</value>
+    </filters>
+    <label>All - Parts -SR</label>
+    <language>en_US</language>
+</ListView>

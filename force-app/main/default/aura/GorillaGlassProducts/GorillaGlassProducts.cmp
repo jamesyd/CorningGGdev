@@ -1,0 +1,109 @@
+<aura:component controller="GGGlassProductsController" implements="force:hasRecordId,force:hasSObjectName,flexipage:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+	<aura:attribute name="optyLineItems" type="Object[]"/>
+    <aura:attribute name="quoteLineItems" type="Object[]"/>
+    <aura:attribute name="isSampleOptty" type="Boolean" default="false"/>
+    <aura:attribute name="isSampleQuote" type="Boolean" default="false"/>
+    <aura:attribute name="isBlueQuote" type="Boolean" default="false"/>
+    <aura:attribute name="isPartsProgramQuote" type="Boolean" default="false"/>
+    <aura:attribute name="saveMessage" type="String"/>
+    <aura:attribute name="productSearchStyle" type="String" default="slds-show"/>
+    <aura:attribute name="editItemsStyle" type="String" default="slds-show"/>
+    <aura:attribute name="navigateToFullPage" type="Boolean" default="true"/>
+    <aura:attribute name="selectedIds" type="String[]"/>
+    <aura:attribute name="selectedTab" type="String" default="addProducts"/>
+    <aura:attribute name="waitSpinnerStyle" type="String" default="slds-hide"/>
+    <aura:attribute name="totalNumberOfOLIs" type="Integer" />
+    <aura:attribute name="refreshLIOnTabChange" type="Boolean" default="true"/>
+    <aura:attribute name="refreshSearchOnTabChange" type="Boolean" default="false"/>
+    <aura:attribute name="columns" type="String[]"/>
+    <aura:attribute name="editingQuote" type="Boolean"/>
+    <aura:attribute name="freightStyle" type="String" default="slds-hide"/>
+	<aura:attribute name="recordAccess" type="SObject"/>
+   	<aura:attribute name="recordAccessMessageClass" type="String"/>
+    <aura:attribute name="recordAccessMessage" type="String"/>
+    <aura:attribute name="performFloorPriceCheck" type="Boolean" />
+    <aura:attribute name="scheduleBtnStyle" type="String" default="slds-hide"/>
+    <aura:attribute name="scheduleBtnDisabled" type="Boolean" default="true"/>
+    <aura:attribute name="deleteBtnDisabled" type="Boolean" default="true"/>
+    <aura:attribute name="runningInSF1" type="Boolean" default="false"/>
+    <aura:attribute name="plmApprovalBtnStyle" type="String" default="slds-hide"/>
+    <aura:attribute name="expiryBtnStyle" type="String" default="slds-hide"/>
+    <aura:handler name="GGLineItemSelected" event="c:GGLineItemSelected" action="{!c.handleSelectedLI}"/>
+    <aura:handler name="GGQuoteLISelected" event="c:GGQuoteLISelected" action="{!c.handleSelectedLI}"/>
+    <aura:handler name="SampleProductAdded" event="c:SampleProductAdded" action="{!c.handleSampleProductAdded}"/>
+    
+    <!--<aura:registerEvent name="RefreshSearchTab" type="c:RefreshSearchTab"/>-->
+    
+    <section class="slds-card__body" >
+  		<lightning:spinner aura:id="waitSpinner" class="{!v.waitSpinnerStyle}" alternativeText="Product Interface">
+        </lightning:spinner>        
+        
+        <table class="slds-table slds-table--bordered slds-max-medium-table--stacked" >
+            <tr><td>
+                <section class="slds-clearfix">
+  					<div class="slds-float--left">
+                        &nbsp;
+						<p class="{!v.recordAccessMessageClass}"><br/>{!v.recordAccessMessage}<br/></p>
+                    </div>
+                    <div class="slds-float--right">
+                    <lightning:button aura:id="CloseBtn" label="Save and Close" onclick="{!c.handleClose}"/>
+                    </div>
+                </section>
+        		</td>
+            </tr>
+            </table>
+        <lightning:tabset variant="scoped" aura:id="productsTab" selectedTabId="{!v.selectedTab}">
+        <lightning:tab label="{!$Label.c.AddProductsTab}" id="addProducts" onactive="{!c.refreshAddProducts}" aura:id="addProductsTab">
+        	<c:ProductSearch recordId="{!v.recordId}" recordAccess="{!v.recordAccess}"/>
+        </lightning:tab>
+		<lightning:tab label="{!$Label.c.EditProductsTab}" id="editProducts" onactive="{!c.editLineItems}">
+            <div aura:id="editItems" class="{!v.editItemsStyle}">
+            <table class="slds-table slds-table--bordered slds-max-medium-table--stacked" >
+            <th><td>
+                <lightning:button aura:id="ExpiryBtn" class="{!v.expiryBtnStyle}"  label="Extend Expiry" disabled="{!v.deleteBtnDisabled}" onclick="{!c.handleExtendExpiry}"/>
+                <lightning:button aura:id="PLMApprovalBtn" class="{!v.plmApprovalBtnStyle}"  label="Approve Price" disabled="{!v.deleteBtnDisabled}" onclick="{!c.handleApprovePrice}"/>
+                <lightning:button aura:id="ScheduleBtn" class="{!v.scheduleBtnStyle}"  label="Schedule" disabled="{!v.scheduleBtnDisabled}" onclick="{!c.handleScheduleLineItems}"/>
+                <!--</td>
+                <td>-->
+                <lightning:button aura:id="DeleteBtn" label="Delete Selected" disabled="{!v.deleteBtnDisabled}" onclick="{!c.handleDeleteSelected}"/>
+                <!--</td>
+                <td>-->
+                <lightning:button aura:id="SaveBtn" label="Save" onclick="{!c.handleSave}"/>
+                {!v.saveMessage}
+        		</td>
+            </th>
+            </table>
+            
+            <div class="slds-card__body">
+                <section class="slds-card__body">
+       		<div class="slds-scrollable--x" style="min-height:300px">
+                <table class="slds-table slds-table--bordered slds-max-medium-table--stacked" >
+                	<thead>
+                        
+                    	<tr class="slds-text-heading--label">
+                            <aura:iteration items="{!v.columns}" var="col" indexVar="cIndex">
+    							<th class="slds-is-sortable" scope="col">
+                                	<div class="slds-truncate">{!col}</div>
+                            	</th>
+							</aura:iteration>
+                    	</tr>
+                    </thead>
+                    <tbody id="dataDisplay">
+                        <aura:iteration items="{!v.optyLineItems}" var="opttyLI" indexVar="cIndex">
+    						<c:GGOptyLineItem opttyLI="{!opttyLI}" cIndex="{!cIndex}" isSampleOptty="{!v.isSampleOptty}" recordAccess="{!v.recordAccess}" runningInSF1="{!v.runningInSF1}"/>
+						</aura:iteration>
+                        <aura:iteration items="{!v.quoteLineItems}" var="quoteLI" indexVar="cIndex">
+                           <c:GGQuoteLineItem quoteLI="{!quoteLI}" cIndex="{!cIndex}" isSampleQuote="{!v.isSampleQuote}" freightStyle="{!v.freightStyle}" isBlueQuote="{!v.isBlueQuote}" performFloorPriceCheck="{!v.performFloorPriceCheck}" recordAccess="{!v.recordAccess}" runningInSF1="{!v.runningInSF1}" isPartsProgramQuote="{!v.isPartsProgramQuote}"/>
+						</aura:iteration>
+                    </tbody>
+           		</table>
+           	</div>
+                </section>
+            </div>
+        </div>
+        </lightning:tab>
+        </lightning:tabset>
+    </section>
+    
+</aura:component>

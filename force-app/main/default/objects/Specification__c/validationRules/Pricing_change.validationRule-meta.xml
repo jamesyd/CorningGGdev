@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pricing_change</fullName>
+    <active>false</active>
+    <description>Price can&apos;t be changed unless in Pricing assignment status.</description>
+    <errorConditionFormula>(TEXT(status__c) &lt;&gt; &apos;New&apos; &amp;&amp; TEXT(status__c) &lt;&gt; &apos;Business Case Finalization&apos; &amp;&amp; TEXT(status__c) &lt;&gt; &apos;Finance Review&apos; &amp;&amp; TEXT(status__c) &lt;&gt; &apos;Commercial/Ops Review&apos; &amp;&amp; TEXT(status__c) &lt;&gt; &apos;Pricing Assignment&apos;) &amp;&amp; (IsChanged(price1__c) || IsChanged(upperLimit1__c) || IsChanged(price2__c) || IsChanged(upperLimit2__c) ||
+IsChanged(price3__c) || IsChanged(upperLimit3__c) || IsChanged(price4__c) || IsChanged(upperLimit4__c) ||
+IsChanged(priceUnit__c) ||
+IsChanged(moq__c) || IsChanged(moqUom__c))</errorConditionFormula>
+    <errorMessage>Price can only be changed in &apos;Pricing Assignment&apos; status.</errorMessage>
+</ValidationRule>

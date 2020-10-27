@@ -1,0 +1,15 @@
+<aura:component >
+    <aura:attribute name="page" type="integer"/>
+    <aura:attribute name="pages" type="integer"/>
+    <aura:attribute name="total" type="integer"/>
+	<aura:registerEvent name="PageChange" type="c:PageChange"/>
+    <aura:registerEvent name="addSelected" type="c:AddSelected"/>
+    <div class="slds">
+      	<div class="slds-form-element">
+      		<lightning:button label="Add Selected" onclick="{!c.addSelected}"/>
+            <lightning:button label="Previous" onclick="{!c.previousPage}" disabled="{!v.page &lt;= 1}"/>  
+        		&nbsp;{!v.total} records • page {!v.page} / {!v.pages} &nbsp;  
+        	<lightning:button label="Next" onclick="{!c.nextPage}" disabled="{!v.page >= v.pages}"/>
+ 		</div>
+    </div>
+</aura:component>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Require_Decline_Reason</fullName>
+    <active>true</active>
+    <description>If the status is Declined the require that the user enter a reason.</description>
+    <errorConditionFormula>(TEXT(plmApproval__c) = &quot;Not Approved&quot; &amp;&amp; TEXT(declineReason__c) = &quot;&quot;)
+||
+(TEXT(declineReason__c) = &quot;&quot; &amp;&amp; declineSpecification__c = True)
+||
+(TEXT(declineReason__c) = &quot;&quot;
+&amp;&amp; 
+((TEXT(capable__c) = &quot;No&quot; &amp;&amp; capabilityAssessmentComplete__c = TRUE &amp;&amp; standardAssessmentComplete__c != TRUE) 
+|| 
+((innovationAssessmentComplete__c = TRUE &amp;&amp; manufacturingAssignmentComplete__c != TRUE) &amp;&amp; (TEXT(largeCoverGlass__c) = &quot;Not Approved&quot; || TEXT(glassCeramics__c) = &quot;Not Approved&quot; || TEXT(antiMicrobial__c) = &quot;Not Approved&quot; || TEXT(nonCeAr__c) = &quot;Not Approved&quot; || TEXT(ezAr__c) = &quot;Not Approved&quot; || TEXT(antiGlareAg__c) = &quot;Not Approved&quot; || TEXT(screenProtector__c) = &quot;Not Approved&quot; || TEXT(phire20__c) = &quot;Not Approved&quot; || TEXT(phire30__c) = &quot;Not Approved&quot; || TEXT(fps__c) = &quot;Not Approved&quot; || TEXT(vibrant__c) = &quot;Not Approved&quot; || TEXT(glassBack__c) = &quot;Not Approved&quot;))
+|| 
+(TEXT(missingInformation__c) = &quot;Yes&quot; &amp;&amp; missingInformationAssessmentComplete__c = TRUE)
+||
+(TEXT(applicationEngineerApproval__c) = &quot;Not Approved&quot; || TEXT(qualityEngineerApproval__c) = &quot;Not Approved&quot; || TEXT(plantEngineerApproval__c) = &quot;Not Approved&quot;)
+||
+(TEXT(costApproval__c) = &quot;Not Accepted&quot;)
+||
+(manufacturingAssignmentComplete__c = TRUE &amp;&amp; noContractManufacturerAvailable__c = TRUE) 
+|| 
+(INCLUDES(location__c, &quot;Unable to manufacture&quot;) &amp;&amp; 
+manufacturingAssignmentComplete__c = TRUE &amp;&amp; innovationAssessmentComplete__c = TRUE)
+||
+((((TEXT(supplyAllocationInventory__c) = &quot;Not Approved&quot;) &amp;&amp; (supplyAllocInventoryReviewComplete__c  = True)) || ((TEXT(initialBusinessCase__c) = &quot;Not Approved&quot;) &amp;&amp; (initialBusinessCaseReviewComplete__c = True)) || ((TEXT(mtoReview__c) = &quot;Not Approved&quot;) &amp;&amp; (mtoReviewComplete__c = True))))))</errorConditionFormula>
+    <errorMessage>If you are declining a Specification you need to enter the reason.</errorMessage>
+</ValidationRule>

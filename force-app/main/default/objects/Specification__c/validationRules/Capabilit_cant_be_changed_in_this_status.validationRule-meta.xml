@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Capabilit_cant_be_changed_in_this_status</fullName>
+    <active>true</active>
+    <description>Capability can&apos;t be changed once approved.</description>
+    <errorConditionFormula>( $Profile.Name &lt;&gt; &apos;System Administrator&apos;) &amp;&amp; !CONTAINS( RecordType.Name, &apos;RFI&apos;) &amp;&amp; (ISCHANGED( capabilityAssessmentComplete__c ) || ISCHANGED( capable__c )) &amp;&amp; (TEXT(status__c) &lt;&gt; &apos;Capable Assessment&apos;)</errorConditionFormula>
+    <errorMessage>Capability assessment can only be changed in the Capable Assessment status.</errorMessage>
+</ValidationRule>

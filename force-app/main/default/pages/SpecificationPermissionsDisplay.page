@@ -1,0 +1,8 @@
+<apex:page standardController="Specification__c" extensions="PermissionsDisplayController" action="{!getPermissions}" standardStylesheets="true">
+	<apex:outputPanel rendered="{!!isEditable}">
+		<DIV STYLE="text-align:center;color:red;font-weight:bold"><B>{!message}</B></DIV>
+	</apex:outputPanel> 
+	<apex:outputPanel rendered="{!isEditable}">
+		<DIV STYLE="text-align:center;font-weight:bold"><B>{!message}</B></DIV>
+	</apex:outputPanel> 
+</apex:page>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Parts_Required_Field_Lockdown</fullName>
+    <active>true</active>
+    <errorConditionFormula>!CONTAINS($Profile.Name, &quot;Administrator&quot;) 
+&amp;&amp; 
+CONTAINS(RecordType.DeveloperName, &quot;Final&quot;) 
+&amp;&amp; 
+(ISCHANGED(opportunity__c) || ISCHANGED(glassComposition__c) || ISCHANGED(length__c) || ISCHANGED(width__c) || ISCHANGED(thickness__c) || ISCHANGED(marketSegment__c) || ISCHANGED(account__c))</errorConditionFormula>
+    <errorMessage>Once a Spec in the final stage it cannot be edited.</errorMessage>
+</ValidationRule>

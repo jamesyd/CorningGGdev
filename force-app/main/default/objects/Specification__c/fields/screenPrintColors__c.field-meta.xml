@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>screenPrintColors__c</fullName>
+    <externalId>false</externalId>
+    <label>Screen Print Black Matrix (BM)</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>screenPrint__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Black</fullName>
+                <default>false</default>
+                <label>Black</label>
+            </value>
+            <value>
+                <fullName>White</fullName>
+                <default>false</default>
+                <label>White</label>
+            </value>
+            <value>
+                <fullName>Pink</fullName>
+                <default>false</default>
+                <label>Pink</label>
+            </value>
+            <value>
+                <fullName>Special Requirements</fullName>
+                <default>false</default>
+                <label>Special Requirements</label>
+            </value>
+            <value>
+                <fullName>Test</fullName>
+                <default>false</default>
+                <label>Test</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Yes</controllingFieldValue>
+            <valueName>Black</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Yes</controllingFieldValue>
+            <valueName>White</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Yes</controllingFieldValue>
+            <valueName>Pink</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Yes</controllingFieldValue>
+            <valueName>Special Requirements</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

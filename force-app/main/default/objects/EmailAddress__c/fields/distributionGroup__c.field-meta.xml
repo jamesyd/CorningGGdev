@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>distributionGroup__c</fullName>
+    <description>Master distribution group</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Master distribution group</inlineHelpText>
+    <label>Distribution Group</label>
+    <referenceTo>DistributionGroup__c</referenceTo>
+    <relationshipLabel>Email Addresses</relationshipLabel>
+    <relationshipName>Email_Addresses</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TPM_Panel_Maker_Require_for_Parts_Submit</fullName>
+    <active>true</active>
+    <errorConditionFormula>RecordType.Name = &apos;Parts&apos; &amp;&amp; productLine__c = &apos;Parts&apos; &amp;&amp; submitForApproval__c  = True &amp;&amp; (ISBLANK(TPM__c) &amp;&amp; ISBLANK(panelMaker__c)) &amp;&amp;   NOT(ISPICKVAL(status__c, &apos;Pricing Approved&apos;))</errorConditionFormula>
+    <errorMessage>Either a TPM or Panel Maker is Required for Submit</errorMessage>
+</ValidationRule>

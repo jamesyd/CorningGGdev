@@ -1,0 +1,666 @@
+<!--
+  @description       : 
+  @author            : Edgar Santillana
+  @group             : 
+  @last modified on  : 08-14-2020
+  @last modified by  : Edgar Santillana
+  Modifications Log 
+  Ver   Date         Author            Modification
+  1.1   07-12-2020   Arquimidez Mora   Fixing finisher issue
+-->
+<aura:component description="ForecastList"
+                implements="flexipage:availableForAllPageTypes,force:appHostable"
+                controller="HomePageForecastController"
+                access="global">
+    
+    <style>
+        .slds-modal__container{
+        max-width: 70rem !important;
+        width:90% !important;
+        }
+    </style>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.myAction}"/>
+    <aura:attribute name="f52s" type="ForecastOutput52Week__c[]" />
+    <aura:attribute name="isOpenEditSchedule" type="boolean" default="false"/>
+    <aura:attribute name="mID" type="String" default=""/>
+    
+    <aura:attribute name="m1l" type="String" default="M1"/>
+    <aura:attribute name="m2l" type="String" default="M2"/>
+    <aura:attribute name="m3l" type="String" default="M3"/>
+    <aura:attribute name="m4l" type="String" default="M4"/>
+    <aura:attribute name="m5l" type="String" default="M5"/>
+    <aura:attribute name="m6l" type="String" default="M6"/>
+    <aura:attribute name="m7l" type="String" default="M7"/>
+    <aura:attribute name="m8l" type="String" default="M8"/>
+    <aura:attribute name="m9l" type="String" default="M9"/>
+    <aura:attribute name="m10l" type="String" default="M10"/>
+    <aura:attribute name="m11l" type="String" default="M11"/>
+    <aura:attribute name="m12l" type="String" default="M12"/>
+    <aura:attribute name="m13l" type="String" default="M13"/>
+    <aura:attribute name="m14l" type="String" default="M14"/>
+    <aura:attribute name="m15l" type="String" default="M15"/>
+    <aura:attribute name="m16l" type="String" default="M16"/>
+    <aura:attribute name="m17l" type="String" default="M17"/>
+    <aura:attribute name="m18l" type="String" default="M18"/>
+    
+    <aura:attribute name="m1q" type="integer" default="0"/>
+    <aura:attribute name="m2q" type="integer" default="0"/>
+    <aura:attribute name="m3q" type="integer" default="0"/>
+    <aura:attribute name="m4q" type="integer" default="0"/>
+    <aura:attribute name="m5q" type="integer" default="0"/>
+    <aura:attribute name="m6q" type="integer" default="0"/>
+    <aura:attribute name="m7q" type="integer" default="0"/>
+    <aura:attribute name="m8q" type="integer" default="0"/>
+    <aura:attribute name="m9q" type="integer" default="0"/>
+    <aura:attribute name="m10q" type="integer" default="0"/>
+    <aura:attribute name="m11q" type="integer" default="0"/>
+    <aura:attribute name="m12q" type="integer" default="0"/>
+    <aura:attribute name="m13q" type="integer" default="0"/>
+    <aura:attribute name="m14q" type="integer" default="0"/>
+    <aura:attribute name="m15q" type="integer" default="0"/>
+    <aura:attribute name="m16q" type="integer" default="0"/>
+    <aura:attribute name="m17q" type="integer" default="0"/>
+    <aura:attribute name="m18q" type="integer" default="0"/>
+    
+    <aura:attribute name="m1p" type="integer" default="0"/>
+    <aura:attribute name="m2p" type="integer" default="0"/>
+    <aura:attribute name="m3p" type="integer" default="0"/>
+    <aura:attribute name="m4p" type="integer" default="0"/>
+    <aura:attribute name="m5p" type="integer" default="0"/>
+    <aura:attribute name="m6p" type="integer" default="0"/>
+    <aura:attribute name="m7p" type="integer" default="0"/>
+    <aura:attribute name="m8p" type="integer" default="0"/>
+    <aura:attribute name="m9p" type="integer" default="0"/>
+    <aura:attribute name="m10p" type="integer" default="0"/>
+    <aura:attribute name="m11p" type="integer" default="0"/>
+    <aura:attribute name="m12p" type="integer" default="0"/>
+    <aura:attribute name="m13p" type="integer" default="0"/>
+    <aura:attribute name="m14p" type="integer" default="0"/>
+    <aura:attribute name="m15p" type="integer" default="0"/>
+    <aura:attribute name="m16p" type="integer" default="0"/>
+    <aura:attribute name="m17p" type="integer" default="0"/>
+    <aura:attribute name="m18p" type="integer" default="0"/>
+    
+    <aura:attribute name="comment" type="String" default=""/>
+    
+    <aura:attribute name="isOpenManage" type="boolean" default="false"/>
+    <aura:attribute name="ListOfOLIs" type="OpportunityLineItem[]" />
+    <aura:attribute name="TargetListOfOLIs" type="OpportunityLineItem[]" />
+    <aura:attribute name="waitSpinnerStyle" type="String" default="slds-hide"/>
+    <aura:attribute name="errorMessage" type="String" default=""/>
+    <aura:attribute name="errorMessageTarget" type="String" default=""/> 
+    <aura:attribute name="selectedCount" type="integer" default="0"/>
+    <aura:attribute name="selectedCountTarget" type="integer" default="0"/>
+    
+    <aura:attribute name="isOpenEdit" type="boolean" default="false"/>
+    <aura:attribute name="endProgramConfirm" type="boolean" default="false"/>
+    <aura:attribute name="errorMessageCheckbox" type="String" default=""/>
+    <aura:attribute name="mpsDate" type="Date" default=""/>
+    <aura:attribute name="selectedLookUpRecord" type="sObject" default="{}"/>
+    <aura:attribute name="finisherMix" type="Decimal" default="0"/>
+    <aura:attribute name="finisherYeild" type="Decimal" default="0"/>
+    <aura:attribute name="searchStr" type="String" default=""/>
+    <aura:attribute name="filterString" type="String" default=""/>
+    
+    <aura:attribute name="productLine" type="String" default="Parts"/>
+    <aura:attribute name="opportunityId" type="String" />
+    <aura:attribute name="isRaworConcore" type="Boolean" default="false"/>
+    <aura:attribute name="isRaworConcoreActive" type="Boolean" default="false"/>
+    <aura:attribute name="showSpinner" type="Boolean" default="false"/>
+    
+    <aura:if isTrue="{!v.showSpinner}">
+        <lightning:spinner alternativeText="Loading" size="medium" />
+    </aura:if>
+    
+    <div>
+        <table class="slds-table slds-table--bordered slds-table--striped slds-table--cell-buffer slds-table--fixed-layout">
+            <thead>
+                
+                <!--<tr><br/><h2><span class="slds-text-heading_small">&nbsp;&nbsp;My 52 Week Product Forecasts</span></h2><br/></tr>-->
+                <tr>
+                    <th scope="col" colspan="9">
+                        <lightning:tabset selectedTabId="part" >
+                            <lightning:tab label="Part" id="part" onactive="{! c.handleTabActive }">
+                                <div onkeyup="{! c.handleSearchInput }" style="display: inline-flex;">
+                                    <lightning:input 
+                                                     aura:id="searchtxt"
+                                                     name="searchtxt"
+                                                     label=""
+                                                     type="search"
+                                                     variant="label-hidden"
+                                                     value="{!v.searchStr}"
+                                                     />
+                                    <lightning:button label="Search Parts" 
+                                                      title="Search" 
+                                                      onclick="{!c.handleSearchButton}"/>
+                                </div>
+                            </lightning:tab>
+                            <lightning:tab label="Raw Glass" id="rawglass" onactive="{! c.handleTabActive }">
+                                <div onkeyup="{! c.handleSearchInput }" style="display: inline-flex;">
+                                    <lightning:input 
+                                                     aura:id="searchtxt"
+                                                     name="searchtxt"
+                                                     label=""
+                                                     type="search"
+                                                     variant="label-hidden"
+                                                     value="{!v.searchStr}"
+                                                     />
+                                    <lightning:button label="Search Raw Glass" 
+                                                      title="Search" 
+                                                      onclick="{!c.handleSearchButton}"/>
+                                </div>
+                            </lightning:tab>
+                            <lightning:tab label="Concore" id="concore" onactive="{! c.handleTabActive }">
+                                <div onkeyup="{! c.handleSearchInput }" style="display: inline-flex;">
+                                    <lightning:input 
+                                                     aura:id="searchtxt"
+                                                     name="searchtxt"
+                                                     label=""
+                                                     type="search"
+                                                     variant="label-hidden"
+                                                     value="{!v.searchStr}"
+                                                     />
+                                    <lightning:button label="Search Concore" 
+                                                      title="Search" 
+                                                      onclick="{!c.handleSearchButton}"/>
+                                </div>
+                            </lightning:tab>
+                        </lightning:tabset>
+                    </th>
+                </tr>
+                <tr class="slds-text-heading--label">
+                    <th colspan="3" scope="col"><div class="slds-truncate" title="OPPORTUNITY"><B>OPPORTUNITY</B></div></th>
+                    <aura:if isTrue="{!v.isRaworConcoreActive}">
+                        <th scope="col"><div class="slds-truncate" title="FINISHER"><B>FINISHER</B></div></th>
+                        <aura:set attribute="else">
+                            <th scope="col"><div class="slds-truncate" title="TPM / SHIP TO"><B>TPM / SHIP TO</B></div></th>
+                        </aura:set>
+                    </aura:if>
+                    <th scope="col"><div class="slds-truncate" title="START DATE"><B>START DATE</B></div></th>
+                    <th scope="col"><div class="slds-truncate" title="M1"><B><ui:outputText value="{!v.m1l}"/></B></div></th>
+                    <th scope="col"><div class="slds-truncate" title="M2"><B><ui:outputText value="{!v.m2l}"/></B></div></th>
+                    <th scope="col"><div class="slds-truncate" title="M3"><B><ui:outputText value="{!v.m3l}"/></B></div></th>
+                    <th scope="col"><div class="slds-truncate" title="Buttons">&nbsp;</div></th>				
+                </tr>
+            </thead>
+            <tbody>    
+                <aura:iteration items="{!v.f52s}" var="f">
+                    <aura:if isTrue="{!f.productLine__c == v.productLine}">
+                        <tr><!-- field names are case sensitive -->
+                            <td colspan="3">
+                                <div class="slds-truncate" title="">{!f.opportunity__r.OpportunityAutoNamePart1__c} <br/> {!f.opportunity__r.OpportunityAutoNamePart2__c}</div>
+                                <aura:if isTrue="{!v.isRaworConcoreActive}"> 
+                                    {!f.currentGlassAttributes__c}
+                                    <aura:set attribute="else">
+                                        <div class="slds-truncate" title="">{!f.productName__c}</div>
+                                        <div class="slds-truncate" title="">{!f.specificationNumber__c}
+                                            &nbsp;-&nbsp;{!f.currentProductCode__c}</div>
+                                    </aura:set>
+                                </aura:if>
+                                <div class="slds-truncate" title="">
+                                    
+                                    Last Update:&nbsp;{!f.oliLastModifiedBy__r.Name}&nbsp;
+                                    <ui:outputDate value="{!f.oliLastModifiedDate__c}"/>
+                                </div>
+                                
+                            </td>
+                            <td>
+                                <aura:if isTrue="{!v.isRaworConcoreActive}">
+                                    <div class="slds-truncate" title="">{!f.finisherAccount__r.Name}</div>
+                                    <aura:set attribute="else">
+                                        <div class="slds-truncate" title="">{!f.shipToCustomer__c}</div>
+                                    </aura:set>
+                                </aura:if>
+                                
+                            </td>
+                            <td><div class="slds-truncate" title="">
+                                <ui:outputDate value="{!f.massProductionStartDate__c}"/>
+                                </div></td>
+                            <td><div class="slds-truncate" title=""><ui:outputNumber value="{!f.m1Qty__c}"/></div></td>
+                            <td><div class="slds-truncate" title=""><ui:outputNumber value="{!f.m2Qty__c}"/></div></td>
+                            <td><div class="slds-truncate" title=""><ui:outputNumber value="{!f.m3Qty__c}"/></div></td>
+                            <td>           
+                                <span onclick="{!c.openModelEdit}" data-value="{!f.Id}">
+                                    <lightning:button class="" 
+                                                      label=""
+                                                      variant="bare"
+                                                      iconName="action:edit"
+                                                      title="Edit"
+                                                      value="{!f.Id}"/>
+                                </span>
+                                <span onclick="{!c.openModelEditSchedule}" data-value="{!f.Id}">
+                                    <lightning:button class="" 
+                                                      label=""
+                                                      variant="bare"
+                                                      iconName="standard:timesheet"
+                                                      title="Edit Schedule"
+                                                      value="{!f.Id}"/>
+                                </span>                        
+                                <span onclick="{!c.openModelManage}" data-value="{!f.opportunity__c}">
+                                    <lightning:button class="" 
+                                                      label=""
+                                                      variant="bare"
+                                                      iconName="action:change_record_type"
+                                                      title="Manage Schedules"
+                                                      value="{!f.opportunity__c}"/>
+                                </span>
+                            </td>
+                            
+                        </tr>
+                    </aura:if>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="slds-m-around_xx-large">
+        
+        <!--START OF EDIT DETAIL CODE-->
+        <aura:if isTrue="{!v.isOpenEdit}">
+            
+            <!--###### MODAL BOX Start######--> 
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" 
+                     aria-modal="true" aria-describedby="modal-content-id-1" 
+                     class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- ###### MODAL BOX HEADER Start ######-->
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closeModelEdit }"
+                                              alternativeText="close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Edit Product Details</h2>
+                    </header>
+                    
+                    <!--###### MODAL BOX BODY Part Start######-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        
+                        <div>
+                            <p/>&nbsp;<p/>
+                            <aura:if isTrue="{!v.isRaworConcoreActive}">
+                                <c:customLookup objectAPIName="account" 
+                                                label="Finisher"
+                                                IconName="standard:account" 
+                                                selectedRecord="{!v.selectedLookUpRecord}" 
+                                                filterString="Finisher"/>
+                                <p/>&nbsp;<p/>
+                                <lightning:input type="number" name="finisher-yeild" 
+                                                 label="Finisher Yield %" value="{!v.finisherYeild}" 
+                                                 formatter="percent-fixed" />
+                                <p/>&nbsp;<p/>
+                                <lightning:input type="number" name="finisher-mix" 
+                                                 label="Finisher Mix %" value="{!v.finisherMix}" 
+                                                 formatter="percent-fixed" />
+                                <aura:set attribute="else">
+                                    <c:customLookup objectAPIName="account" 
+                                                    label="TPM / SHIP TO"
+                                                    IconName="standard:account" 
+                                                    selectedRecord="{!v.selectedLookUpRecord}" 
+                                                    filterString="TPM"/>
+                                </aura:set>
+                            </aura:if> 
+                            
+                            <p/>&nbsp;<p/>
+                            <ui:inputDate aura:id="mpsdate" label="MP Start Date **" 
+                                          class="field" value="{!v.mpsDate}" 
+                                          displayDatePicker="true" />
+                            
+                            <p/>&nbsp;<p/>&nbsp;<p/>
+                            <aura:if isTrue="{!v.isRaworConcoreActive}">
+                                * Changing the Finisher will update the forecast with the new Finisher.<br/>
+                                <aura:set attribute="else">
+                                    * Changing the TPM / Ship To will update the forecast with the new TPM / Ship To.<br/>
+                                </aura:set>
+                            </aura:if> 
+                            
+                            ** Changing the MP Start Date will restart the existing forecast starting with the new MP Start Date.
+                            <p/>&nbsp;<p/>The END PROGRAM button will remove this opportunity from future forecasts.<p/>
+                            <ui:inputCheckbox label=". I confirm this program should be removed from the forecast." class="myCheckbox" aura:id="endCheckbox" value="" change="{!c.onCheckEnd}"/>                            
+                            <span class="slds-badge">{!v.errorMessageCheckbox}</span>
+                            <p/>&nbsp;<p/>&nbsp;<p/>
+                        </div>
+                        
+                    </div>
+                    
+                    <!--###### MODAL BOX FOOTER Part Start ######-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral" 
+                                          label="Cancel"
+                                          title="Cancel"
+                                          onclick="{!c.closeModelEdit }"/>
+                        <!-- Data-Id="123" - Name gets mapped to lowercase id so it has to be ctarget.dataset.id. Avoid camel-casing in the name-->
+                        &nbsp;<span onclick="{!c.updateEditDetails}" data-value="{!v.mID}">
+                        <lightning:button variant="brand" 
+                                          label="Save"
+                                          title="Save"
+                                          value="{!v.mID}"/>
+                        </span>
+                        &nbsp;<span onclick="{!c.endProgram}" data-value="{!v.mID}">
+                        <lightning:button class="slds-button slds-button_destructive" 
+                                          label="END PROGRAM"
+                                          title="END PROGRAM"
+                                          value="{!v.mID}"/>
+                        </span>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            <!--###### MODAL BOX Part END Here ######-->
+            
+        </aura:if>
+        
+        <!--START OF EDIT SCHEDULE CODE-->
+        <aura:if isTrue="{!v.isOpenEditSchedule}">
+            
+            <!--###### MODAL BOX Start######--> 
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- ###### MODAL BOX HEADER Start ######-->
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closeModelEditSchedule }"
+                                              alternativeText="close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Edit Schedule</h2>
+                    </header>
+                    
+                    <!--###### MODAL BOX BODY Part Start######-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        
+                        <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+                            <thead>
+                                
+                                <tr class="slds-text-title--caps">
+                                    <th><span class="slds-truncate" title="Month"></span></th>
+                                    <aura:if isTrue="{!v.isRaworConcoreActive}">
+                                        <th>
+                                            <lightning:textarea name="comments" label="Comments" value="{!v.comment}"/>
+                                        </th>
+                                        <aura:set attribute="else">
+                                            <th colspan="2">
+                                                <lightning:textarea name="comments" label="Comments" value="{!v.comment}"/>
+                                            </th>
+                                        </aura:set>
+                                    </aura:if> 
+                                </tr>
+                                
+                                <tr class="slds-text-title--caps">
+                                    <th><span class="slds-truncate" title="Month">Month</span></th>
+                                    <aura:if isTrue="{! !v.isRaworConcore}">
+                                        <th><span class="slds-truncate" title="Unit Price">Unit Price</span></th>
+                                    </aura:if>
+                                    
+                                    <th><span class="slds-truncate" title="Gorilla Glass Quantity">Gorilla Glass Quantity</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <aura:if isTrue="{!v.isRaworConcore}">
+                                    <tr><td><ui:outputText value="{!v.m1l}"/></td><td><ui:inputNumber label="" value="{!v.m1q}" updateOn="keyup"/></td></tr>
+                                    <tr><td><ui:outputText value="{!v.m2l}"/></td><td><ui:inputNumber label="" value="{!v.m2q}" updateOn="keyup"/></td></tr>
+                                    <tr><td><ui:outputText value="{!v.m3l}"/></td><td><ui:inputNumber label="" value="{!v.m3q}" updateOn="keyup"/></td></tr>
+                                    <tr><td><ui:outputText value="{!v.m4l}"/></td><td><ui:inputNumber label="" value="{!v.m4q}" updateOn="keyup"/></td></tr>
+                                    <tr><td><ui:outputText value="{!v.m5l}"/></td><td><ui:inputNumber label="" value="{!v.m5q}" updateOn="keyup"/></td></tr>
+                                    <tr><td><ui:outputText value="{!v.m6l}"/></td><td><ui:inputNumber label="" value="{!v.m6q}" updateOn="keyup"/></td></tr>
+                                    <tr><td><ui:outputText value="{!v.m7l}"/></td><td><ui:inputNumber label="" value="{!v.m7q}" updateOn="keyup"/></td></tr>
+                                    <tr><td><ui:outputText value="{!v.m8l}"/></td><td><ui:inputNumber label="" value="{!v.m8q}" updateOn="keyup"/></td></tr>
+                                    <tr><td><ui:outputText value="{!v.m9l}"/></td><td><ui:inputNumber label="" value="{!v.m9q}" updateOn="keyup"/></td></tr>
+                                    <tr><td><ui:outputText value="{!v.m10l}"/></td><td><ui:inputNumber label="" value="{!v.m10q}" updateOn="keyup"/></td></tr>
+                                    <tr><td><ui:outputText value="{!v.m11l}"/></td><td><ui:inputNumber label="" value="{!v.m11q}" updateOn="keyup"/></td></tr>
+                                    <tr><td ><ui:outputText value="{!v.m12l}"/></td><td><ui:inputNumber label="" value="{!v.m12q}" updateOn="keyup"/></td></tr>                              
+                                    <tr><td ><ui:outputText value="{!v.m13l}"/></td><td><ui:inputNumber label="" value="{!v.m13q}" updateOn="keyup"/></td></tr>                              
+                                    <tr><td ><ui:outputText value="{!v.m14l}"/></td><td><ui:inputNumber label="" value="{!v.m14q}" updateOn="keyup"/></td></tr>       
+                                    <tr><td ><ui:outputText value="{!v.m15l}"/></td><td><ui:inputNumber label="" value="{!v.m15q}" updateOn="keyup"/></td></tr>                              
+                                    <tr><td ><ui:outputText value="{!v.m16l}"/></td><td><ui:inputNumber label="" value="{!v.m16q}" updateOn="keyup"/></td></tr>                              
+                                    <tr><td ><ui:outputText value="{!v.m17l}"/></td><td><ui:inputNumber label="" value="{!v.m17q}" updateOn="keyup"/></td></tr>                              
+                                    <tr><td ><ui:outputText value="{!v.m18l}"/></td><td><ui:inputNumber label="" value="{!v.m18q}" updateOn="keyup"/></td></tr>                              
+                                    <aura:set attribute="else">
+                                        <tr><td><ui:outputText value="{!v.m1l}"/></td><td><ui:inputNumber label="" value="{!v.m1p}" updateOn="keyup"/></td><td><ui:inputNumber label="" value="{!v.m1q}" updateOn="keyup"/></td></tr>
+                                        <tr><td><ui:outputText value="{!v.m2l}"/></td><td><ui:inputNumber label="" value="{!v.m2p}" updateOn="keyup"/></td><td><ui:inputNumber label="" value="{!v.m2q}" updateOn="keyup"/></td></tr>
+                                        <tr><td><ui:outputText value="{!v.m3l}"/></td><td><ui:inputNumber label="" value="{!v.m3p}" updateOn="keyup"/></td><td><ui:inputNumber label="" value="{!v.m3q}" updateOn="keyup"/></td></tr>
+                                        <tr><td><ui:outputText value="{!v.m4l}"/></td><td><ui:inputNumber label="" value="{!v.m4p}" updateOn="keyup"/></td><td><ui:inputNumber label="" value="{!v.m4q}" updateOn="keyup"/></td></tr>
+                                        <tr><td><ui:outputText value="{!v.m5l}"/></td><td><ui:inputNumber label="" value="{!v.m5p}" updateOn="keyup"/></td><td><ui:inputNumber label="" value="{!v.m5q}" updateOn="keyup"/></td></tr>
+                                        <tr><td><ui:outputText value="{!v.m6l}"/></td><td><ui:inputNumber label="" value="{!v.m6p}" updateOn="keyup"/></td><td><ui:inputNumber label="" value="{!v.m6q}" updateOn="keyup"/></td></tr>
+                                        <tr><td><ui:outputText value="{!v.m7l}"/></td><td><ui:inputNumber label="" value="{!v.m7p}" updateOn="keyup"/></td><td><ui:inputNumber label="" value="{!v.m7q}" updateOn="keyup"/></td></tr>
+                                        <tr><td><ui:outputText value="{!v.m8l}"/></td><td><ui:inputNumber label="" value="{!v.m8p}" updateOn="keyup"/></td><td><ui:inputNumber label="" value="{!v.m8q}" updateOn="keyup"/></td></tr>
+                                        <tr><td><ui:outputText value="{!v.m9l}"/></td><td><ui:inputNumber label="" value="{!v.m9p}" updateOn="keyup"/></td><td><ui:inputNumber label="" value="{!v.m9q}" updateOn="keyup"/></td></tr>
+                                        <tr><td><ui:outputText value="{!v.m10l}"/></td><td><ui:inputNumber label="" value="{!v.m10p}" updateOn="keyup"/></td><td><ui:inputNumber label="" value="{!v.m10q}" updateOn="keyup"/></td></tr>
+                                        <tr><td><ui:outputText value="{!v.m11l}"/></td><td><ui:inputNumber label="" value="{!v.m11p}" updateOn="keyup"/></td><td><ui:inputNumber label="" value="{!v.m11q}" updateOn="keyup"/></td></tr>
+                                        <tr><td ><ui:outputText value="{!v.m12l}"/></td><td><ui:inputNumber label="" value="{!v.m12p}" updateOn="keyup"/></td><td><ui:inputNumber label="" value="{!v.m12q}" updateOn="keyup"/></td></tr>                              
+                                        <tr><td ><ui:outputText value="{!v.m13l}"/></td><td><ui:inputNumber label="" value="{!v.m13p}" updateOn="keyup"/></td><td><ui:inputNumber label="" value="{!v.m13q}" updateOn="keyup"/></td></tr>                              
+                                        <tr><td ><ui:outputText value="{!v.m14l}"/></td><td><ui:inputNumber label="" value="{!v.m14p}" updateOn="keyup"/></td><td><ui:inputNumber label="" value="{!v.m14q}" updateOn="keyup"/></td></tr>       
+                                        <tr><td ><ui:outputText value="{!v.m15l}"/></td><td><ui:inputNumber label="" value="{!v.m15p}" updateOn="keyup"/></td><td><ui:inputNumber label="" value="{!v.m15q}" updateOn="keyup"/></td></tr>                              
+                                        <tr><td ><ui:outputText value="{!v.m16l}"/></td><td><ui:inputNumber label="" value="{!v.m16p}" updateOn="keyup"/></td><td><ui:inputNumber label="" value="{!v.m16q}" updateOn="keyup"/></td></tr>                              
+                                        <tr><td ><ui:outputText value="{!v.m17l}"/></td><td><ui:inputNumber label="" value="{!v.m17p}" updateOn="keyup"/></td><td><ui:inputNumber label="" value="{!v.m17q}" updateOn="keyup"/></td></tr>                              
+                                        <tr><td ><ui:outputText value="{!v.m18l}"/></td><td><ui:inputNumber label="" value="{!v.m18p}" updateOn="keyup"/></td><td><ui:inputNumber label="" value="{!v.m18q}" updateOn="keyup"/></td></tr>                              
+                                    </aura:set>
+                                </aura:if>
+                            </tbody>
+                        </table>                           
+                    </div>
+                    
+                    <!--###### MODAL BOX FOOTER Part Start ######-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral" 
+                                          label="Cancel"
+                                          title="Cancel"
+                                          onclick="{! c.closeModelEditSchedule }"/>
+                        <!-- Data-Id="123" - Name gets mapped to lowercase id so it has to be ctarget.dataset.id. Avoid camel-casing in the name-->
+                        &nbsp;<span onclick="{!c.updateSchedule}" data-value="{!v.mID}">
+                        <lightning:button variant="brand" 
+                                          label="Save"
+                                          title="Save"
+                                          value="{!v.mID}"/>
+                        </span>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            <!--###### MODAL BOX Part END Here ######-->
+            
+        </aura:if>
+        
+        <!--START OF NEW MANAGE CODE-->
+        <aura:if isTrue="{!v.isOpenManage}">
+            
+            <!--###### MODAL BOX Start######--> 
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- ###### MODAL BOX HEADER Start ######-->
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closeModelManage }"
+                                              alternativeText="close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Manage Schedules</h2>
+                    </header>
+                    
+                    <!--###### MODAL BOX BODY Part Start######-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        
+                        <section class="slds-card__body" >
+                            <lightning:spinner aura:id="waitSpinner" class="{!v.waitSpinnerStyle}" alternativeText="Product Interface"></lightning:spinner>   
+                            
+                            <div class="slds-page-header">
+                                <span class="slds-badge">{!v.errorMessage}</span><br></br>
+                                <span class="slds-badge">{!v.errorMessageTarget}</span>
+                            </div>
+                            
+                            <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+                                <thead>
+                                    <tr><td colspan="4"><b>SOURCE:</b> These Products contain a forecast. <b>(Select 1 record.)</b>&nbsp;
+                                        <span class="slds-badge">{!v.selectedCount}</span></td></tr>
+                                    <tr class="slds-text-title--caps">
+                                        <th>
+                                            <span class="slds-truncate" title="">&nbsp;</span>      
+                                        </th>
+                                        
+                                        <aura:if isTrue="{! v.isRaworConcoreActive}">
+                                            <th>
+                                                <span class="slds-truncate" title="Glass Attribute">Glass Attribute</span>      
+                                            </th>
+                                            <th>
+                                                <span class="slds-truncate" title="Finisher">Finisher</span>      
+                                            </th>
+                                            <th>
+                                                <span class="slds-truncate" title="Finisher Yield %">Finisher Yield %</span>      
+                                            </th>
+                                            <th>
+                                                <span class="slds-truncate" title="Finisher Mix %">Finisher Mix %</span>      
+                                            </th>
+                                            <aura:set attribute="else">
+                                                <th>
+                                                    <span class="slds-truncate" title="Product Name">Product Name</span>      
+                                                </th>
+                                                <th>
+                                                    <span class="slds-truncate" title="Product Code">Product<BR/>Code</span>      
+                                                </th>
+                                                <th>
+                                                    <span class="slds-truncate" title="Spec ID">Spec ID</span>
+                                                </th>
+                                                <th>
+                                                    <span class="slds-truncate" title="TPM / Ship To">TPM / Ship To</span>      
+                                                </th>
+                                            </aura:set>
+                                        </aura:if>
+                                        
+                                        <th>
+                                            <span class="slds-truncate" title="Forecast Category">Forecast<BR/>Category</span>      
+                                        </th>   
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <aura:iteration items="{!v.ListOfOLIs}" var="oli">
+                                        <tr>
+                                            <td scope="row" class="slds-text-align--right" style="width:3.25rem;">
+                                                <div class="slds-form-element">
+                                                    <div class="slds-form-element__control">
+                                                        <label class="slds-checkbox">
+                                                            
+                                                            <ui:inputCheckbox text="{!oli.Id}" aura:id="boxPack" value="" change="{!c.checkboxSelect}"/>
+                                                            <span class="slds-checkbox--faux"></span>
+                                                            <span class="slds-form-element__label text"></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            
+                                            <aura:if isTrue="{! v.isRaworConcoreActive}">
+                                                <td scope="row">
+                                                    <div class="slds-truncate" title="{!oli.ProductName__c}">{!oli.Glass_Attributes__c}</div>
+                                                </td>
+                                                <td scope="row">
+                                                    <div class="slds-truncate" title="{!oli.finisherAccount__r.Name }">{!oli.finisherAccount__r.Name }</div>
+                                                </td>
+                                                <td scope="row">
+                                                    <div class="slds-truncate" title="{!oli.finisherYield__c  }">{!oli.finisherYield__c  }</div>
+                                                </td>
+                                                <td scope="row">
+                                                    <div class="slds-truncate" title="{!oli.finisherMix__c  }">{!oli.finisherMix__c  }</div>
+                                                </td>
+                                                <aura:set attribute="else">
+                                                    <td scope="row">
+                                                        <div class="slds-truncate" title="{!oli.ProductName__c}">{!oli.ProductName__c}</div>
+                                                    </td>
+                                                    <td scope="row">
+                                                        <div class="slds-truncate" title="{!oli.forecastProductCode__c}">{!oli.forecastProductCode__c}</div>
+                                                    </td>
+                                                    <td scope="row">
+                                                        <div class="slds-truncate" title="{!oli.specification__r.Name}">{!oli.specification__r.Name}</div>
+                                                    </td>
+                                                    <td scope="row">
+                                                        <div class="slds-truncate" title="{!oli.forecastShipToCustomer__c}">{!oli.forecastShipToCustomer__c}</div>
+                                                    </td>
+                                                </aura:set>
+                                            </aura:if>
+                                            
+                                            <td scope="row">
+                                                <div class="slds-truncate" title="{!oli.forecastCategory__c}">{!oli.forecastCategory__c}</div>
+                                            </td> 
+                                        </tr>
+                                    </aura:iteration>
+                                    
+                                    <tr><td colspan="4"><b>TARGET:</b> These Products do not contain a forecast. <b>(Select 1 record.)</b>&nbsp;
+                                        <span class="slds-badge">{!v.selectedCountTarget}</span></td></tr>
+                                    
+                                    <aura:iteration items="{!v.TargetListOfOLIs}" var="toli">
+                                        <tr>
+                                            <td scope="row" class="slds-text-align--right" style="width:3.25rem;">
+                                                <div class="slds-form-element">
+                                                    <div class="slds-form-element__control">
+                                                        <label class="slds-checkbox">
+                                                            <ui:inputCheckbox text="{!toli.Id}" aura:id="boxPackTarget" value="" change="{!c.checkboxSelectTarget}"/>
+                                                            <span class="slds-checkbox--faux"></span>
+                                                            <span class="slds-form-element__label text"></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            
+                                            <aura:if isTrue="{! v.isRaworConcoreActive}">
+                                                <td scope="row">
+                                                    <div class="slds-truncate" title="{!toli.ProductName__c}">{!toli.Glass_Attributes__c}</div>
+                                                </td>
+                                                <td scope="row">
+                                                    <div class="slds-truncate" title="{!toli.finisherAccount__r.Name}">{!toli.finisherAccount__r.Name}</div>
+                                                </td>
+                                                <td scope="row">
+                                                    <div class="slds-truncate" title="{!toli.finisherYield__c  }">{!toli.finisherYield__c  }</div>
+                                                </td>
+                                                <td scope="row">
+                                                    <div class="slds-truncate" title="{!toli.finisherMix__c  }">{!toli.finisherMix__c  }</div>
+                                                </td>
+                                                <aura:set attribute="else">
+                                                    <td scope="row">
+                                                        <div class="slds-truncate" title="{!toli.ProductName__c}">{!toli.ProductName__c}</div>
+                                                    </td>
+                                                    <td scope="row">
+                                                        <div class="slds-truncate" title="{!toli.forecastProductCode__c}">{!toli.forecastProductCode__c}</div>
+                                                    </td>
+                                                    <td scope="row">
+                                                        <div class="slds-truncate" title="{!toli.specification__r.Name}">{!toli.specification__r.Name}</div>
+                                                    </td>  
+                                                    <td scope="row">
+                                                        <div class="slds-truncate" title="{!toli.forecastShipToCustomer__c}">{!toli.forecastShipToCustomer__c}</div>
+                                                    </td>
+                                                </aura:set>
+                                            </aura:if>
+                                            
+                                            <td scope="row">
+                                                <div class="slds-truncate" title="{!toli.forecastCategory__c}">{!toli.forecastCategory__c}</div>
+                                            </td>
+                                        </tr>
+                                    </aura:iteration>
+                                </tbody>
+                            </table>
+                        </section>                                                   
+                    </div>
+                    
+                    <!--###### MODAL BOX FOOTER Part Start ######-->
+                    <footer class="slds-modal__footer">
+                        <div class="slds-grid slds-grid--align-end"> 
+                            <button class="slds-button slds-button--neutral" onclick="{!c.closeModelManage}">Cancel</button>
+                            <aura:if isTrue="{!v.isRaworConcoreActive}">
+                                &nbsp;<button class="slds-button slds-button--brand" onclick="{!c.addNewProductController}">New</button>
+                            </aura:if>
+                            <aura:if isTrue="{! !v.isRaworConcoreActive}">
+                                &nbsp;<button class="slds-button slds-button--brand" onclick="{!c.transferSelected}">Transfer</button>
+                            </aura:if>
+                            &nbsp;<button class="slds-button slds-button--brand" onclick="{!c.copySelected}">Copy</button>
+                            &nbsp;<button class="slds-button slds-button--destructive" onclick="{!c.deleteSelected}">DELETE</button>
+                        </div>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            <!--###### MODAL BOX Part END Here ######-->
+            
+        </aura:if>
+        
+    </div>
+    
+</aura:component>

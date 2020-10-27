@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>screenPrintThicknessOfInk__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Average thickness: ≤15um; Max thickness: ≤18um</inlineHelpText>
+    <label>Screen Print Thickness (microns)</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

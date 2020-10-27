@@ -1,0 +1,96 @@
+<aura:component access="global">
+    <aura:attribute name="opttyLI" type="SObject"/>
+    <aura:attribute name="cIndex" type="Integer"/>
+    <aura:attribute name="forecastOptions" type="string[]"/>
+    <aura:attribute name="isSampleOptty" type="Boolean"/>
+    <aura:attribute name="partsPriceTier" type="Integer" default="0"/>
+    <aura:attribute name="tooltip" type="String" />
+    <aura:attribute name="recordAccess" type="SObject"/>
+    <aura:attribute name="tooltipStyle" type="String" default="slds-popover slds-popover--tooltip slds-nubbin--bottom slds-hide"/>
+    <aura:attribute name="runningInSF1" type="Boolean"/>
+    <aura:attribute name="statusStyle" type="String"/>
+    <aura:attribute name="forecastStyle" type="String"/>
+    <aura:attribute name="sampleStyle" type="String"/>
+    <aura:attribute name="serviceLbl" type="String"/>
+    <aura:attribute name="totalPriceLbl" type="String"/>
+    <aura:attribute name="forecastLbl" type="String"/>
+    <aura:attribute name="priceLbl" type="String" default="Price"/>
+    <aura:attribute Name="setItem" type="object"  access="public" /> 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:registerEvent name="GGLineItemSelected" type="c:GGLineItemSelected"/>
+
+    <aura:handler name="change" value="{!v.setItem}" action="{!c.itemsChange}"/>
+    <tr>
+        <td>
+            <lightning:icon aura:id="errorIcon" class="{!v.opttyLI.errorStyle}" 
+                            iconName="utility:warning" variant="error" 
+                            size="xx-small" title="{!v.opttyLI.errorMessage}"/>
+            <span class="slds-row-number slds-text-body--small slds-text-color--weak"></span></td>
+        <td><!--<input type="checkBox" id="{!v.opttyLI.Id}" onclick="handleChkboxClick();"/>-->
+            <ui:inputCheckbox aura:id="selChk" change="{!c.onSelCheck}" disabled="{!v.recordAccess.RecordEditable==false}"/>
+        </td>
+        
+        <td data-label="Product">
+            <div title="{!v.tooltip}" onmouseover="{!c.setTooltip}"><h3>{!v.opttyLI.Product2.Name}</h3></div>
+        </td>
+        <aura:if isTrue="{!and(v.opttyLI.Opportunity.isPreBuild__c, v.isSampleOptty)}">
+            <td data-label="Specification">
+                
+                <c:customLookup objectAPIName="Specification__c" recordId="{!v.opttyLI.Opportunity.massProductionOpportunity__c}" IconName="custom:custom26" 
+                                setItem="{!v.setItem}" selectedSpecRecordId="{!v.opttyLI.specification__c}"
+                                SearchKeyWord="{!v.opttyLI.specification__r.Name}" methodVar="{!c.removeSpecification}"
+                                isDisable="{!not(and(v.opttyLI.Opportunity.isPreBuild__c, v.isSampleOptty))}">
+                </c:customLookup>
+            </td>
+       </aura:if>
+        <td data-label="Quantity">
+            <ui:inputNumber disabled="{!v.recordAccess.QuantityEditable==false}" aura:id="quantity" value="{!v.opttyLI.Quantity}" updateOn="keyup" change="{!c.setPrice}"/> 
+            <!-- <ui:inputNumber disabled="True" aura:id="quantity" value="{!v.opttyLI.Quantity}" updateOn="keyup" change="{!c.setPrice}"/> -->
+        </td>
+        <td data-label="{!v.priceLbl}">
+            <ui:inputNumber disabled="{!v.recordAccess.UnitPriceEditable==false}" value="{!v.opttyLI.UnitPrice}" aura:id="price" updateOn="keyup" change="{!c.calculateTotalPrice}"/>
+            <!-- <ui:inputNumber disabled="True" value="{!v.opttyLI.UnitPrice}" aura:id="price" updateOn="keyup" change="{!c.calculateTotalPrice}"/> -->
+        </td>
+        
+        <!-- AN 9/14 add description -->
+        <td data-label="Description" class="{!v.sampleStyle}">
+            <div class="{!v.sampleStyle}">
+                <ui:inputText disabled="{!v.recordAccess.UnitPriceEditable==false}" value="{!v.opttyLI.Description}" aura:id="description"/>
+            </div>
+        </td>
+        
+        <!--<td data-label="Unit">
+                {!v.opttyLI.price__r.Unit__c}
+            </td>-->
+        <!--<td>
+               <ui:inputNumber value="{!v.opttyLI.Discount}" aura:id="discount"/>
+            </td>-->
+        
+        <td data-label="{!v.totalPriceLbl}" class="{!v.forecastStyle}">
+            <div class="{!v.forecastStyle}">
+                <ui:outputText value="{!v.opttyLI.TotalPrice}"/>
+            </div>
+        </td>
+        <td data-label="{!v.serviceLbl}" class="{!v.forecastStyle}">
+            <div class="{!v.forecastStyle}">
+                <!-- <ui:inputDate disabled="{!v.recordAccess.ServiceDateEditable==false}" value="{!v.opttyLI.ServiceDate}" aura:id="serviceDate" displayDatePicker="true"/> -->
+                <ui:inputDate disabled="True" value="{!v.opttyLI.ServiceDate}" aura:id="serviceDate" displayDatePicker="true"/>
+            </div>
+        </td>
+        <td data-label="{!v.forecastLbl}" class="{!v.forecastStyle}">
+            <div class="{!v.forecastStyle}">
+                <ui:inputSelect class="dynamic" disabled="{!v.recordAccess.ForecastEditable==false}" aura:id="forecastSelect" change="{!c.forecastChanged}"/>
+            </div>
+        </td>
+        
+        <!--<td data-label="PLM Pricing">
+                Pricing info!
+            </td>-->
+        <td data-label="Status" class ="{!v.statusStyle}">
+            <ui:outputText value="{!v.opttyLI.errorMessage}"/>
+        </td>
+    </tr>
+    
+    
+</aura:component>

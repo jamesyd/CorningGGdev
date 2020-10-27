@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_MTO</fullName>
+    <columns>NAME</columns>
+    <columns>opportunity__c</columns>
+    <columns>RECORDTYPE</columns>
+    <columns>status__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Specification__c.Concore,Specification__c.Concore_Final,Specification__c.Concore_Submitted,Specification__c.Raw_Glass,Specification__c.Raw_Glass_Final,Specification__c.Raw_Glass_Inventory_Final,Specification__c.Raw_Glass_Inventory_Submitted,Specification__c.Raw_Glass_Submitted</value>
+    </filters>
+    <label>My - MTO</label>
+</ListView>

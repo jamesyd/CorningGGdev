@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PLM_Approval_only_in_Pricing_Assignment</fullName>
+    <active>true</active>
+    <description>PLM Approval only in Pricing Assignment</description>
+    <errorConditionFormula>($Profile.Name &lt;&gt; &apos;System Administrator&apos;) &amp;&amp;
+ISCHANGED(plmApproval__c) &amp;&amp;
+(TEXT(status__c) &lt;&gt; &apos;Pricing Assignment&apos;)</errorConditionFormula>
+    <errorMessage>PLM Approval can only be set during Pricing Assignment</errorMessage>
+</ValidationRule>

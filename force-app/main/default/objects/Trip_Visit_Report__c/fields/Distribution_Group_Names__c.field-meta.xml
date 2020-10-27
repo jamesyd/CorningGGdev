@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Distribution_Group_Names__c</fullName>
+    <externalId>false</externalId>
+    <label>Distribution Group</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>GG Standard Accounts</fullName>
+                <default>false</default>
+                <label>GG Standard Accounts</label>
+            </value>
+            <value>
+                <fullName>AGbC Screen Protectors Standard Accounts</fullName>
+                <default>false</default>
+                <label>AGbC Screen Protectors Standard Accounts</label>
+            </value>
+            <value>
+                <fullName>GG Microsoft</fullName>
+                <default>false</default>
+                <label>GG Microsoft</label>
+            </value>
+            <value>
+                <fullName>GG Blue</fullName>
+                <default>false</default>
+                <label>GG Blue</label>
+            </value>
+            <value>
+                <fullName>GG MKT/ Competitor Intel</fullName>
+                <default>false</default>
+                <label>GG MKT/ Competitor Intel</label>
+            </value>
+            <value>
+                <fullName>GG Branding/ Trademark</fullName>
+                <default>false</default>
+                <label>GG Branding/ Trademark</label>
+            </value>
+            <value>
+                <fullName>AGS Interior</fullName>
+                <default>false</default>
+                <label>AGS Interior</label>
+            </value>
+            <value>
+                <fullName>AGS Exterior</fullName>
+                <default>false</default>
+                <label>AGS Exterior</label>
+            </value>
+            <value>
+                <fullName>CAG Glazing</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>CAG Glazing</label>
+            </value>
+            <value>
+                <fullName>CAGInterior</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>CAGInterior</label>
+            </value>
+            <value>
+                <fullName>GG China value chain</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>GG China value chain</label>
+            </value>
+            <value>
+                <fullName>GG FIN</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>GG FIN</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

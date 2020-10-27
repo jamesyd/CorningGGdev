@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>order__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE( status__c , 
+&quot;New&quot;, 1,
+&quot;Innovation Assessment&quot;, 2,
+&quot;Missing Information Assessment&quot;, 3,
+&quot;Capable Assessment&quot;, 4,
+&quot;Standard Assessment&quot;, 5,
+&quot;Manufacturer Assignment&quot;, 6,
+&quot;Risk Assessment&quot;, 7,
+&quot;CM Cost Assessment&quot;, 8,
+&quot;Pricing Assignment&quot;, 9,
+&quot;Pricing Approved&quot;, 10,
+100)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Order</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

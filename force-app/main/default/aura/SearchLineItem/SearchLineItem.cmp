@@ -1,0 +1,47 @@
+<aura:component >
+	<aura:attribute name="searchLI" type="SObject"/>
+   	<aura:attribute name="cIndex" type="Integer"/>
+    <aura:attribute name="recordAccess" type="SObject"/>
+    <aura:attribute name="ServiceDate" type="SObject"/>
+    <aura:attribute name="serviceDateLbl" type="String" default="Start Date"/>
+    <aura:attribute name="quantityLbl" type="String" default="Months"/>
+    <aura:attribute name="canbeScheduled" type="String" default="slds-hide"/>
+    <aura:attribute name="tiers" type="String[]"/>
+    <aura:registerEvent name="GGSearchLISelected" type="c:GGSearchLISelected"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <tr>
+        <!-- These are the columns displayed in the Add Products tab search results -->
+        <!-- Update ProductSearchUtility and SearchResult class to add new column -->
+    	<td>
+            <ui:inputCheckbox aura:id="selChk" change="{!c.onSelCheck}" disabled="{!v.recordAccess.RecordEditable==false}"/>
+        </td>
+        <td class="{!v.canbeScheduled}" data-label="{!v.quantityLbl}">
+            <div class="{!v.canbeScheduled}">
+            <ui:inputSelect class="dynamic" aura:id="scheduleQty" change="{!c.scheduleQtyDateChange}"/>
+        	</div>
+        </td>
+        <td class="{!v.canbeScheduled}" data-label="{!v.serviceDateLbl}">
+            <div class="{!v.canbeScheduled}">
+            <ui:inputDate value="{!v.ServiceDate}" aura:id="serviceDate" displayDatePicker="true" change="{!c.scheduleQtyDateChange}" mouseout="{!c.scheduleQtyDateChange}"/>
+            </div>
+        </td>
+        <td data-label="Product">
+            <div>{!v.searchLI.productName}</div>
+        </td>        
+        <td data-label="TPM">
+            <div>{!v.searchLI.TPM}</div>
+        </td>        
+        <td data-label="Special Requirements">
+        	<div>{!v.searchLI.specialRequirements}</div>
+        </td>
+        <td data-label="Pricing">
+        	<aura:iteration items="{!v.tiers}" var="tier" indexVar="cIndex">
+                {!tier}<br/>
+            </aura:iteration>
+            <!--<div>{!v.searchLI.tieredPricing}</div>-->
+        </td>
+        <td data-label="Spec">
+        	<div>{!v.searchLI.spec}</div>
+        </td>
+    </tr>
+</aura:component>

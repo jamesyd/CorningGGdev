@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Thickness_cant_be_changed_in_this_status</fullName>
+    <active>true</active>
+    <description>Thickness can&apos;t be changed once Risk Assessment approved.</description>
+    <errorConditionFormula>(RecordType.Name = &quot;Parts - Submitted&quot; || RecordType.Name = &quot;Parts - RFI Submitted&quot;) &amp;&amp;
+$Profile.Name &lt;&gt; &apos;System Administrator&apos; &amp;&amp; ISCHANGED(thickness__c) &amp;&amp; 
+(TEXT(status__c) == &apos;CM Cost Assessment&apos; || TEXT(status__c) == &apos;Pricing Assignment&apos;)</errorConditionFormula>
+    <errorMessage>Thickness cannot be changed after Risk Assessment.</errorMessage>
+</ValidationRule>

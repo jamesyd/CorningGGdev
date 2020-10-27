@@ -1,0 +1,160 @@
+<apex:page >
+
+<style type="text/css">
+    table.tableizer-table {
+        font-size: 12px;
+        border: 1px solid #CCC; 
+        font-family: Arial, Helvetica, sans-serif;
+    } 
+    .tableizer-table td {
+        padding: 4px;
+        margin: 3px;
+        border: 1px solid #CCC;
+    }
+    .tableizer-table th {
+        background-color: #104E8B; 
+        color: #FFF;
+        font-weight: bold;
+    }
+</style>
+
+<table class="tableizer-table">
+<thead><tr class="tableizer-firstrow"><th>Area</th><th>Trailhead Name; Modules; Units</th><th>Description</th><th># of Modules and Units</th><th>Estimated Time</th><th>Required</th></tr></thead>
+<tbody>
+
+
+
+<tr><td><b>Sales Cloud #1</b></td>
+ <td><b><a target='_blank' href='https://trailhead.salesforce.com/trail/lex_end_user'>Sell Lightning Fast with Salesforce</a></b></td>
+ <td><b>Learn how to use the new Salesforce to sell lightning fast in as few clicks as possible.</b></td>
+ <td><b>4 modules with 9 units</b></td>
+ <td><b>2 hrs 30 mins</b></td>
+ <td><b>&nbsp;</b></td>
+</tr>
+<tr><td>&nbsp;</td>
+ <td><a target='_blank' href='https://trailhead.salesforce.com/modules/lex_salesforce_basics'>Salesforce User Basics</a></td>
+ <td>Get started with Salesforce and learn how to make it work for your bottom line.</td>
+ <td>3 Units</td><td>1 hrs 5 mins</td>
+ <td>Yes</td>
+</tr>
+<tr><td>&nbsp;</td>
+ <td><a target='_blank' href='https://trailhead.salesforce.com/modules/lex_salesforce1_basics'>Salesforce1 Basics for User</a></td>
+ <td>Collaborate with your teammates on the go with the Salesforce1 mobile app.</td>
+ <td>3 Units</td>
+ <td>35 mins</td>
+ <td>Yes</td>
+</tr>
+<tr><td>&nbsp;</td>
+ <td><a target='_blank' href='https://trailhead.salesforce.com/modules/lex_salesforce_tour'>Salesforce1 User Tour</a></td>
+ <td>Get hands-on with the features that put the "sales" in Salesforce.</td>
+ <td>3 Units</td>
+ <td>50 mins</td>
+ <td>Yes</td>
+</tr>
+
+<tr><td><b>Sales Cloud # 2</b></td>
+<td><b><a target='_blank' href='https://trailhead.salesforce.com/trail/getting_started_crm_basics'>Learn CRM Essentials</a></b></td>
+ <td><b>Understand Salesforce and learn how to navigate, customize, and manage basic CRM features.</b></td>
+ <td><b>4 modules with 9 units</b></td>
+ <td><b>2 hrs 35 mins</b></td>
+ <td><b>&nbsp;</b></td>
+</tr>
+<tr><td>&nbsp;</td>
+ <td>CRM Basics</td>
+ <td>Understanding Salesforce; Navigating and Personalizing Salesforce</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td><font color='red'>No</font></td>
+</tr>
+<tr><td>&nbsp;</td>
+ <td><a target='_blank' href='https://trailhead.salesforce.com/modules/admin_intro_accounts_contacts'>Accounts and Contacts</a></td>
+ <td>Discover how accounts and contacts work together in Salesforce</td>
+ <td>1 Unit</td><td>35 mins</td>
+ <td>Yes</td>
+</tr>
+<tr><td>&nbsp;</td>
+ <td><a target='_blank' href='https://trailhead.salesforce.com/modules/admin_intro_opptys_leads'>Leads and Opportunities</a></td>
+ <td>Learn how you can power your sales process with leads and opportunities in Salesforce</td>
+ <td>2 Units</td>
+ <td>30 mins</td>
+ <td>Yes</td>
+</tr>
+<tr><td>&nbsp;</td>
+ <td><a target='_blank' href='https://trailhead.salesforce.com/modules/data_quality'>Data Quality</a></td>
+ <td>Discover strategies for assessing and improving the quality of your data in Salesforce.</td>
+ <td>3 Units</td>
+ <td>60 mins</td>
+ <td>Yes</td>
+</tr>
+<tr><td>&nbsp;</td>
+ <td>CPQ</td>
+ <td>Discover strategies for assessing and improving the quality of your data in Salesforce.</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td><font color='red'>No</font></td>
+</tr>
+
+<tr><td><b>Sales Cloud #3</b></td>
+ <td><b><a target='_blank' href='https://trailhead.salesforce.com/en/trail/microsoft_integration_admin'>Integrate Microsoft Email and Salesforce</a></b></td>
+ <td><b>Understand how integrating the two systems helps sales teams grow their pipelines.</b></td>
+ <td><b>2 Modules with 2 Units</b></td>
+ <td><b>40 mins</b></td>
+ <td><b>&nbsp;</b></td>
+</tr>
+<tr><td>&nbsp;</td>
+ <td>Microsoft Integration Benefits</td>
+ <td>Understand the benefits of integrating Microsoft email and Salesforce.</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+<tr><td>&nbsp;</td>
+ <td><a target='_blank' href='https://trailhead.salesforce.com/modules/microsoft_integration_admin_why_integrate/units/microsoft_integration_admin_why_integrate_unit_1'>Unit 1</a></td>
+ <td>Understand the Value of Integrating with Salesforce</td>
+ <td>1 Unit</td>
+ <td>20 mins</td>
+ <td>Yes</td>
+</tr>
+<tr><td>&nbsp;</td>
+ <td>Unit 2</td>
+ <td>Select a Microsoft Integration Product for Your Company</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td><font color='red'>No</font></td>
+</tr>
+<tr><td>&nbsp;</td>
+ <td>Microsoft Integration Basics</td>
+ <td>Learn the basics for setting up Microsoft integration products.</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+</tr>
+<tr><td>&nbsp;</td>
+ <td>Unit 1</td>
+ <td>Get Started with Lightning for Outlook</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td><font color='red'>No</font></td>
+</tr>
+<tr><td>&nbsp;</td>
+ <td><a target='_blank' href='https://trailhead.salesforce.com/en/trails/microsoft_integration_admin/modules/microsoft_integration_admin_set_up_integration_products/units/microsoft_integration_admin_set_up_salesforce_for_outlook_unit_2'>Unit 2</a></td>
+ <td>Get Started with Salesforce for Outlook</td>
+ <td>1 Unit</td>
+ <td>20 mins</td>
+ <td>Yes</td>
+</tr>
+<tr><td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>&nbsp;</td>
+ <td>Total</td>
+ <td>5 hrs 15 mins</td>
+ <td></td>
+</tr>
+
+
+
+
+
+</tbody></table>
+
+</apex:page>

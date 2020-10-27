@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>screenPrintOther__c</fullName>
+    <externalId>false</externalId>
+    <label>Screen Print Other</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>P/N</fullName>
+                <default>false</default>
+                <label>P/N</label>
+            </value>
+            <value>
+                <fullName>Alignment Mark</fullName>
+                <default>false</default>
+                <label>Alignment Mark</label>
+            </value>
+            <value>
+                <fullName>Deco Film</fullName>
+                <default>false</default>
+                <label>Deco Film</label>
+            </value>
+            <value>
+                <fullName>Other Code</fullName>
+                <default>false</default>
+                <label>Other Code</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

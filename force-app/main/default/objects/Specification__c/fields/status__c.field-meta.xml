@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>status__c</fullName>
+    <externalId>false</externalId>
+    <label>Status</label>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>New</fullName>
+                <default>true</default>
+                <label>New</label>
+            </value>
+            <value>
+                <fullName>Innovation Assessment</fullName>
+                <default>false</default>
+                <label>Innovation Assessment</label>
+            </value>
+            <value>
+                <fullName>Missing Information Assessment</fullName>
+                <default>false</default>
+                <label>Missing Information Assessment</label>
+            </value>
+            <value>
+                <fullName>Capable Assessment</fullName>
+                <default>false</default>
+                <label>Capable Assessment</label>
+            </value>
+            <value>
+                <fullName>Standard Assessment</fullName>
+                <default>false</default>
+                <label>Standard Assessment</label>
+            </value>
+            <value>
+                <fullName>Manufacturer Assignment</fullName>
+                <default>false</default>
+                <label>Manufacturer Assignment</label>
+            </value>
+            <value>
+                <fullName>Risk Assessment</fullName>
+                <default>false</default>
+                <label>Risk Assessment</label>
+            </value>
+            <value>
+                <fullName>CM Cost Assessment</fullName>
+                <default>false</default>
+                <label>CM Cost Assessment</label>
+            </value>
+            <value>
+                <fullName>Supply, Allocation, and Inventory Review</fullName>
+                <default>false</default>
+                <label>Supply, Allocation, and Inventory Review</label>
+            </value>
+            <value>
+                <fullName>Product Engineering Input</fullName>
+                <default>false</default>
+                <label>Product Engineering Input</label>
+            </value>
+            <value>
+                <fullName>Plant Engineering Input</fullName>
+                <default>false</default>
+                <label>Plant Engineering Input</label>
+            </value>
+            <value>
+                <fullName>Supply Chain Input</fullName>
+                <default>false</default>
+                <label>Supply Chain Input</label>
+            </value>
+            <value>
+                <fullName>Pricing Assignment</fullName>
+                <default>false</default>
+                <label>Pricing Assignment</label>
+            </value>
+            <value>
+                <fullName>Business Case Finalization</fullName>
+                <default>false</default>
+                <label>Business Case Finalization</label>
+            </value>
+            <value>
+                <fullName>Finance Review</fullName>
+                <default>false</default>
+                <label>Finance Review</label>
+            </value>
+            <value>
+                <fullName>Commercial/Ops Review</fullName>
+                <default>false</default>
+                <label>Commercial/Ops Review</label>
+            </value>
+            <value>
+                <fullName>Pricing Approved</fullName>
+                <default>false</default>
+                <label>Pricing Approved</label>
+            </value>
+            <value>
+                <fullName>Declined</fullName>
+                <default>false</default>
+                <label>Declined</label>
+            </value>
+            <value>
+                <fullName>Business Case Assessment</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Business Case Assessment</label>
+            </value>
+            <value>
+                <fullName>Supply, Allocation, &amp; Inventory Assessment</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Supply, Allocation, &amp; Inventory Assessment</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

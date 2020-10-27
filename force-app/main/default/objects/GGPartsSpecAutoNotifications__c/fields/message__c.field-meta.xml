@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>message__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Filtered entries do not contain a message. Message is stored in the non-filtered entry.</inlineHelpText>
+    <label>Message</label>
+    <length>120</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

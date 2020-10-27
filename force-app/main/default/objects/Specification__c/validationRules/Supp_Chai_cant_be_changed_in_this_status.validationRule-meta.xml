@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Supp_Chai_cant_be_changed_in_this_status</fullName>
+    <active>true</active>
+    <description>Supply Chain Input Received can&apos;t be changed once set.</description>
+    <errorConditionFormula>( $Profile.Name &lt;&gt; &apos;System Administrator&apos;) &amp;&amp; ISCHANGED(  supplyChainInputReceived__c ) &amp;&amp; (TEXT(status__c) &lt;&gt; &apos;Supply Chain Input&apos;)</errorConditionFormula>
+    <errorMessage>Supply Chain Input Received can only be changed in Supply Chain Input status.</errorMessage>
+</ValidationRule>

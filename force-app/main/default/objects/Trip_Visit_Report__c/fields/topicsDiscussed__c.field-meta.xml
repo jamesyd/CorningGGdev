@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>topicsDiscussed__c</fullName>
+    <externalId>false</externalId>
+    <label>Topics Discussed</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Commercial</fullName>
+                <default>false</default>
+                <label>Commercial</label>
+            </value>
+            <value>
+                <fullName>Competitive Intelligence</fullName>
+                <default>false</default>
+                <label>Competitive Intelligence</label>
+            </value>
+            <value>
+                <fullName>Cross Division</fullName>
+                <default>false</default>
+                <label>Cross Division</label>
+            </value>
+            <value>
+                <fullName>Discussion</fullName>
+                <default>false</default>
+                <label>Discussion</label>
+            </value>
+            <value>
+                <fullName>Forecasting/Sales</fullName>
+                <default>false</default>
+                <label>Forecasting/Sales</label>
+            </value>
+            <value>
+                <fullName>Glass Finishing</fullName>
+                <default>false</default>
+                <label>Glass Finishing</label>
+            </value>
+            <value>
+                <fullName>Manufacturing</fullName>
+                <default>false</default>
+                <label>Manufacturing</label>
+            </value>
+            <value>
+                <fullName>Market Info</fullName>
+                <default>false</default>
+                <label>Market Info</label>
+            </value>
+            <value>
+                <fullName>New Products</fullName>
+                <default>false</default>
+                <label>New Products</label>
+            </value>
+            <value>
+                <fullName>Pricing</fullName>
+                <default>false</default>
+                <label>Pricing</label>
+            </value>
+            <value>
+                <fullName>Technology</fullName>
+                <default>false</default>
+                <label>Technology</label>
+            </value>
+            <value>
+                <fullName>Other/Can Create Own</fullName>
+                <default>false</default>
+                <label>Other/Can Create Own</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Require_Cost_Selection</fullName>
+    <active>true</active>
+    <description>Cost selection can&apos;t be checked until assessment is complete</description>
+    <errorConditionFormula>TEXT( costApproval__c ) = &quot;&quot;  
+  &amp;&amp;
+ costAssessmentComplete__c  = True</errorConditionFormula>
+    <errorMessage>You must select Cost Approval Accepted, Not Accepted or Reassign CM before checking the Cost Assessment Complete box.</errorMessage>
+</ValidationRule>

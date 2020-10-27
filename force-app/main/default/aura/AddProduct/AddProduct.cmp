@@ -1,0 +1,68 @@
+<aura:component controller="AddProductsController" implements="flexipage:availableForAllPageTypes,force:lightningQuickAction,force:hasRecordId" access="global" >
+	<aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:attribute name="ctrl" type="AddProductsController.TypeWrapper"/>
+    <aura:registerEvent name="navigate" type="c:ShowSearchResults"/>
+
+    <lightning:tabset variant="scoped">
+        <!--PARTS TAB-->
+        <lightning:tab label="Parts" id="parts" >
+			<!-- SEARCH FORM -->
+            <form class="slds-form--stacked" id="parts-search-form">
+                <!-- BOXED AREA -->
+                <fieldset class="slds-box slds-theme--default slds-container--small">
+                    <legend class="slds-text-heading--medium slds-p-vertical--medium">Product Search</legend>
+                    <lightning:input aura:id="parts-name" label="Product Name" />
+                    <lightning:input aura:id="parts-comp" label="Glass Composition" />
+                    <lightning:input aura:id="parts-thick" label="Glass Thickness" />
+                    <lightning:input aura:id="parts-length" label="Length" />
+                    <lightning:input aura:id="parts-width" label="Width" />
+					<BR/>
+                    <lightning:button aura:id="parts-submit" label="Search" onclick="{!c.handleSearch}" />
+                </fieldset>
+                <!-- / BOXED AREA -->
+            </form>
+            <!-- SEARCH FORM -->
+        </lightning:tab>
+        
+        <!--RAW TAB-->
+        <lightning:tab label="Raw" id="raw" >
+        	<!-- SEARCH FORM -->
+            <form class="slds-form--stacked" id="raw-search-form">
+                <!-- BOXED AREA -->
+                <fieldset class="slds-box slds-theme--default slds-container--small">
+                    <legend class="slds-text-heading--medium slds-p-vertical--medium">Product Search</legend>
+                    <lightning:input aura:id="raw-name" label="Product Name" />
+                    <lightning:input aura:id="raw-comp" label="Glass Composition" />
+                    <lightning:input aura:id="raw-thick" label="Glass Thickness" />
+                    <lightning:input aura:id="raw-length" label="Length" />
+                    <lightning:input aura:id="raw-width" label="Width" />
+                    <lightning:input aura:id="raw-supply" type="checkbox" checked='false' label="Existing Supply Chain Only" />
+					<BR/>
+                    <lightning:button aura:id="raw-submit" label="Search" onclick="{!c.handleSearch}" />
+                </fieldset>
+                <!-- / BOXED AREA -->
+            </form>
+            <!-- SEARCH FORM -->
+        </lightning:tab>
+        
+        <!--CONCORE TAB-->
+        <lightning:tab label="Concore" id="concore" >
+        	<!-- SEARCH FORM -->
+			<form class="slds-form--stacked" id="concore-search-form">
+                <!-- BOXED AREA -->
+                <fieldset class="slds-box slds-theme--default slds-container--small">
+                    <legend class="slds-text-heading--medium slds-p-vertical--medium">Product Search</legend>
+                    <lightning:input aura:id="concore-name" label="Product Name" />
+                    <lightning:input aura:id="concore-comp" label="Glass Composition" />
+                    <lightning:input aura:id="concore-thick" label="Glass Thickness" />
+                    <lightning:input aura:id="concore-length" label="Length" />
+                    <lightning:input aura:id="concore-width" label="Width" />
+					<BR/>
+                    <lightning:button aura:id="concore-submit" label="Search" onclick="{!c.handleSearch}" />
+                </fieldset>
+                <!-- / BOXED AREA -->
+            </form>
+            <!-- SEARCH FORM -->
+        </lightning:tab>
+	</lightning:tabset>
+</aura:component>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>shipToContact__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>If you don&apos;t have a contact in Salesforce, leave this field blank and enter the ship to address manually.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>If you don&apos;t have a contact in Salesforce, leave this field blank and enter the ship to address manually.</inlineHelpText>
+    <label>Ship to contact</label>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Sample Fulfillments</relationshipLabel>
+    <relationshipName>Sample_Fulfillments</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

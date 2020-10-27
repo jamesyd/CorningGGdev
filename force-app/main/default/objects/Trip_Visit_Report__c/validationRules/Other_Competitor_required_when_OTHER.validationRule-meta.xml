@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Other_Competitor_required_when_OTHER</fullName>
+    <active>true</active>
+    <description>Other Competitor is required when Competitor is set to Other.</description>
+    <errorConditionFormula>ISPICKVAL( competitor__c ,&quot;OTHER&quot;)&amp;&amp;
+ISBLANK( otherCompetitor__c )</errorConditionFormula>
+    <errorDisplayField>otherCompetitor__c</errorDisplayField>
+    <errorMessage>Other Competitor is required when Competitor is set to Other.</errorMessage>
+</ValidationRule>

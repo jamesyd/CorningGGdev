@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>productLine__c</fullName>
+    <externalId>false</externalId>
+    <label>Product Line</label>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>3D</fullName>
+                <default>false</default>
+                <label>3D</label>
+            </value>
+            <value>
+                <fullName>Ceramics</fullName>
+                <default>false</default>
+                <label>Ceramics</label>
+            </value>
+            <value>
+                <fullName>Concore</fullName>
+                <default>false</default>
+                <label>Concore</label>
+            </value>
+            <value>
+                <fullName>Glass Ceramics</fullName>
+                <default>false</default>
+                <label>Glass Ceramics</label>
+            </value>
+            <value>
+                <fullName>HHIT Parts</fullName>
+                <default>false</default>
+                <label>HHIT Parts</label>
+            </value>
+            <value>
+                <fullName>LCG</fullName>
+                <default>false</default>
+                <label>LCG</label>
+            </value>
+            <value>
+                <fullName>Phire/DAR</fullName>
+                <default>false</default>
+                <label>Phire/DAR</label>
+            </value>
+            <value>
+                <fullName>Raw Glass</fullName>
+                <default>false</default>
+                <label>Raw Glass</label>
+            </value>
+            <value>
+                <fullName>Screen Protector</fullName>
+                <default>false</default>
+                <label>Screen Protector</label>
+            </value>
+            <value>
+                <fullName>SR+</fullName>
+                <default>false</default>
+                <label>SR+</label>
+            </value>
+            <value>
+                <fullName>Unallocated</fullName>
+                <default>false</default>
+                <label>Unallocated</label>
+            </value>
+            <value>
+                <fullName>Vibrant</fullName>
+                <default>false</default>
+                <label>Vibrant</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

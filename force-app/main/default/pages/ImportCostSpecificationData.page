@@ -1,0 +1,151 @@
+<!-- *******************************************************************************************************
+Page Name        : ImportCostSpecificationData
+Purpose          : This VF page is to import specification cost data in csv format
+Author           : 
+Revision History : 
+ * ***************************************************************************************************** -->
+<apex:page controller="ImportCostSpecificationDataController" id="tPage">
+    <style>
+    #spinner{
+        display: none;
+        width:200px;
+        height: 50px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        text-align:center;
+        padding:10px;
+        font:normal 16px Tahoma, Geneva, sans-serif;
+        margin-left: -100px;
+        margin-top: -100px;
+        z-index:2;
+        z-index:100;
+        padding:5px;
+        line-height:20px;
+     }
+     #opaque {
+         position: fixed;
+         top: 0px;
+         left: 0px;
+         width: 100%;
+         height: 100%;
+         font:normal 16px Tahoma, Geneva, sans-serif;
+         text-align: center;
+         z-index: 1;
+         display: none;
+         background-color: #d3d3d3;
+         filter: alpha(opacity=30);
+         opacity: 0.3;
+         -moz-opacity:0.3;
+         -khtml-opacity:0.3
+     }
+     * html #opaque {
+         position: absolute;
+     }
+  </style>
+  <script>
+      function showSpinner(){
+           document.getElementById('opaque').style.display='block';
+           var popUp = document.getElementById('spinner');
+          
+           popUp.style.display = 'block';
+      } 
+      function redirect(){
+           document.getElementById('opaque').style.display='block';
+           var popUp = document.getElementById('spinner');
+          
+           popUp.style.display = 'block';
+           csvfiledownload();
+      }
+  </script>
+  <!--Debug - sidSetList.size: {!sidSetlist.size}<p/>
+  Debug - finalErrorMessage: {!finalErrorMessage}<p/>
+  Debug - iserror: {!iserror}<p/> -->
+    <apex:form >
+        <apex:outputPanel id="errorMessage">
+            <apex:pagemessages escape="false" />
+        </apex:outputPanel>
+        <!-- Page Block to select csv file and click Import Data Button -->
+        <apex:pageBlock >
+            <apex:pageBlockSection columns="4"> 
+                  <table>
+                  <tr>
+                  This screen will allow Cost Information to be imported into Specification records.<p/>
+                  </tr>
+                  <tr>
+                  <b>&nbsp;&nbsp;&nbsp;&nbsp;Note:</b>&nbsp;The CSV import file should not contain more than 1000 records.<p/>
+                  <!-- Import file can contain a max of 2000 records -->
+                  </tr>
+                  <tr>
+                  <apex:inputFile value="{!csvFileBody}"  filename="{!csvAsString}"/>
+                  <apex:actionRegion >
+                      <apex:commandButton action="{!importCSVFile}" value="Import Data" onclick="showSpinner();" rendered="{!if(AND(len(finalErrorMessage) > 0, iserror), false, true)}"/>
+                      <apex:commandButton value="Export Errors" onclick="redirect();" oncomplete="setTimeout(redirectpage,{!delaytime});" reRender="tPage" rendered="{!if(AND(len(finalErrorMessage) > 0, iserror), true, false)}"/>
+                      
+                      <apex:actionFunction name="redirectpage" action="{!redirectpage}"/> 
+                      <apex:actionFunction name="csvfiledownload" action="{!ExportCSVFile}"/>
+                  </apex:actionRegion> 
+                  </tr>
+                  </table>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <!-- End of Page Block -->
+        
+        
+        
+        <!-- Page Block that renders if csv have any errors -->
+        <apex:outputPanel rendered="{!if(sidSetlist.size > 0, true, false)}">
+            <apex:pageBlock id="ThePage" rendered="{!if(sidSetlist.size > 0, true, false)}">
+               <apex:pageblocktable value="{!sidSetlist}" var="sida">
+                  <apex:column headerValue="Row #" value="{!sida.row}" rendered="{!if(sidSetlist.size > 0, true, false)}"/>
+                  <apex:column value="{!sida.sid.Name}" />
+                  <apex:column value="{!sida.sid.costApproval__c}" />
+                  <apex:column value="{!sida.sid.costAssessmentComplete__c}" />
+                  <apex:column value="{!sida.sid.costAssessmentComment__c}" />
+                  <apex:column value="{!sida.sid.incrementalGFO__c}" />
+                  <apex:column value="{!sida.sid.incrementalGlassCostRoof1__c}" />
+                  <apex:column value="{!sida.sid.incrementalGlassCostRoof2__c}" />
+                  <apex:column value="{!sida.sid.incrementalGlassCostNoYL__c}" />
+                  <apex:column value="{!sida.sid.incrementalProcessFeeRoofOne__c}" />
+                  <apex:column value="{!sida.sid.incrementalProcessFeeRoofTwo__c}" />
+                  <apex:column value="{!sida.sid.incrementalRoofOne__c}" />
+                  <apex:column value="{!sida.sid.incrementalRoofTwo__c}" />
+                  <apex:column value="{!sida.sid.incrementalTCO__c}" />
+                  <apex:column value="{!sida.sid.incrementalTransportation__c}" />    
+                  <apex:column value="{!sida.sid.incrementalYieldRoofOne__c}" />
+                  <apex:column value="{!sida.sid.incrementalYieldRoofTwo__c}" />
+                  <apex:column value="{!sida.sid.incrementalGFOS2__c}" />
+                  <apex:column value="{!sida.sid.incrementalGlassCostRoof1S2__c}" />
+                  <apex:column value="{!sida.sid.incrementalGlassCostRoof2S2__c}" />
+                  <apex:column value="{!sida.sid.incrementalGlassCostNoYLS2__c}" />
+                  <apex:column value="{!sida.sid.incrementalProcessFeeRoofOneS2__c}" />
+                  <apex:column value="{!sida.sid.incrementalProcessFeeRoofTwoS2__c}" />
+                  <apex:column value="{!sida.sid.incrementalRoofOneS2__c}" />
+                  <apex:column value="{!sida.sid.incrementalRoofTwoS2__c}" />
+                  <apex:column value="{!sida.sid.incrementalTCOS2__c}" />
+                  <apex:column value="{!sida.sid.finalIncrementalTransportationS2__c}" />
+                  <apex:column value="{!sida.sid.finalIncrementalYieldRoofOneS2__c}" />
+                  <apex:column value="{!sida.sid.finalIncrementalYieldRoofTwoS2__c}" />
+            </apex:pageblocktable>
+            
+     
+            <apex:outputPanel >
+                <apex:actionRegion >
+                <apex:commandButton value="Previous" action="{!previous}" disabled="{!!hasPrevious}" reRender="ThePage" />
+                <apex:commandButton value="Next" action="{!next}" disabled="{!!hasNext}" reRender="ThePage" />
+                Page {!cpage} of {!tpage} | Displaying {!startRecCount} - {!endRecCount} of {!TotErrorRecCount} Error Records of {!TotRecCount} Records
+                </apex:actionRegion>
+            </apex:outputPanel>
+            
+         </apex:pageBlock>
+     </apex:outputPanel>
+     <!-- End of Page Block -->
+   </apex:form>
+   
+   <!-- Page overlay code -->
+   <div id="opaque"/>
+   <div id="spinner">
+        <p align="center"><apex:image value="/img/loading.gif"/>&nbsp;Please wait</p>
+   </div>
+   <!-- End Page overlay -->
+</apex:page>

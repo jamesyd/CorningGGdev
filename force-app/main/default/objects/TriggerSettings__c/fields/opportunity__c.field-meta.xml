@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>opportunity__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>Is opportunity trigger on?</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Is opportunity trigger on?</inlineHelpText>
+    <label>Opportunity</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

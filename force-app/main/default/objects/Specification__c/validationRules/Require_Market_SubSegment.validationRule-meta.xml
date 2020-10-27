@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Require_Market_SubSegment</fullName>
+    <active>true</active>
+    <errorConditionFormula>TEXT(marketSegment__c) != &quot;&quot; 
+&amp;&amp; 
+TEXT(marketSubSegment__c) = &quot;&quot; 
+&amp;&amp; 
+TEXT(marketSegment__c) != &quot;AIO (desktop)&quot;</errorConditionFormula>
+    <errorMessage>If you have selected a Market Segment you must select a Market Sub-Segment.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Source_2_Incremental_TCO_req_Cost_A_DS</fullName>
+    <active>true</active>
+    <description>&quot;Source 2 Incremental TCO&quot; as a required field when the &quot;Cost Approval&quot; field is set as &quot;Accepted&quot;.</description>
+    <errorConditionFormula>ISCHANGED( dsCostApproval__c) &amp;&amp; 
+( (TEXT(dsCostApproval__c) = &apos;Accepted&apos;)) &amp;&amp; 
+(IsBlank( TEXT(incrementalTCOS2__c)) &amp;&amp;
+OR( $User.ProfileId = &apos;00e1J000000h0j4&apos;,
+     $User.ProfileId = &apos;00e1J000000h0jC&apos; ) 
+
+
+)</errorConditionFormula>
+    <errorMessage>When Cost Approval changes to accepted, Source 2 TCO is required (DS)</errorMessage>
+</ValidationRule>

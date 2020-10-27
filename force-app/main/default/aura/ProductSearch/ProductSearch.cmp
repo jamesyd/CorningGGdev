@@ -1,0 +1,83 @@
+<aura:component controller="AddProductsController" implements="flexipage:availableForAllPageTypes,force:lightningQuickAction,force:hasRecordId" access="global" >
+	<aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:attribute name="firstRender" type="boolean" access="private" default="true" description="" />
+    <aura:attribute name="ctrl" type="AddProductsController.currentRecordInfoWrapper"/>
+    <aura:attribute name="isProgramOpty" type="Boolean" default="false"/>
+    <aura:attribute name="isQuote" type="Boolean" default="false"/> <!-- AN -->
+    <aura:attribute name="isSample" type="Boolean" default="false"/> <!-- AN -->
+    <aura:attribute name="resultSet" type="sObject" />
+    <aura:attribute name="filterStr" type="String" />
+    <aura:attribute name="sampleRequestMessage" type="string"/>
+    <aura:attribute name="canAddLineItems" type="Boolean"/>
+    <aura:attribute name="fieldsToShow" type="string[]" />
+    <aura:attribute name="fieldsToShowParts" type="string[]" default=",productName,spec" />
+    <!--<aura:attribute name="fieldsToShowRaw" type="string[]" default=",productName,Account,mto,priceUnit,unitOfMeasure,moq"/>-->
+    <aura:attribute name="fieldsToShowRaw" type="string[]" default=",productName,Account,mto"/>
+    <aura:registerEvent name="show" type="c:ShowSearchResults"/>
+    <aura:attribute name="currentPageNumber" type="Integer" default="0"/>
+    <aura:attribute name="maxRecordsPerPage" type="Integer" default="10"/>
+    <aura:handler event="c:PageChange" action="{!c.pageChange}"/>
+    <aura:attribute name="prodType" type="string" default="Parts"/>
+    <aura:attribute name="selectedTab" type="string" default=""/>
+    <aura:attribute name="tabs" type="string[]" default=""/>
+    <aura:attribute name="recordAccess" type="SObject"/>
+	<aura:attribute name="waitSpinnerStyle" type="String" default="slds-hide"/>
+    <!-- MTO search or user initiated search? -->
+    <aura:attribute name="autoLoadMTO" type="String" default="autoLoadMTO"/>
+    <aura:attribute name="userSearch" type="String" default="userSearch"/>
+    <aura:attribute name="searchType" type="String"/>
+    
+	<aura:handler name="SampleProductAdded" event="c:SampleProductAdded" action="{!c.handleSampleProductAdded}"/>
+    <aura:handler event="c:RefreshSearchTab" action="{!c.Refresh}"/>
+    
+    <p aura:id="sampleRequestMsg" class="slds-text-title">{!v.sampleRequestMessage}</p>
+    <!--<div class="slds-page-header">
+		<h1 class="slds-page-header__title slds-truncate" title="Add Products">Add Products</h1>
+	</div>-->
+    <lightning:spinner aura:id="waitSpinner" class="{!v.waitSpinnerStyle}" alternativeText="Please wait..."/>
+
+    <!-- <lightning:tabset variant="scoped" aura:id="searchTabs" onselect="{!c.searchTabChanged}">-->
+    <lightning:tabset variant="scoped" aura:id="searchTabs">
+    <aura:iteration items="{!v.tabs}" var="obj">
+        <lightning:tab label="{!obj.name}" id="{!obj.tabId}" onactive="{!c.handleTabActive}">
+            <form class="slds-form--stacked" aura-id="{!obj.formId}" >
+                
+                   <table class="slds-table slds-max-medium-table--stacked">
+                    <tr>
+                       <td>
+                           <ui:inputText value="{!obj.filterStr}" aura:id="{!obj.name}" keydown="{!c.handleEnterKey}"/>
+                       </td>
+                    
+						<td>
+                    		<lightning:button name="{!obj.name}" aura:id="{!obj.submitButtonId}" label="Search" onclick="{!c.handleSearch}" />
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td>
+                            <div class="{!obj.SCVisibilityClass}">
+                        	<!--<ui:inputCheckbox name="{!obj.supplyChainId}" id="{!obj.supplyChainId}" label="Apply Supply Chain Filter" />-->
+                            
+                            <div class="slds-form-element">
+                              <div class="slds-form-element__control">
+                                <span class="slds-checkbox">
+                                  <input type="checkbox" name="{!obj.supplyChainId}" id="{!obj.supplyChainId}" onclick="{!c.supplyChainSelected}"/>
+                                  <label class="slds-checkbox__label" for="{!obj.supplyChainId}">
+                                    <span class="slds-checkbox--faux"></span>
+                                    <span class="slds-form-element__label">Apply Supply Chain Filter</span>
+                                  </label>
+                                </span>
+                              </div>
+                            </div>
+                            
+                           </div>
+                        </td>
+					</tr>
+                  </table>
+                
+            </form>                                            
+        </lightning:tab>
+  	</aura:iteration>
+    </lightning:tabset>
+    <c:SearchResults aura:id="searchResults" resultSet="{!v.resultSet}" fieldsToShow="{!v.fieldsToShow}" isQuote="{!v.ctrl.isQuote}"/>
+    
+</aura:component>

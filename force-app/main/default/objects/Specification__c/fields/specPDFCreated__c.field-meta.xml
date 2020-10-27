@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>specPDFCreated__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Set when PDF is created after specification pricing assignment is complete. Used in the trigger to not create PDF after the first time.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Set when PDF is created after specification pricing assignment is complete. Used in the trigger to not create PDF after the first time.</inlineHelpText>
+    <label>Spec PDF Created</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

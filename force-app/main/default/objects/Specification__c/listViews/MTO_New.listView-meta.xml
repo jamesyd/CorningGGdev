@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MTO_New</fullName>
+    <booleanFilter>1 AND 2</booleanFilter>
+    <columns>NAME</columns>
+    <columns>opportunity__c</columns>
+    <columns>description__c</columns>
+    <columns>status__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>status__c</field>
+        <operation>equals</operation>
+        <value>New</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Specification__c.Concore,Specification__c.Concore_Final,Specification__c.Concore_Submitted,Specification__c.Raw_Glass,Specification__c.Raw_Glass_Final,Specification__c.Raw_Glass_Inventory_Final,Specification__c.Raw_Glass_Inventory_Submitted,Specification__c.Raw_Glass_Submitted</value>
+    </filters>
+    <label>MTO - 01.New</label>
+</ListView>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sample_MOQ_Has_To_Be_LT_MP_MOQ</fullName>
+    <active>true</active>
+    <description>Sample MOQ must be less than MP MOQ</description>
+    <errorConditionFormula>(moq__c &lt;= sampleMOQ__c )  &amp;&amp; (IsBlank(sampleMOQ__c) = FALSE )
+&amp;&amp; RecordType.Name == &apos;Parts - Submitted&apos;</errorConditionFormula>
+    <errorMessage>Sample MOQ must be less than MP MOQ</errorMessage>
+</ValidationRule>

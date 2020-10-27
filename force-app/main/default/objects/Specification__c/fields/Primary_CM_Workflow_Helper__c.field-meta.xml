@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Primary_CM_Workflow_Helper__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(INCLUDES(location__c,&apos;Biel&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;BOE&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;BYD-TQ&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;CGK&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;CGK-TQ&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;CPM&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;Crystal&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;DSBJ&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;Fuzhou&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;GIS&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;GO&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;GTOC&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;HDC&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;HH-LowR&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;Hong Kong Warehouse&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;Hony&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;HTF&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;Huaqing&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;J3D&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;Jiangmen&apos;),0,0)+
+IF(INCLUDES(dsLocation__c,&apos;JNTC-TQ&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;Kaymao&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;KOTL-TQ&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;LCE-LR&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;LENS-TQ&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;Liangcheng-LR&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;LOT&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;MFD-TQ&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;NGS&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;NGS-TQ&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;NVD&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;Opton&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;RKL&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;RKL-TQ&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;RLD&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;ROE-TQ&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;Shinwu&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;SK-TQ&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;TG&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;TG-NT&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;TPK-TQ&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;Truly&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;Victory&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;WTL&apos;),0,0)+
+IF(INCLUDES(location__c,&apos;XC&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;XX DG&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;XX TZ&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;YFO&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;YTF&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;YX-TQ&apos;),1,0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Primary CM Workflow Helper</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

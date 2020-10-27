@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>productName__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(CONTAINS(RecordType.DeveloperName, &quot;Parts&quot;), 
+
+TEXT(glassComposition__c )+ &quot;; &quot;+ TEXT( FLOOR(thickness__c) ) + &quot;.&quot; + right( text( ( 1 + thickness__c - floor(thickness__c) ) * 1000 ), 3 ) 
++&quot;mm; &quot; + TEXT( FLOOR( width__c ) ) + &quot;.&quot; + right( text( ( 1 + width__c - floor( width__c ) ) * 1000 ), 3 )+&quot;mm x &quot; +TEXT( FLOOR(length__c) ) + &quot;.&quot; + right( text( ( 1 + length__c - floor(length__c) ) * 1000 ), 3 )+&quot;mm; &quot;+productLine__c+ &quot;; &quot;+ (  IF(  ISBLANK(TEXT(application__c)) , opportunityApplication__c, TEXT(application__c))  ) , 
+
+TEXT(glassComposition__c )+ &quot;; &quot;+ TEXT( FLOOR(thickness__c) ) + &quot;.&quot; + right( text( ( 1 + thickness__c - floor(thickness__c) ) * 1000 ), 3 ) 
++&quot;mm; &quot; + TEXT( FLOOR( width__c ) ) + &quot;.&quot; + right( text( ( 1 + width__c - floor( width__c ) ) * 1000 ), 3 )+&quot;mm x &quot; +TEXT( FLOOR(length__c) ) + &quot;.&quot; + right( text( ( 1 + length__c - floor(length__c) ) * 1000 ), 3 )+&quot;mm; &quot;+productLine__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Product Name</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

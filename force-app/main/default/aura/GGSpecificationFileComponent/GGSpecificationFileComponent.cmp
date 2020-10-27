@@ -1,0 +1,56 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId"
+                controller="GGSpecificationFileController">
+    <!-- EMP API -->
+    <lightning:empApi aura:id="empApi"/>
+    
+	<!-- attributes -->
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="totalfiles" type="Integer" default="0"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="selectedDocumentIds" type="List"/>
+    <aura:attribute name="selectedRowsCount" type="Integer" default="0"/>
+    <aura:attribute name="maxRowSelection" type="Integer" default="5"/>
+	
+    <aura:attribute name="recordId" type="String" default=""/>
+    
+    <aura:attribute name="refresh" type="Boolean" default="true"/>
+    <aura:attribute name="showSpinner" type="Boolean" default="false"/>
+    
+    <aura:attribute name="disableButton" type="Boolean" default="true"/>
+    
+    <!-- Form for subscribing/unsubscribing to/from events -->
+    <aura:attribute name="channel" type="String" default="/event/File_Notification__e"/>
+    
+    <!-- handlers-->
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    
+    <!-- Spinner -->
+    <aura:if isTrue="{!v.showSpinner}">
+        <div class="backgroundInverse">
+            <lightning:spinner alternativeText="Loading" variant="inverse" />
+        </div>
+    </aura:if>
+    <!-- Spinner -->
+    
+    <!-- Document tables -->
+    <aura:if isTrue="{!v.refresh}">
+        <div class="slds-p-left_small">
+        <lightning:card title="{!'Files ('+ v.totalfiles+ ')'}"
+            			iconName="standard:file">
+            <aura:set attribute="actions">
+                <lightning:button label="Delete" onclick="{!c.deleteFiles}" disabled="{!v.disableButton}"/>
+                <lightning:button label="Download" onclick="{!c.downloadFiles}" disabled="{!v.disableButton}"/>
+            </aura:set>
+            <p class="slds-p-horizontal_small">
+                <lightning:datatable
+                                     columns="{! v.columns }"
+                                     data="{! v.data }"
+                                     keyField="recordId"
+                                     onrowselection="{! c.updateSelectedText }"/>
+            </p>
+        </lightning:card>
+        </div>
+    </aura:if> 
+    <!-- Document tables -->
+    
+</aura:component>

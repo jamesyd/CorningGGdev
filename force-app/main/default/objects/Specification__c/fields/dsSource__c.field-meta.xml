@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>dsSource__c</fullName>
+    <externalId>false</externalId>
+    <label>Source</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Dual Source Accepted</fullName>
+                <default>false</default>
+                <label>Dual Source Accepted</label>
+            </value>
+            <value>
+                <fullName>Single Source Only</fullName>
+                <default>false</default>
+                <label>Single Source Only</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

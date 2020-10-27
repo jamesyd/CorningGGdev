@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>setEffectiveDateToToday__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Set effective date of the quote pdf to the day pdf is generated</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Set effective date of the quote pdf to the day pdf is generated</inlineHelpText>
+    <label>Set Effective Date To Today</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

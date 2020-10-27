@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>mtoNotificationPath__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(  glassComposition__c  , 
+&quot;1805&quot;, &quot;Path 1&quot;,
+&quot;1807&quot;, &quot;Path 1&quot;,
+&quot;2320&quot;, &quot;Path 1&quot;, 
+&quot;2521&quot;, &quot;Path 1&quot;,  
+&quot;4318&quot;, &quot;Path 1&quot;, 
+&quot;5318&quot;, &quot;Path 1&quot;, 
+&quot;7321&quot;, &quot;Path 1&quot;, 
+&quot;7418&quot;, &quot;Path 1&quot;, 
+&quot;7431&quot;, &quot;Path 1&quot;,
+&quot;7518&quot;, &quot;Path 2&quot;, 
+&quot;9318&quot;, &quot;Path 2&quot;,  
+&quot;9319&quot;, &quot;Path 2&quot;,
+&quot;9726&quot;, &quot;Path 2&quot;,
+&quot;Path 1&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>MTO Notification Path</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>technolgiesDiscussed__c</fullName>
+    <externalId>false</externalId>
+    <label>Technologies Discussed</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>0.4mm</fullName>
+                <default>false</default>
+                <label>0.4mm</label>
+            </value>
+            <value>
+                <fullName>3D</fullName>
+                <default>false</default>
+                <label>3D</label>
+            </value>
+            <value>
+                <fullName>Anti-glare</fullName>
+                <default>false</default>
+                <label>Anti-glare</label>
+            </value>
+            <value>
+                <fullName>Antimicrobial</fullName>
+                <default>false</default>
+                <label>Antimicrobial</label>
+            </value>
+            <value>
+                <fullName>Anti-reflective</fullName>
+                <default>false</default>
+                <label>Anti-reflective</label>
+            </value>
+            <value>
+                <fullName>AO (defense, lithography, spectroscopy)</fullName>
+                <default>false</default>
+                <label>AO (defense, lithography, spectroscopy)</label>
+            </value>
+            <value>
+                <fullName>Automotive applications</fullName>
+                <default>false</default>
+                <label>Automotive applications</label>
+            </value>
+            <value>
+                <fullName>Backlight unit (BLU)</fullName>
+                <default>false</default>
+                <label>Backlight unit (BLU)</label>
+            </value>
+            <value>
+                <fullName>Backplane electronics (TFTs, semiconductors,TCOs)</fullName>
+                <default>false</default>
+                <label>Backplane electronics (TFTs, semiconductors,TCOs)</label>
+            </value>
+            <value>
+                <fullName>Carrier processes</fullName>
+                <default>false</default>
+                <label>Carrier processes</label>
+            </value>
+            <value>
+                <fullName>Coatings and thin films</fullName>
+                <default>false</default>
+                <label>Coatings and thin films</label>
+            </value>
+            <value>
+                <fullName>Color filters</fullName>
+                <default>false</default>
+                <label>Color filters</label>
+            </value>
+            <value>
+                <fullName>Contego</fullName>
+                <default>false</default>
+                <label>Contego</label>
+            </value>
+            <value>
+                <fullName>Corning Laser Technology (CLT)</fullName>
+                <default>false</default>
+                <label>Corning Laser Technology (CLT)</label>
+            </value>
+            <value>
+                <fullName>Durable Anti-Reflective (DAR)</fullName>
+                <default>false</default>
+                <label>Durable Anti-Reflective (DAR)</label>
+            </value>
+            <value>
+                <fullName>Eagle XG</fullName>
+                <default>false</default>
+                <label>Eagle XG</label>
+            </value>
+            <value>
+                <fullName>Flat Glass</fullName>
+                <default>false</default>
+                <label>Flat Glass</label>
+            </value>
+            <value>
+                <fullName>Flexible cover glass</fullName>
+                <default>false</default>
+                <label>Flexible cover glass</label>
+            </value>
+            <value>
+                <fullName>Flexible displays</fullName>
+                <default>false</default>
+                <label>Flexible displays</label>
+            </value>
+            <value>
+                <fullName>Flexible Glass</fullName>
+                <default>false</default>
+                <label>Flexible Glass</label>
+            </value>
+            <value>
+                <fullName>Frontlight unit (FLU)</fullName>
+                <default>false</default>
+                <label>Frontlight unit (FLU)</label>
+            </value>
+            <value>
+                <fullName>Fullsheet Integrated Touch (FIT)</fullName>
+                <default>false</default>
+                <label>Fullsheet Integrated Touch (FIT)</label>
+            </value>
+            <value>
+                <fullName>Glass Ceramics</fullName>
+                <default>false</default>
+                <label>Glass Ceramics</label>
+            </value>
+            <value>
+                <fullName>Glass Other</fullName>
+                <default>false</default>
+                <label>Glass Other</label>
+            </value>
+            <value>
+                <fullName>Gorilla Glass</fullName>
+                <default>false</default>
+                <label>Gorilla Glass</label>
+            </value>
+            <value>
+                <fullName>Handheld (HH)</fullName>
+                <default>false</default>
+                <label>Handheld (HH)</label>
+            </value>
+            <value>
+                <fullName>Head-mounted displays</fullName>
+                <default>false</default>
+                <label>Head-mounted displays</label>
+            </value>
+            <value>
+                <fullName>High-index glass</fullName>
+                <default>false</default>
+                <label>High-index glass</label>
+            </value>
+            <value>
+                <fullName>Information Technology (IT)</fullName>
+                <default>false</default>
+                <label>Information Technology (IT)</label>
+            </value>
+            <value>
+                <fullName>Inkjet</fullName>
+                <default>false</default>
+                <label>Inkjet</label>
+            </value>
+            <value>
+                <fullName>Iris Glass</fullName>
+                <default>false</default>
+                <label>Iris Glass</label>
+            </value>
+            <value>
+                <fullName>Laminates</fullName>
+                <default>false</default>
+                <label>Laminates</label>
+            </value>
+            <value>
+                <fullName>Large Cover Glass</fullName>
+                <default>false</default>
+                <label>Large Cover Glass</label>
+            </value>
+            <value>
+                <fullName>Laser Etching</fullName>
+                <default>false</default>
+                <label>Laser Etching</label>
+            </value>
+            <value>
+                <fullName>LEDs</fullName>
+                <default>false</default>
+                <label>LEDs</label>
+            </value>
+            <value>
+                <fullName>Liquid crystals</fullName>
+                <default>false</default>
+                <label>Liquid crystals</label>
+            </value>
+            <value>
+                <fullName>Lotus Glass</fullName>
+                <default>false</default>
+                <label>Lotus Glass</label>
+            </value>
+            <value>
+                <fullName>Metal Mesh</fullName>
+                <default>false</default>
+                <label>Metal Mesh</label>
+            </value>
+            <value>
+                <fullName>Micro LEDs</fullName>
+                <default>false</default>
+                <label>Micro LEDs</label>
+            </value>
+            <value>
+                <fullName>Notebook Touch</fullName>
+                <default>false</default>
+                <label>Notebook Touch</label>
+            </value>
+            <value>
+                <fullName>OLEDs</fullName>
+                <default>false</default>
+                <label>OLEDs</label>
+            </value>
+            <value>
+                <fullName>Phire</fullName>
+                <default>false</default>
+                <label>Phire</label>
+            </value>
+            <value>
+                <fullName>Phyllo</fullName>
+                <default>false</default>
+                <label>Phyllo</label>
+            </value>
+            <value>
+                <fullName>Pixel architecture</fullName>
+                <default>false</default>
+                <label>Pixel architecture</label>
+            </value>
+            <value>
+                <fullName>Printing processes</fullName>
+                <default>false</default>
+                <label>Printing processes</label>
+            </value>
+            <value>
+                <fullName>Quantum dots</fullName>
+                <default>false</default>
+                <label>Quantum dots</label>
+            </value>
+            <value>
+                <fullName>Resolution (2K, 4K, 8K, beyond)</fullName>
+                <default>false</default>
+                <label>Resolution (2K, 4K, 8K, beyond)</label>
+            </value>
+            <value>
+                <fullName>Roll-to-roll processes</fullName>
+                <default>false</default>
+                <label>Roll-to-roll processes</label>
+            </value>
+            <value>
+                <fullName>Sapphire</fullName>
+                <default>false</default>
+                <label>Sapphire</label>
+            </value>
+            <value>
+                <fullName>Semiconductor</fullName>
+                <default>false</default>
+                <label>Semiconductor</label>
+            </value>
+            <value>
+                <fullName>Signage</fullName>
+                <default>false</default>
+                <label>Signage</label>
+            </value>
+            <value>
+                <fullName>Thin displays</fullName>
+                <default>false</default>
+                <label>Thin displays</label>
+            </value>
+            <value>
+                <fullName>Touch Technology</fullName>
+                <default>false</default>
+                <label>Touch Technology</label>
+            </value>
+            <value>
+                <fullName>Transparent displays</fullName>
+                <default>false</default>
+                <label>Transparent displays</label>
+            </value>
+            <value>
+                <fullName>Vias</fullName>
+                <default>false</default>
+                <label>Vias</label>
+            </value>
+            <value>
+                <fullName>Willow Glass</fullName>
+                <default>false</default>
+                <label>Willow Glass</label>
+            </value>
+            <value>
+                <fullName>Other/Can Create Own</fullName>
+                <default>false</default>
+                <label>Other/Can Create Own</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Active</fullName>
+    <columns>NAME</columns>
+    <columns>productLine__c</columns>
+    <columns>date__c</columns>
+    <columns>OWNER.ALIAS</columns>
+    <columns>status__c</columns>
+    <columns>opportunity__c</columns>
+    <columns>productName__c</columns>
+    <columns>shipToCustomer__c</columns>
+    <columns>tpmOwner__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>status__c</field>
+        <operation>equals</operation>
+        <value>Active</value>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>THIS_MONTH</value>
+    </filters>
+    <label>Active</label>
+    <language>en_US</language>
+</ListView>

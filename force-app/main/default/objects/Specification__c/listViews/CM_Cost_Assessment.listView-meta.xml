@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CM_Cost_Assessment</fullName>
+    <columns>NAME</columns>
+    <columns>opportunity__c</columns>
+    <columns>description__c</columns>
+    <columns>status__c</columns>
+    <columns>specialRequirements__c</columns>
+    <columns>location__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>statusChangeDate__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>status__c</field>
+        <operation>equals</operation>
+        <value>CM Cost Assessment</value>
+    </filters>
+    <label>Parts - 08.CM Cost Assessment</label>
+</ListView>

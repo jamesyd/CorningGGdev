@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DistGroupOrEmailRequired</fullName>
+    <active>true</active>
+    <description>Either distribution group or email address is required.</description>
+    <errorConditionFormula>IsBlank( distributionGroup__c ) &amp;&amp; IsBlank(emailAddress__c)</errorConditionFormula>
+    <errorMessage>Email address or distribution group is required to save trip report distribution record.</errorMessage>
+</ValidationRule>

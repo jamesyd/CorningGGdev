@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>account__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Only used for Raw Glass and Concore to link to the account for which this price is defined. The account should be the corporate level account.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Only used for Raw Glass and Concore to link to the account for which this price is defined. The account should be the corporate level account.</inlineHelpText>
+    <label>Account</label>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>Prices</relationshipLabel>
+    <relationshipName>Prices</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

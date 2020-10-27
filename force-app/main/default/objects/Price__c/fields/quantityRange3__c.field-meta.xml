@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>quantityRange3__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(upperLimit2__c &lt; 1, &apos;&apos;, TEXT(upperLimit2__c + 1)) + &apos; - &apos; + IF(upperLimit3__c &lt; 1, &apos;&apos;, TEXT(upperLimit3__c))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Quantity Range 3</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

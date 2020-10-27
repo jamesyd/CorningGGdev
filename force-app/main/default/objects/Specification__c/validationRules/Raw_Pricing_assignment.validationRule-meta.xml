@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Raw_Pricing_assignment</fullName>
+    <active>true</active>
+    <description>Raw/Concore - price must be entered.</description>
+    <errorConditionFormula>ISCHANGED( pricingAssignmentComplete__c) &amp;&amp; ((TEXT(status__c) &lt;&gt; &apos;Pricing Assignment&apos;) || ( (RecordType.Name == &apos;Raw - Submitted&apos; || RecordType.Name == &apos;Concore - Submitted&apos;) &amp;&amp; (IsBlank(priceUnit__c) || IsBlank(moq__c) || IsBlank(Text(moqUom__c)) ) ) )</errorConditionFormula>
+    <errorMessage>In order to set pricing, MOQ and price must be entered and MTO request must be in &apos;Pricing Assignment&apos; status.</errorMessage>
+</ValidationRule>

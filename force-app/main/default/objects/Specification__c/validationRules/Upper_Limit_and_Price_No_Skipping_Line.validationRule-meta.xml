@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Upper_Limit_and_Price_No_Skipping_Line</fullName>
+    <active>true</active>
+    <description>When a PLM enters pricing or tiers for parts it must be sequential.  We don’t want anyone putting in 1st, 2nd, and 4th range or any such gaps. Same thing with pricing.</description>
+    <errorConditionFormula>(ISBLANK(upperLimit1__c)&amp;&amp; 
+NOT(ISBLANK(upperLimit2__c)))||
+
+(ISBLANK(upperLimit2__c)&amp;&amp; 
+NOT(ISBLANK(upperLimit3__c)))||
+
+(ISBLANK(upperLimit3__c)&amp;&amp; 
+NOT(ISBLANK(upperLimit4__c)))||
+
+(ISBLANK(price1__c)&amp;&amp; 
+NOT(ISBLANK(price2__c)))||
+
+(ISBLANK(price2__c)&amp;&amp; 
+NOT(ISBLANK(price3__c)))||
+
+(ISBLANK(price3__c)&amp;&amp; 
+NOT(ISBLANK(price4__c)))</errorConditionFormula>
+    <errorMessage>There is a Gap in either your Prices or Upper Limits</errorMessage>
+</ValidationRule>

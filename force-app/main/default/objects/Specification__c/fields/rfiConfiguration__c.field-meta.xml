@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>rfiConfiguration__c</fullName>
+    <externalId>false</externalId>
+    <label>RFI Configuration</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Acer standard IT full feature spec. (ex. Origins)</fullName>
+                <default>false</default>
+                <label>Acer standard IT full feature spec. (ex. Origins)</label>
+            </value>
+            <value>
+                <fullName>Asus standard HH 2.5D full feature spec. (ex. Zenfone 5)</fullName>
+                <default>false</default>
+                <label>Asus standard HH 2.5D full feature spec. (ex. Zenfone 5)</label>
+            </value>
+            <value>
+                <fullName>Corning standard 2.5D HH full feature spec.</fullName>
+                <default>false</default>
+                <label>Corning standard 2.5D HH full feature spec.</label>
+            </value>
+            <value>
+                <fullName>Corning standard 2D HH full feature spec.</fullName>
+                <default>false</default>
+                <label>Corning standard 2D HH full feature spec.</label>
+            </value>
+            <value>
+                <fullName>Corning standard 2D IT blank part spec.</fullName>
+                <default>false</default>
+                <label>Corning standard 2D IT blank part spec.</label>
+            </value>
+            <value>
+                <fullName>Corning standard 2D IT full feature spec.</fullName>
+                <default>false</default>
+                <label>Corning standard 2D IT full feature spec.</label>
+            </value>
+            <value>
+                <fullName>Dell A11 AR/ETC spec. (IT AR/ETC ; ex. Augusta)</fullName>
+                <default>false</default>
+                <label>Dell A11 AR/ETC spec. (IT AR/ETC ; ex. Augusta)</label>
+            </value>
+            <value>
+                <fullName>Garmin standard full feature spec (wearable)</fullName>
+                <default>false</default>
+                <label>Garmin standard full feature spec (wearable)</label>
+            </value>
+            <value>
+                <fullName>HP standard full feature spec. (AG &amp; non-AG version ; ex. Bumblebee)</fullName>
+                <default>false</default>
+                <label>HP standard full feature spec. (AG &amp; non-AG version ; ex. Bumblebee)</label>
+            </value>
+            <value>
+                <fullName>HP standard IT AG spec. (IT AG ; ex. Damon)</fullName>
+                <default>false</default>
+                <label>HP standard IT AG spec. (IT AG ; ex. Damon)</label>
+            </value>
+            <value>
+                <fullName>Lenovo AR/ETC spec. (IT AR/ETC ; ex. Storm 3)</fullName>
+                <default>false</default>
+                <label>Lenovo AR/ETC spec. (IT AR/ETC ; ex. Storm 3)</label>
+            </value>
+            <value>
+                <fullName>MSFT standard IT Blank spec. (ex. IM37/IM40)</fullName>
+                <default>false</default>
+                <label>MSFT standard IT Blank spec. (ex. IM37/IM40)</label>
+            </value>
+            <value>
+                <fullName>OPPO standard HH 2.5D full feature spec. (ex. DD005)</fullName>
+                <default>false</default>
+                <label>OPPO standard HH 2.5D full feature spec. (ex. DD005)</label>
+            </value>
+            <value>
+                <fullName>SOMC standard HH 2.5D full feature spec. (ex. PF13)</fullName>
+                <default>false</default>
+                <label>SOMC standard HH 2.5D full feature spec. (ex. PF13)</label>
+            </value>
+            <value>
+                <fullName>SOMC standard HH 3D Vibrant full feature spec. (ex. Akashuki)</fullName>
+                <default>false</default>
+                <label>SOMC standard HH 3D Vibrant full feature spec. (ex. Akashuki)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

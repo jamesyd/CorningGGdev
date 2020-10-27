@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>originalSpecification__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Original specification - used to link a cloned specification to the original specification.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Original specification - used to link a cloned specification to the original specification.</inlineHelpText>
+    <label>Original Specification</label>
+    <referenceTo>Specification__c</referenceTo>
+    <relationshipLabel>Specifications</relationshipLabel>
+    <relationshipName>Specifications</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

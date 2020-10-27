@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Enter_Single_Source_Details</fullName>
+    <active>true</active>
+    <errorConditionFormula>TEXT(dsSource__c) = &quot;Single Source Only&quot; &amp;&amp; ISBLANK(dsSingleSourceDetails__c)</errorConditionFormula>
+    <errorMessage>You must enter Single Source Details if choosing a Source of &quot;Single Source Only&quot;.</errorMessage>
+</ValidationRule>

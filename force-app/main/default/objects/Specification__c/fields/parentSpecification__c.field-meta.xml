@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>parentSpecification__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Parent specification for cloned specification</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Parent specification for cloned specification</inlineHelpText>
+    <label>Parent Specification</label>
+    <referenceTo>Specification__c</referenceTo>
+    <relationshipLabel>Specifications (Parent Specification)</relationshipLabel>
+    <relationshipName>ChildSpecifications</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

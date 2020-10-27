@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Supp_Allo_cant_be_changed_in_this_status</fullName>
+    <active>true</active>
+    <description>Supply, Allocation, &amp; Inventory can&apos;t be changed once decided.</description>
+    <errorConditionFormula>( $Profile.Name &lt;&gt; &apos;System Administrator&apos;) &amp;&amp; (ISCHANGED(  supplyAllocInventoryReviewComplete__c  ) || ISCHANGED(  supplyAllocationInventory__c  )) &amp;&amp; (TEXT(status__c) &lt;&gt; &apos;Supply, Allocation, and Inventory Review&apos;)</errorConditionFormula>
+    <errorMessage>Supply, Allocation, &amp; Inventory Review can only be changed in the Supply, Allocation, &amp; Inventory Review status.</errorMessage>
+</ValidationRule>

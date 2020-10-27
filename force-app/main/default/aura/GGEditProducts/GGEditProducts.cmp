@@ -1,0 +1,6 @@
+<aura:component controller="GGGlassProductsController" implements="force:hasRecordId,force:hasSObjectName,flexipage:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="navigateToFullPage" type="Boolean" default="true"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    
+    <c:GorillaGlassProducts recordId="{!v.recordId}" selectedTab="editProducts" navigateToFullPage="false" refreshLIOnTabChange="false"/>
+</aura:component>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tier1_Has_To_Be_GT_MOQ</fullName>
+    <active>true</active>
+    <description>First tier1 limit must be higher than MOQ</description>
+    <errorConditionFormula>(moq__c &gt; upperLimit1__c )  &amp;&amp; (IsBlank(price1__c) =FALSE )</errorConditionFormula>
+    <errorMessage>Upper Limit1 must be equal to or greater than MOQ.</errorMessage>
+</ValidationRule>

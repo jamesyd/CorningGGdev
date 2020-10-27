@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Innovation__c</fullName>
+    <externalId>false</externalId>
+    <label>Innovation</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>&lt;0.4 mm</fullName>
+                <default>false</default>
+                <label>&lt;0.4 mm</label>
+            </value>
+            <value>
+                <fullName>0.3mm</fullName>
+                <default>false</default>
+                <label>0.3mm</label>
+            </value>
+            <value>
+                <fullName>0.4mm</fullName>
+                <default>false</default>
+                <label>0.4mm</label>
+            </value>
+            <value>
+                <fullName>3D</fullName>
+                <default>false</default>
+                <label>3D</label>
+            </value>
+            <value>
+                <fullName>Anti-Glare Texturing</fullName>
+                <default>false</default>
+                <label>Anti-Glare Texturing</label>
+            </value>
+            <value>
+                <fullName>Anti-Scratch Coating</fullName>
+                <default>false</default>
+                <label>Anti-Scratch Coating</label>
+            </value>
+            <value>
+                <fullName>Antimicrobial</fullName>
+                <default>false</default>
+                <label>Antimicrobial</label>
+            </value>
+            <value>
+                <fullName>AR/EZ</fullName>
+                <default>false</default>
+                <label>AR/EZ</label>
+            </value>
+            <value>
+                <fullName>Concore Glass</fullName>
+                <default>false</default>
+                <label>Concore Glass</label>
+            </value>
+            <value>
+                <fullName>Contego</fullName>
+                <default>false</default>
+                <label>Contego</label>
+            </value>
+            <value>
+                <fullName>Fibrance</fullName>
+                <default>false</default>
+                <label>Fibrance</label>
+            </value>
+            <value>
+                <fullName>Gorilla Glass 3</fullName>
+                <default>false</default>
+                <label>Gorilla Glass 3</label>
+            </value>
+            <value>
+                <fullName>Gorilla Glass 4</fullName>
+                <default>false</default>
+                <label>Gorilla Glass 4</label>
+            </value>
+            <value>
+                <fullName>Glass Ceramics</fullName>
+                <default>false</default>
+                <label>Glass Ceramics</label>
+            </value>
+            <value>
+                <fullName>Ink Jet</fullName>
+                <default>false</default>
+                <label>Ink Jet</label>
+            </value>
+            <value>
+                <fullName>Large Cover Glass</fullName>
+                <default>false</default>
+                <label>Large Cover Glass</label>
+            </value>
+            <value>
+                <fullName>Laser-Etch</fullName>
+                <default>false</default>
+                <label>Laser-Etch</label>
+            </value>
+            <value>
+                <fullName>Laser Technology</fullName>
+                <default>false</default>
+                <label>Laser Technology</label>
+            </value>
+            <value>
+                <fullName>Willow</fullName>
+                <default>false</default>
+                <label>Willow</label>
+            </value>
+            <value>
+                <fullName>Glass</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Glass</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

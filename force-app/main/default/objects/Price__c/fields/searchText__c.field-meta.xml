@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>searchText__c</fullName>
+    <description>Search text for product search. A combination of product name, length, width, glass composition. This field is set through workflow.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Search text for product search. A combination of product name, length, width, glass composition. This field is set through workflow.</inlineHelpText>
+    <label>SearchText (Text)</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

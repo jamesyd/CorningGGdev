@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lock_Currency</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISCHANGED( Currency__c ),
+    CASE(status__c,
+&apos;CM Cost Assessment&apos;,1,
+&apos;Supply, Allocation, and Inventory Review&apos;,1,
+&apos;Product Engineering Input&apos;,1,
+&apos;Plant Engineering Input&apos;,1,
+&apos;Supply Chain Input&apos;,1,
+&apos;Pricing Assignment&apos;,1,
+&apos;Business Case Finalization&apos;,1,
+&apos;Finance Review&apos;,1,
+&apos;Commercial/Ops Review&apos;,1,
+&apos;Pricing Approved&apos;,1,
+&apos;Declined&apos;,1,0)=1)</errorConditionFormula>
+    <errorMessage>Currency can no longer be changed.</errorMessage>
+</ValidationRule>

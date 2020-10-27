@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Parts_RFI</fullName>
+    <columns>NAME</columns>
+    <columns>opportunity__c</columns>
+    <columns>rfiConfiguration__c</columns>
+    <columns>status__c</columns>
+    <columns>statusChangeDate__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Specification__c.Parts_RFI,Specification__c.Parts_RFI_Final,Specification__c.Parts_RFI_Submitted</value>
+    </filters>
+    <filters>
+        <field>status__c</field>
+        <operation>notEqual</operation>
+        <value>Declined</value>
+    </filters>
+    <label>All - Parts RFI Specifications</label>
+</ListView>

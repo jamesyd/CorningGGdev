@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Source_2_TCO</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( 
+     text(dsStatus__c) &lt;&gt; &apos;CM Cost Assessment&apos;,
+     ISCHANGED( incrementalTCOS2__c),
+     NOT(ISBLANK( incrementalTCOS2__c )) 
+
+)</errorConditionFormula>
+    <errorMessage>Source 2 TCO can only be inputted when Secondary CM Status = CM Cost Assessment</errorMessage>
+</ValidationRule>

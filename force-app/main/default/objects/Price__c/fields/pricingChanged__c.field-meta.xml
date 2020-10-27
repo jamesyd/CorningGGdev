@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pricingChanged__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(  OR(originalPrice1__c  &lt;&gt;  price1__c, originalPrice2__c  &lt;&gt;  price2__c, originalPrice3__c  &lt;&gt;  price3__c, originalPrice4__c  &lt;&gt;  price4__c, originalPriceUnit__c &lt;&gt;  priceUnit__c ) , TRUE, FALSE)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Pricing Changed</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

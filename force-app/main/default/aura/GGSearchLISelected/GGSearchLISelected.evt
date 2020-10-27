@@ -1,0 +1,7 @@
+<aura:event type="COMPONENT" description="Event template">
+    <aura:attribute name="cIndex" type="integer"/>
+    <aura:attribute name="isSelected" type="boolean"/>
+    <aura:attribute name="scheduleDate" type="Date"/>
+    <aura:attribute name="quantity" type="integer"/>
+    <aura:attribute name="Product2Id" type="String"/>
+</aura:event>

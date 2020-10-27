@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Standard_Raw_Glass_Active</fullName>
+    <columns>NAME</columns>
+    <columns>isActive__c</columns>
+    <columns>isBlue__c</columns>
+    <columns>isConcore__c</columns>
+    <columns>glassComposition__c</columns>
+    <columns>thickness__c</columns>
+    <columns>customWidth__c</columns>
+    <columns>customLength__c</columns>
+    <columns>EstimatedCrateSheetCount__c</columns>
+    <columns>maximumCrateDimensions__c</columns>
+    <columns>MOQ__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>isActive__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>Standard - All - Active</label>
+    <language>en_US</language>
+</ListView>

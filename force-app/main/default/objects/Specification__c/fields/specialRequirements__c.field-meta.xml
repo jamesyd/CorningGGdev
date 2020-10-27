@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>specialRequirements__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ISPICKVAL(etc__c,&apos;YES&apos;),&quot;ETC; &quot;,&quot;&quot;) + 
+IF(ISPICKVAL(antiSplinterFilm__c,&apos;YES&apos;),&quot;Anti-Splinter; &quot;,&quot;&quot;)+ 
+IF(ISPICKVAL(Deco_Film__c,&apos;Yes&apos;),&quot;Deco Film; &quot;,&quot;&quot;)+
+IF(TEXT(inkjetNeeded__c)=&quot;&quot;,&quot;&quot;,TEXT(inkjetNeeded__c)+&quot;; &quot;) + 
+
+
+IF(INCLUDES(Innovation_Type__c, &quot;Large Cover Glass&quot;),&quot;Large Cover Glass; &quot;, NULL) + 
+IF(INCLUDES(Innovation_Type__c, &quot;Glass Ceramics&quot;),&quot;Glass Ceramics; &quot;, NULL)+ 
+IF(INCLUDES(Innovation_Type__c, &quot;AntiMicrobial&quot;),&quot;AntiMicrobial; &quot;, NULL) + 
+IF(INCLUDES(Innovation_Type__c, &quot;non-CE AR&quot;),&quot;non-CE AR; &quot;, NULL) + 
+IF(INCLUDES(Innovation_Type__c, &quot;EZ/AR&quot;),&quot;EZ/AR; &quot;, NULL) + 
+IF(INCLUDES(Innovation_Type__c, &quot;AntiGlare (AG)&quot;),&quot;AntiGlare (AG); &quot;, NULL) + 
+IF(INCLUDES(Innovation_Type__c, &quot;Screen Protector&quot;),&quot;Screen Protector; &quot;, NULL) + 
+IF(INCLUDES(Innovation_Type__c, &quot;SRPlus&quot;),&quot;Gorilla Glass SR+; &quot;, NULL) + 
+IF(INCLUDES(Innovation_Type__c, &quot;DXPlus&quot;),&quot;Gorilla Glass DX+; &quot;, NULL) + 
+IF(INCLUDES(Innovation_Type__c, &quot;NextGenSRPlus&quot;),&quot;Gorilla Glass Next gen SR+; &quot;, NULL) + 
+IF(INCLUDES(Innovation_Type__c, &quot;FPS&quot;),&quot;FPS; &quot;, NULL) + 
+IF(INCLUDES(Innovation_Type__c, &quot;Vibrant&quot;),&quot;Vibrant; &quot;, NULL) + 
+IF(INCLUDES(Innovation_Type__c, &quot;ArtEng&quot;),&quot;ArtEng; &quot;, NULL) +
+IF(INCLUDES(Innovation_Type__c, &quot;Phyllo&quot;),&quot;Phyllo; &quot;, NULL) +
+IF(INCLUDES(Innovation_Type__c, &quot;DAR2.0&quot;),&quot;DAR2.0; &quot;, NULL) +
+IF(INCLUDES(Innovation_Type__c, &quot;DX&quot;),&quot;Gorilla Glass DX; &quot;, NULL) +
+IF(INCLUDES(Innovation_Type__c, &quot;DXC&quot;),&quot;Gorilla Glass DXC; &quot;, NULL) +
+IF(INCLUDES(Innovation_Type__c, &quot;IT Size 3D&quot;),&quot;IT Size 3D; &quot;, NULL) +
+IF(INCLUDES(Innovation_Type__c, &quot;Glass Back&quot;),&quot;Glass Back; &quot;, NULL) +
+IF(INCLUDES(Innovation_Type__c, &quot;AR – Camera Hole&quot;),&quot;AR- Camera Hole; &quot;, NULL)</formula>
+    <label>Special Requirements</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

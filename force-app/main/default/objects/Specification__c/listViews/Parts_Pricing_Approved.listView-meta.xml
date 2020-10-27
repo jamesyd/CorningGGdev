@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Parts_Pricing_Approved</fullName>
+    <columns>NAME</columns>
+    <columns>opportunity__c</columns>
+    <columns>opportunityAccountName__c</columns>
+    <columns>description__c</columns>
+    <columns>specialRequirements__c</columns>
+    <columns>status__c</columns>
+    <columns>approvedDate__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>status__c</field>
+        <operation>equals</operation>
+        <value>Pricing Approved</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Specification__c.Parts,Specification__c.Parts_Final,Specification__c.Parts_RFI,Specification__c.Parts_RFI_Final,Specification__c.Parts_RFI_Submitted,Specification__c.Parts_Submitted</value>
+    </filters>
+    <label>Parts - 10.Pricing Approved</label>
+</ListView>

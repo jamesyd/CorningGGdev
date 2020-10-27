@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT" description="Event template">
+    <aura:attribute name="cIndex" type="integer"/>
+    <aura:attribute name="isSelected" type="boolean"/>
+</aura:event>

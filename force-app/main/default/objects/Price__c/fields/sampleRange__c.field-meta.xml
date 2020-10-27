@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>sampleRange__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(!isBlank(product__r.sampleMOQ__c), TEXT(product__r.sampleMOQ__c) + &apos; - &apos; + TEXT(product__r.MOQ__c - 1) + &apos;** Samples&apos;,&apos;&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Sample Range</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

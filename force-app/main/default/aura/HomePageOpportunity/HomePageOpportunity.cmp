@@ -1,0 +1,44 @@
+<aura:component description="OpportunityList"
+      implements="flexipage:availableForAllPageTypes"
+      controller="HomePageOpportunityController"
+      access="global">
+    
+    	<aura:handler name="init" value="{!this}" action="{!c.myAction}"/>
+    	<aura:attribute name="opps" type="Opportunity[]" />
+    
+    	<div>
+    	<table class="slds-table slds-table--bordered slds-table--striped slds-table--cell-buffer slds-table--fixed-layout">
+            <thead>
+                <tr><br/><h2><span class="slds-text-heading_small">&nbsp;&nbsp;My Past Due Opportunities</span></h2><br/></tr>
+                <tr class="slds-text-heading--label">
+                    <th colspan="3" scope="col"><div class="slds-truncate" title="OPPORTUNIY NAME"><B>OPPORTUNITY NAME</B></div></th>
+					<th scope="col"><div class="slds-truncate" title="CLOSE DATE"><B>CLOSE DATE</B></div></th>
+					<th scope="col"><div class="slds-truncate" title="AGE"><B>AGE</B></div></th>
+                    <th scope="col"><div class="slds-truncate" title="STAGE NAME"><B>STAGE NAME</B></div></th>
+                    <th scope="col"><div class="slds-truncate" title="AMOUNT"><B>AMOUNT</B></div></th>
+                    <th scope="col"><div class="slds-truncate" title=""></div></th>
+			    </tr>
+			</thead>
+			<tbody>
+    
+        		<aura:iteration items="{!v.opps}" var="opp">
+           			<tr><!-- field names are case sensitive -->
+          				<td colspan="3" ><div class="slds-truncate" title="">{!opp.Name}</div></td>
+						<td><div class="slds-truncate" title="">{!opp.CloseDate}</div></td>
+                        <td><div class="slds-truncate" title="">{!opp.age__c}</div></td>
+                        <td><div class="slds-truncate" title="">{!opp.StageName}</div></td>
+                        <td><div class="slds-truncate" title="">{!opp.Amount}</div></td>
+            			<td><div class="slds-truncate" title="">
+                            	<button type="button" onclick="{!c.editRecord}" id="{!opp.Id}">Edit</button>&nbsp;
+                            	<button type="button" onclick="{!c.viewRecord}" id="{!opp.Id}">View</button>&nbsp;                          
+                            </div>
+                        </td>
+                            
+        				
+                    </tr>
+        		</aura:iteration>
+			</tbody>
+	</table>
+    </div>
+
+</aura:component>

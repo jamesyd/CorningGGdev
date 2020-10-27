@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>price3__c</fullName>
+    <description>Parts price for mass production tier 3.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Parts price for mass production tier 3.</inlineHelpText>
+    <label>Price3</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>availableTo__c</fullName>
+    <description>Used to control price record visibility in sharing rules</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Used to control price record visibility in sharing rules</inlineHelpText>
+    <label>Available to</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>All Customers</fullName>
+                <default>true</default>
+                <label>All Customers</label>
+            </value>
+            <value>
+                <fullName>Blue Only</fullName>
+                <default>false</default>
+                <label>Blue Only</label>
+            </value>
+            <value>
+                <fullName>Non-finisher AMs</fullName>
+                <default>false</default>
+                <label>Non-finisher AMs</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

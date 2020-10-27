@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Require_PLM_Selection</fullName>
+    <active>true</active>
+    <description>Pricing Assignment Complete can&apos;t be checked until PLM Approval is complete</description>
+    <errorConditionFormula>RecordType.Name = &quot;Parts - Submitted&quot;
+&amp;&amp; TEXT(  plmApproval__c  ) = &quot;&quot;  
+&amp;&amp; pricingAssignmentComplete__c  = True</errorConditionFormula>
+    <errorMessage>You must select whether or not this Specification is Approved before checking the Pricing Assignment Complete box.</errorMessage>
+</ValidationRule>

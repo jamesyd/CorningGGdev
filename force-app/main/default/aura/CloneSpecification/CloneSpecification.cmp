@@ -1,0 +1,24 @@
+<aura:component controller="SpecificationCloneController" implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:lightningQuickAction" description="Specification cloning component" >
+    <aura:attribute name="Specification" type="Specification__c" default="{ 'sobjectType': 'Specification__c' }"/>
+    <aura:attribute name="errorMessage" type="String" default=""/>
+    <div>
+    	<p>{!v.errorMessage}
+        </p>
+    </div>
+    <div class="slds-border--bottom">
+        <p>Clone will create a new version of this opportunity specification.</p>
+        <br/>
+    </div>
+    <br/>
+    <p><ui:inputCheckbox aura:id="cbAttachments" label="Optional: Copy Attachments?"/></p><br/>
+    <p><ui:inputText aura:id="cloneReason" value="{!v.Specification.cloneReason__c}" label="Optional: Clone Reason"/></p><br/>
+    <p>Optional: Clone to a New Opportunity.</p>
+    <force:inputField aura:id="optty" value="{!v.Specification.opportunity__c}"/>
+    <!-- In progress Spinner -->
+	<div>
+  		<lightning:spinner aura:id="waitSpinner" class="slds-hide" alternativeText="Cloning">
+        </lightning:spinner>        
+    </div>
+    <br/>
+    <lightning:button label="Clone" onclick="{! c.handleClone }" />
+</aura:component>

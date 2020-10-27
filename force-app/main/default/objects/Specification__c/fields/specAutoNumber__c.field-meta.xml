@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>specAutoNumber__c</fullName>
+    <description>Unique specification number - auto assigned</description>
+    <displayFormat>SP-{000000}</displayFormat>
+    <externalId>false</externalId>
+    <inlineHelpText>Unique specification number - auto assigned</inlineHelpText>
+    <label>Spec Auto Number</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>AutoNumber</type>
+</CustomField>

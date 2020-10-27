@@ -1,0 +1,4 @@
+<aura:component implements="force:hasRecordId,force:hasSObjectName,flexipage:availableForAllPageTypes">
+	AddProduct Component - Recordid: {!v.recordId}- OBJECT - {!v.sObjectName}
+	
+</aura:component>

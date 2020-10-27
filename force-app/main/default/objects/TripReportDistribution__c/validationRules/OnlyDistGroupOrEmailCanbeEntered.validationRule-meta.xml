@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OnlyDistGroupOrEmailCanbeEntered</fullName>
+    <active>true</active>
+    <description>Only distribution group or email address can be entered</description>
+    <errorConditionFormula>IsBlank( distributionGroup__c )=false &amp;&amp; IsBlank(emailAddress__c) = false</errorConditionFormula>
+    <errorMessage>Both email address and distribution group can not be entered on a single report distribution record.</errorMessage>
+</ValidationRule>

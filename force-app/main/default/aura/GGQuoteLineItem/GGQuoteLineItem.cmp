@@ -1,0 +1,111 @@
+<aura:component access="global">
+	<aura:attribute name="quoteLI" type="SObject"/>
+   	<aura:attribute name="cIndex" type="Integer"/>
+    <aura:attribute name="forecastOptions" type="string[]"/>
+    <aura:attribute name="isSampleQuote" type="Boolean"/>
+    <aura:attribute name="isBlueQuote" type="Boolean" default="false"/>
+    <aura:attribute name="partsPriceTier" type="Integer" default="0"/>
+    <aura:attribute name="isPartsLI" type="Boolean"/>
+    <aura:attribute name="qtyTierStyle" type="String" default="slds-hide"/>
+    <aura:attribute name="qtyStyle" type="String" default=""/>
+    <aura:attribute name="moqStyle" type="String" default=""/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="freightStyle" type="String" default="slds-hide"/>
+    <aura:attribute name="freightLbl" type="String" default=""/>
+    <aura:attribute name="recordAccess" type="SObject"/>
+    <aura:attribute name="tooltip" type="String"/>
+    <aura:attribute name="statusMessage" type="String"/>
+    <aura:attribute name="priceMessage" type="String"/>
+    <aura:attribute name="quantityMessage" type="String"/>
+    <aura:attribute name="priceFloorIconStyle" type="String"/>
+    <aura:attribute name="quantity" type="String"/>
+    <aura:attribute name="performFloorPriceCheck" type="Boolean"/>
+    <aura:attribute name="displayUnit" type="String"/>
+    <aura:attribute name="runningInSF1" type="Boolean"/>
+    <aura:attribute name="statusStyle" type="String"/>
+    <aura:attribute name="priceLbl" type="String"/>
+    <aura:attribute name="priceInputStyle" type="String"/>
+    <aura:attribute name="totalPriceStyle" type="String"/>
+    <aura:attribute name="totalPriceLbl" type="String" default=""/>
+    
+    <aura:attribute name="qtyLbl" type="String" default=""/>
+    <aura:attribute name="qtyInputStyle" type="String"/>
+    <aura:attribute name="qtyLabelStyle" type="String"/>
+    <aura:attribute name="floorPriceLbl" type="String" default=""/>
+    <aura:attribute name="floorPriceStyle" type="String"/>
+    <aura:attribute name="floorPrice" type="String"/>
+    <aura:attribute name="isPartsProgramQuote" type="Boolean"/>
+    <aura:attribute name="moqUnit" type="String"/>
+    <aura:attribute name="moq" type="String"/>
+    <aura:attribute Name="setItem" type="object"  access="public" /> 
+    <aura:handler name="change" value="{!v.setItem}" action="{!c.itemsChange}"/>
+    <aura:registerEvent name="GGQuoteLISelected" type="c:GGQuoteLISelected"/>
+    <tr>
+        <td>
+            <lightning:icon aura:id="errorIcon" class="{!v.quoteLI.errorStyle}" iconName="utility:warning" variant="error" size="xx-small" title="{!v.quoteLI.errorMessage}"/>
+        	<span class="slds-row-number slds-text-body--small slds-text-color--weak"></span></td>
+        <td><!--<input type="checkBox" id="{!v.opttyLI.Id}" onclick="handleChkboxClick();"/>-->
+            <ui:inputCheckbox disabled="{!v.recordAccess.RecordEditable==false}" aura:id="selChk" change="{!c.onSelCheck}"/>
+        </td>
+        <td data-label="Product"><div  title="{!v.tooltip}" onmouseover="{!c.setTooltip}"><h3>{!v.quoteLI.Product2.Name}</h3></div></td>
+        <!-- Added MOQ and Unit for raw glass/concore -->
+        <td data-label="Specification">
+            {!v.quoteLI.specification__r.Name}
+        	<!--<c:customLookup objectAPIName="Specification__c" IconName="custom:custom26" setItem="{!v.setItem}" isDisable="{!not(v.quoteLI.Product2.isPrebuild__c)}"></c:customLookup>-->
+        </td>
+        <td data-label="MOQ" class="{!v.moqStyle}">{!v.moq}</td>
+        <td data-label="Unit" class="{!v.moqStyle}">{!v.moqUnit}</td>
+        <!-- PLM Price from price__c or QLI? -->
+        <!-- <td data-label="PLM Price" class="{!v.moqStyle}">{!v.quoteLI.price__r.priceUnit__c}</td> -->
+        <td data-label="PLM Price" class="{!v.moqStyle}">{!v.quoteLI.plmFloorPrice__c}</td>
+
+        
+        <td data-label="{!v.qtyLbl}" class="{!v.qtyStyle}">
+           <div class="{!v.qtyInputStyle}"><ui:inputNumber aura:id="quantity" disabled="{!v.recordAccess.QuantityEditable==false}" value="{!v.quoteLI.Quantity}" updateOn="keyup" change="{!c.setPrice}"/></div>
+           <div class="{!v.qtyLabelStyle}">{!v.quantity}</div>
+        </td>
+        <td data-label="{!v.floorPriceLbl}" class="{!v.floorPriceStyle}">{!v.floorPrice}</td>
+        <td data-label="{!v.priceLbl}" class="{!v.priceInputStyle}">
+            <!-- Cant edit price if record is raw glass/concore quote li -->
+            <div class="{!v.priceInputStyle}">
+            <ui:inputNumber disabled="{!v.recordAccess.UnitPriceEditable==false}" value="{!v.quoteLI.UnitPrice}" aura:id="price" updateOn="keyup" change="{!c.calculateTotalPrice}"/>
+            </div>
+        </td>
+        <td class="{!v.freightStyle}" data-label="{!v.freightLbl}">
+        	<div class="{!v.freightStyle}">
+            <ui:inputNumber disabled="{!v.recordAccess.FreightEditable==false}" value="{!v.quoteLI.freight__c}" aura:id="freight" updateOn="keyup" change="{!c.calculateTotalPrice}"/>
+            </div>
+        </td>
+        <!--<td data-label="Unit">
+        	{!v.displayUnit}
+        	
+        </td>-->
+        <!--<td>
+           <ui:inputNumber value="{!v.quoteLI.Discount}" aura:id="discount"/>
+        </td>-->
+        <td data-label="{!v.totalPriceLbl}" class="{!v.totalPriceStyle}"><div class="{!v.totalPriceStyle}">{!v.quoteLI.TotalPrice}</div><!--<ui:outputText value="{!v.quoteLI.TotalPrice}"/>--></td>
+        <td data-label="Description"><ui:inputText value="{!v.quoteLI.Description}"/></td>
+        <!--<td>
+        <tr>-->
+        <!--<td data-label="Price &lt; Approved Price"><lightning:icon aura:id="priceFloorIcon" class="{!v.priceFloorIconStyle}" iconName="utility:notification" variant="warning" size="xx-small" title="Needs Price Approval"/>-->
+            <!--<ui:inputCheckBox disabled="true" value="{!v.quoteLI.priceBelowFloor__c}"/></td><td>Needs Price Approval</td>-->
+        <!--</td>-->
+        <!--<td data-label="Price Expired"><ui:inputCheckBox disabled="true" value="{!v.quoteLI.priceExpired__c}"/></td><td>Price Expired</td>
+        <td data-label="Quantity &lt; MOQ"><ui:inputCheckBox disabled="true" value="{!v.quoteLI.quantityLessThanMOQ__c}"/></td><td>Quantity &lt; MOQ</td>
+		</tr>
+        </td>-->        
+		<td data-label="Status" class="{!v.statusStyle}">
+            <tr>
+            <div class="slds-text-body--small">{!v.priceMessage}</div>
+            </tr>
+            <tr>
+            <div class="slds-text-body--small">{!v.quantityMessage}</div>
+            </tr>
+            <tr>
+            <div class="slds-text-body--small">{!v.quoteLI.errorMessage}</div>
+            </tr>
+        </td>
+    </tr>
+    
+    
+</aura:component>

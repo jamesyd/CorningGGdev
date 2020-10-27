@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>previousStep__c</fullName>
+    <description>Previous step for the spec or sample opportunity</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Previous step for the spec or sample opportunity</inlineHelpText>
+    <label>Previous Step</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Manu_cant_be_changed_in_this_status</fullName>
+    <active>true</active>
+    <description>Manufacturing assessment can&apos;t be changed once approved.</description>
+    <errorConditionFormula>( $Profile.Name &lt;&gt; &apos;System Administrator&apos;) &amp;&amp; (ISCHANGED(  manufacturingAssignmentComplete__c  ) || ISCHANGED(  location__c )) &amp;&amp; 
+
+
+TEXT(status__c) &lt;&gt; &apos;Manufacturer Assignment&apos; &amp;&amp; PRIORVALUE(status__c) &lt;&gt; &apos;Manufacturer Assignment&apos;</errorConditionFormula>
+    <errorMessage>Manufacturing assessment can only be changed in the Manufacturing Assessment status.</errorMessage>
+</ValidationRule>
