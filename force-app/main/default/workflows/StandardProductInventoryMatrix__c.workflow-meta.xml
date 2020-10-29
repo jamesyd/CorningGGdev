@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Set_Inventory_Matrix_Name</fullName>
+        <field>Name</field>
+        <formula>text(glassComposition__c)+
+&apos;; &apos;+
+text(thickness__c)+
+&apos;mm; &apos;+
+text(customWidth__c)+
+&apos;mm x &apos;+
+text(customLength__c)+
+&apos;mm; &apos;+
+text(productLine__c)</formula>
+        <name>Set Inventory Matrix Name</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Set Inventory Matrix Name</fullName>
+        <actions>
+            <name>Set_Inventory_Matrix_Name</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>true</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

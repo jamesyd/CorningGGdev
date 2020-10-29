@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Appliance (refrigerator, oven, etc.)</fullName>
+        <default>false</default>
+        <label>Appliance (refrigerator, oven, etc.)</label>
+    </customValue>
+    <customValue>
+        <fullName>AR Head Mounted Device</fullName>
+        <default>false</default>
+        <label>AR Head Mounted Device</label>
+    </customValue>
+    <customValue>
+        <fullName>Auto</fullName>
+        <default>false</default>
+        <label>Auto</label>
+    </customValue>
+    <customValue>
+        <fullName>Camcorder</fullName>
+        <default>false</default>
+        <label>Camcorder</label>
+    </customValue>
+    <customValue>
+        <fullName>Camera</fullName>
+        <default>false</default>
+        <label>Camera</label>
+    </customValue>
+    <customValue>
+        <fullName>Clamshell</fullName>
+        <default>false</default>
+        <label>Clamshell</label>
+    </customValue>
+    <customValue>
+        <fullName>Convertible</fullName>
+        <default>false</default>
+        <label>Convertible</label>
+    </customValue>
+    <customValue>
+        <fullName>Detachable 2-in-1</fullName>
+        <default>false</default>
+        <label>Detachable 2-in-1</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital Assistant/Scanner</fullName>
+        <default>false</default>
+        <label>Digital Assistant/Scanner</label>
+    </customValue>
+    <customValue>
+        <fullName>Feature Phone</fullName>
+        <default>false</default>
+        <label>Feature Phone</label>
+    </customValue>
+    <customValue>
+        <fullName>Gaming Device</fullName>
+        <default>false</default>
+        <label>Gaming Device</label>
+    </customValue>
+    <customValue>
+        <fullName>Glasses</fullName>
+        <default>false</default>
+        <label>Glasses</label>
+    </customValue>
+    <customValue>
+        <fullName>IFPD</fullName>
+        <default>false</default>
+        <label>IFPD</label>
+    </customValue>
+    <customValue>
+        <fullName>Keyboard</fullName>
+        <default>false</default>
+        <label>Keyboard</label>
+    </customValue>
+    <customValue>
+        <fullName>LCM</fullName>
+        <default>false</default>
+        <label>LCM</label>
+    </customValue>
+    <customValue>
+        <fullName>Marker Board</fullName>
+        <default>false</default>
+        <label>Marker Board</label>
+    </customValue>
+    <customValue>
+        <fullName>Medical Device</fullName>
+        <default>false</default>
+        <label>Medical Device</label>
+    </customValue>
+    <customValue>
+        <fullName>Monitor</fullName>
+        <default>false</default>
+        <label>Monitor</label>
+    </customValue>
+    <customValue>
+        <fullName>Music Device</fullName>
+        <default>false</default>
+        <label>Music Device</label>
+    </customValue>
+    <customValue>
+        <fullName>Navigation Device</fullName>
+        <default>false</default>
+        <label>Navigation Device</label>
+    </customValue>
+    <customValue>
+        <fullName>Non-touch NB</fullName>
+        <default>false</default>
+        <label>Non-touch NB</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>POS Signature Pad</fullName>
+        <default>false</default>
+        <label>POS Signature Pad</label>
+    </customValue>
+    <customValue>
+        <fullName>Projector</fullName>
+        <default>false</default>
+        <label>Projector</label>
+    </customValue>
+    <customValue>
+        <fullName>Screen Protector</fullName>
+        <default>false</default>
+        <label>Screen Protector</label>
+    </customValue>
+    <customValue>
+        <fullName>Signage</fullName>
+        <default>false</default>
+        <label>Signage</label>
+    </customValue>
+    <customValue>
+        <fullName>Slate</fullName>
+        <default>false</default>
+        <label>Slate</label>
+    </customValue>
+    <customValue>
+        <fullName>Smartphone</fullName>
+        <default>false</default>
+        <label>Smartphone</label>
+    </customValue>
+    <customValue>
+        <fullName>Smart Remote</fullName>
+        <default>false</default>
+        <label>Smart Remote</label>
+    </customValue>
+    <customValue>
+        <fullName>Solar Technology</fullName>
+        <default>false</default>
+        <label>Solar Technology</label>
+    </customValue>
+    <customValue>
+        <fullName>Touch pad</fullName>
+        <default>false</default>
+        <label>Touch pad</label>
+    </customValue>
+    <customValue>
+        <fullName>TPM</fullName>
+        <default>false</default>
+        <label>TPM</label>
+    </customValue>
+    <customValue>
+        <fullName>Trackpad</fullName>
+        <default>false</default>
+        <label>Trackpad</label>
+    </customValue>
+    <customValue>
+        <fullName>TV</fullName>
+        <default>false</default>
+        <label>TV</label>
+    </customValue>
+    <customValue>
+        <fullName>VR Head Mounted Device</fullName>
+        <default>false</default>
+        <label>VR Head Mounted Device</label>
+    </customValue>
+    <customValue>
+        <fullName>Watch</fullName>
+        <default>false</default>
+        <label>Watch</label>
+    </customValue>
+    <customValue>
+        <fullName>Wireless Charger</fullName>
+        <default>false</default>
+        <label>Wireless Charger</label>
+    </customValue>
+    <masterLabel>Market Sub-Segment</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

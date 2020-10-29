@@ -2,13 +2,14 @@
  * @description       : 
  * @author            : Edgar Santillana
  * @group             : 
- * @last modified on  : 10-15-2020
- * @last modified by  : Edgar Santillana
+ * @last modified on  : 10-27-2020
+ * @last modified by  : Jim Dickerson
  * Modifications Log 
  * Ver   Date         Author             Modification
  * 1.0   09-08-2020   Edgar Santillana   Remove -TQ from GIS-TQ, XC-TQ and XX DG-TQ values on partsRiskNotification Method
  * 1.1   09-24-2020   Edgar Santillana   New value added JNTC-TQ-QA on partsRiskNotification Method 
  * 1.2   09-24-2020   Edgar Santillana   New value added Liangcheng-LR on partsRiskNotification Method 
+ * 1.3   10-27-2020   Jim Dickerson      New value added HLF-LR on partsRiskNotification Method
 **/
 public without sharing class ChatterHelper {
     
@@ -1600,10 +1601,7 @@ spec.id, spec.opportunityName__c + ' ' + finalRecipients + ' ***** DUAL SOURCE '
             if (l == 'LCE-LR') { location = 'MA~RA~LCE-LR';}
             if (l == 'JNTC-TQ') { location = 'JNTC-TQ-QA';}
             if (l == 'Liangcheng-LR') { location = 'Liangcheng-QA';}
-            
-            
-            
-            
+            if (l == 'HLF-LR') { location = 'HLF-QA';}
             
             if (source == 2) {
                 finalMessage = Utils.getMessageInnovationAndLocationDS(location,spec);

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>3M</fullName>
+        <default>false</default>
+        <label>3M</label>
+    </customValue>
+    <customValue>
+        <fullName>Aegis</fullName>
+        <default>false</default>
+        <label>Aegis</label>
+    </customValue>
+    <customValue>
+        <fullName>AGC</fullName>
+        <default>false</default>
+        <label>AGC</label>
+    </customValue>
+    <customValue>
+        <fullName>AGC AB Glass</fullName>
+        <default>false</default>
+        <label>AGC AB Glass</label>
+    </customValue>
+    <customValue>
+        <fullName>Agion</fullName>
+        <default>false</default>
+        <label>Agion</label>
+    </customValue>
+    <customValue>
+        <fullName>Asahi</fullName>
+        <default>false</default>
+        <label>Asahi</label>
+    </customValue>
+    <customValue>
+        <fullName>Biomaster</fullName>
+        <default>false</default>
+        <label>Biomaster</label>
+    </customValue>
+    <customValue>
+        <fullName>Biosafe</fullName>
+        <default>false</default>
+        <label>Biosafe</label>
+    </customValue>
+    <customValue>
+        <fullName>Carlex-Central</fullName>
+        <default>false</default>
+        <label>Carlex-Central</label>
+    </customValue>
+    <customValue>
+        <fullName>Clorox</fullName>
+        <default>false</default>
+        <label>Clorox</label>
+    </customValue>
+    <customValue>
+        <fullName>Continental</fullName>
+        <default>false</default>
+        <label>Continental</label>
+    </customValue>
+    <customValue>
+        <fullName>Fuyao</fullName>
+        <default>false</default>
+        <label>Fuyao</label>
+    </customValue>
+    <customValue>
+        <fullName>Ggg</fullName>
+        <default>false</default>
+        <label>Ggg</label>
+    </customValue>
+    <customValue>
+        <fullName>Glaskin</fullName>
+        <default>false</default>
+        <label>Glaskin</label>
+    </customValue>
+    <customValue>
+        <fullName>Guardian</fullName>
+        <default>false</default>
+        <label>Guardian</label>
+    </customValue>
+    <customValue>
+        <fullName>IonPure</fullName>
+        <default>false</default>
+        <label>IonPure</label>
+    </customValue>
+    <customValue>
+        <fullName>Kansai</fullName>
+        <default>false</default>
+        <label>Kansai</label>
+    </customValue>
+    <customValue>
+        <fullName>Kuraray Chemical</fullName>
+        <default>false</default>
+        <label>Kuraray Chemical</label>
+    </customValue>
+    <customValue>
+        <fullName>Maxwell</fullName>
+        <default>false</default>
+        <label>Maxwell</label>
+    </customValue>
+    <customValue>
+        <fullName>Microban</fullName>
+        <default>false</default>
+        <label>Microban</label>
+    </customValue>
+    <customValue>
+        <fullName>NEC</fullName>
+        <default>false</default>
+        <label>NEC</label>
+    </customValue>
+    <customValue>
+        <fullName>NEG</fullName>
+        <default>false</default>
+        <label>NEG</label>
+    </customValue>
+    <customValue>
+        <fullName>Nippon Chemicon</fullName>
+        <default>false</default>
+        <label>Nippon Chemicon</label>
+    </customValue>
+    <customValue>
+        <fullName>NSG-Pilkington</fullName>
+        <default>false</default>
+        <label>NSG-Pilkington</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Pilkington</fullName>
+        <default>false</default>
+        <label>Pilkington</label>
+    </customValue>
+    <customValue>
+        <fullName>PSA Peugeot</fullName>
+        <default>false</default>
+        <label>PSA Peugeot</label>
+    </customValue>
+    <customValue>
+        <fullName>Purell</fullName>
+        <default>false</default>
+        <label>Purell</label>
+    </customValue>
+    <customValue>
+        <fullName>Schott</fullName>
+        <default>false</default>
+        <label>Schott</label>
+    </customValue>
+    <customValue>
+        <fullName>Schott AG</fullName>
+        <default>false</default>
+        <label>Schott AG</label>
+    </customValue>
+    <customValue>
+        <fullName>SGL</fullName>
+        <default>false</default>
+        <label>SGL</label>
+    </customValue>
+    <customValue>
+        <fullName>SGS</fullName>
+        <default>false</default>
+        <label>SGS</label>
+    </customValue>
+    <customValue>
+        <fullName>Soda Lime</fullName>
+        <default>false</default>
+        <label>Soda Lime</label>
+    </customValue>
+    <customValue>
+        <fullName>SteriTouch</fullName>
+        <default>false</default>
+        <label>SteriTouch</label>
+    </customValue>
+    <customValue>
+        <fullName>St Gobain</fullName>
+        <default>false</default>
+        <label>St Gobain</label>
+    </customValue>
+    <customValue>
+        <fullName>Tru Vue</fullName>
+        <default>false</default>
+        <label>Tru Vue</label>
+    </customValue>
+    <customValue>
+        <fullName>Valeo</fullName>
+        <default>false</default>
+        <label>Valeo</label>
+    </customValue>
+    <customValue>
+        <fullName>Vindico</fullName>
+        <default>false</default>
+        <label>Vindico</label>
+    </customValue>
+    <masterLabel>Competitor</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

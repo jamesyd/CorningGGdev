@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>1805</fullName>
+        <default>false</default>
+        <label>1805</label>
+    </customValue>
+    <customValue>
+        <fullName>1807</fullName>
+        <default>false</default>
+        <label>1807</label>
+    </customValue>
+    <customValue>
+        <fullName>1811</fullName>
+        <default>false</default>
+        <label>1811</label>
+    </customValue>
+    <customValue>
+        <fullName>1815</fullName>
+        <default>false</default>
+        <label>1815</label>
+    </customValue>
+    <customValue>
+        <fullName>2003</fullName>
+        <default>false</default>
+        <label>2003</label>
+    </customValue>
+    <customValue>
+        <fullName>2317</fullName>
+        <default>false</default>
+        <label>2317</label>
+    </customValue>
+    <customValue>
+        <fullName>2318</fullName>
+        <default>false</default>
+        <label>2318</label>
+    </customValue>
+    <customValue>
+        <fullName>2319</fullName>
+        <default>false</default>
+        <label>2319</label>
+    </customValue>
+    <customValue>
+        <fullName>2320 (GG3)</fullName>
+        <default>false</default>
+        <label>2320 (GG3)</label>
+    </customValue>
+    <customValue>
+        <fullName>2521 (GG3+)</fullName>
+        <default>false</default>
+        <label>2521 (GG3+)</label>
+    </customValue>
+    <customValue>
+        <fullName>3318</fullName>
+        <default>false</default>
+        <label>3318</label>
+    </customValue>
+    <customValue>
+        <fullName>4318</fullName>
+        <default>false</default>
+        <label>4318</label>
+    </customValue>
+    <customValue>
+        <fullName>5318 (GG4)</fullName>
+        <default>false</default>
+        <label>5318 (GG4)</label>
+    </customValue>
+    <customValue>
+        <fullName>7321 (GG5)</fullName>
+        <default>false</default>
+        <label>7321 (GG5)</label>
+    </customValue>
+    <customValue>
+        <fullName>7418</fullName>
+        <default>false</default>
+        <label>7418</label>
+    </customValue>
+    <customValue>
+        <fullName>7431 (GG6)</fullName>
+        <default>false</default>
+        <label>7431 (GG6)</label>
+    </customValue>
+    <customValue>
+        <fullName>7541 (Victus)</fullName>
+        <default>false</default>
+        <label>7541 (Victus)</label>
+    </customValue>
+    <customValue>
+        <fullName>7518</fullName>
+        <default>false</default>
+        <label>7518</label>
+    </customValue>
+    <customValue>
+        <fullName>9218</fullName>
+        <default>false</default>
+        <label>9218</label>
+    </customValue>
+    <customValue>
+        <fullName>9318</fullName>
+        <default>false</default>
+        <label>9318</label>
+    </customValue>
+    <customValue>
+        <fullName>9319</fullName>
+        <default>false</default>
+        <label>9319</label>
+    </customValue>
+    <customValue>
+        <fullName>9724</fullName>
+        <default>false</default>
+        <label>9724</label>
+    </customValue>
+    <customValue>
+        <fullName>9726</fullName>
+        <default>false</default>
+        <label>9726</label>
+    </customValue>
+    <customValue>
+        <fullName>Maxwell GC</fullName>
+        <default>false</default>
+        <label>Maxwell GC</label>
+    </customValue>
+    <customValue>
+        <fullName>MGC</fullName>
+        <default>false</default>
+        <label>MGC</label>
+    </customValue>
+    <customValue>
+        <fullName>MM-B</fullName>
+        <default>false</default>
+        <label>MM-B</label>
+    </customValue>
+    <customValue>
+        <fullName>MX-B</fullName>
+        <default>false</default>
+        <label>MX-B</label>
+    </customValue>
+    <customValue>
+        <fullName>PHY2</fullName>
+        <default>false</default>
+        <label>PHY2</label>
+    </customValue>
+    <customValue>
+        <fullName>PHY2.1</fullName>
+        <default>false</default>
+        <label>PHY2.1</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Non-Gorilla Glass</fullName>
+        <default>false</default>
+        <label>Non-Gorilla Glass</label>
+    </customValue>
+    <customValue>
+        <fullName>2317 (3D Only)&apos;NA</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>2317 (3D Only)&apos;NA</label>
+    </customValue>
+    <customValue>
+        <fullName>3318 (Apple Only)&apos;GG1</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>3318 (Apple Only)&apos;GG1</label>
+    </customValue>
+    <customValue>
+        <fullName>4318 (Apple Only)&apos;BLU</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>4318 (Apple Only)&apos;BLU</label>
+    </customValue>
+    <customValue>
+        <fullName>5318&apos;GG4</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>5318&apos;GG4</label>
+    </customValue>
+    <customValue>
+        <fullName>Soda Lime</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Soda Lime</label>
+    </customValue>
+    <customValue>
+        <fullName>2320&apos;GG3</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>2320&apos;GG3</label>
+    </customValue>
+    <customValue>
+        <fullName>2319&apos;GG2</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>2319&apos;GG2</label>
+    </customValue>
+    <customValue>
+        <fullName>GG4</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>GG4</label>
+    </customValue>
+    <customValue>
+        <fullName>2318&apos;GG1</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>2318&apos;GG1</label>
+    </customValue>
+    <customValue>
+        <fullName>GG5</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>GG5</label>
+    </customValue>
+    <customValue>
+        <fullName>GG3</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>GG3</label>
+    </customValue>
+    <customValue>
+        <fullName>2521</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>2521</label>
+    </customValue>
+    <customValue>
+        <fullName>2320</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>2320</label>
+    </customValue>
+    <customValue>
+        <fullName>7541</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>7541</label>
+    </customValue>
+    <customValue>
+        <fullName>7431</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>7431</label>
+    </customValue>
+    <masterLabel>Glass Composition</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

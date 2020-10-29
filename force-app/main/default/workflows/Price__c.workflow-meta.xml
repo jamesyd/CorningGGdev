@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Pricing_Approval_Date</fullName>
+        <description>Set pricing approval date to current date when status changes.</description>
+        <field>priceApprovalDate__c</field>
+        <formula>TODAY()</formula>
+        <name>Pricing Approval Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>SetUOMToEach</fullName>
+        <field>Unit__c</field>
+        <literalValue>Each</literalValue>
+        <name>SetUOMToEach</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_price_expiry_date</fullName>
+        <description>Sets price expiry date to 30 days from approval for parts and a year for raw/concore.</description>
+        <field>priceExpirationDate__c</field>
+        <formula>if (TEXT(product__r.Family) ==&quot;Parts&quot;,  TODAY() + 30, TODAY()+365)</formula>
+        <name>Set price expiry date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_price_record_search_text</fullName>
+        <description>Set Search text to be a combination of product name, length, width, glass composition. This field is set through workflow. All words separated by space for tokenization.</description>
+        <field>searchText__c</field>
+        <formula>TEXT(product__r.glassComposition__c) + &apos; &apos; + TEXT(product__r.Length__c) + &apos; &apos; + TEXT(product__r.Width__c) + &apos; &apos; +  product__r.Product_Thickness__c + &apos; &apos; +  product__r.Name + &apos; &apos; +  LEFT(account__r.Name,20)</formula>
+        <name>Update price record search text</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Set price approval and expiry date</fullName>
+        <actions>
+            <name>Pricing_Approval_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Set_price_expiry_date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND (2 OR 3) and 4</booleanFilter>
+        <criteriaItems>
+            <field>Price__c.pricingApprovalStatus__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Price__c.productFamily__c</field>
+            <operation>equals</operation>
+            <value>Parts</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Price__c.isMTO__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Price__c.Non_Expiry_Price__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <description>Set the price approval date to the current date when the record is created or when PLM approves the price.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>SetUOMToEach</fullName>
+        <actions>
+            <name>SetUOMToEach</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Set uom default to each for parts/mto</description>
+        <formula>(LEN(TEXT(Unit__c)) = 0) &amp;&amp; ( IsBlank(product__r.specification__c ) == FALSE)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update search text</fullName>
+        <actions>
+            <name>Update_price_record_search_text</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Search text for product search. A combination of product name, length, width, glass composition. This field is set through workflow.</description>
+        <formula>ISBLANK(product__c)  = FALSE</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

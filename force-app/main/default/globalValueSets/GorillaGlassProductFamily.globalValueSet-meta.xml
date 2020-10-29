@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Raw Glass</fullName>
+        <default>false</default>
+        <label>Raw Glass</label>
+    </customValue>
+    <customValue>
+        <fullName>Concore</fullName>
+        <default>false</default>
+        <label>Concore</label>
+    </customValue>
+    <customValue>
+        <fullName>Parts</fullName>
+        <default>false</default>
+        <label>Parts</label>
+    </customValue>
+    <description>Gorilla Glass Product Family</description>
+    <masterLabel>Gorilla Glass Product Family</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

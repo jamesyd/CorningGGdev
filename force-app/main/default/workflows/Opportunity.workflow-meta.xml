@@ -1,0 +1,1190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>CAG_New_AP_Opportunity</fullName>
+        <description>CAG New AP Opportunity</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>sculthortj@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>spencersa@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>wangjb2.st@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/CAG_Opp</template>
+    </alerts>
+    <alerts>
+        <fullName>CAG_New_EU_Opportunity</fullName>
+        <description>CAG New EU Opportunity</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>linderm.st@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>sculthortj@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>spencersa@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/CAG_Opp</template>
+    </alerts>
+    <alerts>
+        <fullName>CAG_New_Glazing_Opportunity</fullName>
+        <description>CAG New Glazing Opportunity</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>eric.biribuze.st@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>keorasmek.st@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/CAG_Opp</template>
+    </alerts>
+    <alerts>
+        <fullName>CAG_New_NA_Opportunity</fullName>
+        <description>CAG New NA Opportunity</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>macquarrjf@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>sculthortj@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>spencersa@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/CAG_Opp</template>
+    </alerts>
+    <alerts>
+        <fullName>CAG_Opportunity_workflow</fullName>
+        <description>CAG Opportunity workflow</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>scalesga.st@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>shawrm@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/CAG_Opp</template>
+    </alerts>
+    <alerts>
+        <fullName>CAG_Won_AP_Opportunity</fullName>
+        <description>CAG Won AP Opportunity</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>sculthortj@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>spencersa@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>wangjb2.st@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/CAG_Opp_Win</template>
+    </alerts>
+    <alerts>
+        <fullName>CAG_Won_EU_Opportunity</fullName>
+        <description>CAG Won EU Opportunity</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>linderm.st@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>sculthortj@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>spencersa@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/CAG_Opp_Win</template>
+    </alerts>
+    <alerts>
+        <fullName>CAG_Won_Glazing_Opportunity</fullName>
+        <description>CAG Won Glazing Opportunity</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>eric.biribuze.st@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>keorasmek.st@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/CAG_Opp_Win</template>
+    </alerts>
+    <alerts>
+        <fullName>CAG_Won_NA_Opportunity</fullName>
+        <description>CAG Won NA Opportunity</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>macquarrjf@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>sculthortj@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>spencersa@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/CAG_Opp_Win</template>
+    </alerts>
+    <alerts>
+        <fullName>Sample_Request_Order_Pending_Notification</fullName>
+        <ccEmails>ChouYC@Corning.com</ccEmails>
+        <description>Sample Request Order Pending Notification</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <recipient>GGCustomerServiceManager</recipient>
+            <type>role</type>
+        </recipients>
+        <recipients>
+            <recipient>GGCustomerServiceRep</recipient>
+            <type>role</type>
+        </recipients>
+        <recipients>
+            <recipient>GG_Allocation_Team_Planner</recipient>
+            <type>role</type>
+        </recipients>
+        <recipients>
+            <recipient>adam.nicholson@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>chenh12@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>zhangh42@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>GGEmailTemplates/Sample_Request_Order_Pending_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>Sample_Request_Order_Pending_Notification_Blue</fullName>
+        <description>Sample Request Order Pending Notification - Blue</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <recipient>adam.nicholson@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>chenh12@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>zhouz@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>zouy2@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>GGEmailTemplates/Sample_Request_Order_Pending_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>Sample_Request_Order_Pending_Notification_Phyllo</fullName>
+        <ccEmails>ChouYC@Corning.com.invalid</ccEmails>
+        <description>Sample Request Order Pending Notification - Phyllo</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <recipient>GGCustomerServiceManager</recipient>
+            <type>role</type>
+        </recipients>
+        <recipients>
+            <recipient>GGCustomerServiceRep</recipient>
+            <type>role</type>
+        </recipients>
+        <recipients>
+            <recipient>GG_Allocation_Team_Planner</recipient>
+            <type>role</type>
+        </recipients>
+        <recipients>
+            <recipient>adam.nicholson@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>chenh12@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>leey3@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>moraa3.csm@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>zhangh42@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>zhouz@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>GGEmailTemplates/Sample_Request_Order_Pending_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>Sample_Request_Pricing_Complete</fullName>
+        <description>Sample Request Pricing Complete</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <recipient>chenh12@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>GGEmailTemplates/Sample_request_pricing_complete</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Change_RT_to_GG_Parts_Sample_Submitted</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>GG_Parts_Sample_Submitted</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Change RT to GG Parts Sample - Submitted</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Stage_to_Cancelled</fullName>
+        <field>StageName</field>
+        <literalValue>Cancelled</literalValue>
+        <name>Change Stage to Cancelled</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Stage_to_Commercial_Assessment</fullName>
+        <field>StageName</field>
+        <literalValue>Commercial Assessment</literalValue>
+        <name>Change Stage to Commercial Assessment</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Stage_to_Customer_Quotation</fullName>
+        <field>StageName</field>
+        <literalValue>Customer Quotation</literalValue>
+        <name>Change Stage to Customer Quotation</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Stage_to_Non_Paid_Declined</fullName>
+        <field>StageName</field>
+        <literalValue>Non-paid Declined</literalValue>
+        <name>Change Stage to Non-Paid Declined</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Stage_to_Non_Paid_Request</fullName>
+        <field>StageName</field>
+        <literalValue>Non-paid Request</literalValue>
+        <name>Change Stage to Non-Paid Request</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Stage_to_Order_Pending</fullName>
+        <field>StageName</field>
+        <literalValue>Order Pending</literalValue>
+        <name>Change Stage to Order Pending</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Stage_to_PLM_Assessment</fullName>
+        <field>StageName</field>
+        <literalValue>PLM Assessment</literalValue>
+        <name>Change Stage to PLM Assessment</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Stage_to_Pricing_Assignment</fullName>
+        <field>StageName</field>
+        <literalValue>Pricing Assignment</literalValue>
+        <name>Change Stage to Pricing Assignment</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Stage_to_RSM_Approval</fullName>
+        <field>StageName</field>
+        <literalValue>RSM Approval</literalValue>
+        <name>Change Stage to RSM Approval</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_State_to_CM_Assignment</fullName>
+        <field>StageName</field>
+        <literalValue>CM Assignment</literalValue>
+        <name>Change State to CM Assignment</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_record_type_to_GG_RC_Samp_Sub</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>GG_Raw_Glass_Sample_Submitted</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Change record type to GG RC Samp. Sub</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Clear_Forecast_Created</fullName>
+        <field>createForecast__c</field>
+        <literalValue>0</literalValue>
+        <name>Clear Forecast Created</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Clear_MP_Exchange_Lock_Date</fullName>
+        <field>mpExchangeRateLockDate__c</field>
+        <name>Clear MP Exchange Lock Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Clear_MP_Exchange_Lock_Reason</fullName>
+        <field>mPExchangeLockReason__c</field>
+        <name>Clear MP Exchange Lock Reason</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Clear_MP_First_Accepted_Quote_Currency</fullName>
+        <field>mpQuoteCurrency__c</field>
+        <name>Clear MP First Accepted Quote Currency</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Clear_MP_JPY_Locked_Rate</fullName>
+        <field>mpJpyExchangeRate__c</field>
+        <name>Clear MP JPY  Locked Rate</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Clear_MP_RMB_Lock_Rate</fullName>
+        <field>mpRmbExchangeRate__c</field>
+        <name>Clear MP RMB Lock Rate</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Clear_Program_Completed</fullName>
+        <field>programCompleted__c</field>
+        <literalValue>0</literalValue>
+        <name>Clear Program Completed</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PLM_Pricing_Assignment_Complete</fullName>
+        <field>pricingAssignmentComplete__c</field>
+        <literalValue>1</literalValue>
+        <name>PLM Pricing Assignment Complete</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PM_Notified</fullName>
+        <field>Product_Manager_Notified__c</field>
+        <formula>TEXT(NOW())</formula>
+        <name>PM Notified</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Populate_Sample_Submit_Date</fullName>
+        <field>sampleSubmitDate__c</field>
+        <formula>TODAY()</formula>
+        <name>Populate Sample Submit Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Sample_Request_Number</fullName>
+        <description>Update Opportunity Name with SR Number</description>
+        <field>Name</field>
+        <formula>Sample_Request_Number__c</formula>
+        <name>Sample Request Number</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_GG_Opportunity_Inquiry_Name</fullName>
+        <field>Name</field>
+        <formula>opportunityInquiryAutoName__c</formula>
+        <name>Set GG Opportunity Inquiry Name</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_GG_Opportunity_Name</fullName>
+        <field>Name</field>
+        <formula>opportunityAutoName__c</formula>
+        <name>Set GG Opportunity Name</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Approval_Date</fullName>
+        <field>sampleApprovalDate__c</field>
+        <formula>TODAY()</formula>
+        <name>Update Approval Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_IsExclusive_on_Opportunity</fullName>
+        <field>isExclusive__c</field>
+        <literalValue>1</literalValue>
+        <name>Update IsExclusive on Opportunity</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_RT_To_GG_Parts_Sample_Prebuild</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>GG_Sample_Parts_Opportunity_Prebuild</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Update RT To GG Parts Sample Prebuild</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Stage_to_New</fullName>
+        <field>StageName</field>
+        <literalValue>New</literalValue>
+        <name>Update Stage to New</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>CAG Opportunity</fullName>
+        <actions>
+            <name>CAG_Opportunity_workflow</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>PM_Notified</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>OEM Technical Feasibility Achieved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Product_Manager_Notified__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CAG Opportunity</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>CAG Opportunity Creation AP</fullName>
+        <actions>
+            <name>CAG_New_AP_Opportunity</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.Region__c</field>
+            <operation>equals</operation>
+            <value>AP</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CAG Opportunity</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>CAG Opportunity Creation EU</fullName>
+        <actions>
+            <name>CAG_New_EU_Opportunity</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.Region__c</field>
+            <operation>equals</operation>
+            <value>EU</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CAG Opportunity</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>CAG Opportunity Creation Glazing</fullName>
+        <actions>
+            <name>CAG_New_Glazing_Opportunity</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.Business_Area__c</field>
+            <operation>equals</operation>
+            <value>Glazing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CAG Opportunity</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>CAG Opportunity Creation Interior</fullName>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.Business_Area__c</field>
+            <operation>equals</operation>
+            <value>Interior</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CAG Opportunity</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>CAG Opportunity Creation NA</fullName>
+        <actions>
+            <name>CAG_New_NA_Opportunity</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.Region__c</field>
+            <operation>equals</operation>
+            <value>NA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CAG Opportunity</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>CAG Opportunity Won AP</fullName>
+        <actions>
+            <name>CAG_Won_AP_Opportunity</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.Region__c</field>
+            <operation>equals</operation>
+            <value>AP</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>6 - Post Purchase Behaviors (Closed/Won)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CAG Opportunity</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>CAG Opportunity Won EU</fullName>
+        <actions>
+            <name>CAG_Won_EU_Opportunity</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.Region__c</field>
+            <operation>equals</operation>
+            <value>EU</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>6 - Post Purchase Behaviors (Closed/Won)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CAG Opportunity</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>CAG Opportunity Won Glazing</fullName>
+        <actions>
+            <name>CAG_Won_Glazing_Opportunity</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.Business_Area__c</field>
+            <operation>equals</operation>
+            <value>Glazing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>6 - Post Purchase Behaviors (Closed/Won)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CAG Opportunity</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>CAG Opportunity Won Interior</fullName>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.Business_Area__c</field>
+            <operation>equals</operation>
+            <value>Interior</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>6 - Post Purchase Behaviors (Closed/Won)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CAG Opportunity</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>CAG Opportunity Won NA</fullName>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.Region__c</field>
+            <operation>equals</operation>
+            <value>NA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>6 - Post Purchase Behaviors (Closed/Won)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CAG Opportunity</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Clear Field Values</fullName>
+        <actions>
+            <name>Clear_Forecast_Created</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_MP_Exchange_Lock_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_MP_Exchange_Lock_Reason</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_MP_First_Accepted_Quote_Currency</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_MP_JPY_Locked_Rate</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_MP_RMB_Lock_Rate</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_Program_Completed</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.Name</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>GG Opportunity Inquiry Name</fullName>
+        <actions>
+            <name>Set_GG_Opportunity_Inquiry_Name</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>GG Inquiry</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>GG Opportunity Name</fullName>
+        <actions>
+            <name>Set_GG_Opportunity_Name</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>GG Program</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New - Parts Sample Free Not Approved %28Standard and Non-Standard%29</fullName>
+        <actions>
+            <name>Change_Stage_to_Non_Paid_Declined</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>If the free request is not approved then change the stage to &apos;Non-Paid Declined&apos;.</description>
+        <formula>AND(  NOT(ISCHANGED(Name)),  ISPICKVAL(StageName, &apos;Non-paid Request&apos;),  (RecordType.Name = &apos;GG Parts Sample - Submitted&apos;),  ISPICKVAL(freeApproved__c, &apos;No&apos;),  ISCHANGED(freeApproved__c)  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New - Parts Sample Submit For Approval</fullName>
+        <actions>
+            <name>Change_RT_to_GG_Parts_Sample_Submitted</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Change_State_to_CM_Assignment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(  NOT(ISCHANGED(Name)), ISPICKVAL(StageName, &apos;New&apos;),  (RecordType.Name = &apos;GG Parts Sample Request&apos;),   NOT(isPreBuild__c), NOT( isPhyllo__c ), (submitForApproval__c = TRUE), ISCHANGED(submitForApproval__c), (OR(numberCmLocations__c   &lt;&gt;  1, ISNULL(numberCmLocations__c)))  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New - Parts Sample Submit For Approval - Pricing Assignment</fullName>
+        <actions>
+            <name>Change_RT_to_GG_Parts_Sample_Submitted</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Change_Stage_to_Pricing_Assignment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(ISPICKVAL(StageName, &apos;New&apos;),      RecordType.Name = &apos;GG Parts Sample Request&apos;,    isPhyllo__c,     ISCHANGED(submitForApproval__c),     submitForApproval__c )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New - Parts Sample Submit For Approval - RSM Approval</fullName>
+        <actions>
+            <name>Change_Stage_to_RSM_Approval</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Update_RT_To_GG_Parts_Sample_Prebuild</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(ISPICKVAL(StageName, &apos;New&apos;),      RecordType.Name = &apos;GG Parts Sample Request&apos;,     isPreBuild__c,     ISCHANGED(submitForApproval__c),     submitForApproval__c )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New - Parts Sample Submit For Approval - Skip CM</fullName>
+        <actions>
+            <name>Change_RT_to_GG_Parts_Sample_Submitted</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Change_Stage_to_Pricing_Assignment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(  NOT(ISCHANGED(Name)), ISPICKVAL(StageName, &apos;New&apos;),  (RecordType.Name = &apos;GG Parts Sample Request&apos;), NOT(isPreBuild__c), NOT( isPhyllo__c ),(submitForApproval__c = TRUE), ISCHANGED(submitForApproval__c), (numberCmLocations__c  = 1)  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New - Parts Sample Submit For Customer Quotation %28Standard or Non-Standard%29</fullName>
+        <actions>
+            <name>Change_Stage_to_Customer_Quotation</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Submit for Customer Quotation for either path (Standard or Non-Standard).</description>
+        <formula>AND(  NOT(ISCHANGED(Name)),  ISPICKVAL(StageName, &apos;Pricing Assignment&apos;),  (RecordType.Name = &apos;GG Parts Sample - Submitted&apos;),  (pricingAssignmentComplete__c = TRUE),  ISCHANGED(pricingAssignmentComplete__c)  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New - Parts Sample Submit For Non-Paid Request %28Standard and Non-Standard%29</fullName>
+        <actions>
+            <name>Change_Stage_to_Non_Paid_Request</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>If the Customer has rejected the Quote then set the stage to &apos;Non-Paid Request&apos;.</description>
+        <formula>AND(  NOT(ISCHANGED(Name)),  ISPICKVAL(StageName, &apos;Customer Decision&apos;),  (RecordType.Name = &apos;GG Parts Sample - Submitted&apos;),  ISPICKVAL(Customer_Quote_Decision__c, &apos;Rejected&apos;),  ISCHANGED(Customer_Quote_Decision__c)  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New - Parts Sample Submit For Non-paid Declined %28Standard and Non-Standard%29</fullName>
+        <actions>
+            <name>Change_Stage_to_Non_Paid_Declined</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>If it can&apos;t be free then close the Sample request.</description>
+        <formula>AND(  NOT(ISCHANGED(Name)),  ISPICKVAL(StageName, &apos;Non-paid Request&apos;),  (RecordType.Name = &apos;GG Parts Sample - Submitted&apos;),  ISPICKVAL(requestFreeSample__c, &apos;No&apos;),  ISCHANGED(requestFreeSample__c)  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New - Parts Sample Submit For Order Pending %28Standard and Non-Standard%29</fullName>
+        <actions>
+            <name>Change_Stage_to_Order_Pending</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Submit for Order Pending for either path (Standard or Non-Standard).</description>
+        <formula>OR( (AND(  NOT(ISCHANGED(Name)),  ISPICKVAL(StageName, &apos;Customer Decision&apos;),  (RecordType.Name = &apos;GG Parts Sample - Submitted&apos;), ISPICKVAL(Customer_Quote_Decision__c, &apos;Accepted&apos;),  ISCHANGED(Customer_Quote_Decision__c) )), (AND(  NOT(ISCHANGED(Name)),  ISPICKVAL(StageName, &apos;Non-paid Request&apos;), (RecordType.Name = &apos;GG Parts Sample - Submitted&apos;),  ISPICKVAL(requestFreeSample__c, &apos;YES&apos;),  ISPICKVAL(freeApproved__c, &apos;YES&apos;),  ISCHANGED(freeApproved__c)  )))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New - Raw%2FConcore Sample Cancel Request</fullName>
+        <actions>
+            <name>Change_Stage_to_Cancelled</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Cancel the Sample request if the PLM doesn&apos;t approve it.</description>
+        <formula>OR(  (AND(  NOT(ISCHANGED(Name)),  ISPICKVAL(StageName, &apos;Commercial Assessment&apos;),  (RecordType.Name = &apos;GG Raw Glass/Concore Sample - Submitted&apos;),  ISPICKVAL(commercialApproved__c, &apos;No&apos;),  ISCHANGED(commercialApproved__c)  )),  (AND(  NOT(ISCHANGED(Name)),  ISPICKVAL(StageName, &apos;PLM Assessment&apos;),  (RecordType.Name = &apos;GG Raw Glass/Concore Sample - Submitted&apos;),  ISPICKVAL(plmApproved__c, &apos;No&apos;),  ISCHANGED(plmApproved__c)  )))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New - Raw%2FConcore Sample Free Not Approved</fullName>
+        <actions>
+            <name>Change_Stage_to_Non_Paid_Declined</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Set to &apos;Non-paid Declined&apos; if the free request is not approved.</description>
+        <formula>AND(  NOT(ISCHANGED(Name)),  ISPICKVAL(StageName, &apos;Non-paid Request&apos;),  (RecordType.Name = &apos;GG Raw Glass/Concore Sample - Submitted&apos;),  ISPICKVAL(freeApproved__c, &apos;No&apos;),  ISCHANGED(freeApproved__c)  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New - Raw%2FConcore Sample Submit For Approval</fullName>
+        <actions>
+            <name>Change_Stage_to_Commercial_Assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Change_record_type_to_GG_RC_Samp_Sub</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Populate_Sample_Submit_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Submit a Raw/Concore Sample request for approval.</description>
+        <formula>AND(  NOT(ISCHANGED(Name)),  ISPICKVAL(StageName, &apos;New&apos;),  (RecordType.Name = &apos;GG Raw Glass/Concore Sample Request&apos;),  (submitForApproval__c = TRUE),  ISCHANGED(submitForApproval__c), (countOpportunityLineItems__c &lt; 20) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New - Raw%2FConcore Sample Submit For Customer Quotation</fullName>
+        <actions>
+            <name>Change_Stage_to_Customer_Quotation</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>PLM_Pricing_Assignment_Complete</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Submit Raw/Concore Sample request for Customer Quotation.</description>
+        <formula>AND(  NOT(ISCHANGED(Name)),  ISPICKVAL(StageName, &apos;PLM Assessment&apos;),  (RecordType.Name = &apos;GG Raw Glass/Concore Sample - Submitted&apos;),  ISPICKVAL(plmApproved__c, &apos;YES&apos;),  ISCHANGED(plmApproved__c)  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New - Raw%2FConcore Sample Submit For Order Pending</fullName>
+        <actions>
+            <name>Change_Stage_to_Order_Pending</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Submit Raw/Concore Sample request for Order Pending.</description>
+        <formula>OR(  (AND(  NOT(ISCHANGED(Name)),  ISPICKVAL(StageName, &apos;Customer Decision&apos;),  (RecordType.Name = &apos;GG Raw Glass/Concore Sample - Submitted&apos;),  ISPICKVAL(Customer_Quote_Decision__c, &apos;Accepted&apos;),  ISCHANGED(Customer_Quote_Decision__c)  )),  (AND(  NOT(ISCHANGED(Name)),  ISPICKVAL(StageName, &apos;Non-paid Request&apos;),  (RecordType.Name = &apos;GG Raw Glass/Concore Sample - Submitted&apos;),  ISPICKVAL(requestFreeSample__c, &apos;YES&apos;),  ISPICKVAL(freeApproved__c, &apos;YES&apos;),  ISCHANGED(freeApproved__c)  )))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New - Raw%2FConcore Sample Submit For PLM Assessment</fullName>
+        <actions>
+            <name>Change_Stage_to_PLM_Assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Submit Raw/Concore Sample request for PLM Assessment.</description>
+        <formula>AND(  NOT(ISCHANGED(Name)),  ISPICKVAL(StageName, &apos;Commercial Assessment&apos;),  (RecordType.Name = &apos;GG Raw Glass/Concore Sample - Submitted&apos;),  ISPICKVAL(commercialApproved__c, &apos;Yes&apos;),  ISCHANGED(commercialApproved__c)  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New - Raw%2FConfore Sample Submit For Non-paid Declined</fullName>
+        <actions>
+            <name>Change_Stage_to_Non_Paid_Declined</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Set to &apos;Non-paid Declined&apos; if the free request is not attempted.</description>
+        <formula>AND(  NOT(ISCHANGED(Name)),  ISPICKVAL(StageName, &apos;Non-paid Request&apos;),  (RecordType.Name = &apos;GG Raw Glass/Concore Sample - Submitted&apos;),  ISPICKVAL(requestFreeSample__c, &apos;No&apos;),  ISCHANGED(requestFreeSample__c)  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New - Sample Approval for Non-Paid Request</fullName>
+        <actions>
+            <name>Change_Stage_to_Order_Pending</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>If the opportunity owner sets request free sample to &quot;Yes&quot;, and it has been approved.  Set the stage to &apos;Order Pending&apos;.</description>
+        <formula>AND( NOT(ISCHANGED(Name)), ISCHANGED(freeApproved__c), ISPICKVAL(requestFreeSample__c, &apos;YES&apos;), ISPICKVAL(freeApproved__c, &apos;YES&apos;) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New - Sample Request Order Pending Notification</fullName>
+        <actions>
+            <name>Sample_Request_Order_Pending_Notification</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>Send an email when a parts Sample reaches the &apos;Order Pending&apos; stage</description>
+        <formula>AND(  NOT(ISCHANGED(Name)),  OR((RecordType.Name = &apos;GG Parts Sample - Submitted&apos;),(RecordType.Name = &apos;GG Raw Glass/Concore Sample - Submitted&apos;)), ISPICKVAL(StageName, &apos;Order Pending&apos;),  ISCHANGED(StageName),
+Account.Name != &apos;Blue&apos;   )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New - Sample Request Order Pending Notification - Blue</fullName>
+        <actions>
+            <name>Sample_Request_Order_Pending_Notification_Blue</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>Send an email when a parts Sample reaches the &apos;Order Pending&apos; stage</description>
+        <formula>AND(  
+NOT(ISCHANGED(Name)),  
+OR(
+   (RecordType.Name = &apos;GG Parts Sample - Submitted&apos;), 
+   (RecordType.Name = &apos;GG Raw Glass/Concore Sample - Submitted&apos;)),
+ISPICKVAL(StageName, &apos;Order Pending&apos;),
+ISCHANGED(StageName),
+Account.Name = &apos;Blue&apos;  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New - Sample Request Order Pending Notification - Phyllo</fullName>
+        <actions>
+            <name>Sample_Request_Order_Pending_Notification_Phyllo</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>Send an email when a parts Sample reaches the &apos;Order Pending&apos; stage and the product is phyllo</description>
+        <formula>AND(  NOT(ISCHANGED(Name)),   				OR((RecordType.Name = &apos;GG Parts Sample - Submitted&apos;), 							(RecordType.Name = &apos;GG Raw Glass/Concore Sample - Submitted&apos;) 						), ISPICKVAL(StageName, &apos;Order Pending&apos;),   				ISCHANGED(StageName),     Account.Name != &apos;Blue&apos;, 				isPhyllo__c 			)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New - Sample Submit For Non-Paid Request</fullName>
+        <actions>
+            <name>Change_Stage_to_Non_Paid_Request</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>If the opportunity owner sets request free sample to &quot;Yes&quot;, set the stage to &apos;Non-Paid Request&apos;.</description>
+        <formula>AND(  NOT(ISCHANGED(Name)),  ISPICKVAL(requestFreeSample__c, &apos;Yes&apos;),  ISCHANGED(requestFreeSample__c)  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New - Sample request pricing complete note</fullName>
+        <actions>
+            <name>Sample_Request_Pricing_Complete</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>Send an email to opportunity owner when sample request pricing is completed by PLM.</description>
+        <formula>OR(  (AND(  NOT(ISCHANGED(Name)),  ISPICKVAL(StageName, &apos;Customer Quotation&apos;),  (RecordType.Name = &apos;GG Parts Sample - Submitted&apos;),  (pricingAssignmentComplete__c = TRUE),  ISCHANGED(pricingAssignmentComplete__c)  )),  (AND(  NOT(ISCHANGED(Name)),  ISPICKVAL(StageName, &apos;Customer Quotation&apos;),  (RecordType.Name = &apos;GG Raw Glass/Concore Sample - Submitted&apos;),  ISPICKVAL(requestFreeSample__c, &apos;YES&apos;),  ISPICKVAL(plmApproved__c, &apos;YES&apos;),  ISCHANGED(plmApproved__c)  )))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New - Update Sample Approval Date</fullName>
+        <actions>
+            <name>Update_Approval_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>OR(  (AND(  NOT(ISCHANGED(Name)),  ISPICKVAL(StageName, &apos;Order Pending&apos;),  (RecordType.Name = &apos;GG Parts Sample - Submitted&apos;),   ISCHANGED(StageName)  )),  (AND(  NOT(ISCHANGED(Name)),  ISPICKVAL(StageName, &apos;Order Pending&apos;),  (RecordType.Name = &apos;GG Raw Glass/Concore Sample - Submitted&apos;),  ISCHANGED(StageName)  )))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Sample Request Opportunity Name</fullName>
+        <actions>
+            <name>Sample_Request_Number</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>GG Parts Sample Request,GG Raw Glass/Concore Sample Request,GG Raw Glass/Concore Sample - Submitted,GG Parts Sample - Submitted</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Sample Starting Stage</fullName>
+        <actions>
+            <name>Update_Stage_to_New</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>GG Parts Sample Request,GG Raw Glass/Concore Sample Request,GG Raw Glass/Concore Sample - Submitted,GG Parts Sample - Submitted</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Opportunity IsExclusive</fullName>
+        <actions>
+            <name>Update_IsExclusive_on_Opportunity</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>IF (Owner.UserRole.Name = &quot;GG Exclusive (Blue)&quot;, True, False)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>AlSi</fullName>
+        <default>false</default>
+        <label>Al-Si</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Plastic</fullName>
+        <default>false</default>
+        <label>Plastic</label>
+    </customValue>
+    <customValue>
+        <fullName>Sapphire</fullName>
+        <default>false</default>
+        <label>Sapphire</label>
+    </customValue>
+    <customValue>
+        <fullName>Soda Lime</fullName>
+        <default>false</default>
+        <label>Soda Lime</label>
+    </customValue>
+    <customValue>
+        <fullName>TBD 1</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>TBD 1</label>
+    </customValue>
+    <customValue>
+        <fullName>TBD 2</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>TBD 2</label>
+    </customValue>
+    <masterLabel>Competitor Composition</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

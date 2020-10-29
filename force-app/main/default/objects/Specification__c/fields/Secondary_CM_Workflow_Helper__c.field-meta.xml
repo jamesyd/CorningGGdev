@@ -16,6 +16,7 @@ IF(INCLUDES(dsLocation__c,&apos;GO&apos;),1,0)+
 IF(INCLUDES(dsLocation__c,&apos;GTOC&apos;),1,0)+
 IF(INCLUDES(dsLocation__c,&apos;HDC&apos;),1,0)+
 IF(INCLUDES(dsLocation__c,&apos;HH-LowR&apos;),1,0)+
+IF(INCLUDES(dsLocation__c,&apos;HLF-LR&apos;),1,0)+
 IF(INCLUDES(dsLocation__c,&apos;Hong Kong Warehouse&apos;),1,0)+
 IF(INCLUDES(dsLocation__c,&apos;Hony&apos;),1,0)+
 IF(INCLUDES(dsLocation__c,&apos;HTF&apos;),1,0)+

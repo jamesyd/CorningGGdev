@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Back Cover</fullName>
+        <default>false</default>
+        <label>Back Cover</label>
+    </customValue>
+    <customValue>
+        <fullName>Camera Lens Cover</fullName>
+        <default>false</default>
+        <label>Camera Lens Cover</label>
+    </customValue>
+    <customValue>
+        <fullName>Front Cover</fullName>
+        <default>false</default>
+        <label>Front Cover</label>
+    </customValue>
+    <customValue>
+        <fullName>Home Button</fullName>
+        <default>false</default>
+        <label>Home Button</label>
+    </customValue>
+    <customValue>
+        <fullName>LCM</fullName>
+        <default>false</default>
+        <label>LCM</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Scanner Cover</fullName>
+        <default>false</default>
+        <label>Scanner Cover</label>
+    </customValue>
+    <customValue>
+        <fullName>Screen Protector</fullName>
+        <default>false</default>
+        <label>Screen Protector</label>
+    </customValue>
+    <customValue>
+        <fullName>Touch Keypad Cover</fullName>
+        <default>false</default>
+        <label>Touch Keypad Cover</label>
+    </customValue>
+    <customValue>
+        <fullName>Touch Sensor</fullName>
+        <default>false</default>
+        <label>Touch Sensor</label>
+    </customValue>
+    <masterLabel>Application</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

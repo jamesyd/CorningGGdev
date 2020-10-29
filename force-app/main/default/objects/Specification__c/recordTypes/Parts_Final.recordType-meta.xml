@@ -480,6 +480,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>HLF-LR</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>HTF</fullName>
             <default>false</default>
         </values>
@@ -644,6 +648,10 @@
         </values>
         <values>
             <fullName>HDC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HLF-LR</fullName>
             <default>false</default>
         </values>
         <values>
@@ -954,6 +962,10 @@
         </values>
         <values>
             <fullName>HH-LowR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HLF-LR</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1310,6 +1322,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>HLF-LR</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>HTF</fullName>
             <default>false</default>
         </values>
@@ -1498,6 +1514,10 @@
         </values>
         <values>
             <fullName>HH-LowR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HLF-LR</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1692,6 +1712,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>HLF-LR</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>HTF</fullName>
             <default>false</default>
         </values>
@@ -1880,6 +1904,10 @@
         </values>
         <values>
             <fullName>HH-LowR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HLF-LR</fullName>
             <default>false</default>
         </values>
         <values>
@@ -2186,6 +2214,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>HLF-LR</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>HTF</fullName>
             <default>false</default>
         </values>
@@ -2350,6 +2382,10 @@
         </values>
         <values>
             <fullName>HDC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HLF-LR</fullName>
             <default>false</default>
         </values>
         <values>
@@ -2521,6 +2557,10 @@
         </values>
         <values>
             <fullName>HH-LowR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HLF-LR</fullName>
             <default>false</default>
         </values>
         <values>
@@ -2715,6 +2755,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>HLF-LR</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>HTF</fullName>
             <default>false</default>
         </values>
@@ -2906,6 +2950,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>HLF-LR</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>HTF</fullName>
             <default>false</default>
         </values>
@@ -3094,6 +3142,10 @@
         </values>
         <values>
             <fullName>HH-LowR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HLF-LR</fullName>
             <default>false</default>
         </values>
         <values>
@@ -3374,6 +3426,10 @@
         </values>
         <values>
             <fullName>HH-LowR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HLF-LR</fullName>
             <default>false</default>
         </values>
         <values>
@@ -3854,6 +3910,10 @@
         </values>
         <values>
             <fullName>HH-LowR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HLF-LR</fullName>
             <default>false</default>
         </values>
         <values>

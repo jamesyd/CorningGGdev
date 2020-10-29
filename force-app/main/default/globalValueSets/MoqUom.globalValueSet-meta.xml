@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Each</fullName>
+        <default>false</default>
+        <label>Each</label>
+    </customValue>
+    <customValue>
+        <fullName>Sq Ft</fullName>
+        <default>false</default>
+        <label>Sq Ft</label>
+    </customValue>
+    <customValue>
+        <fullName>Need More Values</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Need More Values</label>
+    </customValue>
+    <customValue>
+        <fullName>Crate</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Crate</label>
+    </customValue>
+    <masterLabel>MOQ UOM</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>PLM_Review_Notification_Parts_QLI</fullName>
+        <description>PLM Review Notification - Parts QLI</description>
+        <protected>false</protected>
+        <recipients>
+            <field>pLMApproverEmail__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <recipient>chenh12@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>GGEmailTemplates/PLM_Price_Review_Notification_QLI</template>
+    </alerts>
+    <rules>
+        <fullName>PLM Review Notification - Parts QLI</fullName>
+        <actions>
+            <name>PLM_Review_Notification_Parts_QLI</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Quote.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>GG Parts</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Quote.Status</field>
+            <operation>equals</operation>
+            <value>PLM Review</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>QuoteLineItem.priceBelowFloor__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

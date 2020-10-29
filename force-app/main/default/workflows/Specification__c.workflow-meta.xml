@@ -1,0 +1,2495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Spec_Notificaiton</fullName>
+        <description>Spec Notificaiton</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>changt5@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>chenl26@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>wangy51@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>GGEmailTemplates/Spec_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>Spec_NotificaitonHuaqing</fullName>
+        <ccEmails>chenling2@hqgxzn.com</ccEmails>
+        <ccEmails>songzhenyuan@hqgxzn.com</ccEmails>
+        <ccEmails>yushengao@hqgxzn.com</ccEmails>
+        <ccEmails>WangG@corning.com</ccEmails>
+        <description>Spec Notificaiton Huaqing</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>changt5@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>changw@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>chenl26@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>lit2@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>teohc@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>GGEmailTemplates/Spec_Notification2</template>
+    </alerts>
+    <alerts>
+        <fullName>Spec_NotificaitonSecondary</fullName>
+        <description>Spec Notificaiton Secondary</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>changt5@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>chenl26@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>wangy51@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>GGEmailTemplates/Spec_NotificationSecondary</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Business_Case_Finalization</fullName>
+        <field>status__c</field>
+        <literalValue>Business Case Finalization</literalValue>
+        <name>Business Case Finalization</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_RT_to_Parts_Final</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Parts_Final</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Change RT to Parts - Final</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_RT_to_Parts_RFI_Final</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Parts_RFI_Final</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Change RT to Parts - RFI Final</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Spec_RT_to_Concore_Final</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Concore_Final</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Change Spec RT to Concore - Final</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Spec_Record_Type_to_Raw_Final</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Raw_Glass_Final</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Change Spec Record Type to Raw - Final</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Status_to_CM_Cost_Assessment</fullName>
+        <field>status__c</field>
+        <literalValue>CM Cost Assessment</literalValue>
+        <name>Change Status to CM Cost Assessment</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Status_to_CM_Cost_Assessment_DS</fullName>
+        <field>dsStatus__c</field>
+        <literalValue>CM Cost Assessment</literalValue>
+        <name>Change Status to CM Cost Assessment (DS)</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Status_to_Cost_Completed_DS</fullName>
+        <field>dsStatus__c</field>
+        <literalValue>Cost Assessment Completed</literalValue>
+        <name>Change Status to Cost Completed (DS)</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Status_to_Omitted_DS</fullName>
+        <field>dsStatus__c</field>
+        <literalValue>Omitted</literalValue>
+        <name>Change Status to Omitted (DS)</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Status_to_Rejected_DS</fullName>
+        <field>dsStatus__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>Change Status to Rejected (DS)</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Status_to_Risk_Assessment</fullName>
+        <field>status__c</field>
+        <literalValue>Risk Assessment</literalValue>
+        <name>Change Status to Risk Assessment</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Status_to_Risk_Assessment_DS0</fullName>
+        <field>dsStatus__c</field>
+        <literalValue>Risk Assessment</literalValue>
+        <name>Change Status to Risk Assessment (DS)</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_record_type_to_Parts_Final</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Parts_Final</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Change record type to Parts - Final</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_record_type_to_Parts_RFI_Final</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Parts_RFI_Final</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Change record type to Parts - RFI Final</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_record_type_to_Raw_Final</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Raw_Glass_Final</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Change record type to Raw - Final</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_record_type_to_Raw_Final_Invent</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Raw_Glass_Inventory_Final</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Change record type to Raw - Final Invent</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_record_type_to_concore_submitted</fullName>
+        <description>Change record type to concore spec submitted.</description>
+        <field>RecordTypeId</field>
+        <lookupValue>Concore_Submitted</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Change record type to concore submitted</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_record_type_to_raw_inventory</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Raw_Glass_Inventory_Submitted</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Change record type to raw inventory</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_record_type_to_raw_submitted</fullName>
+        <description>Change record type to raw glass submitted</description>
+        <field>RecordTypeId</field>
+        <lookupValue>Raw_Glass_Submitted</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Change record type to raw submitted</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_recordtype_parts_submitted</fullName>
+        <description>Change record type to parts submitted</description>
+        <field>RecordTypeId</field>
+        <lookupValue>Parts_Submitted</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Change record type to parts submitted</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Clear_out_AE_Risk_Assessment</fullName>
+        <description>Clear out AE Risk Assessment approval</description>
+        <field>applicationEngineerApproval__c</field>
+        <name>Clear out AE Risk Assessment</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Clear_out_Cost_Approval</fullName>
+        <field>costApproval__c</field>
+        <name>Clear out Cost Approval</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Clear_out_Cost_Approval_DS</fullName>
+        <field>dsCostApproval__c</field>
+        <name>Clear out Cost Approval (DS)</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Clear_out_PE_Risk_Assessment</fullName>
+        <field>plantEngineerApproval__c</field>
+        <name>Clear out PE Risk Assessment</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Clear_out_PE_Risk_Assessment_DS</fullName>
+        <field>dsPlantEngineerApproval__c</field>
+        <name>Clear out PE Risk Assessment (DS)</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Clear_out_QE_Risk_Assessment</fullName>
+        <field>qualityEngineerApproval__c</field>
+        <name>Clear out QE Risk Assessment</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Clear_out_QE_Risk_Assessment_DS</fullName>
+        <field>dsQualityEngineerApproval__c</field>
+        <name>Clear out QE Risk Assessment (DS)</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Clear_out_Risk_Assessment_QE_Date</fullName>
+        <field>qualityEngineerReviewDate__c</field>
+        <name>Clear out Risk Assessment QE Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Clear_out_Risk_Assessment_QE_Date_DS</fullName>
+        <field>dsQualityEngineerReviewDate__c</field>
+        <name>Clear out Risk Assessment QE Date (DS)</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Engineering_Input</fullName>
+        <field>status__c</field>
+        <literalValue>Plant Engineering Input</literalValue>
+        <name>Plant Engineering Input</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Initial_Business_Case_Review</fullName>
+        <field>status__c</field>
+        <literalValue>Product Engineering Input</literalValue>
+        <name>Product Engineering Input</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>MTO_Commercial_Ops_Review</fullName>
+        <field>status__c</field>
+        <literalValue>Commercial/Ops Review</literalValue>
+        <name>MTO Commercial/Ops Review</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>MTO_Review</fullName>
+        <field>status__c</field>
+        <literalValue>Finance Review</literalValue>
+        <name>MTO Review</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Manufacturing_Assignment</fullName>
+        <field>status__c</field>
+        <literalValue>Manufacturer Assignment</literalValue>
+        <name>Manufacturing Assignment</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Manufacturing_Assignment_DS</fullName>
+        <field>dsStatus__c</field>
+        <literalValue>Manufacturer Assignment</literalValue>
+        <name>Manufacturing Assignment (DS)</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Mark_Spec_Decline_Specification_True</fullName>
+        <field>declineSpecification__c</field>
+        <literalValue>1</literalValue>
+        <name>Mark Field Decline Specification True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Reset_risk_assessment</fullName>
+        <field>riskAssessmentComplete__c</field>
+        <literalValue>0</literalValue>
+        <name>Reset risk assessment</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Reset_risk_assessment_DS</fullName>
+        <field>dsRiskAssessmentComplete__c</field>
+        <literalValue>0</literalValue>
+        <name>Reset risk assessment (DS)</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Spec_Approved_Date</fullName>
+        <field>approvedDate__c</field>
+        <formula>TODAY()</formula>
+        <name>Set Spec Approved Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_spec_name</fullName>
+        <field>Name</field>
+        <formula>specNumber__c</formula>
+        <name>Set spec name</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Spec_Declined</fullName>
+        <field>status__c</field>
+        <literalValue>Declined</literalValue>
+        <name>Spec Declined</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Spec_Declined_DS</fullName>
+        <field>dsStatus__c</field>
+        <literalValue>Declined</literalValue>
+        <name>Spec Declined (DS)</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Standard_True</fullName>
+        <field>isStandard__c</field>
+        <literalValue>1</literalValue>
+        <name>Standard True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_change_to_Missing_Info_Assessment</fullName>
+        <field>status__c</field>
+        <literalValue>Missing Information Assessment</literalValue>
+        <name>Status change to Missing Info Assessment</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_change_to_capability_assessment</fullName>
+        <field>status__c</field>
+        <literalValue>Capable Assessment</literalValue>
+        <name>Status change to capability assessment</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_change_to_price_approved</fullName>
+        <field>status__c</field>
+        <literalValue>Pricing Approved</literalValue>
+        <name>Status change to price approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_change_to_price_assignment</fullName>
+        <field>status__c</field>
+        <literalValue>Pricing Assignment</literalValue>
+        <name>Status change to price assignment</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_change_to_standard_assessment</fullName>
+        <field>status__c</field>
+        <literalValue>Standard Assessment</literalValue>
+        <name>Status change to standard assessment</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_changed_to_supply_alloc_assess</fullName>
+        <field>status__c</field>
+        <literalValue>Supply, Allocation, and Inventory Review</literalValue>
+        <name>Status changed to supply, alloc assess</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Supply_Alloc_Inventory_Review</fullName>
+        <field>status__c</field>
+        <literalValue>Supply, Allocation, and Inventory Review</literalValue>
+        <name>Supply, Alloc, &amp; Inventory Review</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Supply_Chain_Input</fullName>
+        <field>status__c</field>
+        <literalValue>Supply Chain Input</literalValue>
+        <name>Supply Chain Input</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Uncheck_Cost_Assessment_Complete</fullName>
+        <field>costAssessmentComplete__c</field>
+        <literalValue>0</literalValue>
+        <name>Uncheck Cost Assessment Complete</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Uncheck_Cost_Assessment_Complete_DS</fullName>
+        <field>dsCostAssessmentComplete__c</field>
+        <literalValue>0</literalValue>
+        <name>Uncheck Cost Assessment Complete (DS)</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Uncheck_Manufacturing_Assignment_Co_DS</fullName>
+        <field>dsManufacturingAssignmentComplete__c</field>
+        <literalValue>0</literalValue>
+        <name>Uncheck Manufacturing Assignment Co (DS)</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Uncheck_Manufacturing_Assignment_Comp</fullName>
+        <field>manufacturingAssignmentComplete__c</field>
+        <literalValue>0</literalValue>
+        <name>Uncheck Manufacturing Assignment Comp.</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Uncheck_Risk_Assessment_Comp</fullName>
+        <field>riskAssessmentComplete__c</field>
+        <literalValue>0</literalValue>
+        <name>Uncheck Risk Assessment Comp.</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Uncheck_Risk_Assessment_Comp_DS</fullName>
+        <field>dsRiskAssessmentComplete__c</field>
+        <literalValue>0</literalValue>
+        <name>Uncheck Risk Assessment Comp. (DS)</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Concore Spec Declined</fullName>
+        <actions>
+            <name>Change_Spec_RT_to_Concore_Final</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Mark_Spec_Decline_Specification_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Spec_Declined</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND ( (2 AND 3) OR 4 OR 5)</booleanFilter>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Concore - Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.supplyAllocationInventory__c</field>
+            <operation>equals</operation>
+            <value>Not Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.supplyAllocInventoryReviewComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.mtoReview__c</field>
+            <operation>equals</operation>
+            <value>Not Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.declineSpecification__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>MTO - Decline</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Concore Spec submit for Approval</fullName>
+        <actions>
+            <name>Change_record_type_to_concore_submitted</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Status_changed_to_supply_alloc_assess</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Supply_Alloc_Inventory_Review</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.submitForApproval__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Concore</value>
+        </criteriaItems>
+        <description>Specification submitted for approval</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Parts Spec Declined</fullName>
+        <actions>
+            <name>Change_RT_to_Parts_Final</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Mark_Spec_Decline_Specification_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Spec_Declined</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Spec_Declined_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 AND ((2 AND 3) OR (4 AND 5) OR (6 AND 7) OR 8 OR 9 OR 10 OR 11 OR 12)) AND 13</booleanFilter>
+        <criteriaItems>
+            <field>Specification__c.productLine__c</field>
+            <operation>equals</operation>
+            <value>Parts</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.capable__c</field>
+            <operation>equals</operation>
+            <value>No</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.capabilityAssessmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.missingInformation__c</field>
+            <operation>equals</operation>
+            <value>Yes</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.missingInformationAssessmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.location__c</field>
+            <operation>includes</operation>
+            <value>Unable to manufacture</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.manufacturingAssignmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.qualityEngineerApproval__c</field>
+            <operation>equals</operation>
+            <value>Not Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.plantEngineerApproval__c</field>
+            <operation>equals</operation>
+            <value>Not Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.costApproval__c</field>
+            <operation>equals</operation>
+            <value>Not Accepted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.declineSpecification__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.plmApproval__c</field>
+            <operation>equals</operation>
+            <value>Not Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts,Parts - Submitted</value>
+        </criteriaItems>
+        <description>Parts - XX</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Parts Spec Declined - RFI</fullName>
+        <actions>
+            <name>Change_RT_to_Parts_RFI_Final</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Mark_Spec_Decline_Specification_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Spec_Declined</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 AND ((2 AND 3) OR (4 AND 5) OR (6 AND 7) OR 8 OR 9 OR 10 OR 11 OR 12)) AND 13</booleanFilter>
+        <criteriaItems>
+            <field>Specification__c.productLine__c</field>
+            <operation>equals</operation>
+            <value>Parts</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.capable__c</field>
+            <operation>equals</operation>
+            <value>No</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.capabilityAssessmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.missingInformation__c</field>
+            <operation>equals</operation>
+            <value>Yes</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.missingInformationAssessmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.location__c</field>
+            <operation>includes</operation>
+            <value>Unable to manufacture</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.manufacturingAssignmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.qualityEngineerApproval__c</field>
+            <operation>equals</operation>
+            <value>Not Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.plantEngineerApproval__c</field>
+            <operation>equals</operation>
+            <value>Not Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.costApproval__c</field>
+            <operation>equals</operation>
+            <value>Not Accepted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.declineSpecification__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.plmApproval__c</field>
+            <operation>equals</operation>
+            <value>Not Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - RFI,Parts - RFI Submitted</value>
+        </criteriaItems>
+        <description>Parts Specification declined</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Parts Spec submit for Approval</fullName>
+        <actions>
+            <name>Change_recordtype_parts_submitted</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Status_change_to_Missing_Info_Assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.submitForApproval__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.isInnovation__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Parts - 01 - with Innovation</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Parts Spec submit for Approval - no innovations</fullName>
+        <actions>
+            <name>Change_recordtype_parts_submitted</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Status_change_to_Missing_Info_Assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.submitForApproval__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.isInnovation__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <description>Parts - 01 - without Innovation</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Pricing Approved %28Concore%29</fullName>
+        <actions>
+            <name>Change_Spec_RT_to_Concore_Final</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Status_change_to_price_approved</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.mtoReview__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Concore - Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.priceUnit__c</field>
+            <operation>greaterOrEqual</operation>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.commercialApproval__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.operationalApproval__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>MTO - End Concore</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Pricing Approved %28Parts%29</fullName>
+        <actions>
+            <name>Change_record_type_to_Parts_Final</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Set_Spec_Approved_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Status_change_to_price_approved</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.pricingAssignmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - Submitted</value>
+        </criteriaItems>
+        <description>Parts - 08</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Pricing Approved %28Parts%29 - RFI</fullName>
+        <actions>
+            <name>Change_record_type_to_Parts_RFI_Final</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Set_Spec_Approved_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Status_change_to_price_approved</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.pricingAssignmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - RFI Submitted</value>
+        </criteriaItems>
+        <description>Specification approved by pricing</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Pricing Approved %28Raw%29</fullName>
+        <actions>
+            <name>Change_record_type_to_Raw_Final</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Set_Spec_Approved_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Status_change_to_price_approved</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.mtoReview__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Raw Glass - Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.priceUnit__c</field>
+            <operation>greaterOrEqual</operation>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.commercialApproval__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.operationalApproval__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>MTO - End Raw</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Pricing Approved %28Raw%29 - Inventory</fullName>
+        <actions>
+            <name>Change_record_type_to_Raw_Final_Invent</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Set_Spec_Approved_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Status_change_to_price_approved</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.mtoReview__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Raw Glass - Inventory Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.priceUnit__c</field>
+            <operation>greaterOrEqual</operation>
+            <value>0</value>
+        </criteriaItems>
+        <description>MTO - End Raw - Inventory</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Raw Spec Declined</fullName>
+        <actions>
+            <name>Change_Spec_Record_Type_to_Raw_Final</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Mark_Spec_Decline_Specification_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Spec_Declined</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND ( (2 AND 3) OR 4 OR 5)</booleanFilter>
+        <criteriaItems>
+            <field>Specification__c.productLine__c</field>
+            <operation>equals</operation>
+            <value>Raw Glass</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.supplyAllocationInventory__c</field>
+            <operation>equals</operation>
+            <value>Not Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.supplyAllocInventoryReviewComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.mtoReview__c</field>
+            <operation>equals</operation>
+            <value>Not Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.declineSpecification__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>MTO - Decline</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Raw Spec submit for Approval</fullName>
+        <actions>
+            <name>Change_record_type_to_raw_submitted</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Status_changed_to_supply_alloc_assess</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Supply_Alloc_Inventory_Review</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.submitForApproval__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Raw Glass</value>
+        </criteriaItems>
+        <description>MTO - 01</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Revert to Manufacturer Assignment from CM Cost Assessment</fullName>
+        <actions>
+            <name>Clear_out_AE_Risk_Assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_Cost_Approval</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_PE_Risk_Assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_QE_Risk_Assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_Risk_Assessment_QE_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Manufacturing_Assignment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Uncheck_Cost_Assessment_Complete</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Uncheck_Manufacturing_Assignment_Comp</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Uncheck_Risk_Assessment_Comp</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - Submitted,Parts - RFI Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.status__c</field>
+            <operation>equals</operation>
+            <value>CM Cost Assessment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.costApproval__c</field>
+            <operation>equals</operation>
+            <value>Reassign CM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.costAssessmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Parts - 06 to 04</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Revert to Manufacturer Assignment from CM Cost Assessment %28DS%29</fullName>
+        <actions>
+            <name>Clear_out_Cost_Approval_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_PE_Risk_Assessment_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_QE_Risk_Assessment_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_Risk_Assessment_QE_Date_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Manufacturing_Assignment_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Uncheck_Cost_Assessment_Complete_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Uncheck_Manufacturing_Assignment_Co_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Uncheck_Risk_Assessment_Comp_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - Submitted,Parts - Final</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsStatus__c</field>
+            <operation>equals</operation>
+            <value>CM Cost Assessment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsCostApproval__c</field>
+            <operation>equals</operation>
+            <value>Reassign CM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsCostAssessmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Parts - 06 to 04 - DS</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Revert to Risk Assessment from CM Cost Assessment</fullName>
+        <actions>
+            <name>Change_Status_to_Risk_Assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_AE_Risk_Assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_Cost_Approval</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_PE_Risk_Assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_QE_Risk_Assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_Risk_Assessment_QE_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Uncheck_Cost_Assessment_Complete</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Uncheck_Risk_Assessment_Comp</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.status__c</field>
+            <operation>equals</operation>
+            <value>CM Cost Assessment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.costApproval__c</field>
+            <operation>equals</operation>
+            <value>Reevaluate Risk</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.costAssessmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Parts - 06 to 05</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Revert to Risk Assessment from CM Cost Assessment %28DS%29</fullName>
+        <actions>
+            <name>Change_Status_to_Risk_Assessment_DS0</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_Cost_Approval_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_PE_Risk_Assessment_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_QE_Risk_Assessment_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_Risk_Assessment_QE_Date_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Uncheck_Cost_Assessment_Complete_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Uncheck_Risk_Assessment_Comp_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - Submitted,Parts - Final</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsStatus__c</field>
+            <operation>equals</operation>
+            <value>CM Cost Assessment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsCostApproval__c</field>
+            <operation>equals</operation>
+            <value>Reevaluate Risk</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsCostAssessmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Parts - 06 to 05 - DS</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Set Spec to Standard</fullName>
+        <actions>
+            <name>Standard_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Automatic check to flag Spec as Standard before manual Standard Assessment.</description>
+        <formula>(ISCHANGED( submitForApproval__c ) &amp;&amp;  submitForApproval__c = True)   &amp;&amp;  ISBLANK(Innovation_Type__c)  &amp;&amp;  ((ISPICKVAL(marketSegment__c,&apos;Handheld (Phone)&apos;) &amp;&amp;   (length__c &gt;=25.4 &amp;&amp; length__c &lt; 170) &amp;&amp; (width__c &gt;=25.4 &amp;&amp; width__c &lt; 95)) || ((ISPICKVAL(marketSegment__c,&apos;Notebook&apos;)  || ISPICKVAL(marketSegment__c,&apos;Tablet&apos;)    || ISPICKVAL(marketSegment__c,&apos;AIO (desktop)&apos;)) &amp;&amp;   (length__c &gt;=170 &amp;&amp; length__c &lt; 500) &amp;&amp; (width__c &gt;=95 &amp;&amp; width__c &lt; 500)))  &amp;&amp; ((thickness__c = 0.4) || (thickness__c = 0.5) || (thickness__c = 0.55) || (thickness__c = 0.7) || (thickness__c = 0.85) || (thickness__c = 1.0) || (thickness__c = 1.3)) &amp;&amp; (ISPICKVAL(glassComposition__c,&apos;2320&apos;)   || ISPICKVAL(glassComposition__c,&apos;5318&apos;)    || ISPICKVAL(glassComposition__c,&apos;7321&apos;)) &amp;&amp; (ISPICKVAL(specialShapes__c ,&apos;2D&apos;)   || ISPICKVAL(specialShapes__c,&apos;2.5D&apos;)) &amp;&amp; numberOfSlots__c &lt;= 2 &amp;&amp; numberOfHoles__c &lt;= 2 &amp;&amp; NOT(ISPICKVAL(screenPrint__c,&apos;Special Request&apos;)) &amp;&amp; NOT(ISPICKVAL(screenPrintColors__c,&apos;Special Requirements&apos;))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Set specification name</fullName>
+        <actions>
+            <name>Set_spec_name</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Sets specification name to be the formula field</description>
+        <formula>true</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Specification Notification</fullName>
+        <actions>
+            <name>Spec_Notificaiton</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.status__c</field>
+            <operation>equals</operation>
+            <value>CM Cost Assessment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts,Parts - Final,Parts - Submitted,Parts - RFI,Parts - RFI Final,Parts - RFI Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.Primary_CM_Workflow_Helper__c</field>
+            <operation>greaterThan</operation>
+            <value>0</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Specification Notification Huaqing</fullName>
+        <actions>
+            <name>Spec_NotificaitonHuaqing</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Specification__c.location__c</field>
+            <operation>equals</operation>
+            <value>Huaqing</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.status__c</field>
+            <operation>equals</operation>
+            <value>CM Cost Assessment</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Specification Notification Source 2</fullName>
+        <actions>
+            <name>Spec_NotificaitonSecondary</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.dsStatus__c</field>
+            <operation>equals</operation>
+            <value>CM Cost Assessment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts,Parts - Final,Parts - Submitted,Parts - RFI,Parts - RFI Final,Parts - RFI Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.Secondary_CM_Workflow_Helper__c</field>
+            <operation>greaterThan</operation>
+            <value>0</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for Business Case Finalization</fullName>
+        <actions>
+            <name>Business_Case_Finalization</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 AND 2 AND 3 AND 4 AND 5 AND 6) OR (1 AND 6 AND 7)</booleanFilter>
+        <criteriaItems>
+            <field>Specification__c.supplyAllocInventoryReviewComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Concore - Submitted,Raw Glass - Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.productEngineeringInputReceived__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.engineeringInputReceived__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.supplyChainInputReceived__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.pricingAssignmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Raw Glass - Inventory Submitted</value>
+        </criteriaItems>
+        <description>MTO - 06</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for CM Cost Assessment</fullName>
+        <actions>
+            <name>Change_Status_to_CM_Cost_Assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_Cost_Approval</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Uncheck_Cost_Assessment_Complete</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 AND 2 AND 3) OR (4 AND 5) OR (6 AND 7 AND 8)</booleanFilter>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.status__c</field>
+            <operation>equals</operation>
+            <value>Risk Assessment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.riskAssessmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.status__c</field>
+            <operation>equals</operation>
+            <value>Pricing Assignment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.plmApproval__c</field>
+            <operation>equals</operation>
+            <value>Reevaluate Cost</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - RFI Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.status__c</field>
+            <operation>equals</operation>
+            <value>Manufacturer Assignment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.manufacturingAssignmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Parts - 06</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for CM Cost Assessment %28DS%29</fullName>
+        <actions>
+            <name>Change_Status_to_CM_Cost_Assessment_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_Cost_Approval_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Uncheck_Cost_Assessment_Complete_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 AND 2 AND 3)</booleanFilter>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - Submitted,Parts - Final</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsStatus__c</field>
+            <operation>equals</operation>
+            <value>Risk Assessment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsRiskAssessmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Parts - 06 - DS</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for Capable Assessment</fullName>
+        <actions>
+            <name>Status_change_to_capability_assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.missingInformationAssessmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.submitForApproval__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.missingInformation__c</field>
+            <operation>equals</operation>
+            <value>No</value>
+        </criteriaItems>
+        <description>Parts - 02</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for Cost Completion %28DS%29</fullName>
+        <actions>
+            <name>Change_Status_to_Cost_Completed_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 AND 2 AND 3 AND 4)</booleanFilter>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - Submitted,Parts - Final</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsStatus__c</field>
+            <operation>equals</operation>
+            <value>CM Cost Assessment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsCostAssessmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsCostApproval__c</field>
+            <operation>equals</operation>
+            <value>Accepted</value>
+        </criteriaItems>
+        <description>Parts - 07 - DS</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for Engineering Input</fullName>
+        <actions>
+            <name>Engineering_Input</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.initialBusinessCaseReviewComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Concore - Submitted,Raw Glass - Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.initialBusinessCase__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <description>Specification submitted for engineering input</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for Initial Business Case Review</fullName>
+        <actions>
+            <name>Initial_Business_Case_Review</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.supplyAllocInventoryReviewComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Raw Glass - Submitted,Concore - Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.supplyAllocationInventory__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <description>Specification submitted for initial business case review</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for MTO Approval</fullName>
+        <actions>
+            <name>MTO_Review</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7</booleanFilter>
+        <criteriaItems>
+            <field>Specification__c.supplyAllocInventoryReviewComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Concore - Submitted,Raw Glass - Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.productEngineeringInputReceived__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.engineeringInputReceived__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.supplyAllocInventoryReviewComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.pricingAssignmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.finalBusinessCaseComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>MTO - 07</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for MTO Approval_Inventory</fullName>
+        <actions>
+            <name>MTO_Commercial_Ops_Review</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.supplyAllocInventoryReviewComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.pricingAssignmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.finalBusinessCaseComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Raw Glass - Inventory Submitted</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for Manufacturing Assignment</fullName>
+        <actions>
+            <name>Clear_out_AE_Risk_Assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_Cost_Approval</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_PE_Risk_Assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_QE_Risk_Assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_Risk_Assessment_QE_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Manufacturing_Assignment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Uncheck_Cost_Assessment_Complete</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Uncheck_Manufacturing_Assignment_Comp</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Uncheck_Risk_Assessment_Comp</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(((1 AND 2 AND (3 OR 4) AND 10) OR ((1 OR 16) AND 5 AND 6 AND 11) OR ((1 OR 16) AND (7 OR 8 OR 9) AND 12) OR ((1 OR 16) AND 13 AND 14)) and 15) OR (18 AND 17 AND 16 AND 15)</booleanFilter>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.standardAssessmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.standard__c</field>
+            <operation>equals</operation>
+            <value>Yes</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.standard__c</field>
+            <operation>equals</operation>
+            <value>No</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.costApproval__c</field>
+            <operation>equals</operation>
+            <value>Reassign CM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.costAssessmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.applicationEngineerApproval__c</field>
+            <operation>equals</operation>
+            <value>Reassign CM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.plantEngineerApproval__c</field>
+            <operation>equals</operation>
+            <value>Reassign CM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.qualityEngineerApproval__c</field>
+            <operation>equals</operation>
+            <value>Reassign CM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.status__c</field>
+            <operation>equals</operation>
+            <value>Standard Assessment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.status__c</field>
+            <operation>equals</operation>
+            <value>CM Cost Assessment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.status__c</field>
+            <operation>equals</operation>
+            <value>Risk Assessment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.status__c</field>
+            <operation>equals</operation>
+            <value>Pricing Assignment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.plmApproval__c</field>
+            <operation>equals</operation>
+            <value>Reassign CM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.declineSpecification__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - RFI Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.missingInformation__c</field>
+            <operation>equals</operation>
+            <value>No</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.missingInformationAssessmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Parts - 04</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for Manufacturing Assignment %28DS%29</fullName>
+        <actions>
+            <name>Clear_out_Cost_Approval_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_PE_Risk_Assessment_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_QE_Risk_Assessment_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_Risk_Assessment_QE_Date_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Manufacturing_Assignment_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Uncheck_Cost_Assessment_Complete_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Uncheck_Manufacturing_Assignment_Co_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Uncheck_Risk_Assessment_Comp_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 AND 2 AND 3 AND 4) OR (1 AND 5 AND (6 OR 7)) OR (1 AND 8 AND 9 AND 10)</booleanFilter>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - Submitted,Parts - Final</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsSource__c</field>
+            <operation>equals</operation>
+            <value>Dual Source Accepted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.status__c</field>
+            <operation>equals</operation>
+            <value>Standard Assessment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.standardAssessmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsStatus__c</field>
+            <operation>equals</operation>
+            <value>Risk Assessment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsQualityEngineerApproval__c</field>
+            <operation>equals</operation>
+            <value>Reassign CM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsPlantEngineerApproval__c</field>
+            <operation>equals</operation>
+            <value>Reassign CM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsStatus__c</field>
+            <operation>equals</operation>
+            <value>CM Cost Assessment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsCostApproval__c</field>
+            <operation>equals</operation>
+            <value>Reassign CM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsCostAssessmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Parts - 04 - DS 01</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for Plant Engineering Input</fullName>
+        <actions>
+            <name>Engineering_Input</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.supplyAllocInventoryReviewComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Concore - Submitted,Raw Glass - Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.productEngineeringInputReceived__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>MTO - 03</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for Pricing %28Parts%29</fullName>
+        <actions>
+            <name>Status_change_to_price_assignment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 AND 2 AND 3 AND 4)</booleanFilter>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - Submitted,Parts - RFI Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.status__c</field>
+            <operation>equals</operation>
+            <value>CM Cost Assessment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.costAssessmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.costApproval__c</field>
+            <operation>equals</operation>
+            <value>Accepted</value>
+        </criteriaItems>
+        <description>Parts - 07</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for Pricing %28Raw%2FConcore%29</fullName>
+        <actions>
+            <name>Status_change_to_price_assignment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Raw Glass - Submitted,Concore - Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.supplyAllocInventoryReviewComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.productEngineeringInputReceived__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.engineeringInputReceived__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.supplyChainInputReceived__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>MTO - 05</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for Pricing %28Raw%2FConcore%29 Inventory</fullName>
+        <actions>
+            <name>Change_record_type_to_raw_inventory</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Status_change_to_price_assignment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.supplyAllocInventoryReviewComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Raw Glass - Submitted,Concore - Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.supplyAllocationInventory__c</field>
+            <operation>equals</operation>
+            <value>Approved - Inventory</value>
+        </criteriaItems>
+        <description>MTO - 02. Alt - Inventory</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for Product Engineering Input</fullName>
+        <actions>
+            <name>Initial_Business_Case_Review</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.supplyAllocInventoryReviewComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Raw Glass - Submitted,Concore - Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.supplyAllocationInventory__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <description>MTO - 02</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for Risk Assessment</fullName>
+        <actions>
+            <name>Change_Status_to_Risk_Assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_AE_Risk_Assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_PE_Risk_Assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_QE_Risk_Assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Reset_risk_assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.manufacturingAssignmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.location__c</field>
+            <operation>notEqual</operation>
+            <value>Unable to manufacture</value>
+        </criteriaItems>
+        <description>Parts - 05</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for Risk Assessment %28DS%29</fullName>
+        <actions>
+            <name>Change_Status_to_Risk_Assessment_DS0</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_PE_Risk_Assessment_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_QE_Risk_Assessment_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Reset_risk_assessment_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.dsManufacturingAssignmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - Submitted,Parts - Final</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsLocation__c</field>
+            <operation>notEqual</operation>
+            <value>Unable to manufacture</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsActualSource__c</field>
+            <operation>equals</operation>
+            <value>Dual Source</value>
+        </criteriaItems>
+        <description>Parts - 05 - DS</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for Risk Assessment - Planner %28DS%29</fullName>
+        <actions>
+            <name>Manufacturing_Assignment_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR 5) AND 6</booleanFilter>
+        <criteriaItems>
+            <field>Specification__c.manufacturingAssignmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.location__c</field>
+            <operation>notEqual</operation>
+            <value>Unable to manufacture</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsSource__c</field>
+            <operation>equals</operation>
+            <value>Single Source Only</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsSource__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsActualSource__c</field>
+            <operation>equals</operation>
+            <value>Dual Source</value>
+        </criteriaItems>
+        <description>Parts - 05 -Planner DS</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for Risk Assessment - Planner %28SS%29</fullName>
+        <actions>
+            <name>Change_Status_to_Omitted_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR 5) AND 6</booleanFilter>
+        <criteriaItems>
+            <field>Specification__c.manufacturingAssignmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.location__c</field>
+            <operation>notEqual</operation>
+            <value>Unable to manufacture</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsSource__c</field>
+            <operation>equals</operation>
+            <value>Single Source Only</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsSource__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsActualSource__c</field>
+            <operation>equals</operation>
+            <value>Single Source</value>
+        </criteriaItems>
+        <description>Parts - 05 - Planner SS</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for Risk Assessment - Reject %28DS%29</fullName>
+        <actions>
+            <name>Change_Status_to_Rejected_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.manufacturingAssignmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.location__c</field>
+            <operation>notEqual</operation>
+            <value>Unable to manufacture</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsSource__c</field>
+            <operation>equals</operation>
+            <value>Dual Source Accepted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsActualSource__c</field>
+            <operation>equals</operation>
+            <value>Single Source</value>
+        </criteriaItems>
+        <description>Parts - 05 - Reject DS</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for Standard Assessment</fullName>
+        <actions>
+            <name>Status_change_to_standard_assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.capabilityAssessmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.capable__c</field>
+            <operation>equals</operation>
+            <value>Yes,Evaluate</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.standardAssessmentComplete__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <description>Parts - 03</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for Supply Chain Input</fullName>
+        <actions>
+            <name>Supply_Chain_Input</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.engineeringInputReceived__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Concore - Submitted,Raw Glass - Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.productEngineeringInputReceived__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.supplyAllocInventoryReviewComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>MTO - 04</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Unlock Dual Source</fullName>
+        <actions>
+            <name>Manufacturing_Assignment_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.manufacturingAssignmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsStatus__c</field>
+            <operation>notEqual</operation>
+            <value>Manufacturer Assignment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsActualSource__c</field>
+            <operation>equals</operation>
+            <value>Dual Source</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsManufacturingAssignmentComplete__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <description>Parts - 05 - Unlock DS</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>
