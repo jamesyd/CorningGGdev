@@ -1,3 +1,13 @@
+/**
+ * @description       : 
+ * @author            : Edgar Santillana
+ * @group             : 
+ * @last modified on  : 10-26-2020
+ * @last modified by  : Edgar Santillana
+ * Modifications Log 
+ * Ver   Date         Author             Modification
+ * 1.0   10-16-2020   Edgar Santillana   New two Fields Added to update when the user click on Save Schedule Record
+**/
 public without sharing class HomePageForecastController {
     
     public static Boolean checkPLM() {
@@ -33,7 +43,7 @@ public without sharing class HomePageForecastController {
                                                                                  oliLastModifiedDate__c, oliLastModifiedBy__r.Name, LastModifiedBy.Name, LastModifiedDate, specificationNumber__c, 
                                                                                  currentOpportunityName__c, oemOwenerId__c,
                                                                                  finisherAccount__c, finisherAccount__r.Name, finisherMix__c, finisherOwner__c, finisherYield__c, currentGlassAttributes__c, comments__c
-                                                                                 , opportunity__r.OpportunityAutoNamePart1__c, opportunity__r.OpportunityAutoNamePart2__c	
+                                                                                 , opportunity__r.OpportunityAutoNamePart1__c, opportunity__r.OpportunityAutoNamePart2__c   
                                                                                  FROM ForecastOutput52Week__c
                                                                                  WHERE (((ownerId =: uId18 OR ownerId IN :getOwnerIds(uId18) OR tpmOwner__c =: uId18 OR plm__c =:plm OR oemOwenerId__c =: uId15) 
                                                                                          AND (status__c = 'Active') AND (programCompleted__c = FALSE) AND (CreatedDate = THIS_MONTH))
@@ -100,7 +110,7 @@ public without sharing class HomePageForecastController {
                                                                                  m1Rev__c, m2Rev__c, m3Rev__c, m4Rev__c, m5Rev__c, m6Rev__c, m7Rev__c,
                                                                                  m8Rev__c, m9Rev__c, m10Rev__c, m11Rev__c, m12Rev__c, m13Rev__c, m14Rev__c,
                                                                                  m14Date__c, m15Date__c, m16Date__c, m17Date__c, m18Date__c, 
-                                                                                 oliLastModifiedDate__c, oliLastModifiedBy__c
+                                                                                 oliLastModifiedDate__c, oliLastModifiedBy__c, GG_forecastLastModifiedDate__c, GG_forecastCountPerMonth__c
                                                                                  FROM ForecastOutput52Week__c WHERE id = :forecaseScheduleObj.recordId]);
         
         For (ForecastOutput52Week__c f : fList) {
@@ -177,6 +187,17 @@ public without sharing class HomePageForecastController {
             if(f.m15Date__c == NULL){
                 f = setNextMonthDate(f);
             }
+
+            if(f.GG_forecastLastModifiedDate__c == null || f.GG_forecastLastModifiedDate__c != System.today()){
+                
+                if( f.GG_forecastCountPerMonth__c == null){
+                    f.GG_forecastCountPerMonth__c = 1;
+                }else{
+                    f.GG_forecastCountPerMonth__c += 1;
+                }
+                f.GG_forecastLastModifiedDate__c = System.today(); 
+            }
+            
             updateList.add(f);
         }
         
@@ -565,7 +586,7 @@ public without sharing class HomePageForecastController {
             System.debug('query ====> ' + query);
             
             for(User u : DataBase.query(query)){
-                userIds.add(u.Id);	    
+                userIds.add(u.Id);      
             }
         }
         System.debug('userIds==>' + userIds);
