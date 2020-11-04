@@ -3,11 +3,12 @@
  * @Description        : 
  * @Author             : Adam Nicholson?
  * @Group              : 
- * @Last Modified By   : Arquimidez Mora
- * @Last Modified On   : 07-09-2020
+ * @Last Modified By   : Jim Dickerson
+ * @Last Modified On   : 04-11-2020
  * @Modification Log   : 
- * Ver       Date            Author      		    Modification
- * 1.1    29/6/2020   Arquimidez Mora           Updated code to fix chatter notification for Free Sample Request
+ * Ver       Date      Author      		  Modification
+ * 1.1    29/6/2020    Arquimidez Mora    Updated code to fix chatter notification for Free Sample Request
+ * 1.2    04/11/2020   Jim Dickerson      Implement changes for Corning Bendable Glass (CSMSF-23)
 **/
 public class Utilities {
     
@@ -394,7 +395,10 @@ public class Utilities {
             : invRecipients;         
         invRecipients = spec.innovation_type__c.contains( GGPartsSpecAutoNotifications__c.getValues('AR – Camera Hole').name )
             ? invRecipients + ',' + GGPartsSpecAutoNotifications__c.getValues('AR – Camera Hole').userIdList__c 
-            : invRecipients;                                                                      
+            : invRecipients;      
+        invRecipients = spec.innovation_type__c.contains( GGPartsSpecAutoNotifications__c.getValues('Corning Bendable Glass').name )
+            ? invRecipients + ',' + GGPartsSpecAutoNotifications__c.getValues('Corning Bendable Glass').userIdList__c 
+            : invRecipients;         // CSMSF-23                                                             
         return invRecipients;
     }
 

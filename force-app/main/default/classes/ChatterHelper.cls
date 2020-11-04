@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Edgar Santillana
  * @group             : 
- * @last modified on  : 10-27-2020
+ * @last modified on  : 11-04-2020
  * @last modified by  : Jim Dickerson
  * Modifications Log 
  * Ver   Date         Author             Modification
@@ -10,6 +10,7 @@
  * 1.1   09-24-2020   Edgar Santillana   New value added JNTC-TQ-QA on partsRiskNotification Method 
  * 1.2   09-24-2020   Edgar Santillana   New value added Liangcheng-LR on partsRiskNotification Method 
  * 1.3   10-27-2020   Jim Dickerson      New value added HLF-LR on partsRiskNotification Method
+ * 1.4   11-04-2020   Jim Dickerson      Implement changes for Corning Bendable Glass (CSMSF-23)
 **/
 public without sharing class ChatterHelper {
     
@@ -398,7 +399,7 @@ public without sharing class ChatterHelper {
     
     public Static Void specificationNotification( List<Specification__c> speclist, Map<ID, Specification__c> oldmap ) {
         Utilities Utils = new Utilities();
-        
+System.debug('@@ JD specificationNotification');
         String partPath;    
         String finalMessage;
         String rfiOrRfq;
@@ -425,7 +426,6 @@ public without sharing class ChatterHelper {
             finalRecipients = '';
             location = '';   
             
-            
             if (spec.productLine__c == 'Parts') { 
                 
                 // WWPE notification logic
@@ -438,15 +438,17 @@ public without sharing class ChatterHelper {
                     
                     // recipients - includes innovation PLMs
                     baseRecipients = GGPartsSpecAutoNotifications__c.getValues(partPath).userIdList__c;
+
                     if (String.isEmpty(spec.innovation_type__c) == False) {
                         combinedRecipients = baseRecipients + Utils.getInnovationRecipients(spec);
                     } else {
                         combinedRecipients = baseRecipients;
                     }
-                    
+                 
                     // clean/remove duplicate recipients
                     finalRecipients = Utils.cleanRecipients(combinedRecipients);
-                    
+                 
+                  
                     // rfi configuration
                     rfiOrRfq = spec.rfiConfiguration__c <> Null ? '- RFI Configuration: ' + spec.rfiConfiguration__c + ' ' : '';  
                     
@@ -570,7 +572,26 @@ public without sharing class ChatterHelper {
                     ConnectApi.FeedItem fi = (ConnectApi.FeedItem) ConnectApiHelper.postFeedItemWithMentions(Network.getNetworkId(), 
                                                                                                              spec.id, spec.opportunityName__c + ' ' + rfiOrRfq + finalRecipients + ' ' + finalMessage);                        
                 }
-                
+                // Master Planner notification logic - Path 6 for Corning Bendable Glass specification 11/3/20
+                // added for CSMSF-23
+                if (oldMap.get(spec.ID).status__c == 'Capable Assessment' && spec.status__c == 'Manufacturer Assignment') {
+                    
+                    // parts or omega
+                    partPath = spec.productLine__c == 'Parts' && spec.isOmega__c == False ? 'CBG-CA~MA' : 'OM~MIA~MA';
+                    
+                    finalMessage = Utils.getMessageInnovationOnly(partPath,spec);
+                    
+                    // recipients - do not include innovation PLMs
+                    baseRecipients = GGPartsSpecAutoNotifications__c.getValues(partPath).userIdList__c;
+                    combinedRecipients = baseRecipients;
+                    
+                    // clean/remove duplicate recipients
+                    finalRecipients = Utils.cleanRecipients(combinedRecipients);
+                    
+                    // second parameter = Id of a group or user or record or 'me'
+                    ConnectApi.FeedItem fi = (ConnectApi.FeedItem) ConnectApiHelper.postFeedItemWithMentions(Network.getNetworkId(), 
+                                                                                                             spec.id, spec.opportunityName__c + ' ' + rfiOrRfq + finalRecipients + ' ' + finalMessage);                        
+                }           
                 // QE notification logic - Path 2
                 If (oldMap.get(spec.ID).status__c == 'CM Cost Assessment' && spec.status__c == 'Risk Assessment') {
                     
@@ -645,13 +666,16 @@ public without sharing class ChatterHelper {
                     location = '';
                     List<String> lstLocations = new List<String>();            
                     lstLocations.clear();
-                    lstLocations = spec.location__c.split(';');
-                    
+                    if (spec.location__c != null)
+                         lstLocations = spec.location__c.split(';');
+                 
+                    lstLocations.add(getCBGlocation(spec));     // CSMSF-23
+
                     for (String l : lstLocations) {
                         
                         // parts or omega
                         partPath = spec.productLine__c == 'Parts' && spec.isOmega__c == False ? l : 'OM~PE'; 
-                        
+                    
                         finalMessage = Utils.getMessageInnovationAndLocation(partPath,spec);
                         
                         // recipients - do not include innovation PLMs
@@ -695,7 +719,12 @@ public without sharing class ChatterHelper {
                 If (oldMap.get(spec.ID).status__c == 'Risk Assessment' && spec.status__c == 'CM Cost Assessment') {
                     
                     // parts or omega
-                    partPath = spec.productLine__c == 'Parts' && spec.isOmega__c == False ? 'RA~CA' : 'OM~RA~CA';
+                    partPath = getCBGlocation(spec); // CSMSF-23
+                    if (String.isEmpty(partPath) == true)
+                        partPath = spec.productLine__c == 'Parts' && spec.isOmega__c == False ? 'RA~CA' : 'OM~RA~CA';
+                    else {
+                        partPath = 'CBG-RA~CA'; // CSMSF-23
+                    }
                     
                     finalMessage = Utils.getMessageInnovationAndLocation(partPath,spec);
                     
@@ -765,7 +794,10 @@ public without sharing class ChatterHelper {
                 If (oldMap.get(spec.ID).status__c == 'CM Cost Assessment' && spec.status__c == 'Pricing Assignment') {
                     
                     // parts or omega
-                    partPath = spec.productLine__c == 'Parts' && spec.isOmega__c == False ? 'CA~PA' : 'OM~CA~PA';
+                    partPath = getCBGlocation(spec); // CSMSF-23
+                    if (String.isEmpty(partPath) == true)
+                         partPath = spec.productLine__c == 'Parts' && spec.isOmega__c == False ? 'CA~PA' : 'OM~CA~PA'; 
+                    else partPath = 'CBG-CA~PA';
                     
                     finalMessage = Utils.getMessageInnovationAndLocation(partPath,spec);
                     
@@ -1057,7 +1089,8 @@ spec.id, spec.opportunityName__c + ' ' + finalRecipients + ' ***** DUAL SOURCE '
                     location = '';
                     List<String> lstLocations = new List<String>();            
                     lstLocations.clear();
-                    lstLocations = spec.dsLocation__c.split(';');
+                    if (spec.dslocation__c != null)
+                        lstLocations = spec.dsLocation__c.split(';');
                     
                     for (String l : lstLocations) {
                         
@@ -1547,8 +1580,10 @@ spec.id, spec.opportunityName__c + ' ' + finalRecipients + ' ***** DUAL SOURCE '
                 lstLocations = spec.location__c.split(';');
             }    
         }
-        
-        // Loop through location list and post to selected loactions
+
+        lstLocations.add(getCBGlocation(spec)); // CSMSF-23
+
+        // Loop through location list and post to selected locations
         for (String l : lstLocations) {
             location = 'MA~RA~Default'; // set default - location added to list but not this code
             if (l == 'Fuzhou') { location = 'MA~RA~Fuzhou';}
@@ -1602,6 +1637,7 @@ spec.id, spec.opportunityName__c + ' ' + finalRecipients + ' ***** DUAL SOURCE '
             if (l == 'JNTC-TQ') { location = 'JNTC-TQ-QA';}
             if (l == 'Liangcheng-LR') { location = 'Liangcheng-QA';}
             if (l == 'HLF-LR') { location = 'HLF-QA';}
+            if (l == 'CBG-LR') { location = 'CBG-QA'; }
             
             if (source == 2) {
                 finalMessage = Utils.getMessageInnovationAndLocationDS(location,spec);
@@ -1734,5 +1770,15 @@ spec.id, spec.opportunityName__c + ' ' + finalRecipients + ' ***** DUAL SOURCE '
         }
         
     }
-    
+    // CSMSF-23
+    private Static String getCBGlocation(specification__c spec) {
+        if (spec.Innovation_Type__c != null) {
+            for (String s : spec.Innovation_Type__c.split(';')) {
+                if ( s == 'Corning Bendable Glass') {
+                    return 'CBG-LR';
+                }
+            }
+        }
+        return '';
+    }  
 }
