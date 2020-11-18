@@ -2,12 +2,13 @@
  * @description       : 
  * @author            : Adam Nicholson?
  * @group             : 
- * @last modified on  : 09-04-2020
- * @last modified by  : Edgar Santillana
+ * @last modified on  : 11-12-2020
+ * @last modified by  : Jim Dickerson
  * Modifications Log 
  * Ver   Date         Author            Modification
  * 1.1   07-07-2020   Arquimidez Mora   Adding Vietnamese Dong 
  * 1.2   07-13-2020	  Edgar Santillana  Adding rawGlassMass
+ * 1.3   11-12-2020   Jim Dickerson     Don't set render as phyllo flag if there is a spec for the product
 **/
 ///*** Added for Gorilla Glass Implementation ***///
 ///*** Salesforce Cloud Services - 3/2/2017 ***///
@@ -461,7 +462,9 @@ public with sharing class QuotePDFController {
             }
             else if (theQuote.RecordType.Name == 'GG Sample') {
                 string  fam = itemList[0].Product2.Family;
-                boolean  isphyllo = itemList[0].Product2.isPhyllo__c;
+                boolean  isPhyllo = itemList[0].Product2.isPhyllo__c;
+                boolean  hasSpec = itemList[0].Product2.specification__c != null  ? true : false;
+
                 if (fam == Label.GGProductTypeRaw) {
                     lineItemType = 'Raw';
                     expItemType = 'SampleRaw';
@@ -474,7 +477,8 @@ public with sharing class QuotePDFController {
                     lineItemType = 'SampleParts';
                     expItemType = 'SampleParts';
                 }
-                if(isphyllo){
+                // if phyllo (CBG) has a spec, then render quote like a normal parts spec, not a generic phyllo ..
+                if(isPhyllo && !hasSpec){
                     phylloFlag = true;
                 }
             }

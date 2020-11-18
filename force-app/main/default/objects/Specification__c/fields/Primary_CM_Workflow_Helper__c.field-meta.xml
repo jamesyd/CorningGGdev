@@ -2,7 +2,8 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Primary_CM_Workflow_Helper__c</fullName>
     <externalId>false</externalId>
-    <formula>IF(INCLUDES(location__c,&apos;Biel&apos;),1,0)+
+    <formula>IF(INCLUDES(location__c,&apos;Ample&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;Biel&apos;),1,0)+
 IF(INCLUDES(location__c,&apos;BOE&apos;),1,0)+
 IF(INCLUDES(location__c,&apos;BYD-TQ&apos;),1,0)+
 IF(INCLUDES(location__c,&apos;CGK&apos;),1,0)+
@@ -48,7 +49,7 @@ IF(INCLUDES(location__c,&apos;Truly&apos;),1,0)+
 IF(INCLUDES(location__c,&apos;Victory&apos;),1,0)+
 IF(INCLUDES(location__c,&apos;WTL&apos;),0,0)+
 IF(INCLUDES(location__c,&apos;XC&apos;),1,0)+
-IF(INCLUDES(location__c,&apos;XX DG&apos;),1,0)+
+IF(INCLUDES(location__c,&apos;XX 3D&apos;),1,0)+
 IF(INCLUDES(location__c,&apos;XX TZ&apos;),1,0)+
 IF(INCLUDES(location__c,&apos;YFO&apos;),1,0)+
 IF(INCLUDES(location__c,&apos;YTF&apos;),1,0)+

@@ -27,6 +27,7 @@ IF(INCLUDES(Innovation_Type__c, &quot;DX&quot;),&quot;Gorilla Glass DX; &quot;, 
 IF(INCLUDES(Innovation_Type__c, &quot;DXC&quot;),&quot;Gorilla Glass DXC; &quot;, NULL) +
 IF(INCLUDES(Innovation_Type__c, &quot;IT Size 3D&quot;),&quot;IT Size 3D; &quot;, NULL) +
 IF(INCLUDES(Innovation_Type__c, &quot;Glass Back&quot;),&quot;Glass Back; &quot;, NULL) +
+IF(INCLUDES(Innovation_Type__c, &quot;Corning Bendable Glass&quot;),&quot;Corning Bendable Glass; &quot;, NULL) +
 IF(INCLUDES(Innovation_Type__c, &quot;AR – Camera Hole&quot;),&quot;AR- Camera Hole; &quot;, NULL)</formula>
     <label>Special Requirements</label>
     <required>false</required>

@@ -209,7 +209,7 @@ public class TestUtilities {
             opp.application__c = 'Front Cover';
             opp.specialShapes__c = '2D';
             opp.treatment__c = 'AG';
-            opp.primaryGlassComposition__c = '2320';
+            opp.primaryGlassComposition__c = '2320 (GG3)'; // 11-16-20 jd (change to '2320 (GG3)'')
             opp.createForecast__c = FALSE;
         }
         
@@ -244,7 +244,7 @@ public class TestUtilities {
             opp.application__c = 'Front Cover';
             opp.specialShapes__c = '2D';
             opp.treatment__c = 'AG';
-            opp.primaryGlassComposition__c = '2320';
+            opp.primaryGlassComposition__c = '2320 (GG3)'; // 11-16-20 jd (change to '2320 (GG3)'')
             opp.createForecast__c = FALSE;
         }
         if(doInsert)
@@ -371,7 +371,7 @@ public class TestUtilities {
         r.cncNeeded__c = 'No';
         r.currency__c = 'USD';
         r.etc__c = 'No';
-        r.glassComposition__c = '2320';
+        r.glassComposition__c = '2320 (GG3)'; // 11-16-20 jd (change to '2320 (GG3)'')
         r.ioxNeeded__c = 'No';
         r.isThisANonRectangularPart__c = 'No';
         r.numberOfHoles__c = 1;
@@ -427,7 +427,7 @@ public class TestUtilities {
         s.ioxNeeded__c = 'No';
         s.etc__c = 'No'; 
         s.Urgency_of_Case__c = 'Low';
-        s.glassComposition__c = '2320'; 
+        s.glassComposition__c = '2320 (GG3)';  // 11-16-20 jd (change to '2320 (GG3)'')
         s.isThisANonRectangularPart__c = 'No'; 
         s.productionVolumeType__c = 'Parts/Month';
         s.screenPrint__c = 'No'; 
@@ -785,7 +785,7 @@ public class TestUtilities {
      public StandardProductInventoryMatrix__c createTestMatrixRecord() { 
         //create product matrix record
         StandardProductInventoryMatrix__c m = new StandardProductInventoryMatrix__c();
-        m.glassComposition__c = '2320';
+        m.glassComposition__c = '2320 (GG3)'; // 11-16-20 jd (change to '2320 (GG3)'')
         m.thickness__c = '0.40';
         m.width__c = '1520';
         m.length__c = '1460';

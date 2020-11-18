@@ -66,6 +66,14 @@ public without sharing class ChatterHelper {
                         baseRecipients = GGPartsSpecAutoNotifications__c.getValues(partPath).userIdList__c;
                         if (String.isEmpty(spec.innovation_type__c) == False) {
                             combinedRecipients = baseRecipients + Utils.getInnovationRecipients(spec);
+/*
+                            partPath =  location(spec); // CSMSF-23 Is this Corning Bendable Glass (CBG) ?
+                            if (String.isEmpty(partPath) == False) {
+                                // We are doing CBG, so add in AE as well ...
+                                aeRecipient = spec.accountAEId__c;
+                                combinedRecipients = combinedRecipients +',{' + aeRecipient + '}';
+                            }
+*/
                         } else {
                             combinedRecipients = baseRecipients;
                         }
@@ -123,8 +131,10 @@ public without sharing class ChatterHelper {
                     If (spec.status__c == 'CM Cost Assessment') {
                         
                         // parts or omega
-                        partPath = spec.productLine__c == 'Parts' && spec.isOmega__c == False ? 'RA~CA' : 'OM~RA~CA'; 
-                        
+                        partPath = getCBGlocation(spec); // CSMSF-23
+                        if (String.isEmpty(partPath) == true)
+                            partPath = spec.productLine__c == 'Parts' && spec.isOmega__c == False ? 'RA~CA' : 'OM~RA~CA'; 
+                        else partPath = 'CBG-RA~CA';                        
                         finalMessage = Utils.getMessageInnovationAndLocation(partPath,spec);
                         
                         // recipients - do not include innovation PLMs
@@ -146,8 +156,11 @@ public without sharing class ChatterHelper {
                     If (spec.status__c == 'Pricing Assignment') {
                         
                         // parts or omega
-                        partPath = spec.productLine__c == 'Parts' && spec.isOmega__c == False ? 'CA~PA' : 'OM~CA~PA';                     
-                        
+                        //partPath = spec.productLine__c == 'Parts' && spec.isOmega__c == False ? 'CA~PA' : 'OM~CA~PA';                     
+                        partPath = getCBGlocation(spec); // CSMSF-23
+                        if (String.isEmpty(partPath) == true)
+                             partPath = spec.productLine__c == 'Parts' && spec.isOmega__c == False ? 'CA~PA' : 'OM~CA~PA'; 
+                        else partPath = 'CBG-CA~PA';                       
                         finalMessage = Utils.getMessageInnovationAndLocation(partPath,spec);
                         
                         // recipients - includes innovation PLMs
@@ -372,8 +385,12 @@ public without sharing class ChatterHelper {
                     If (spec.dsStatus__c == 'CM Cost Assessment') {
                         
                         // parts or omega
-                        partPath = spec.productLine__c == 'Parts' && spec.isOmega__c == False ? 'RA~CA' : 'OM~RA~CA'; 
-                        
+                        partPath = getCBGlocation(spec); // CSMSF-23 Is this Corning Bendable Glass (CBG) ?
+                        if (String.isEmpty(partPath) == true)
+                            partPath = spec.productLine__c == 'Parts' && spec.isOmega__c == False ? 'RA~CA' : 'OM~RA~CA';
+                        else {
+                            partPath = 'CBG-RA~CA'; // CSMSF-23
+                        }                                              
                         finalMessage = Utils.getMessageInnovationAndLocationDS(partPath,spec);
                         
                         // recipients - do not include innovation PLMs
@@ -399,7 +416,6 @@ public without sharing class ChatterHelper {
     
     public Static Void specificationNotification( List<Specification__c> speclist, Map<ID, Specification__c> oldmap ) {
         Utilities Utils = new Utilities();
-System.debug('@@ JD specificationNotification');
         String partPath;    
         String finalMessage;
         String rfiOrRfq;
@@ -409,10 +425,10 @@ System.debug('@@ JD specificationNotification');
         String combinedRecipients;
         String finalRecipients;
         String location;        
-        
+ 
         for(specification__c spec : speclist) {  
             // ***** PARTS LOGIC *****
-            
+
             // clear variables
             partPath = '';
             finalMessage = '';
@@ -438,17 +454,23 @@ System.debug('@@ JD specificationNotification');
                     
                     // recipients - includes innovation PLMs
                     baseRecipients = GGPartsSpecAutoNotifications__c.getValues(partPath).userIdList__c;
-
                     if (String.isEmpty(spec.innovation_type__c) == False) {
                         combinedRecipients = baseRecipients + Utils.getInnovationRecipients(spec);
+/* removed per customer request
+                        partPath = getCBGlocation(spec); // CSMSF-23 Is this Corning Bendable Glass (CBG) ?
+                        if (String.isEmpty(partPath) == false) {
+                            // We are doing CBG, so add in AE as well ...
+                            aeRecipient = spec.accountAEId__c;
+                            combinedRecipients = combinedRecipients +',{' + aeRecipient + '}';
+                        }  
+*/                 
                     } else {
                         combinedRecipients = baseRecipients;
                     }
-                 
+    
                     // clean/remove duplicate recipients
-                    finalRecipients = Utils.cleanRecipients(combinedRecipients);
-                 
-                  
+                    finalRecipients = Utils.cleanRecipients(combinedRecipients);   
+                                 
                     // rfi configuration
                     rfiOrRfq = spec.rfiConfiguration__c <> Null ? '- RFI Configuration: ' + spec.rfiConfiguration__c + ' ' : '';  
                     
@@ -668,8 +690,6 @@ System.debug('@@ JD specificationNotification');
                     lstLocations.clear();
                     if (spec.location__c != null)
                          lstLocations = spec.location__c.split(';');
-                 
-                    lstLocations.add(getCBGlocation(spec));     // CSMSF-23
 
                     for (String l : lstLocations) {
                         
@@ -719,7 +739,7 @@ System.debug('@@ JD specificationNotification');
                 If (oldMap.get(spec.ID).status__c == 'Risk Assessment' && spec.status__c == 'CM Cost Assessment') {
                     
                     // parts or omega
-                    partPath = getCBGlocation(spec); // CSMSF-23
+                    partPath = getCBGlocation(spec); // CSMSF-23 Is this Corning Bendable Glass (CBG) ?
                     if (String.isEmpty(partPath) == true)
                         partPath = spec.productLine__c == 'Parts' && spec.isOmega__c == False ? 'RA~CA' : 'OM~RA~CA';
                     else {
@@ -747,7 +767,13 @@ System.debug('@@ JD specificationNotification');
                 If (oldMap.get(spec.ID).status__c == 'Pricing Assignment' && spec.status__c == 'CM Cost Assessment') {
                     
                     // parts or omega
-                    partPath = spec.productLine__c == 'Parts' && spec.isOmega__c == False ? 'PA~CA' : 'OM~PA~CA';
+                    partPath = getCBGlocation(spec); // CSMSF-23 Is this Corning Bendable Glass (CBG) ?
+                    if (String.isEmpty(partPath) == true)
+                        partPath = spec.productLine__c == 'Parts' && spec.isOmega__c == False ? 'RA~CA' : 'OM~RA~CA';
+                    else {
+                        partPath = 'CBG-RA~CA'; // CSMSF-23
+                    }
+                    //partPath = spec.productLine__c == 'Parts' && spec.isOmega__c == False ? 'PA~CA' : 'OM~PA~CA';
                     
                     finalMessage = Utils.getMessageInnovationAndLocation(partPath,spec);
                     
@@ -803,7 +829,7 @@ System.debug('@@ JD specificationNotification');
                     
                     // recipients - includes innovation PLMs
                     baseRecipients = GGPartsSpecAutoNotifications__c.getValues(partPath).userIdList__c;
-                    if (String.isEmpty(spec.innovation_type__c) == False) {
+                    if (String.isEmpty(spec.innovation_type__c) == False && partPath != 'CBG-CA~PA') { // CSMSF-23 don't send innovation owner if CBG
                         combinedRecipients = baseRecipients + Utils.getInnovationRecipients(spec);
                     } else {
                         combinedRecipients = baseRecipients;
@@ -1121,8 +1147,12 @@ spec.id, spec.opportunityName__c + ' ' + finalRecipients + ' ***** DUAL SOURCE '
                 If (oldMap.get(spec.ID).dsStatus__c == 'Risk Assessment' && spec.dsStatus__c == 'CM Cost Assessment') {
                     
                     // parts or omega
-                    partPath = spec.productLine__c == 'Parts' && spec.isOmega__c == False ? 'RA~CA' : 'OM~RA~CA';
-                    
+                    partPath = getCBGlocation(spec); // CSMSF-23 Is this Corning Bendable Glass (CBG) ?
+                    if (String.isEmpty(partPath) == true)
+                        partPath = spec.productLine__c == 'Parts' && spec.isOmega__c == False ? 'RA~CA' : 'OM~RA~CA';
+                    else {
+                        partPath = 'CBG-RA~CA'; // CSMSF-23
+                    }                    
                     finalMessage = Utils.getMessageInnovationAndLocationDS(partPath,spec);
                     
                     // recipients - do not include innovation PLMs
@@ -1560,7 +1590,6 @@ spec.id, spec.opportunityName__c + ' ' + finalRecipients + ' ***** DUAL SOURCE '
     
     private static void partsRiskNotification(specification__c spec, Integer source, Boolean thickChange, String oldThickness, Boolean qaComm, String message) {
         Utilities Utils = new Utilities();
-        
         String finalMessage = '';
         String qaMessage = '';
         String rfiOrRfq = '';
@@ -1579,9 +1608,7 @@ spec.id, spec.opportunityName__c + ' ' + finalRecipients + ' ***** DUAL SOURCE '
             } else {
                 lstLocations = spec.location__c.split(';');
             }    
-        }
-
-        lstLocations.add(getCBGlocation(spec)); // CSMSF-23
+        }     
 
         // Loop through location list and post to selected locations
         for (String l : lstLocations) {
@@ -1622,7 +1649,7 @@ spec.id, spec.opportunityName__c + ' ' + finalRecipients + ' ***** DUAL SOURCE '
             if (l == 'YX-TQ') { location = 'MA~RA~YX-TQ';}
             if (l == 'KLOT-TQ') { location = 'MA~RA~KLOT-TQ';} 
             if (l == 'KOTL-TQ') { location = 'MA~RA~KOTL-TQ';}                        
-            if (l == 'XX DG') { location = 'MA~RA~XX DG-TQ';}
+            if (l == 'XX 3D') { location = 'MA~RA~XX DG-TQ';}
             if (l == 'XX TZ') { location = 'MA~RA~XX TZ';}
             if (l == 'ROE-TQ') { location = 'MA~RA~ROE-TQ';}            
             if (l == 'HH-LowR') { location = 'MA~RA~HH-LowR';}
@@ -1637,7 +1664,7 @@ spec.id, spec.opportunityName__c + ' ' + finalRecipients + ' ***** DUAL SOURCE '
             if (l == 'JNTC-TQ') { location = 'JNTC-TQ-QA';}
             if (l == 'Liangcheng-LR') { location = 'Liangcheng-QA';}
             if (l == 'HLF-LR') { location = 'HLF-QA';}
-            if (l == 'CBG-LR') { location = 'CBG-QA'; }
+            if (l == 'Ample') { location = 'Ample-QA';}
             
             if (source == 2) {
                 finalMessage = Utils.getMessageInnovationAndLocationDS(location,spec);
@@ -1666,8 +1693,7 @@ spec.id, spec.opportunityName__c + ' ' + finalRecipients + ' ***** DUAL SOURCE '
             }
             
             // clean/remove duplicate recipients
-            finalRecipients = Utils.cleanRecipients(combinedRecipients);
-            
+            finalRecipients = Utils.cleanRecipients(combinedRecipients);    
             // rfi configuration
             rfiOrRfq = spec.rfiConfiguration__c <> Null ? '- RFI Configuration: ' + spec.rfiConfiguration__c + ' ' : '';  
             
@@ -1770,12 +1796,13 @@ spec.id, spec.opportunityName__c + ' ' + finalRecipients + ' ***** DUAL SOURCE '
         }
         
     }
-    // CSMSF-23
+    // CSMSF-23 - See if Corning Bendable Glass is set as a innovation type.  If so, return the custom setting location
+    //            for the Risk Mangement PR owner ...
     private Static String getCBGlocation(specification__c spec) {
         if (spec.Innovation_Type__c != null) {
             for (String s : spec.Innovation_Type__c.split(';')) {
                 if ( s == 'Corning Bendable Glass') {
-                    return 'CBG-LR';
+                    return 'Ample';
                 }
             }
         }

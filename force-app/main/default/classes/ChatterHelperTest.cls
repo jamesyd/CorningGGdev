@@ -217,7 +217,8 @@ private class ChatterHelperTest {
         
         Specification__c testSpec8 = [SELECT Id, upperLimit1__c, moqUom__c, moq__c, price1__c, plmApproval__c, pricingAssignmentComplete__c, Innovation_Type__c, location__c FROM Specification__c WHERE id =: testId limit 1];   
         testSpec8.plmApproval__c = 'Reassign CM';
-        testSpec8.pricingAssignmentComplete__c = TRUE;
+        //testSpec8.pricingAssignmentComplete__c = TRUE;
+        testSpec8.pricingAssignmentComplete__c = FALSE;   // 11-16-20 jd
         testSpec8.price1__c = 10;
         testSpec8.moq__c = 1;
         testSpec8.moqUom__c = 'Each';
@@ -495,7 +496,7 @@ private class ChatterHelperTest {
     static testMethod void validateRawInventoryP1() {
         
         Specification__c testSpec = createNewTestSpec(specRT2, 'TPM');
-        testSpec.glassComposition__c = '2320'; // 2320 is Path 1
+        testSpec.glassComposition__c = '2320 (GG3)'; // 2320 is Path 1  // 11-16-20 jd (change to '2320 (GG3)'')
         testSpec.submitForApproval__c = true;       
         insert testSpec;
         
@@ -512,7 +513,7 @@ private class ChatterHelperTest {
     static testMethod void validateRawDeclineP1() {
         
         Specification__c testSpec = createNewTestSpec(specRT2, 'TPM');
-        testSpec.glassComposition__c = '2320'; // 2320 is Path 1
+        testSpec.glassComposition__c = '2320 (GG3)'; // 2320 is Path 1 // 11-16-20 jd (change to '2320 (GG3)'')
         testSpec.submitForApproval__c = true;       
         insert testSpec;
         

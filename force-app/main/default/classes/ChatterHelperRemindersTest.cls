@@ -273,7 +273,7 @@ private class ChatterHelperRemindersTest {
         List <Specification__c> sList = new List <Specification__c>();
          
         Specification__c testSpec = createNewTestSpec(specRT2, 'TPM');
-        testSpec.glassComposition__c = '2320'; // 2320 is Path 1
+        testSpec.glassComposition__c = '2320 (GG3)'; // 2320 is Path 1 // 11-16-20 jd (change to '2320 (GG3)'')
         testSpec.submitForApproval__c = true;       
         insert testSpec;
         
@@ -297,7 +297,7 @@ private class ChatterHelperRemindersTest {
         List <Specification__c> sList = new List <Specification__c>();
          
         Specification__c testSpec = createNewTestSpec(specRT2, 'TPM');
-        testSpec.glassComposition__c = '2320'; // 2320 is Path 1
+        testSpec.glassComposition__c = '2320 (GG3)'; // 2320 is Path 1 // 11-16-20 jd (change to '2320 (GG3)'')
         testSpec.submitForApproval__c = true;       
         insert testSpec;
         
@@ -326,7 +326,7 @@ private class ChatterHelperRemindersTest {
         List <Specification__c> sList = new List <Specification__c>();
          
         Specification__c testSpec = createNewTestSpec(specRT2, 'TPM');
-        testSpec.glassComposition__c = '2320'; // 2320 is Path 1
+        testSpec.glassComposition__c = '2320 (GG3)'; // 2320 is Path 1 // 11-16-20 jd (change to '2320 (GG3)'')
         testSpec.submitForApproval__c = true;       
         insert testSpec;
         
@@ -359,7 +359,7 @@ private class ChatterHelperRemindersTest {
         List <Specification__c> sList = new List <Specification__c>();
          
         Specification__c testSpec = createNewTestSpec(specRT2, 'TPM');
-        testSpec.glassComposition__c = '2320'; // 2320 is Path 1
+        testSpec.glassComposition__c = '2320 (GG3)'; // 2320 is Path 1 // 11-16-20 jd (change to '2320 (GG3)'')
         testSpec.submitForApproval__c = true;       
         insert testSpec;
         
@@ -396,7 +396,7 @@ private class ChatterHelperRemindersTest {
         List <Specification__c> sList = new List <Specification__c>();
          
         Specification__c testSpec = createNewTestSpec(specRT2, 'TPM');
-        testSpec.glassComposition__c = '2320'; // 2320 is Path 1
+        testSpec.glassComposition__c = '2320 (GG3)'; // 2320 is Path 1 // 11-16-20 jd (change to '2320 (GG3)'')
         testSpec.submitForApproval__c = true;       
         insert testSpec;
         
@@ -437,7 +437,7 @@ private class ChatterHelperRemindersTest {
         List <Specification__c> sList = new List <Specification__c>();
          
         Specification__c testSpec = createNewTestSpec(specRT2, 'TPM');
-        testSpec.glassComposition__c = '2320'; // 2320 is Path 1
+        testSpec.glassComposition__c = '2320 (GG3)'; // 2320 is Path 1 // 11-16-20 jd (change to '2320 (GG3)'')
         testSpec.submitForApproval__c = true;       
         insert testSpec;
         
@@ -486,7 +486,7 @@ private class ChatterHelperRemindersTest {
         List <Specification__c> sList = new List <Specification__c>();
          
         Specification__c testSpec = createNewTestSpec(specRT2, 'TPM');
-        testSpec.glassComposition__c = '2320'; // 2320 is Path 1
+        testSpec.glassComposition__c = '2320 (GG3)'; // 2320 is Path 1 // 11-16-20 jd (change to '2320 (GG3)'')
         testSpec.submitForApproval__c = true;       
         insert testSpec;
         
@@ -539,7 +539,7 @@ private class ChatterHelperRemindersTest {
         List <Specification__c> sList = new List <Specification__c>();
          
         Specification__c testSpec = createNewTestSpec(specRT2, 'TPM');
-        testSpec.glassComposition__c = '2320'; // 2320 is Path 1
+        testSpec.glassComposition__c = '2320 (GG3)'; // 2320 is Path 1 // 11-16-20 jd (change to '2320 (GG3)'')
         testSpec.submitForApproval__c = true;       
         insert testSpec;
         

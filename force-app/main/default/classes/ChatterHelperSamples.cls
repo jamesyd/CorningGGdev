@@ -3,11 +3,12 @@
  * @Description        : 
  * @Author             : Adam Nicholson?
  * @Group              : 
- * @Last Modified By   : Edgar Santillana
- * @Last Modified On   : 08-26-2020
+ * @Last Modified By   : Jim Dickerson
+ * @Last Modified On   : 11-10-2020
  * @Modification Log   : 
  * Ver       Date            Author      		    Modification
  * 1.1    29/6/2020   Arquimidez Mora     Updated code to fix chatter notification for Free Sample Request
+ * 1.2    10/11/2020  Jim Dickerson       Change chatter notification for CBG (Phyllo) for New -> CM Assignment
 **/
 public without sharing class ChatterHelperSamples {
     
@@ -303,7 +304,12 @@ public without sharing class ChatterHelperSamples {
                     }
                     
                     // recipients - do not include innovation PLMs
-                    baseRecipients = GGPartsSampleAutoNotifications__c.getValues('N~MA').userIdList__c;
+                    if(!o.isPhyllo__c){
+                        baseRecipients = GGPartsSampleAutoNotifications__c.getValues('N~MA').userIdList__c;
+                    }else{
+                        baseRecipients = GGPartsSampleAutoNotifications__c.getValues('N~MA Phyllo').userIdList__c;
+                    }
+    
                     combinedRecipients = baseRecipients;
                     
                     // clean/remove duplicate recipients
@@ -351,7 +357,12 @@ public without sharing class ChatterHelperSamples {
                     }
                     
                     // recipients - includes innovation PLMs
-                    baseRecipients = GGPartsSampleAutoNotifications__c.getValues('MA~PA').userIdList__c;
+                    if(!o.isPhyllo__c){
+                        baseRecipients = GGPartsSampleAutoNotifications__c.getValues('MA~PA').userIdList__c;
+                    }
+                    else {
+                        baseRecipients = GGPartsSampleAutoNotifications__c.getValues('N~PA Phyllo').userIdList__c;
+                    }
                     if (String.isEmpty(o.sampleInnovations__c) == False) {
                         combinedRecipients = baseRecipients + Utils.getInnovationRecipientsSamples(o);
                     } else {

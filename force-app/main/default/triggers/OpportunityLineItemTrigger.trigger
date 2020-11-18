@@ -12,7 +12,7 @@
 trigger OpportunityLineItemTrigger on OpportunityLineItem (before delete, before insert, before update, after insert, after update, after delete) {
     //Check the custom settings to fire this trigger
     TriggerSettings__c trigSettings = TriggerSettings__c.getInstance();    
-    
+System.debug('@@ JD OLI trigger: isInsert=' + trigger.isInsert + ' isDelete=' + trigger.isDelete + ' isUpdate=' + trigger.isUpdate);    
     if(trigSettings.opportunityLineItem__c){ 
         
         if (trigger.isBefore){
@@ -28,15 +28,19 @@ trigger OpportunityLineItemTrigger on OpportunityLineItem (before delete, before
         }
         else if (trigger.isAfter) {
             if (trigger.isInsert) {
+System.debug('@@ JD afterInsert,  opptyId=' + trigger.new[0].OpportunityId);
                 OpportunityLITriggerHelper.TransferDefaultForecast(trigger.new);
                 OpportunityLITriggerHelper.onAfterInsert(trigger.new);
                 OpportunityLITriggerHelper.SetOpportunityStandardFlag(trigger.new); 
                 OpportunityLITriggerHelper.setSampleFulfillment(trigger.new);
             }            
             if (trigger.isUpdate) {
+System.debug('@@ JD afterUpdate,  opptyId=' + trigger.new[0].OpportunityId);
                 OpportunityLITriggerHelper.handleAfterUpdate(trigger.new, trigger.oldMap);
             }
             if(trigger.isDelete){
+System.debug('@@ JD afterDelete,  opptyId=' + trigger.old[0].OpportunityId);
+               
                 OpportunityLITriggerHelper.onAfterDelete(trigger.old, trigger.oldMap);
             }
         }

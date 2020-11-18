@@ -26,7 +26,7 @@ private class StandardProductDataToProductUtilityTest {
          //create product matrix record
         StandardProductInventoryMatrix__c m = new StandardProductInventoryMatrix__c();
         m.name = 'x';
-        m.glassComposition__c = '2320';
+        m.glassComposition__c = '2320 (GG3)';// 11-16-20 jd (change to '2320 (GG3)'')
         m.thickness__c = '0.40';
         m.width__c = '1520';
         m.customwidth__c = 1520;
@@ -42,7 +42,7 @@ private class StandardProductDataToProductUtilityTest {
         
         //test.startTest();
             StandardProductInventoryLoader__c l = new StandardProductInventoryLoader__c();
-            l.glassComposition__c = '2320';
+            l.glassComposition__c = '2320 (GG3)'; // 11-16-20 jd (change to '2320 (GG3)'')
             l.thickness__c = '0.40';
             l.pricePerSqFt__c = 16.33;
             l.account__c = a1.id;

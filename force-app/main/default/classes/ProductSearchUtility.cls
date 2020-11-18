@@ -413,7 +413,9 @@ public with sharing class ProductSearchUtility{
          String countQuery = 'SELECT COUNT() ' + prodQueryWOfields + LimitStr(searchSize);
                
          srWrapper.totalRecordCount = Database.countQuery(countQuery);
-         
+System.debug('@@ JD SOSL search trc=' + srWrapper.totalRecordCount);
+System.debug('@@ JD query=' + prodQueryWOfields);
+    
          for (Price__c p: (list<Price__c>)(Search.query(prodQuerySOSL)[0])) {
              sr = new SearchResult();
              sr.priceId = p.Id;

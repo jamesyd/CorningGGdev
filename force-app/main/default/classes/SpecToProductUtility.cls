@@ -3,12 +3,13 @@
  * @Description        : 
  * @Author             : Arquimidez Mora
  * @Group              : 
- * @Last Modified By   : Edgar Santillana
- * @Last Modified On   : 09-03-2020
+ * @Last Modified By   : Jim Dickerson
+ * @Last Modified On   : 11-09-2020
  * @Modification Log   : 
  * Ver       Date            Author      		    Modification
  * 1.0    28/6/2020   Arquimidez Mora     Initial Version
  * 1.1    03/09/2020  Edgar Santillana     partExpDate changed from 30 days to 2 years
+ * 1.2    11/09/2020  Jim Dickerson        set isPhyllo__c if spec has Corning Bendable Glass innovation
 **/
 ///*** Added for Gorilla Glass Implementation ***///
 ///*** Corning IT - 2/24/2017 ***///
@@ -25,6 +26,7 @@ public class SpecToProductUtility{
         List<Product2> newProductList = new List<Product2>();
         List<Price__c> productPriceList = new List<Price__c>();
         Map<String, Specification__c> specMap = new Map<String, Specification__c>();
+        Boolean isCBG;
     
         // get standard and GG price books
         Id sdPriceBookId = [SELECT id FROM Pricebook2 WHERE isStandard=true LIMIT 1].id;
@@ -45,7 +47,16 @@ public class SpecToProductUtility{
             
                 // build specMap for price lookup when adding price__c
                 specMap.put(s.id, s); 
-            
+
+                // CSMSF-23 (Corning Bendable Glass)
+                isCBG=false;
+                if (s.Innovation_Type__c != null) {
+                    for (String sIT : s.Innovation_Type__c.split(';')) {
+                        if ( sIT == 'Corning Bendable Glass') {
+                            isCBG=true;     // 
+                        }
+                    }
+                }
                 // create the product for the spec
                 Product2 p2 = new Product2(
                     Name = s.productName__c,
@@ -73,7 +84,8 @@ public class SpecToProductUtility{
                     maximumCrateDimensions__c = s.maximumCrateDimensions__c,
                     sheetsPerCrate__c = s.estimatedCrateSheetCount__c,
                     CanUseQuantitySchedule = True,
-                    CanUseRevenueSchedule = True                                         
+                    CanUseRevenueSchedule = True,
+                    isPhyllo__c = isCBG                                       
                 );
                 // packingOption__c = s.packingOption__c;
                 

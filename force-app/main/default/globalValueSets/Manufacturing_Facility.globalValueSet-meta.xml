@@ -206,9 +206,9 @@
         <label>XC</label>
     </customValue>
     <customValue>
-        <fullName>XX DG</fullName>
+        <fullName>XX 3D</fullName>
         <default>false</default>
-        <label>XX DG</label>
+        <label>XX 3D</label>
     </customValue>
     <customValue>
         <fullName>XX TZ</fullName>
@@ -249,6 +249,11 @@
         <fullName>HLF-LR</fullName>
         <default>false</default>
         <label>HLF-LR</label>
+    </customValue>
+    <customValue>
+        <fullName>Ample</fullName>
+        <default>false</default>
+        <label>Ample</label>
     </customValue>
     <customValue>
         <fullName>Xingxing</fullName>

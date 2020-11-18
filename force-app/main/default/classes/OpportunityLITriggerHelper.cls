@@ -3,11 +3,12 @@
  * @Description        : 
  * @Author             : Adam Nicholson? Atageldi Atageldiyev?
  * @Group              : 
- * @Last Modified By   : Arquimidez Mora
- * @Last Modified On   : 09-06-2020
+ * @Last Modified By   : Jim Dickerson
+ * @Last Modified On   : 11-11-2020
  * @Modification Log   : 
  * Ver       Date            Author      		    Modification
  * 1.2    28/6/2020   Arquimidez Mora           Modified to clean Spec Id and Product Information Section when deleting product from Sample Request and delete related Sample Fulfillment
+ * 1.3    11/11/2020  Jim Dickerson             Don't override sample fulfillment location for non-generic (has a specification)Phyllo (CBG)
 **/
 ///*** Added for Gorilla Glass Implementation ***///
 ///*** Salesforce Cloud Services - 2/14/2017 ***///
@@ -202,10 +203,13 @@ public class OpportunityLITriggerHelper{
                    FROM Opportunity 
                    WHERE Id IN :oliToOpp.values() 
                    AND RecordTypeId IN :sampleRTs.keyset()]; 
-        
+        System.debug('$$$ IN OLI: newList size=' + newList.size());
+        System.debug('$$$ IN OLI: oppList size=' + oppList.size());
         for (OpportunityLineItem li: newList){
             for (Opportunity o: oppList){
+        System.debug('$$$ IN OLI: liOppId=' + li.OpportunityId + ' oppty id=' + o.Id);
                 if (o.id == li.OpportunityId) {
+        System.debug('$$$ IN OLI: num of  sample fulfillments=' + o.Sample_Fulfillments__r.size());
                     if(o.Sample_Fulfillments__r.size() == 1){ // Update the Sample Fulfillment Record
                         //system.debug('Sample_Fulfillments__r=' + o.Sample_Fulfillments__r);
                         SampleFulfillment__c theSample = new SampleFulfillment__c(Id=o.Sample_Fulfillments__r[0].Id);
@@ -233,10 +237,12 @@ public class OpportunityLITriggerHelper{
                             }
                         }
                         //Product is Phyllo
-                        if(o.isPhyllo__c){
+
+                        // 11-Nov-2020 - don't override if this is a CBG with a specification ...
+                        if(o.isPhyllo__c && li.specification__c == null){
                             theSample.fulfillmentLocation__c = 'Not Applicable';
                         }
-                        // AN 1/14/18 END
+                    
                         sfList.add(theSample);
                     }
                     else {
@@ -372,8 +378,7 @@ public class OpportunityLITriggerHelper{
     }
     
     
-    public static void onAfterInsert(List<OpportunityLineItem> oliList){
-        
+    public static void onAfterInsert(List<OpportunityLineItem> oliList){    
         Map<Id, Product2> productById = getProducts(oliList);
         Map<Id, Opportunity> opportunityById = getOpportunities(oliList);
         
@@ -409,8 +414,7 @@ public class OpportunityLITriggerHelper{
     
     //method to update opportunity, such that if any product attached to the opportunity has the "IsPhyllo" checked, 
     //then it will make this "IsPhyllo" on the Opportunity(SR) also checked
-    private static void updatePhylloOpptOnInsert(List<OpportunityLineItem> oliList, Map<Id, Product2> productById, Map<Id, Opportunity> opportunityById){
-        
+    private static void updatePhylloOpptOnInsert(List<OpportunityLineItem> oliList, Map<Id, Product2> productById, Map<Id, Opportunity> opportunityById){  
         List<Opportunity> oppsToUpdate = new List<Opportunity>();
         
         //getting record type Id by describing the Opportunity object and record type

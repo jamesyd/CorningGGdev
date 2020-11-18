@@ -106,7 +106,7 @@ static testMethod void testSpecificationReminderBatch() {
         testSpecRaw.New_Thickness_or_Size__c = 'Both';
         testSpecRaw.requestedSampleVolume__c = 100;
         testSpecRaw.potential12MoVolume__c = 1000;
-        testSpecRaw.glassComposition__c = '2320';
+        testSpecRaw.glassComposition__c = '2320 (GG3)';// 11-16-20 jd (change to '2320 (GG3)'')
         insert testSpecRaw;
         
         string testIdRaw = testSpecRaw.id;
