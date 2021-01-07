@@ -9,6 +9,7 @@
  * Ver       Date            Author      		    Modification
  * 1.1    29/6/2020   Arquimidez Mora     Updated code to fix chatter notification for Free Sample Request
  * 1.2    10/11/2020  Jim Dickerson       Change chatter notification for CBG (Phyllo) for New -> CM Assignment
+ * 1.3    07/01/2021    Jim Dickerson     INC1751176, in raw logic, need to look for stage = 'Non-paid Request' as 'RSM Approval' is deprecated ... for sending out free parts sample request chatter ...
 **/
 public without sharing class ChatterHelperSamples {
     
@@ -571,7 +572,9 @@ public without sharing class ChatterHelperSamples {
                 // Free Request notification logic
                 //If (oldMap.get(o.ID).requestFreeSample__c == Null && o.requestFreeSample__c == 'Yes') {
                 
-                If (oldMap.get(o.ID).stageName != 'RSM Approval' && o.stageName == 'RSM Approval') {
+                // 7Jan2021 - INC1751176, need to look for stage = 'Non-paid Request' as 'RSM Approval' is deprecated ...
+                //If (oldMap.get(o.ID).stageName != 'RSM Approval' && o.stageName == 'RSM Approval') {
+                If (oldMap.get(o.ID).stageName != 'Non-paid Request' && o.stageName == 'Non-paid Request') {
                     // determine approver based on role
                     if (o.Owner_Role__c.contains('Americas/EMEA')) freeApprover = 'Free~Americas/EMEA';
                     if (o.Owner_Role__c.contains('China/ODM/TPM/Finisher')) freeApprover = 'Free~China/ODM/TPM/Finisher';

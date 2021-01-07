@@ -1,3 +1,13 @@
+/**
+ * @description       : 
+ * @author            : Edgar Santillana
+ * @group             : 
+ * @last modified on  : 10-26-2020
+ * @last modified by  : Edgar Santillana
+ * Modifications Log 
+ * Ver   Date         Author             Modification
+ * 1.0   10-16-2020   Edgar Santillana   New two Fields Added to update when the user click on Save Schedule Record
+**/
 public without sharing class HomePageForecastController {
     
     public static Boolean checkPLM() {
@@ -19,8 +29,11 @@ public without sharing class HomePageForecastController {
         string uId18 = UserInfo.getUserId();
         string uId15 = String.valueOf(UserInfo.getUserId()).substring(0, 15);
         Boolean plm = checkPLM();
-        forecastStr = '%' + forecastStr+'%';
+        Boolean overrideDate = OpportunityForecastActions.overrideM1date(); // JDJD check for custom permission to find older forecasts ...
+        System.debug('@@## overrideDate=' + overrideDate); // JDJD
         
+        forecastStr = '%' + forecastStr+'%';
+/* JDJD        
         List<ForecastOutput52Week__c> fList = new List<ForecastOutput52Week__c>([SELECT id, createdDate, ownerId, tpmOwner__c, plm__c,
                                                                                  opportunityName__c, opportunity__c, productName__c, productCode__c, currentProductCode__c,shipToCustomer__c, massProductionStartDate__c, status__c,
                                                                                  programCompleted__c, tpmAccount__c, m1Qty__c, m2Qty__c, m3Qty__c, m4Qty__c, m5Qty__c, m6Qty__c, m7Qty__c, m8Qty__c, 
@@ -42,7 +55,45 @@ public without sharing class HomePageForecastController {
                                                                                             OR currentProductCode__c LIKE: forecastStr 
                                                                                             OR specificationNumber__c LIKE: forecastStr))
                                                                                  ORDER BY currentOpportunityName__c ASC]);
-        
+
+System.debug('orig query size=' + fList.size());
+*/
+        // JDJD start new dynamic SOQL so that we can override the current month requirement ...
+        Set<Id> ownerIds = getOwnerIds(uId18);
+        //overrideDate=false;
+ 		String qString = 'SELECT id, createdDate, ownerId, tpmOwner__c, plm__c,' +
+            'opportunityName__c, opportunity__c, productName__c, productCode__c, currentProductCode__c,shipToCustomer__c, massProductionStartDate__c, status__c,' +
+            'programCompleted__c, tpmAccount__c, m1Qty__c, m2Qty__c, m3Qty__c, m4Qty__c, m5Qty__c, m6Qty__c, m7Qty__c, m8Qty__c,' +
+            'm9Qty__c, m10Qty__c, m11Qty__c, m12Qty__c, m13Qty__c, m14Qty__c, m15Qty__c, m16Qty__c, m17Qty__c, m18Qty__c,' + 
+            'm1Label__c, m2Label__c, m3Label__c, m4Label__c, m5Label__c, m6Label__c, m7Label__c, m8Label__c, m9Label__c, m10Label__c,' + 
+            'm11Label__c, m12Label__c, m13Label__c, m14Label__c, m15Label__c, m16Label__c, m17Label__c, m18Label__c,' + 
+            'm1UnitPrice__c, m2UnitPrice__c, m3UnitPrice__c, m4UnitPrice__c, m5UnitPrice__c, m6UnitPrice__c, m7UnitPrice__c,' + 
+            'm8UnitPrice__c, m9UnitPrice__c, m10UnitPrice__c, m11UnitPrice__c, m12UnitPrice__c, m13UnitPrice__c, m14UnitPrice__c,' +
+            'm15UnitPrice__c, m16UnitPrice__c, m17UnitPrice__c, m18UnitPrice__c, m14Date__c, productLine__c,' +
+            'oliLastModifiedDate__c, oliLastModifiedBy__r.Name, LastModifiedBy.Name, LastModifiedDate, specificationNumber__c,' + 
+            'currentOpportunityName__c, oemOwenerId__c,' +
+            'finisherAccount__c, finisherAccount__r.Name, finisherMix__c, finisherOwner__c, finisherYield__c, currentGlassAttributes__c, comments__c,' +
+            'opportunity__r.OpportunityAutoNamePart1__c, opportunity__r.OpportunityAutoNamePart2__c '+	
+            'FROM ForecastOutput52Week__c ' +
+            'WHERE (((ownerId = :uId18  OR ownerId IN :ownerIds OR tpmOwner__c = :uId18 OR plm__c = :plm OR oemOwenerId__c = :uId15) ';
+        	if (overrideDate) {
+                //qString += 'AND ((status__c = \'Active\' AND programCompleted__c = TRUE) OR (programCompleted__c = FALSE AND CreatedDate = THIS_MONTH)) ';
+                qString += 'AND ((status__c = \'Active\' AND programCompleted__c = TRUE) OR (status__c = \'Active\' AND programCompleted__c=false AND createddate=THIS_MONTH))) ';
+                //qString += 'AND (status__c = \'Active\') AND (programCompleted__c = TRUE)) ';  // works
+            }
+            else 
+				qString += 'AND (status__c = \'Active\') AND (programCompleted__c = FALSE) AND (CreatedDate = THIS_MONTH)) ';  // works
+            
+            qString +=  '       AND(currentOpportunityName__c LIKE :forecastStr '+
+            			'           OR productName__c LIKE :forecastStr '+
+            			'           OR currentProductCode__c LIKE :forecastStr '+
+            			'           OR specificationNumber__c LIKE :forecastStr)) '+          
+						'ORDER BY currentOpportunityName__c ASC';
+       
+        List<ForecastOutput52Week__c> fList = database.query(qString); 
+//System.debug('fList from db.query size='+fList.size());
+		// JDJD end new dynamic SOQL so that we can override the current month requirement ...
+ 
         return fList;
     }
     
@@ -100,7 +151,7 @@ public without sharing class HomePageForecastController {
                                                                                  m1Rev__c, m2Rev__c, m3Rev__c, m4Rev__c, m5Rev__c, m6Rev__c, m7Rev__c,
                                                                                  m8Rev__c, m9Rev__c, m10Rev__c, m11Rev__c, m12Rev__c, m13Rev__c, m14Rev__c,
                                                                                  m14Date__c, m15Date__c, m16Date__c, m17Date__c, m18Date__c, 
-                                                                                 oliLastModifiedDate__c, oliLastModifiedBy__c
+                                                                                 oliLastModifiedDate__c, oliLastModifiedBy__c, GG_forecastLastModifiedDate__c, GG_forecastCountPerMonth__c
                                                                                  FROM ForecastOutput52Week__c WHERE id = :forecaseScheduleObj.recordId]);
         
         For (ForecastOutput52Week__c f : fList) {
@@ -177,6 +228,17 @@ public without sharing class HomePageForecastController {
             if(f.m15Date__c == NULL){
                 f = setNextMonthDate(f);
             }
+
+            if(f.GG_forecastLastModifiedDate__c == null || f.GG_forecastLastModifiedDate__c != System.today()){
+                
+                if( f.GG_forecastCountPerMonth__c == null){
+                    f.GG_forecastCountPerMonth__c = 1;
+                }else{
+                    f.GG_forecastCountPerMonth__c += 1;
+                }
+            	f.GG_forecastLastModifiedDate__c = System.today(); 
+            }
+            
             updateList.add(f);
         }
         

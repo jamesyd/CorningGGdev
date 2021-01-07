@@ -98,7 +98,7 @@ public without sharing class OpportunityForecastActions {
         System.debug('@@## forecastDates: ' + forecastDates);
         
         List<ForecastOutput52Week__c> fList = getForecastList(oppId, forecastDates);
-        
+        System.debug('@@## fList.size=' + fList.size());
         Boolean isCurrentMonth = false;
         Boolean isPrevMonth = false;
         
@@ -127,8 +127,19 @@ public without sharing class OpportunityForecastActions {
                 forecastToInsert = ForecastHelper.process52(olis, 'Active');
                 updateForecastList.addAll(forecastToInsert);
             }
+            // JDJD
+            if (!isCurrentMonth && !isPrevMonth && overrideM1Date()) {
+                For (ForecastOutput52Week__c f : fList) {
+                    //if(f.m1Date__c == currentMonthDate){
+                       //f.programCompleted__c = FALSE;     
+                       f.status__c = 'Active';                      
+                       updateForecastList.add(f);
+                    //}
+                }             
+            }
+            // END JDJD
         }catch(Exception e){}
-        
+     System.debug('@@## updateForecastList size=' + updateForecastList.size())  ;
         return updateForecastList;
     }
     
@@ -174,17 +185,45 @@ public without sharing class OpportunityForecastActions {
         List<ForecastOutput52Week__c> 
            fList = new List<ForecastOutput52Week__c>();
         String status = 'Completed';
-        try{    
+        // JDJD
+        if (overrideM1date()) {
+System.debug('@@## overriding .. look for oppId=' + oppId +'status=' + status);
             fList = [Select Id, opportunity__c, m1Date__c,
                      programCompleted__c, status__c
                      FROM ForecastOutput52Week__c 
                      WHERE opportunity__c = :oppId
-                     AND m1Date__c IN :forecastDates
                      AND Status__c = :status
-                    ];
-        }catch(Exception e){
+                    ];           
+        }
+        // END JDJD
+        else {
+            try{    
+                fList = [Select Id, opportunity__c, m1Date__c,
+                         programCompleted__c, status__c
+                         FROM ForecastOutput52Week__c 
+                         WHERE opportunity__c = :oppId
+                         AND m1Date__c IN :forecastDates
+                         AND Status__c = :status
+                        ];
+            }catch(Exception e){
+            }
         }
         return fList;
     }
+    // Method to check if we allowing current user to reopen a closed forecast ...
+    public static Boolean overrideM1date() {
+        Set<Id> accessiblePermissionIds = new Set<Id>();
+        for (SetupEntityAccess access : [
+            SELECT SetupEntityId FROM SetupEntityAccess
+            WHERE SetupEntityType = 'CustomPermission' AND ParentId IN (
+                SELECT PermissionSetId FROM PermissionSetAssignment
+                WHERE AssigneeId = :UserInfo.getUserId()
+            )
+        ]) accessiblePermissionIds.add(access.SetupEntityId);
 
-}
+    	return 0 < [
+            SELECT count() FROM CustomPermission
+            WHERE Id IN :accessiblePermissionIds
+            AND DeveloperName = 'GG_Allow_Reopen_Forecast'
+    	];
+    }

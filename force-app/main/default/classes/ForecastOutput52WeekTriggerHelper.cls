@@ -1,3 +1,8 @@
+/*
+ * 22Dec2020 - Jim Dickerson - Allow for setting the programCompleted flag for older reopened programs/forecasts that are now being ended
+ * 23Dec2020 - Jim Dickerson - make sure we don't try to update the same OLI multiple times when checking foir a TFM update ..
+ *
+*/
 public without sharing class ForecastOutput52WeekTriggerHelper {
     
     public static void UpdateForecast(List<ForecastOutput52Week__c> forecasts, Map<ID, ForecastOutput52Week__c> oldMap) {
@@ -49,13 +54,16 @@ public without sharing class ForecastOutput52WeekTriggerHelper {
         List<ForecastOutput52Week__c> updateForecastList = new List<ForecastOutput52Week__c>();
         Set<String> oliDateChangeSet = new Set<String>(); // opportunity line item Ids from Forecasts with schedule date change
         Set<Id> updateForecastSet = new Set<Id>();
+        Boolean overrideProgramCompleteFlag = OpportunityForecastActions.overrideM1date(); // 22Dec2020 special case where we are updating a re-opened and old program/forecast.
         
         for (ForecastOutput52Week__c f: forecasts) {
+
             Opportunity uOpp = new Opportunity();
             uOpp = opportunity2OpportunityMap.get(f.opportunity__c);
-            // ********** END PROGRAM **********                    
-            If (oldMap.get(f.ID).programCompleted__c == FALSE && f.programCompleted__c == TRUE && f.status__c == 'Completed') {  
-                
+           // ********** END PROGRAM **********
+           // 22Dec2020 allow for setting the programCompleted__c flag for an older program/forecast that was reopened and is now being ended.
+            //If (oldMap.get(f.ID).programCompleted__c == FALSE && f.programCompleted__c == TRUE && f.status__c == 'Completed') {  
+            If ( ((oldMap.get(f.ID).programCompleted__c == FALSE && f.programCompleted__c == TRUE) || (f.programCompleted__c == TRUE && overrideProgramCompleteFlag == TRUE)) && f.status__c == 'Completed') {     
                 if(updateOppsById.containsKey(f.opportunity__c)){
                     uOpp = updateOppsById.get(f.opportunity__c);
                 }
@@ -70,21 +78,24 @@ public without sharing class ForecastOutput52WeekTriggerHelper {
                 OpportunityLineItem uOLI = oli2OliMap.get(f.opportunityLineItemID__c);
                 uOLI.tpmOverride__c = f.tpmAccount__c;
                 oli2OliMap.put(f.opportunityLineItemID__c, uOLI);
-                updateOLIs.add(uOLI);                        
+//System.debug('@@JDJD TPM list already contains = ' + updateOLIs.contains(uOLI) +' at index=' + updateOLIs.indexOf(uOLI));
+                // 23Dec2020 Fix a problem where on approval of a spec we are trying to update all active forecasts that point to the same oppty line item
+                if (!updateOLIs.contains(uOLI))
+                	updateOLIs.add(uOLI);                        
             }
             // ********** UPDATE FINISHER **********
             If (oldMap.get(f.ID).finisherAccount__c != f.finisherAccount__c 
                 ||oldMap.get(f.ID).finisherMix__c != f.finisherMix__c
                 ||oldMap.get(f.ID).finisherOwner__c != f.finisherOwner__c
                 ||oldMap.get(f.ID).finisherYield__c != f.finisherYield__c
-                ||oldMap.get(f.ID).Comments__c != f.Comments__c) {                         
-                    
+                ||oldMap.get(f.ID).Comments__c != f.Comments__c) {                        
                     OpportunityLineItem uOLI = oli2OliMap.get(f.opportunityLineItemID__c);
                     uOLI.finisherAccount__c = f.finisherAccount__c;
                     uOLI.finisherMix__c = f.finisherMix__c;
                     uOLI.finisherOwner__c = f.finisherOwner__c;
                     uOLI.finisherYield__c = f.finisherYield__c;
                     uOLI.Comments__c = f.Comments__c;
+                    // note: this may have the same issue as above if we try to create a new update record with an Id tha already exists in the list ...
                     updateOLIs.add(uOLI);                        
                 }
             
