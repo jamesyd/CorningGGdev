@@ -4,13 +4,16 @@
  * @Author             : Adam Nicholson?
  * @Group              : 
  * @Last Modified By   : Jim Dickerson
- * @Last Modified On   : 11-10-2020
+ * @Last Modified On   : 12Jan2021
  * @Modification Log   : 
  * Ver       Date            Author      		    Modification
  * 1.1    29/6/2020   Arquimidez Mora     Updated code to fix chatter notification for Free Sample Request
  * 1.2    10/11/2020  Jim Dickerson       Change chatter notification for CBG (Phyllo) for New -> CM Assignment
  * 1.3    07/01/2021    Jim Dickerson     INC1751176, in raw logic, need to look for stage = 'Non-paid Request' as 'RSM Approval' is deprecated ... for sending out free parts sample request chatter ...
-**/
+*  1.4    12Jan2021     Jim Dickerson     Different set of receipients for Cancelled phyllo
+*                                         Adjustment to roles for Non-paid Requests (Jira CSMSF-16)
+*                                         Adjust Non-paid Request reminder logic to mimic initial notifications (Jira CSMSF-46)
+ **/
 public without sharing class ChatterHelperSamples {
     
     public Static List<opportunity> sampleReminder( List<opportunity> opplist ) {
@@ -32,7 +35,7 @@ public without sharing class ChatterHelperSamples {
                 // ***** PARTS REMINDER LOGIC *****
                 if ((o.RecordTypeId == '0121J000000U1cXQAS' || o.RecordTypeId == '0121J000000U1cYQAS' || o.RecordTypeId == ggPrebuildRTID) 
                     && o.reminderCompleted__c == false && o.statusChangeDate__c.daysBetween(Date.Today()) > 2 
-                    && (o.stageName == 'CM Assignment' || o.stageName == 'Pricing Assignment' || o.stageName == 'RSM Approval' || o.stageName == 'Customer Quotation')) {
+                    && (o.stageName == 'CM Assignment' || o.stageName == 'Pricing Assignment' || o.stageName == 'Non-paid Request' || o.stageName == 'Customer Quotation')) {
                         
                         system.debug('*** IN REPOST');
                         // Clear & reset variables
@@ -103,8 +106,10 @@ public without sharing class ChatterHelperSamples {
                                                                                                                      o.id, o.programOpportunityName__c + ' ' + finalRecipients + ' ***** REMINDER ' + finalMessage);                   
                         }   
                         
-                        // Free Requeat reminder logic
-                        If (o.stageName == 'RSM Approval') {
+                        // Free Request reminder logic
+                        //If (o.stageName == 'RSM Approval') {
+                        If (o.stageName == 'Non-paid Request') {
+/* deprecated 12Jan2021
                             finalMessage = Utils.getMessageInnovationAndLocationSamples('Free',o);
                             
                             // recipients - includes innovation PLMs
@@ -115,20 +120,36 @@ public without sharing class ChatterHelperSamples {
                                 combinedRecipients = baseRecipients;
                             }
                             
-                            // clean/remove duplicate recipients
-                            finalRecipients = Utils.cleanRecipients(combinedRecipients);
+*/   
+
+                            // determine approver based on role
+                            if (o.Owner_Role__c.contains('Americas/EMEA')) freeApprover = 'Free~Americas/EMEA';
+                            if (o.Owner_Role__c.contains('China Finisher')) freeApprover = 'Free~China/ODM/TPM/Finisher';
+                            if (o.Owner_Role__c.contains('Japan')) freeApprover = 'Free~Japan';
+                            if (o.Owner_Role__c.contains('Korea')) freeApprover = 'Free~Korea';
+                            if (o.Owner_Role__c.contains('China/OEM')) freeApprover = 'Free~China/OEM';
+                            if (o.Owner_Role__c.contains('India')) freeApprover = 'Free~China/India';
+                            if (o.Owner_Role__c.contains('Product Line Manager')) freeApprover = 'Free~Product Line Manager';
+                            if (o.Owner_Role__c.contains('South East Asia')) freeApprover = 'Free~South East Asia';
+                            if (o.Owner_Role__c.contains('Taiwan')) freeApprover = 'Free~Taiwan';
+                            if (o.Owner_Role__c.contains('Blue')) freeApprover = 'Free~Blue';
+                            
+                            finalMessage = GGRawSampleAutoNotifications__c.getValues(freeApprover).message__c;
+                            if(o.isPrebuild__c && o.StageName != 'Non-paid Request'){
+                                finalMessage = finalMessage.replaceAll(': Free Parts ', ': Urgent Paid ');
+                            }
+                            finalRecipients = GGRawSampleAutoNotifications__c.getValues(freeApprover).userIdList__c;
                             
                             // second parameter = Id of a group or user or record or 'me'
-                            ConnectApi.FeedItem fi = (ConnectApi.FeedItem) ConnectApiHelper.postFeedItemWithMentions(Network.getNetworkId(),                                                 
-                                                                                                                     o.id, o.programOpportunityName__c + ' ' + finalRecipients + ' ***** REMINDER ' + finalMessage);                      
-                        }
-                        
+                            ConnectApi.FeedItem fi = (ConnectApi.FeedItem) ConnectApiHelper.postFeedItemWithMentions(Network.getNetworkId(), 
+                                                                                                                     o.id, o.programOpportunityName__c + ' ' + finalRecipients + ' ***** REMINDER ' + finalMessage);                   
+                        } 
                     } 
                 
                 // ***** RAW GLASS LOGIC *****
                 if ((o.RecordTypeId == '0121J000000U1cbQAC' || o.RecordTypeId == '0121J000000U1caQAC') 
                     && o.reminderCompleted__c == false && o.statusChangeDate__c.daysBetween(Date.Today()) > 2 
-                    && (o.stageName == 'Commercial Assessment' || o.stageName == 'PLM Assessment' || o.stageName == 'RSM Approval' || o.stageName == 'Customer Quotation')) {
+                    && (o.stageName == 'Commercial Assessment' || o.stageName == 'PLM Assessment' || o.stageName == 'Non-paid Request' || o.stageName == 'Customer Quotation')) {
                         
                         system.debug('*** IN REPOST');
                         
@@ -205,14 +226,15 @@ public without sharing class ChatterHelperSamples {
                         }   
                         
                         // Free Request reminder logic
-                        If (o.stageName == 'RSM Approval') {
+                        //If (o.stageName == 'RSM Approval') {
+                        If (o.stageName == 'Non-paid Request') {
                             // determine approver based on role
                             if (o.Owner_Role__c.contains('Americas/EMEA')) freeApprover = 'Free~Americas/EMEA';
-                            if (o.Owner_Role__c.contains('China/ODM/TPM/Finisher')) freeApprover = 'Free~China/ODM/TPM/Finisher';
+                            if (o.Owner_Role__c.contains('China Finisher')) freeApprover = 'Free~China/ODM/TPM/Finisher';
                             if (o.Owner_Role__c.contains('Japan')) freeApprover = 'Free~Japan';
                             if (o.Owner_Role__c.contains('Korea')) freeApprover = 'Free~Korea';
                             if (o.Owner_Role__c.contains('China/OEM')) freeApprover = 'Free~China/OEM';
-                            if (o.Owner_Role__c.contains('China/India')) freeApprover = 'Free~China/India';
+                            if (o.Owner_Role__c.contains('India')) freeApprover = 'Free~China/India';
                             if (o.Owner_Role__c.contains('Product Line Manager')) freeApprover = 'Free~Product Line Manager';
                             if (o.Owner_Role__c.contains('South East Asia')) freeApprover = 'Free~South East Asia';
                             if (o.Owner_Role__c.contains('Taiwan')) freeApprover = 'Free~Taiwan';
@@ -264,11 +286,11 @@ public without sharing class ChatterHelperSamples {
                 If (oldMap.get(o.ID).stageName != 'RSM Approval' && o.stageName == 'RSM Approval') {    
                     //Determine approver based on role
                     if (o.Owner_Role__c.contains('Americas/EMEA')) freeApprover = 'Free~Americas/EMEA';
-                    if (o.Owner_Role__c.contains('China/ODM/TPM/Finisher')) freeApprover = 'Free~China/ODM/TPM/Finisher';
+                    if (o.Owner_Role__c.contains('China Finisher')) freeApprover = 'Free~China/ODM/TPM/Finisher';
                     if (o.Owner_Role__c.contains('Japan')) freeApprover = 'Free~Japan';
                     if (o.Owner_Role__c.contains('Korea')) freeApprover = 'Free~Korea';
                     if (o.Owner_Role__c.contains('China/OEM')) freeApprover = 'Free~China/OEM';
-                    if (o.Owner_Role__c.contains('China/India')) freeApprover = 'Free~China/India';
+                    if (o.Owner_Role__c.contains('India')) freeApprover = 'Free~China/India';
                     if (o.Owner_Role__c.contains('Product Line Manager')) freeApprover = 'Free~Product Line Manager';
                     if (o.Owner_Role__c.contains('South East Asia')) freeApprover = 'Free~South East Asia';
                     if (o.Owner_Role__c.contains('Taiwan')) freeApprover = 'Free~Taiwan';
@@ -406,16 +428,16 @@ public without sharing class ChatterHelperSamples {
                 If (oldMap.get(o.ID).stageName != 'Non-paid Request' && o.stageName == 'Non-paid Request') {    
                     // determine approver based on role
                     if (o.Owner_Role__c.contains('Americas/EMEA')) freeApprover = 'Free~Americas/EMEA';
-                    if (o.Owner_Role__c.contains('China/ODM/TPM/Finisher')) freeApprover = 'Free~China/ODM/TPM/Finisher';
+                    if (o.Owner_Role__c.contains('China Finisher')) freeApprover = 'Free~China/ODM/TPM/Finisher';
                     if (o.Owner_Role__c.contains('Japan')) freeApprover = 'Free~Japan';
                     if (o.Owner_Role__c.contains('Korea')) freeApprover = 'Free~Korea';
                     if (o.Owner_Role__c.contains('China/OEM')) freeApprover = 'Free~China/OEM';
-                    if (o.Owner_Role__c.contains('China/India')) freeApprover = 'Free~China/India';
+                    if (o.Owner_Role__c.contains('India')) freeApprover = 'Free~China/India';
                     if (o.Owner_Role__c.contains('Product Line Manager')) freeApprover = 'Free~Product Line Manager';
                     if (o.Owner_Role__c.contains('South East Asia')) freeApprover = 'Free~South East Asia';
                     if (o.Owner_Role__c.contains('Taiwan')) freeApprover = 'Free~Taiwan';
                     if (o.Owner_Role__c.contains('Blue')) freeApprover = 'Free~Blue';
-                    
+//System.debug('@@ JD o.Id=' + o.Id +' ownerid='+ o.ownerId +' role=' + o.owner_role__c +' approver=' + freeApprover +' isPhyllo='+ o.isPhyllo__c);                  
                     finalMessage = Utils.getMessageInnovationAndLocationSamples(freeApprover,o);
 
                     if(o.isPhyllo__c){
@@ -474,13 +496,16 @@ public without sharing class ChatterHelperSamples {
                 If (oldMap.get(o.ID).stageName != 'Cancelled' && o.stageName == 'Cancelled') {
                     finalMessage = Utils.getMessageInnovationAndLocationSamples('Cancelled',o);
 
+                    // 12Jan2021 - Need different recipients for phyllo samples (parts only)
                     if(o.isPhyllo__c){
                         finalMessage = finalMessage.replaceAll('with no innovations at Not Applicable', 'Corning Bendable Glass with no innovations at Not Applicable');
+                        baseRecipients = GGPartsSampleAutoNotifications__c.getValues('Cancelled Phyllo').userIdList__c;
                     }
-                    
-                    // recipients - includes innovation PLMs
-                    baseRecipients = GGPartsSampleAutoNotifications__c.getValues('Cancelled').userIdList__c;
-                    baseRecipients = baseRecipients + ',{' + (Id)o.ownerId + '}';
+                    else {
+                        // recipients - includes innovation PLMs
+                        baseRecipients = GGPartsSampleAutoNotifications__c.getValues('Cancelled').userIdList__c;
+                        baseRecipients = baseRecipients + ',{' + (Id)o.ownerId + '}';
+                    }
                     if (o.accountAEID__c != Null) {
                         baseRecipients = baseRecipients + ',{' + (id)o.accountAEId__c + '}';
                     }
@@ -577,11 +602,11 @@ public without sharing class ChatterHelperSamples {
                 If (oldMap.get(o.ID).stageName != 'Non-paid Request' && o.stageName == 'Non-paid Request') {
                     // determine approver based on role
                     if (o.Owner_Role__c.contains('Americas/EMEA')) freeApprover = 'Free~Americas/EMEA';
-                    if (o.Owner_Role__c.contains('China/ODM/TPM/Finisher')) freeApprover = 'Free~China/ODM/TPM/Finisher';
+                    if (o.Owner_Role__c.contains('China Finisher')) freeApprover = 'Free~China/ODM/TPM/Finisher';
                     if (o.Owner_Role__c.contains('Japan')) freeApprover = 'Free~Japan';
                     if (o.Owner_Role__c.contains('Korea')) freeApprover = 'Free~Korea';
                     if (o.Owner_Role__c.contains('China/OEM')) freeApprover = 'Free~China/OEM';
-                    if (o.Owner_Role__c.contains('China/India')) freeApprover = 'Free~China/India';
+                    if (o.Owner_Role__c.contains('India')) freeApprover = 'Free~China/India';
                     if (o.Owner_Role__c.contains('Product Line Manager')) freeApprover = 'Free~Product Line Manager';
                     if (o.Owner_Role__c.contains('South East Asia')) freeApprover = 'Free~South East Asia';
                     if (o.Owner_Role__c.contains('Taiwan')) freeApprover = 'Free~Taiwan';
@@ -591,6 +616,7 @@ public without sharing class ChatterHelperSamples {
                     if(o.isPrebuild__c && o.StageName != 'Non-paid Request'){
                         finalMessage = finalMessage.replaceAll(': Free Parts ', ': Urgent Paid ');
                     }
+                    // Note: Phyllo is only for parts, so no need to override the freeApprover here in raw glass as we did in parts.
                     finalRecipients = GGRawSampleAutoNotifications__c.getValues(freeApprover).userIdList__c;
                     
                     // second parameter = Id of a group or user or record or 'me'

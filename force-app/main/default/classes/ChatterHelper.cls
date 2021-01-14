@@ -11,6 +11,7 @@
  * 1.2   09-24-2020   Edgar Santillana   New value added Liangcheng-LR on partsRiskNotification Method 
  * 1.3   10-27-2020   Jim Dickerson      New value added HLF-LR on partsRiskNotification Method
  * 1.4   11-04-2020   Jim Dickerson      Implement changes for Corning Bendable Glass (CSMSF-23)
+ * 1.5   12-01-2020   Jim Dickerson      HLF-LR is now HLF (Jira CSMSF-48)
 **/
 public without sharing class ChatterHelper {
     
@@ -1663,7 +1664,8 @@ spec.id, spec.opportunityName__c + ' ' + finalRecipients + ' ***** DUAL SOURCE '
             if (l == 'LCE-LR') { location = 'MA~RA~LCE-LR';}
             if (l == 'JNTC-TQ') { location = 'JNTC-TQ-QA';}
             if (l == 'Liangcheng-LR') { location = 'Liangcheng-QA';}
-            if (l == 'HLF-LR') { location = 'HLF-QA';}
+            if (l == 'HLF-LR') { location = 'HLF-QA';}  // next line replaces this, but let's keep backwards compatibility
+            if (l == 'HLF') { location = 'HLF-QA';}
             if (l == 'Ample') { location = 'Ample-QA';}
             
             if (source == 2) {
