@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Spec_Review_Remarks</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISBLANK( Spec_Review_Remark__c),
+    OR(ISPICKVAL( Spec_Review_instruction_to_QA__c,&apos;Spec review follows previous spec (Must provide the spec ID in the Remark field)&apos;),
+       ISPICKVAL( Spec_Review_instruction_to_QA__c,&apos;Other (Must provide the details in the Remark field)&apos;)))</errorConditionFormula>
+    <errorMessage>Please enter the Spec Review Remarks</errorMessage>
+</ValidationRule>

@@ -80,7 +80,12 @@
         for(var i=0; i<selDocs.length; i++){
             contentVersionIds.push(selDocs[i]);
         }
-        window.open('/sfc/servlet.shepherd/document/download/'+ contentVersionIds.join('/') + '?operationContext=S1');
+        var jd='/sfc/servlet.shepherd/document/download/'+ contentVersionIds.join('/') + '?operationContext=S1' + '&filename=foo.zip';
+        console.log(jd);
+        window.open(jd);
+        
+        //window.open('/sfc/servlet.shepherd/document/download/'+ contentVersionIds.join('/') + '?operationContext=S1' + '&filename=foo.zip');
+        console.log("back from shepherd");
     },
     
     showToastHelper : function(cmp, title, message, mode, type) {

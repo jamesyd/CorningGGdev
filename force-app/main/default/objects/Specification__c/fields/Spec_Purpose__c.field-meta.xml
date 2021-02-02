@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Spec_Purpose__c</fullName>
+    <externalId>false</externalId>
+    <label>Spec Purpose</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>NPI/MP spec – Normal NPI/MP quotation</fullName>
+                <default>false</default>
+                <label>NPI/MP spec – Normal NPI/MP quotation</label>
+            </value>
+            <value>
+                <fullName>One time/Test/Lab sample – Free Sample – by Corning charge code</fullName>
+                <default>false</default>
+                <label>One time/Test/Lab sample – Free Sample – by Corning charge code</label>
+            </value>
+            <value>
+                <fullName>One time/Test/Lab sample – Paid Sample – by Customer</fullName>
+                <default>false</default>
+                <label>One time/Test/Lab sample – Paid Sample – by Customer</label>
+            </value>
+            <value>
+                <fullName>Clone for Second Source (Please specify the ID in remark field)</fullName>
+                <default>false</default>
+                <label>Clone for Second Source (Please specify the ID in remark field)</label>
+            </value>
+            <value>
+                <fullName>Others (Please specify the purpose in remark field)</fullName>
+                <default>false</default>
+                <label>Others (Please specify the purpose in remark field)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

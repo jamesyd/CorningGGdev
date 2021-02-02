@@ -2,11 +2,13 @@
  * @description       : 
  * @author            : Edgar Santillana
  * @group             : 
- * @last modified on  : 10-26-2020
- * @last modified by  : Edgar Santillana
+ * @last modified on  : 12-22-2021
+ * @last modified by  : Jim Dickerson
  * Modifications Log 
  * Ver   Date         Author             Modification
  * 1.0   10-16-2020   Edgar Santillana   New two Fields Added to update when the user click on Save Schedule Record
+ * 1.1   12-22-2020   Jim Dickerson		 Allow search to find older program/forecasts by checking a custom permission and using a dynamic query.
+ 
 **/
 public without sharing class HomePageForecastController {
     
@@ -29,11 +31,10 @@ public without sharing class HomePageForecastController {
         string uId18 = UserInfo.getUserId();
         string uId15 = String.valueOf(UserInfo.getUserId()).substring(0, 15);
         Boolean plm = checkPLM();
-        Boolean overrideDate = OpportunityForecastActions.overrideM1date(); // JDJD check for custom permission to find older forecasts ...
-        System.debug('@@## overrideDate=' + overrideDate); // JDJD
+        Boolean overrideDate = OpportunityForecastActions.overrideM1date(); // 22Dec2020 check for custom permission to find older forecasts ...
         
         forecastStr = '%' + forecastStr+'%';
-/* JDJD        
+/* 22Dec2020 - replace static SOQL query with a dynamic one below ...       
         List<ForecastOutput52Week__c> fList = new List<ForecastOutput52Week__c>([SELECT id, createdDate, ownerId, tpmOwner__c, plm__c,
                                                                                  opportunityName__c, opportunity__c, productName__c, productCode__c, currentProductCode__c,shipToCustomer__c, massProductionStartDate__c, status__c,
                                                                                  programCompleted__c, tpmAccount__c, m1Qty__c, m2Qty__c, m3Qty__c, m4Qty__c, m5Qty__c, m6Qty__c, m7Qty__c, m8Qty__c, 
@@ -58,7 +59,7 @@ public without sharing class HomePageForecastController {
 
 System.debug('orig query size=' + fList.size());
 */
-        // JDJD start new dynamic SOQL so that we can override the current month requirement ...
+        // 22Dec2020 -  new dynamic SOQL so that we can override the current month requirement ...
         Set<Id> ownerIds = getOwnerIds(uId18);
         //overrideDate=false;
  		String qString = 'SELECT id, createdDate, ownerId, tpmOwner__c, plm__c,' +
@@ -92,7 +93,7 @@ System.debug('orig query size=' + fList.size());
        
         List<ForecastOutput52Week__c> fList = database.query(qString); 
 //System.debug('fList from db.query size='+fList.size());
-		// JDJD end new dynamic SOQL so that we can override the current month requirement ...
+		// 22Dec2020 end new dynamic SOQL so that we can override the current month requirement ...
  
         return fList;
     }
@@ -570,8 +571,7 @@ System.debug('orig query size=' + fList.size());
                                                                       }
     
     @AuraEnabled
-    public static List<ForecastOutput52Week__c> completeProgram(Id recordId) {
-        
+    public static List<ForecastOutput52Week__c> completeProgram(Id recordId) {      
         List<ForecastOutput52Week__c> updateList = new List<ForecastOutput52Week__c>();
         
         List<ForecastOutput52Week__c> fList = new List<ForecastOutput52Week__c>([Select Id, programCompleted__c, status__c
@@ -591,7 +591,7 @@ System.debug('orig query size=' + fList.size());
                                                                                       m11Qty__c, m12Qty__c, m13Qty__c, m14Qty__c, m1UnitPrice__c, m2UnitPrice__c, m3UnitPrice__c, m4UnitPrice__c, 
                                                                                       m5UnitPrice__c, m6UnitPrice__c, m7UnitPrice__c, m8UnitPrice__c, m9UnitPrice__c, m10UnitPrice__c, m11UnitPrice__c, 
                                                                                       m12UnitPrice__c, m13UnitPrice__c, m14UnitPrice__c, m15UnitPrice__c, m16UnitPrice__c, m17UnitPrice__c, m18UnitPrice__c
-                                                                                      FROM ForecastOutput52Week__c WHERE id = :recordId]);    
+                                                                                      FROM ForecastOutput52Week__c WHERE id = :recordId]);           
         
         return returnList;
         

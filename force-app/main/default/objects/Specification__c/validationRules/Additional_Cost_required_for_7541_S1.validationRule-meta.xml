@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Additional_Cost_required_for_7541_S1</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( ISPICKVAL(glassComposition__c,&apos;7541&apos;),
+     ISCHANGED(costAssessmentComplete__c),
+     costAssessmentComplete__c  = True,
+     ISBLANK( Source_1_Additional_Cost__c )  
+)</errorConditionFormula>
+    <errorMessage>7541 Specifications require Source 1 Additional Cost to be entered.</errorMessage>
+</ValidationRule>

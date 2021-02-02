@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Primary_CM_Location_must_be_defined</fullName>
+    <active>true</active>
+    <description>Primary CM Location must be defined when Primary Manufacturing Assignment Complet is selected</description>
+    <errorConditionFormula>AND( ISCHANGED( manufacturingAssignmentComplete__c ), manufacturingAssignmentComplete__c = true, ISNULL(location__c ))</errorConditionFormula>
+    <errorMessage>Primary CM Selected Locations must contain a value.</errorMessage>
+</ValidationRule>

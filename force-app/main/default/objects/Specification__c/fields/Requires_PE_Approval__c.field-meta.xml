@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Requires_PE_Approval__c</fullName>
+    <description>Field for use is WF to determine if PE Approval is required</description>
+    <externalId>false</externalId>
+    <formula>OR( INCLUDES(Innovation_Type__c, &apos;DXPlus&apos;), INCLUDES(Innovation_Type__c, &apos;DX&apos;), AND(INCLUDES(Innovation_Type__c,&apos;DXC&apos;),  OpportunityMarketSegment__c = &apos;Wearable&apos;), isOmega__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Requires PE Approval</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

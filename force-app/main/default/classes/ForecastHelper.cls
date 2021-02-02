@@ -1,3 +1,15 @@
+/**
+ * @description       : 
+ * @author            :
+ * @group             : 
+ * @last modified on  : 21 Jan 2021
+ * @last modified by  : Jim Dickerson
+ * Modifications Log 
+ * Ver   Date         Author             Modification
+ * 1.0   11-03-2020   Edgar Santillana   Initial Version
+ * 1.1   12-11-2020   Edgar Santillana   Two methods added getActiveForcecastCurrentMonth (Loked Records) and getActiveForcecastPreviousMonth (Active Records)
+*  1.2   01-21-2021   Jim Dickerson      changes for Jira issues CSMSF-50 and CSMSF-51
+ **/
 public without sharing class ForecastHelper {
     
     public Static List<ForecastOutput52Week__c> archive( List<ForecastOutput52Week__c> fList ) {
@@ -39,12 +51,18 @@ public without sharing class ForecastHelper {
         Map<Integer,String> monthMap = getMonthMap();
         
         Map<id, ForecastOutput52Week__c> forecastOutputByOliId = new Map<id, ForecastOutput52Week__c>();
+        Map<id, wrapperForecast> forecastOutputByOliIdActive = new Map<id, wrapperForecast>();
         Boolean isCalculatefromPrev = false;
         if(status == 'Locked' ){//&& System.Date.today().Month() == 8
             isCalculatefromPrev = true;
             forecastOutputByOliId = getM2ForecasteDetails(oliList, status);
+            forecastOutputByOliIdActive = getActiveForcecastCurrentMonth(oliList);
+            System.debug('Forecast Output By Oli ' + forecastOutputByOliId );
+        } else if (status == 'Active'){
+            forecastOutputByOliIdActive = getActiveForcecastPreviousMonth(oliList);
         }
-        
+        wrapperForecast prevForecast; // used in following loop ..
+
         for(OpportunityLineItem o : oliList) {
             
             ForecastOutput52Week__c f = new ForecastOutput52Week__c();
@@ -77,6 +95,18 @@ public without sharing class ForecastHelper {
             f.Product__c = o.Product2Id;
             f.productCode__c = o.forecastProductCode__c;
             f.productName__c = o.ProductName__c;
+            // START CSMSF-50
+            // check to see if previous forecast has changed product name and use that in the new forecast instead of the oppty value
+            prevForecast = forecastOutputByOliIdActive.get(f.opportunityLineItemId__c);
+            if (prevForecast != null) {
+                system.debug('@@ JD last month product__c = ' + prevForecast.product + ' createdDate='+ prevForecast.createddate+ ' m1Date=' + prevForecast.m1Date);
+                system.debug('@@ JD oppty product2Id = ' + o.Product2Id);
+                if (prevForecast.product != o.Product2Id) {
+                    f.Product__c  = prevForecast.product;
+                    f.ProductName__c = prevForecast.productName;
+                }
+            }
+            // END CSMSF-50
             f.productionVolume__c = o.forecastProductionVolumePartsMonth__c;
             f.programName__c = o.forecastProgramName__c;
             f.region__c = o.forecastRegion__c;
@@ -258,7 +288,6 @@ public without sharing class ForecastHelper {
             } else if (m1StartDate == System.Date.today().toStartOfMonth().addMonths(17)) {
                 count = 17;            
             }
-            
             system.debug('$$$ m1StartDate: ' + m1StartDate);
             system.debug('$$$ count: ' + count);
             
@@ -385,7 +414,10 @@ public without sharing class ForecastHelper {
                 if(forecastOutputByOliId.containsKey(f.opportunityLineItemId__c)){
                     f = calculateDelta(f, forecastOutputByOliId.get(f.opportunityLineItemId__c));
                 }
-                
+            }
+
+            if(forecastOutputByOliIdActive.containsKey(f.opportunityLineItemId__c)){
+                f = copyCountPerMonthFields(f,forecastOutputByOliIdActive.get(f.opportunityLineItemId__c));
             }
             
             forecastToInsert.add(f); 
@@ -498,7 +530,6 @@ public without sharing class ForecastHelper {
         }
         
     }
-    
     //Fuction to calculate delta for the forecast Outout based
     @testvisible
     private static ForecastOutput52Week__c calculateDelta(ForecastOutput52Week__c currentForecastM1, ForecastOutput52Week__c previousForecastM2){
@@ -539,7 +570,9 @@ public without sharing class ForecastHelper {
         currentForecastM1.m16QtyDelta__c  = getCalculateValue(currentForecastM1.m16Qty__c) -getCalculateValue(previousForecastM2.m17Qty__c);
         currentForecastM1.m17QtyDelta__c  = getCalculateValue(currentForecastM1.m17Qty__c) -getCalculateValue(previousForecastM2.m18Qty__c);
         currentForecastM1.m18QtyDelta__c  = getCalculateValue(currentForecastM1.m18Qty__c);
-        
+
+/* Deprecated 21Jan2021 as this wasn't working due to fact that the current forecast square footage doesn't get calculated until record has been saved
+**           and subsequently queried
         currentForecastM1.m1GlassSqFtDelta__c  = getCalculateValue(currentForecastM1.m1GlassSqFt__c) -getCalculateValue(previousForecastM2.m2GlassSqFt__c);
         currentForecastM1.m2GlassSqFtDelta__c  = getCalculateValue(currentForecastM1.m2GlassSqFt__c) -getCalculateValue(previousForecastM2.m3GlassSqFt__c);
         currentForecastM1.m3GlassSqFtDelta__c  = getCalculateValue(currentForecastM1.m3GlassSqFt__c) -getCalculateValue(previousForecastM2.m4GlassSqFt__c);
@@ -558,6 +591,36 @@ public without sharing class ForecastHelper {
         currentForecastM1.m16GlassSqFtDelta__c  = getCalculateValue(currentForecastM1.m16GlassSqFt__c) -getCalculateValue(previousForecastM2.m17GlassSqFt__c);
         currentForecastM1.m17GlassSqFtDelta__c  = getCalculateValue(currentForecastM1.m17GlassSqFt__c) -getCalculateValue(previousForecastM2.m18GlassSqFt__c);
         currentForecastM1.m18GlassSqFtDelta__c  = getCalculateValue(currentForecastM1.m18GlassSqFt__c);
+*/
+        // START CSMSF-51
+        Decimal sqFtperUnitPrev = (previousForecastM2.m2GlassSqFt__c / previousForecastM2.m2Qty__c) * (previousForecastM2.finisherYield__c/100);
+ /*
+        System.debug('@@ JD from oli:  finish yield=' + currentForecastM1.finisherYield__c);
+        System.debug('@@ JD from prev: finish yield=' + previousForecastM2.finisherYield__c);
+        System.debug('@@ JD sqFt per unit prev=' + sqFtperUnitPrev);    // this value has more decimal places than  ...
+        System.debug('@@ JD sqFt from oli and in forecast=' + currentForecastM1.squareFeet__c); // .. this value, but the earlier value yields the data we see in the report
+        System.debug('@@ JD curr1 m1 qty=' + currentForecastM1.m1Qty__c + ' total sqFt='+ (currentForecastM1.m1Qty__c*sqFtperUnitPrev) / (currentForecastM1.finisherYield__c/100));    
+        System.debug('@@ JD curr2 m1 qty=' + currentForecastM1.m1Qty__c + ' total sqFt='+ (currentForecastM1.m1Qty__c*currentForecastM1.squareFeet__c) / (currentForecastM1.finisherYield__c/100));    
+*/
+        Decimal delta;
+        Decimal qty;
+        Decimal finisherYield = currentForecastM1.finisherYield__c/100; // this value (it is a percent, so need to convert for math) could have changed from previous forecast ...
+        Decimal sqFtPerUnit=sqFtperUnitPrev;    // use previous forecast value for sq ft per unit, shouldn't change for new forecast same oppty
+        //sqFtPerUnit=qty*currentForecastM1.squareFeet__c  // don't use this value as it appears the formula calculation is more accurate with the above value
+        if (finisherYield > 0) {
+            // update all the delta fields ...
+            for (Integer month=1; month<18; month++) {
+                qty = (Decimal) currentForecastM1.get('m'+month+'Qty__c');
+                delta = ((qty*sqFtperUnit) / finisherYield) - 
+                                            getCalculateValue((Decimal)previousForecastM2.get('m' + (month+1) + 'GlassSqFt__c')); 
+                delta = delta.setScale(2);      // only use 2 decimal places ...
+                currentForecastM1.put('m'+month+'GlassSqFtDelta__c',delta);
+                //System.debug('@@ JD: ' + month+': qty=' + qty + ' delta='+delta + ' curr=' + ((qty*sqFtperUnit) / finisherYield) + ' prev=' +
+                //                    getCalculateValue((Decimal)previousForecastM2.get('m' + (month+1) + 'GlassSqFt__c')));
+            }
+            currentForecastM1.m18GlassSqFtDelta__c = ((qty*sqFtperUnit) / finisherYield);
+        }
+        // END CSMSF-51
         return currentForecastM1;
     }
     
@@ -596,7 +659,7 @@ public without sharing class ForecastHelper {
         try{
             forecastOutputLIst = [SELECT id, createdDate, ownerId, tpmOwner__c, plm__c,
                                   opportunityName__c, opportunity__c, productName__c, productCode__c, 
-                                  shipToCustomer__c, massProductionStartDate__c, status__c,
+                                  shipToCustomer__c, massProductionStartDate__c, status__c, finisherYield__c,
                                   programCompleted__c, tpmAccount__c, m1Qty__c, m2Qty__c, m3Qty__c, m4Qty__c, m5Qty__c, 
                                   m6Qty__c, m7Qty__c, m8Qty__c, m9Qty__c, m10Qty__c, m11Qty__c, m12Qty__c, m13Qty__c, 
                                   m14Qty__c, m15Qty__c, m16Qty__c, m17Qty__c, m18Qty__c, 
@@ -629,6 +692,127 @@ public without sharing class ForecastHelper {
         }catch(Exception e){
         }
         return forecastOutputLIst;
+    }
+
+    /**
+    * @description Copy GG_forecastCountPerMonth__c and GG_forecastLastModifiedDate__c values from Active Forecast records to Locked Forecast records
+    * @author Edgar Santillana | 12-09-2020 
+    * @param currentForecast 
+    * @param previousForecastActive 
+    * @return ForecastOutput52Week__c 
+    **/
+    private static ForecastOutput52Week__c copyCountPerMonthFields(ForecastOutput52Week__c currentForecast, wrapperForecast previousForecastActive){
+        currentForecast.GG_forecastCountPerMonth__c  = getCalculateValue(previousForecastActive.counterPerMonth);
+        currentForecast.GG_forecastLastModifiedDate__c  = previousForecastActive.lastModifiedDate;
+        return currentForecast;
+    }
+
+
+    /**
+    * @description This method get all the active forecast current month records and copy GG_forecastCountPerMonth__c and GG_forecastLastModifiedDate__c values to locked forecast records current month, and in the end
+        reset those fields on the active current month records
+    * @author Edgar Santillana | 12-11-2020 
+    * @param oliList 
+    * @return Map<id, wrapperForecast> 
+    **/
+    public static Map<id, wrapperForecast> getActiveForcecastCurrentMonth(List<opportunityLineItem> oliList){
+        List<ForecastOutput52Week__c> listForecastReset = new List<ForecastOutput52Week__c>();
+        Map<id, opportunityLineItem> oliById = new Map<id, opportunityLineItem>();
+        Map<id, wrapperForecast> forecastOutputByOliId = new Map<id, wrapperForecast>();
+
+        Date previousMonthDate = System.Date.today().addMOnths(-1).toStartOfMonth();
+        Date currentMonthDate = System.Date.today().toStartOfMonth();
+        
+        for(opportunityLineItem oli: oliList){
+            oliById.put(oli.Id, oli);
+        }
+        
+        for(ForecastOutput52Week__c f:[ SELECT Id, GG_forecastCountPerMonth__c, GG_forecastLastModifiedDate__c, opportunityLineItemId__c, m1Date__c
+                                            FROM ForecastOutput52Week__c 
+                                            WHERE opportunityLineItemId__c IN: oliById.keySet() 
+                                            AND m1Date__c >= :currentMonthDate 
+                                            AND Status__c = 'Active']){
+                    wrapperForecast newForecast = new wrapperForecast();
+                    newForecast.counterPerMonth = f.GG_forecastCountPerMonth__c;
+                    newForecast.lastModifiedDate = f.GG_forecastLastModifiedDate__c;
+                    forecastOutputByOliId.put(f.opportunityLineItemId__c, newForecast);
+
+                System.debug('Created Date : ' + f.m1Date__c );
+                System.debug('Current Date : ' + currentMonthDate );
+                if(f.m1Date__c >= currentMonthDate){
+                    ForecastOutput52Week__c tempForecast = new ForecastOutput52Week__c();
+                    tempForecast.Id = f.Id;
+                    tempForecast.GG_forecastCountPerMonth__c = 0;
+                    listForecastReset.add(tempForecast);
+                }
+                
+        }
+        System.debug('Forecast Reset List : ' + listForecastReset );
+        if(!listForecastReset.isEmpty() && listForecastReset.size() > 0){
+            update listForecastReset;
+        }
+        
+        System.debug('@@## forecastOutputByOliId: ' + forecastOutputByOliId);
+        return forecastOutputByOliId;
+    }
+
+    /**
+    * @description This method get all the active forecast previous month records and copy GG_forecastCountPerMonth__c and GG_forecastLastModifiedDate__c values to active forecast records current month
+    * @author Edgar Santillana | 12-11-2020 
+    * @param oliList 
+    * @return Map<id, wrapperForecast> 
+    **/
+    public static Map<id, wrapperForecast> getActiveForcecastPreviousMonth(List<opportunityLineItem> oliList){
+        List<ForecastOutput52Week__c> listForecastReset = new List<ForecastOutput52Week__c>();
+        Map<id, opportunityLineItem> oliById = new Map<id, opportunityLineItem>();
+        Map<id, wrapperForecast> forecastOutputByOliId = new Map<id, wrapperForecast>();
+
+        Date previousMonthDate = System.Date.today().addMOnths(-1).toStartOfMonth();
+        Date currentMonthDate = System.Date.today().toStartOfMonth();
+        
+        for(opportunityLineItem oli: oliList){
+            oliById.put(oli.Id, oli);
+        }
+        
+        for(ForecastOutput52Week__c f:[ SELECT Id, GG_forecastCountPerMonth__c, GG_forecastLastModifiedDate__c, opportunityLineItemId__c, m1Date__c, productName__c,product__c,createddate
+                                            FROM ForecastOutput52Week__c 
+                                            WHERE opportunityLineItemId__c IN: oliById.keySet() 
+                                            AND m1Date__c >= :previousMonthDate 
+                                            AND m1Date__c < :currentMonthDate 
+                                            AND Status__c = 'Active']){
+            wrapperForecast newForecast = new wrapperForecast();
+            newForecast.counterPerMonth = f.GG_forecastCountPerMonth__c;
+            newForecast.lastModifiedDate = f.GG_forecastLastModifiedDate__c;
+            newForecast.productName = f.productName__c;
+            newForecast.product = f.product__c;
+            newForecast.m1Date = f.m1Date__c;
+            newForecast.createdDate = f.createdDate;
+
+            forecastOutputByOliId.put(f.opportunityLineItemId__c, newForecast);
+        }
+
+        System.debug('@@## forecastOutputByOliId: ' + forecastOutputByOliId);
+        return forecastOutputByOliId;
+    }
+
+    public class wrapperForecast{
+
+        Decimal counterPerMonth;
+        Date lastModifiedDate;
+        String productName;
+        Id product;
+        DateTime createdDate;
+        Date m1Date;
+
+        wrapperForecast(){
+            counterPerMonth = 0;
+            lastModifiedDate = null;
+            productName ='';
+            product = null;
+            m1Date = null;
+            createdDate = null;
+        }
+
     }
 
 }

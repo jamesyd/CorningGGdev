@@ -1,7 +1,7 @@
 /*
  * 22Dec2020 - Jim Dickerson - Allow for setting the programCompleted flag for older reopened programs/forecasts that are now being ended
  * 23Dec2020 - Jim Dickerson - make sure we don't try to update the same OLI multiple times when checking foir a TFM update ..
- *
+ * 21Jan2021 - Jim Dickerson - Jira CSMSF-37 - don't reset 'Locked' records to 'Complete'
 */
 public without sharing class ForecastOutput52WeekTriggerHelper {
     
@@ -550,15 +550,18 @@ public without sharing class ForecastOutput52WeekTriggerHelper {
     
     private static void getUpdateRelatedForecast(Map<id, Id> currentForecastByOpportunity){
         List<ForecastOutput52Week__c> toUpdateForecasts = new List<ForecastOutput52Week__c>();
-        for(ForecastOutput52Week__c forecast: [SELECT Id
+        for(ForecastOutput52Week__c forecast: [SELECT Id,status__c,programCompleted__c
                                                 FROM ForecastOutput52Week__c
                                                 WHERE ID NOT IN : currentForecastByOpportunity.keySet()
                                                 AND opportunity__c IN : currentForecastByOpportunity.values()
                                                 AND status__c != 'Completed'
                                                 AND programcompleted__c = false]){
-            forecast.programcompleted__c = true;
-            forecast.status__c = 'Completed';
-            toUpdateForecasts.add(forecast);
+         
+            if (forecast.status__c != 'Locked') {
+                forecast.programCompleted__c = true;
+                forecast.status__c = 'Completed';
+                toUpdateForecasts.add(forecast);
+            }
         }
         if(toUpdateForecasts.size() > 0){
             UPDATE toUpdateForecasts;

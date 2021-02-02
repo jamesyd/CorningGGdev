@@ -141,7 +141,7 @@ public class OpportunityLITriggerHelper{
             Map<Id, Product2> prMap = new Map<Id, product2>();
             Set<Id> specIds = new Set<Id>();
             
-            System.debug('$$$ IN OLI: Query Product2');
+            System.debug('$$$ IN OLI: Query Product2,products='+products);
             for (Product2 p: [SELECT Id, Specification__c FROM Product2 WHERE Id in :products]){
                 prMap.put(p.Id, p);
                 if (p.Specification__c != null){
@@ -150,7 +150,7 @@ public class OpportunityLITriggerHelper{
             }
             
             Map<Id, Specification__c> specsMap = new Map<Id, Specification__c>();
-            System.debug('$$$ IN OLI: Query Specification__c');
+            System.debug('$$$ IN OLI: Query Specification__c,specIds=' + specIds);
             for (Specification__c s: [SELECT Id, application__c, applicationOfGlass__c, marketSegment__c, marketSubSegment__c
                                       FROM Specification__C WHERE Id in :specIds]){
                                           specsMap.put(s.Id, s);

@@ -12,6 +12,8 @@
  * 1.3   10-27-2020   Jim Dickerson      New value added HLF-LR on partsRiskNotification Method
  * 1.4   11-04-2020   Jim Dickerson      Implement changes for Corning Bendable Glass (CSMSF-23)
  * 1.5   12-01-2020   Jim Dickerson      HLF-LR is now HLF (Jira CSMSF-48)
+ * 1.6   21Jan2021    Jim Dickerson      Add in Jingzhuo, Econy, and Phoenix CMS (Jira CSMSF-54)
+ * 1.7   25Jan2021    Jim Dickerson      Change QE/PE approval sequence (Jira CSMSF-34)
 **/
 public without sharing class ChatterHelper {
     
@@ -631,11 +633,14 @@ public without sharing class ChatterHelper {
                 }
                 
                 // QE notification logic - Normal path
-                If (oldMap.get(spec.ID).status__c == 'Manufacturer Assignment' && spec.status__c == 'Risk Assessment') {
+                // CSMSF-34 - QE notification now comes after PE approval ... (unless PE approval already 'Approved' via WF)
+                If (((oldMap.get(spec.ID).status__c == 'Risk Assessment' && spec.status__c == 'Risk Assessment') && 
+                    (oldmap.get(spec.ID).plantEngineerApproval__c != 'Approved' && spec.plantEngineerApproval__c == 'Approved') ) ||
+                    (oldMap.get(spec.ID).status__c == 'Manufacturer Assignment' && spec.status__c == 'Risk Assessment' && spec.plantEngineerApproval__c == 'Approved')) {
+                //If (oldMap.get(spec.ID).status__c == 'Manufacturer Assignment' && spec.status__c == 'Risk Assessment') {
                     
                     // parts or omega
-                    partPath = spec.productLine__c == 'Parts' && spec.isOmega__c == False ? 'Parts' : 'Omega'; 
-                    
+                    partPath = spec.productLine__c == 'Parts' && spec.isOmega__c == False ? 'Parts' : 'Omega';                   
                     If (partPath == 'Parts') {
                         partsRiskNotification(spec, 1, False, '', False, '');                        
                     }
@@ -683,9 +688,11 @@ public without sharing class ChatterHelper {
                 }
                 
                 // PE notification logic if required by QE - normal path
-                If ((oldMap.get(spec.ID).status__c == 'Risk Assessment' && spec.status__c == 'Risk Assessment') && ( (oldMap.get(spec.ID).qualityEngineerApproval__c == null && spec.qualityEngineerApproval__c == 'Approved - Requires Plant Eng Approval') || (oldMap.get(spec.ID).qualityEngineerApproval__c == 'Reviewed - More Information Required' && spec.qualityEngineerApproval__c == 'Approved - Requires Plant Eng Approval') )) {
+                // CSMSF-34 PE approval now comes first, before QE approval ... (unless already approved)
+                if (oldMap.get(spec.ID).status__c == 'Manufacturer Assignment' && spec.status__c == 'Risk Assessment' && spec.plantEngineerApproval__c != 'Approved') {
+                //If ((oldMap.get(spec.ID).status__c == 'Risk Assessment' && spec.status__c == 'Risk Assessment') && ( (oldMap.get(spec.ID).qualityEngineerApproval__c == null && spec.qualityEngineerApproval__c == 'Approved - Requires Plant Eng Approval') || (oldMap.get(spec.ID).qualityEngineerApproval__c == 'Reviewed - More Information Required' && spec.qualityEngineerApproval__c == 'Approved - Requires Plant Eng Approval') )) {
                     
-                    // Loop through location list and post to selected loactions
+                    // Loop through location list and post to selected locations
                     location = '';
                     List<String> lstLocations = new List<String>();            
                     lstLocations.clear();
@@ -1042,7 +1049,11 @@ spec.id, spec.opportunityName__c + ' ' + finalRecipients + ' ***** DUAL SOURCE '
                 }
                 
                 // Dual Source - QE notification logic - Normal path
-                If (oldMap.get(spec.ID).dsStatus__c == 'Manufacturer Assignment' && spec.dsStatus__c == 'Risk Assessment') {
+                // CSMSF-34 - QE notification now comes after PE approval ... (unless PE already set to approved via WF)
+                If (((oldMap.get(spec.ID).dsStatus__c == 'Risk Assessment' && spec.dsStatus__c == 'Risk Assessment') && 
+                    (oldmap.get(spec.ID).dsPlantEngineerApproval__c != 'Approved' && spec.dsPlantEngineerApproval__c == 'Approved')) ||
+                    (oldMap.get(spec.ID).dsStatus__c == 'Manufacturer Assignment' && spec.dsStatus__c == 'Risk Assessment' && spec.dsPlantEngineerApproval__c == 'Approved')) { 
+                //If (oldMap.get(spec.ID).dsStatus__c == 'Manufacturer Assignment' && spec.dsStatus__c == 'Risk Assessment') {
                     
                     // parts or omega
                     partPath = spec.productLine__c == 'Parts' && spec.isOmega__c == False ? 'Parts' : 'Omega'; 
@@ -1110,7 +1121,9 @@ spec.id, spec.opportunityName__c + ' ' + finalRecipients + ' ***** DUAL SOURCE '
                 }
                 
                 // Dual Source - PE notification logic if required by QE - normal path
-                If ((oldMap.get(spec.ID).dsStatus__c == 'Risk Assessment' && spec.dsStatus__c == 'Risk Assessment') && ( (oldMap.get(spec.ID).dsQualityEngineerApproval__c == null && spec.dsQualityEngineerApproval__c == 'Approved - Requires Plant Eng Approval') || (oldMap.get(spec.ID).dsQualityEngineerApproval__c == 'Reviewed - More Information Required' && spec.dsQualityEngineerApproval__c == 'Approved - Requires Plant Eng Approval') )) {
+                // CSMSF-34 PE approval now comes first, before QE approval ... (unless already approved)
+                if (oldMap.get(spec.ID).dsStatus__c == 'Manufacturer Assignment' && spec.dsStatus__c == 'Risk Assessment' && spec.dsPlantEngineerApproval__c != 'Approved') {
+                //If ((oldMap.get(spec.ID).dsStatus__c == 'Risk Assessment' && spec.dsStatus__c == 'Risk Assessment') && ( (oldMap.get(spec.ID).dsQualityEngineerApproval__c == null && spec.dsQualityEngineerApproval__c == 'Approved - Requires Plant Eng Approval') || (oldMap.get(spec.ID).dsQualityEngineerApproval__c == 'Reviewed - More Information Required' && spec.dsQualityEngineerApproval__c == 'Approved - Requires Plant Eng Approval') )) {
                     
                     // Loop through location list and post to selected loactions
                     location = '';
@@ -1667,6 +1680,10 @@ spec.id, spec.opportunityName__c + ' ' + finalRecipients + ' ***** DUAL SOURCE '
             if (l == 'HLF-LR') { location = 'HLF-QA';}  // next line replaces this, but let's keep backwards compatibility
             if (l == 'HLF') { location = 'HLF-QA';}
             if (l == 'Ample') { location = 'Ample-QA';}
+            if (l == 'Jingzhuo') { location = 'Jingzhuo-QA';}
+            if (l == 'Econy') { location = 'Econy-QA';}
+            if (l == 'Phoenix') { location = 'Phoenix-QA';}
+           
             
             if (source == 2) {
                 finalMessage = Utils.getMessageInnovationAndLocationDS(location,spec);
@@ -1799,7 +1816,7 @@ spec.id, spec.opportunityName__c + ' ' + finalRecipients + ' ***** DUAL SOURCE '
         
     }
     // CSMSF-23 - See if Corning Bendable Glass is set as a innovation type.  If so, return the custom setting location
-    //            for the Risk Mangement PR owner ...
+    //            for the Risk Mangement PE owner ...
     private Static String getCBGlocation(specification__c spec) {
         if (spec.Innovation_Type__c != null) {
             for (String s : spec.Innovation_Type__c.split(';')) {

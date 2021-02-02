@@ -2,11 +2,13 @@
  * @description       : 
  * @author            : Arquimidez Mora
  * @group             : 
- * @last modified on  : 07-07-2020
- * @last modified by  : Arquimidez Mora
+ * @last modified on  : 25 Jan 2021
+ * @last modified by  : Jim Dickerson
  * Modifications Log 
  * Ver   Date         Author            Modification
  * 1.1   07-07-2020   Arquimidez Mora   Adding Vietnamese Dong
+ * 1.2   25-Jan-2021  Jim Dickerson     CSMSF-34 set PE approval date/time
+ * 1.3   27-Jan-2001  Jim Dickerson     CSMSF-34 Update the Primary/Secondary Owner Approval Change Date/Time base on Risk Owner Role, not QE Approval 
 **/
 ///*** Added for Gorilla Glass Implementation ***///
 ///*** Salesforce Cloud Services - 2/14/2017 ***///
@@ -158,15 +160,29 @@ Check if Finace Review Complete is checked then Status is changed to "Commercial
                 if (beforeMap.get(spec.Id).dsQualityEngineerApproval__c <> spec.dsQualityEngineerApproval__c && beforeMap.get(spec.Id).dsQualityEngineerApproval__c == Null) {
                     spec.dsQualityEngineerReviewDate__c = datetime.now();                       
                 } // dual source
+
+                // CSMSF-34
+                // only set PE Review Date once when the spec is 'Approved'
+                if (beforeMap.get(spec.Id).plantEngineerApproval__c <> spec.plantEngineerApproval__c && spec.plantEngineerApproval__c == 'Approved') {
+                    spec.plantEngineerReviewDate__c = datetime.now();                       
+                }
                 
+                // dual source
+                if (beforeMap.get(spec.Id).dsPlantEngineerApproval__c <> spec.dsPlantEngineerApproval__c && spec.dsPlantEngineerApproval__c == 'Approved') {
+                    spec.dsPlantEngineerReviewDate__c = datetime.now();                       
+                } // dual source      
+
                 // an 7/3/19 - set riskOwnerApprovalChangeDate__c when QA Approval picklist changes
                 // updates each time picklist changes
-                if (beforeMap.get(spec.Id).qualityEngineerApproval__c <> spec.qualityEngineerApproval__c) {
+                // jd 1/27/21 - set riskOwnerApprovalChangeDate__c when Risk Owner role changes, not the QA Approval status (that is done above)
+                if (beforeMap.get(spec.Id).riskOwnerRole__c <> spec.riskOwnerRole__c) {
+                //if (beforeMap.get(spec.Id).qualityEngineerApproval__c <> spec.qualityEngineerApproval__c) {
                     spec.riskOwnerApprovalChangeDate__c = datetime.now();                       
                 }
                 
                 // dual source
-                if (beforeMap.get(spec.Id).dsQualityEngineerApproval__c <> spec.dsQualityEngineerApproval__c) {
+                if (beforeMap.get(spec.Id).dsRiskOwnerRole__c <> spec.dsRiskOwnerRole__c) {
+                //if (beforeMap.get(spec.Id).dsQualityEngineerApproval__c <> spec.dsQualityEngineerApproval__c) {
                     spec.dsRiskOwnerApprovalChangeDate__c = datetime.now();                       
                 } // dual source
                 

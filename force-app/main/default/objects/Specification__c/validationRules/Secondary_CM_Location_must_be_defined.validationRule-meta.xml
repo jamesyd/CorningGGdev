@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Secondary_CM_Location_must_be_defined</fullName>
+    <active>true</active>
+    <description>Secondary CM Location must be defined when Secondary Manufacturing Assignment Compl is selected</description>
+    <errorConditionFormula>AND( ISCHANGED( dsManufacturingAssignmentComplete__c  ), dsManufacturingAssignmentComplete__c = true, ISNULL(dsLocation__c ))</errorConditionFormula>
+    <errorMessage>Secondary CM Selected Locations must contain a value.</errorMessage>
+</ValidationRule>

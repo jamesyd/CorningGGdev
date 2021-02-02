@@ -13,6 +13,11 @@
         <isRequired>false</isRequired>
     </displayedFields>
     <displayedFields>
+        <field>generalComments__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <displayedFields>
         <field>dsSourceChangedComments__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
@@ -28,12 +33,27 @@
         <isRequired>false</isRequired>
     </displayedFields>
     <displayedFields>
+        <field>plantEngineerReviewDate__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <displayedFields>
+        <field>Source_1_Additional_Cost__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <displayedFields>
         <field>dsCostApproval__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
     </displayedFields>
     <displayedFields>
         <field>dsRiskOwnerRole__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <displayedFields>
+        <field>dsPlantEngineerReviewDate__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
     </displayedFields>
@@ -49,6 +69,11 @@
     </displayedFields>
     <displayedFields>
         <field>dsRiskAssessmentComments__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <displayedFields>
+        <field>Source_2_Additional_Cost__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
     </displayedFields>

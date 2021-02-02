@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Secondary_Risk_Assessment</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISCHANGED(dsRiskAssessmentComplete__c),
+dsRiskAssessmentComplete__c,
+riskAssessmentComplete__c = False)</errorConditionFormula>
+    <errorMessage>The Primary Risk Assessment must be completed before the Secondary Risk Assessment.</errorMessage>
+</ValidationRule>

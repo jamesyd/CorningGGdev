@@ -2,12 +2,14 @@
  * @description       : 
  * @author            : ADAM nICHOLSON?
  * @group             : 
- * @last modified on  : 07-10-2020
- * @last modified by  : Arquimidez Mora
+ * @last modified on  : 01-29-2021
+ * @last modified by  : Jim Dickerson
  * Modifications Log 
  * Ver   Date         Author            Modification
  * 1.0   07-10-2020   Arquimidez Mora   Initial Version
-**/
+ * 1.1   01-29-2021	  Jim Dickerson     Change qualityEngineerApproval__c from 'Approved - Excludes Plant Eng Approval' to 'Approved - Includes Plant Eng Approval'as former value was deprecated
+ *                                      Also, set primaryRiskAssessment complete flag in some dual source methods to avoid a VR issue
+ **/
 // ConnectApi methods are not supported in data siloed tests.
 // Please use @IsTest(SeeAllData=true). Class.ConnectApi.ChatterFeeds.postFeedElement
 
@@ -124,7 +126,7 @@ private class ChatterHelperTest {
         update testSpec5;
         
         Specification__c testSpec6 = [SELECT Id, qualityEngineerApproval__c, thickness__c, Innovation_Type__c, location__c FROM Specification__c WHERE id =: testId limit 1];       
-        testSpec6.qualityEngineerApproval__c = 'Approved - Requires Plant Eng Approval';
+        testSpec6.qualityEngineerApproval__c = 'Approved - Includes Plant Eng Approval';
         update testSpec6;
         
         testSpec6.qualityEngineerApproval__c = 'Reviewed - More Information Required';
@@ -392,8 +394,9 @@ private class ChatterHelperTest {
         testSpec5.dsManufacturingAssignmentComplete__c = True;
         update testSpec5;
         
-        Specification__c testSpec6 = [SELECT Id, dsQualityEngineerApproval__c, Innovation_Type__c, location__c FROM Specification__c WHERE id =: testId limit 1];       
-        testSpec6.dsQualityEngineerApproval__c = 'Approved - Requires Plant Eng Approval';
+        Specification__c testSpec6 = [SELECT Id, dsQualityEngineerApproval__c, Innovation_Type__c, location__c FROM Specification__c WHERE id =: testId limit 1]; 
+        testspec6.riskAssessmentComplete__c = true;      
+        testSpec6.dsQualityEngineerApproval__c = 'Approved - Includes Plant Eng Approval';
         update testSpec6;
         
         testSpec6.dsQualityEngineerApproval__c = 'Reviewed - More Information Required';
@@ -438,7 +441,8 @@ private class ChatterHelperTest {
         testSpec5.dsManufacturingAssignmentComplete__c = True;
         update testSpec5;
         
-        Specification__c testSpec6 = [SELECT Id, dsQualityEngineerApproval__c, Innovation_Type__c, location__c FROM Specification__c WHERE id =: testId limit 1];       
+        Specification__c testSpec6 = [SELECT Id, dsQualityEngineerApproval__c, Innovation_Type__c, location__c FROM Specification__c WHERE id =: testId limit 1];  
+        testspec6.riskAssessmentComplete__c = true;     
         testSpec6.dsQualityEngineerApproval__c = 'Approved - Includes Plant Eng Approval';
         update testSpec6;
         
@@ -480,7 +484,8 @@ private class ChatterHelperTest {
         testSpec5.dsManufacturingAssignmentComplete__c = True;
         update testSpec5;
         
-        Specification__c testSpec6 = [SELECT Id, dsQualityEngineerApproval__c, Innovation_Type__c, location__c FROM Specification__c WHERE id =: testId limit 1];       
+        Specification__c testSpec6 = [SELECT Id, dsQualityEngineerApproval__c, Innovation_Type__c, location__c FROM Specification__c WHERE id =: testId limit 1]; 
+        testspec6.riskAssessmentComplete__c = true;      
         testSpec6.dsQualityEngineerApproval__c = 'Approved - Includes Plant Eng Approval';
         update testSpec6;
         

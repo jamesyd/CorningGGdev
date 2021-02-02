@@ -3,6 +3,6 @@
     <fullName>Only_PLMs_Edit_Upper_Limit_If_Submitted</fullName>
     <active>true</active>
     <description>Only let Parts PLMs edit the upper limit fields if the Spec has been submitted.</description>
-    <errorConditionFormula>(TEXT(status__c) &lt;&gt; &apos;New&apos;) &amp;&amp; $Profile.Name != &quot;GG Parts Product Line Manager&quot; &amp;&amp; !CONTAINS($Profile.Name, &quot;Administrator&quot;) &amp;&amp; (IsChanged(upperLimit1__c) || IsChanged(upperLimit2__c) || IsChanged(upperLimit3__c) || IsChanged(upperLimit4__c))</errorConditionFormula>
+    <errorConditionFormula>(TEXT(status__c) &lt;&gt; &apos;New&apos;) &amp;&amp; AND( $Profile.Name != &quot;GG Parts Product Line Manager&quot;,$Permission.GG_CBG_Allow_Pricing_Approval = False) &amp;&amp; !CONTAINS($Profile.Name, &quot;Administrator&quot;) &amp;&amp; (IsChanged(upperLimit1__c) || IsChanged(upperLimit2__c) || IsChanged(upperLimit3__c) || IsChanged(upperLimit4__c))</errorConditionFormula>
     <errorMessage>Upper Limit fields may not be edited at this time.</errorMessage>
 </ValidationRule>

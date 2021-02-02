@@ -457,12 +457,45 @@
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
+        <fullName>Set_PE_Approval_to_Approved</fullName>
+        <description>Set the primary plant engineer approval to &apos;approved&apos;</description>
+        <field>plantEngineerApproval__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Set PE Approval to Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_PE_Approval_to_Approved_DS</fullName>
+        <description>Set the secondary plant engineer approval to &apos;approved&apos;</description>
+        <field>dsPlantEngineerApproval__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Set PE Approval to Approved (DS)</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>Set_Spec_Approved_Date</fullName>
         <field>approvedDate__c</field>
         <formula>TODAY()</formula>
         <name>Set Spec Approved Date</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Standard_to_No</fullName>
+        <description>Set the Standard__c to NO indicating that no Standard stage performed</description>
+        <field>standard__c</field>
+        <literalValue>No</literalValue>
+        <name>Set Standard to No</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
         <protected>false</protected>
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
@@ -2240,9 +2273,13 @@
         <criteriaItems>
             <field>Specification__c.location__c</field>
             <operation>notEqual</operation>
-            <value>Unable to manufacture</value>
         </criteriaItems>
-        <description>Parts - 05</description>
+        <criteriaItems>
+            <field>Specification__c.Requires_PE_Approval__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Parts - 05 (For Specs that require PE Approval)</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
@@ -2277,14 +2314,18 @@
         <criteriaItems>
             <field>Specification__c.dsLocation__c</field>
             <operation>notEqual</operation>
-            <value>Unable to manufacture</value>
         </criteriaItems>
         <criteriaItems>
             <field>Specification__c.dsActualSource__c</field>
             <operation>equals</operation>
             <value>Dual Source</value>
         </criteriaItems>
-        <description>Parts - 05 - DS</description>
+        <criteriaItems>
+            <field>Specification__c.Requires_PE_Approval__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Parts - 05 - DS - (For Specs that require PE Approval)</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
@@ -2403,7 +2444,128 @@
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
+        <fullName>Submit for Risk Assessment and skip PE Approval</fullName>
+        <actions>
+            <name>Change_Status_to_Risk_Assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_AE_Risk_Assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_QE_Risk_Assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Reset_risk_assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Set_PE_Approval_to_Approved</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.manufacturingAssignmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.location__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.Requires_PE_Approval__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <description>Parts - 05  and skip PE Risk Assessment if not DX, DX+ or DXC w/ wearable</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for Risk Assessment and skip PE Approval %28DS%29</fullName>
+        <actions>
+            <name>Change_Status_to_Risk_Assessment_DS0</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_QE_Risk_Assessment_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Reset_risk_assessment_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Set_PE_Approval_to_Approved_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.dsManufacturingAssignmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsLocation__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.dsActualSource__c</field>
+            <operation>equals</operation>
+            <value>Dual Source</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.Requires_PE_Approval__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <description>Parts - 05  - DS and skip PE Risk Assessment if not DX, DX+ or DXC w/ wearable</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
         <fullName>Submit for Standard Assessment</fullName>
+        <actions>
+            <name>Status_change_to_standard_assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Specification__c.capabilityAssessmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.capable__c</field>
+            <operation>equals</operation>
+            <value>Yes,Evaluate</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.standardAssessmentComplete__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <description>Parts - 03</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for Standard Assessment - No CBG innovation</fullName>
         <actions>
             <name>Status_change_to_standard_assessment</name>
             <type>FieldUpdate</type>
@@ -2429,7 +2591,146 @@
             <operation>equals</operation>
             <value>False</value>
         </criteriaItems>
-        <description>Parts - 03</description>
+        <criteriaItems>
+            <field>Specification__c.Innovation_Type__c</field>
+            <operation>excludes</operation>
+            <value>Corning Bendable Glass</value>
+        </criteriaItems>
+        <description>Parts - 03 If Innovation Type &apos;Corning Bendable Glass&apos; is not selected move to Standard Assessment stage</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for Standard Assessment - With CBG innovation</fullName>
+        <actions>
+            <name>Clear_out_AE_Risk_Assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_Cost_Approval</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_PE_Risk_Assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_QE_Risk_Assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_Risk_Assessment_QE_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Manufacturing_Assignment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Set_Standard_to_No</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Uncheck_Cost_Assessment_Complete</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Uncheck_Manufacturing_Assignment_Comp</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Uncheck_Risk_Assessment_Comp</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.capabilityAssessmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.capable__c</field>
+            <operation>equals</operation>
+            <value>Yes,Evaluate</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.standardAssessmentComplete__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.Innovation_Type__c</field>
+            <operation>includes</operation>
+            <value>Corning Bendable Glass</value>
+        </criteriaItems>
+        <description>Parts - 03 If Innovation Type &apos;Corning Bendable Glass&apos; is selected skip Standard Assessment stage and proceed to Manufacturer Assignment stage</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Submit for Standard Assessment - With CBG innovation %28DS%29</fullName>
+        <actions>
+            <name>Clear_out_Cost_Approval_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_PE_Risk_Assessment_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_QE_Risk_Assessment_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Clear_out_Risk_Assessment_QE_Date_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Manufacturing_Assignment_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Uncheck_Cost_Assessment_Complete_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Uncheck_Manufacturing_Assignment_Co_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Uncheck_Risk_Assessment_Comp_DS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Specification__c.capabilityAssessmentComplete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Parts - Submitted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.capable__c</field>
+            <operation>equals</operation>
+            <value>Yes,Evaluate</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.standardAssessmentComplete__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Specification__c.Innovation_Type__c</field>
+            <operation>includes</operation>
+            <value>Corning Bendable Glass</value>
+        </criteriaItems>
+        <description>Parts - 03 If Innovation Type &apos;Corning Bendable Glass&apos; is selected skip Standard Assessment stage and proceed to Manufacturer Assignment stage (DS)</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>

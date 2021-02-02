@@ -160,6 +160,42 @@
         <template>unfiled$public/CAG_Opp_Win</template>
     </alerts>
     <alerts>
+        <fullName>Part_Sample_Request_Cancel_Notification</fullName>
+        <ccEmails>ChouYC@Corning.com</ccEmails>
+        <ccEmails>scalesga@corning.com</ccEmails>
+        <description>Sample Request Cancel Notification</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <recipient>GGCustomerServiceManager</recipient>
+            <type>role</type>
+        </recipients>
+        <recipients>
+            <recipient>GGCustomerServiceRep</recipient>
+            <type>role</type>
+        </recipients>
+        <recipients>
+            <recipient>GG_Allocation_Team_Planner</recipient>
+            <type>role</type>
+        </recipients>
+        <recipients>
+            <recipient>adam.nicholson@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>chenh12@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>zhangh42@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>GGEmailTemplates/Part_Cancel_Notification</template>
+    </alerts>
+    <alerts>
         <fullName>Sample_Request_Order_Pending_Notification</fullName>
         <ccEmails>ChouYC@Corning.com</ccEmails>
         <description>Sample Request Order Pending Notification</description>
@@ -222,8 +258,48 @@
     </alerts>
     <alerts>
         <fullName>Sample_Request_Order_Pending_Notification_Phyllo</fullName>
-        <ccEmails>ChouYC@Corning.com.invalid</ccEmails>
         <description>Sample Request Order Pending Notification - Phyllo</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <recipient>chenh12@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>leey3@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>zhangh42@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>zhouz@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>GGEmailTemplates/Sample_Request_Order_Pending_Notification_Phyllo</template>
+    </alerts>
+    <alerts>
+        <fullName>Sample_Request_Pricing_Complete</fullName>
+        <description>Sample Request Pricing Complete</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <recipient>chenh12@corning.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>GGEmailTemplates/Sample_request_pricing_complete</template>
+    </alerts>
+    <alerts>
+        <fullName>Ship_To_Information_Change_Notification</fullName>
+        <ccEmails>ChouYC@Corning.com</ccEmails>
+        <description>Ship To Information Change Notification</description>
         <protected>false</protected>
         <recipients>
             <type>owner</type>
@@ -249,37 +325,11 @@
             <type>user</type>
         </recipients>
         <recipients>
-            <recipient>leey3@corning.com</recipient>
-            <type>user</type>
-        </recipients>
-        <recipients>
-            <recipient>moraa3.csm@corning.com</recipient>
-            <type>user</type>
-        </recipients>
-        <recipients>
             <recipient>zhangh42@corning.com</recipient>
             <type>user</type>
         </recipients>
-        <recipients>
-            <recipient>zhouz@corning.com</recipient>
-            <type>user</type>
-        </recipients>
         <senderType>CurrentUser</senderType>
-        <template>GGEmailTemplates/Sample_Request_Order_Pending_Notification</template>
-    </alerts>
-    <alerts>
-        <fullName>Sample_Request_Pricing_Complete</fullName>
-        <description>Sample Request Pricing Complete</description>
-        <protected>false</protected>
-        <recipients>
-            <type>owner</type>
-        </recipients>
-        <recipients>
-            <recipient>chenh12@corning.com</recipient>
-            <type>user</type>
-        </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>GGEmailTemplates/Sample_request_pricing_complete</template>
+        <template>GGEmailTemplates/Ship_To_information_change</template>
     </alerts>
     <fieldUpdates>
         <fullName>Change_RT_to_GG_Parts_Sample_Submitted</fullName>
@@ -887,7 +937,8 @@
             <type>FieldUpdate</type>
         </actions>
         <active>true</active>
-        <formula>AND(  NOT(ISCHANGED(Name)), ISPICKVAL(StageName, &apos;New&apos;),  (RecordType.Name = &apos;GG Parts Sample Request&apos;),   NOT(isPreBuild__c), NOT( isPhyllo__c ), (submitForApproval__c = TRUE), ISCHANGED(submitForApproval__c), (OR(numberCmLocations__c   &lt;&gt;  1, ISNULL(numberCmLocations__c)))  )</formula>
+        <formula>AND(  NOT(ISCHANGED(Name)), ISPICKVAL(StageName, &apos;New&apos;),  (RecordType.Name = &apos;GG Parts Sample Request&apos;),   NOT(isPreBuild__c), (submitForApproval__c = TRUE), ISCHANGED(submitForApproval__c), (OR(numberCmLocations__c   &lt;&gt;  1, ISNULL(numberCmLocations__c))),
+(OR(NOT(isPhyllo__c), AND(isPhyllo__c,NOT(ISBLANK(SpecId__c))))) )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
@@ -901,7 +952,9 @@
             <type>FieldUpdate</type>
         </actions>
         <active>true</active>
-        <formula>AND(ISPICKVAL(StageName, &apos;New&apos;),      RecordType.Name = &apos;GG Parts Sample Request&apos;,    isPhyllo__c,     ISCHANGED(submitForApproval__c),     submitForApproval__c )</formula>
+        <description>handle generic (no spec) phyllo/CBG product. Go from New to Pricing Assignment when submitted for approval.</description>
+        <formula>AND(ISPICKVAL(StageName, &apos;New&apos;),      RecordType.Name = &apos;GG Parts Sample Request&apos;,    isPhyllo__c,     ISCHANGED(submitForApproval__c),     submitForApproval__c,
+ ISBLANK( SpecId__c )  )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
@@ -929,7 +982,9 @@
             <type>FieldUpdate</type>
         </actions>
         <active>true</active>
-        <formula>AND(  NOT(ISCHANGED(Name)), ISPICKVAL(StageName, &apos;New&apos;),  (RecordType.Name = &apos;GG Parts Sample Request&apos;), NOT(isPreBuild__c), NOT( isPhyllo__c ),(submitForApproval__c = TRUE), ISCHANGED(submitForApproval__c), (numberCmLocations__c  = 1)  )</formula>
+        <description>Handle samples that have a spec and only 1 CM location specified to go from New to Pricing Assignment</description>
+        <formula>AND(  NOT(ISCHANGED(Name)), ISPICKVAL(StageName, &apos;New&apos;),  (RecordType.Name = &apos;GG Parts Sample Request&apos;), NOT(isPreBuild__c), (submitForApproval__c = TRUE), ISCHANGED(submitForApproval__c), (numberCmLocations__c  = 1),
+(OR(NOT(isPhyllo__c), AND(isPhyllo__c,NOT(ISBLANK(SpecId__c))))))</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
@@ -1085,7 +1140,7 @@
         <active>true</active>
         <description>Send an email when a parts Sample reaches the &apos;Order Pending&apos; stage</description>
         <formula>AND(  NOT(ISCHANGED(Name)),  OR((RecordType.Name = &apos;GG Parts Sample - Submitted&apos;),(RecordType.Name = &apos;GG Raw Glass/Concore Sample - Submitted&apos;)), ISPICKVAL(StageName, &apos;Order Pending&apos;),  ISCHANGED(StageName),
-Account.Name != &apos;Blue&apos;   )</formula>
+Account.Name != &apos;Blue&apos;, NOT(isPhyllo__c)  )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
@@ -1150,6 +1205,16 @@ Account.Name = &apos;Blue&apos;  )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
+        <fullName>Parts Cancelled Notification</fullName>
+        <actions>
+            <name>Part_Sample_Request_Cancel_Notification</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(ISPICKVAL( StageName,&apos;Cancelled&apos;),       ISPICKVAL(PRIORVALUE(StageName),&apos;Order Pending&apos;),     OR( RecordTypeId = &apos;0121J000000U1cX&apos;,         RecordTypeId = &apos;0121J000000U1cY&apos;,         RecordTypeId = &apos;0121J000000U1cb&apos;,         RecordTypeId = &apos;0121J000000U1ca&apos;)  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
         <fullName>Sample Request Opportunity Name</fullName>
         <actions>
             <name>Sample_Request_Number</name>
@@ -1176,6 +1241,16 @@ Account.Name = &apos;Blue&apos;  )</formula>
             <value>GG Parts Sample Request,GG Raw Glass/Concore Sample Request,GG Raw Glass/Concore Sample - Submitted,GG Parts Sample - Submitted</value>
         </criteriaItems>
         <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Ship To information Changed</fullName>
+        <actions>
+            <name>Ship_To_Information_Change_Notification</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(NOT(ISNEW()),     OR( RecordTypeId = &apos;0121J000000U1cX&apos;,         RecordTypeId = &apos;0121J000000U1cY&apos;,         RecordTypeId = &apos;0121J000000U1cb&apos;,         RecordTypeId = &apos;0121J000000U1ca&apos;),     OR(ISCHANGED( AccountId ),        ISCHANGED( shipToContact__c ),        ISCHANGED( streetAddress__c )),     Ispickval( StageName,&apos;Order Pending&apos;)       )</formula>
+        <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
         <fullName>Update Opportunity IsExclusive</fullName>

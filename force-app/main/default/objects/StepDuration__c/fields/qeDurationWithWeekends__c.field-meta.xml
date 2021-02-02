@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>qeDurationWithWeekends__c</fullName>
     <externalId>false</externalId>
-    <formula>24 * ( qualityEngineerReviewDate__c -  previousStepDateTime__c )</formula>
+    <formula>24 * ( qualityEngineerReviewDate__c -  plantEngineerReviewDate__c )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>For Risk Assessment stage, this is the duration (hours) from when spec was Approved to when the first QE review was done</inlineHelpText>
     <label>QE Duration (with Weekends)</label>
     <precision>18</precision>
     <required>false</required>

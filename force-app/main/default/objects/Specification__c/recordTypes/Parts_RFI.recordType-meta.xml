@@ -71,6 +71,17 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Follow_Corning_Standard__c</picklist>
+        <values>
+            <fullName>Follow Corning Standard</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Review by CM</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Innovation_Type__c</picklist>
         <values>
             <fullName>AR %E2%80%93 Camera Hole</fullName>
@@ -139,6 +150,48 @@
         <values>
             <fullName>Medium</fullName>
             <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Spec_Purpose__c</picklist>
+        <values>
+            <fullName>Clone for Second Source %28Please specify the ID in remark field%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NPI%2FMP spec %E2%80%93 Normal NPI%2FMP quotation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>One time%2FTest%2FLab sample %E2%80%93 Free Sample %E2%80%93 by Corning charge code</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>One time%2FTest%2FLab sample %E2%80%93 Paid Sample %E2%80%93 by Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Others %28Please specify the purpose in remark field%29</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Spec_Review_instruction_to_QA__c</picklist>
+        <values>
+            <fullName>Drawing and Spec follow Corning latest external specs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Drawing and Specification follow customer%E2%80%99s files as uploaded</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other %28Must provide the details in the Remark field%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spec review follows previous spec %28Must provide the spec ID in the Remark field%29</fullName>
+            <default>false</default>
         </values>
     </picklistValues>
     <picklistValues>
@@ -363,6 +416,10 @@
     <picklistValues>
         <picklist>cannibalizationLCCMOne__c</picklist>
         <values>
+            <fullName>Ample</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>BOE</fullName>
             <default>false</default>
         </values>
@@ -391,6 +448,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Econy</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Fuzhou</fullName>
             <default>false</default>
         </values>
@@ -411,7 +472,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>HLF-LR</fullName>
+            <fullName>HLF</fullName>
             <default>false</default>
         </values>
         <values>
@@ -440,6 +501,10 @@
         </values>
         <values>
             <fullName>Jiangmen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jingzhuo</fullName>
             <default>false</default>
         </values>
         <values>
@@ -483,6 +548,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Phoenix</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>RKL</fullName>
             <default>false</default>
         </values>
@@ -523,7 +592,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>XX DG</fullName>
+            <fullName>XX 3D</fullName>
             <default>false</default>
         </values>
         <values>
@@ -542,6 +611,10 @@
     <picklistValues>
         <picklist>cannibalizationLCCMTwo__c</picklist>
         <values>
+            <fullName>Ample</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>BOE</fullName>
             <default>false</default>
         </values>
@@ -570,6 +643,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Econy</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Fuzhou</fullName>
             <default>false</default>
         </values>
@@ -590,7 +667,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>HLF-LR</fullName>
+            <fullName>HLF</fullName>
             <default>false</default>
         </values>
         <values>
@@ -619,6 +696,10 @@
         </values>
         <values>
             <fullName>Jiangmen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jingzhuo</fullName>
             <default>false</default>
         </values>
         <values>
@@ -662,6 +743,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Phoenix</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>RKL</fullName>
             <default>false</default>
         </values>
@@ -702,7 +787,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>XX DG</fullName>
+            <fullName>XX 3D</fullName>
             <default>false</default>
         </values>
         <values>
@@ -876,6 +961,10 @@
     <picklistValues>
         <picklist>dsLocation__c</picklist>
         <values>
+            <fullName>Ample</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>BOE</fullName>
             <default>false</default>
         </values>
@@ -889,6 +978,10 @@
         </values>
         <values>
             <fullName>Crystal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Econy</fullName>
             <default>false</default>
         </values>
         <values>
@@ -908,7 +1001,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>HLF-LR</fullName>
+            <fullName>HLF</fullName>
             <default>false</default>
         </values>
         <values>
@@ -925,6 +1018,10 @@
         </values>
         <values>
             <fullName>Jiangmen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jingzhuo</fullName>
             <default>false</default>
         </values>
         <values>
@@ -961,6 +1058,10 @@
         </values>
         <values>
             <fullName>Opton</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phoenix</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1008,7 +1109,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>XX DG</fullName>
+            <fullName>XX 3D</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1066,10 +1167,6 @@
         <picklist>dsQualityEngineerApproval__c</picklist>
         <values>
             <fullName>Approved - Includes Plant Eng Approval</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Approved - Requires Plant Eng Approval</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1209,6 +1306,10 @@
     <picklistValues>
         <picklist>final2IncrementalRoofOne__c</picklist>
         <values>
+            <fullName>Ample</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>BOE</fullName>
             <default>false</default>
         </values>
@@ -1237,6 +1338,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Econy</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Fuzhou</fullName>
             <default>false</default>
         </values>
@@ -1257,7 +1362,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>HLF-LR</fullName>
+            <fullName>HLF</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1286,6 +1391,10 @@
         </values>
         <values>
             <fullName>Jiangmen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jingzhuo</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1329,6 +1438,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Phoenix</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>RKL</fullName>
             <default>false</default>
         </values>
@@ -1369,7 +1482,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>XX DG</fullName>
+            <fullName>XX 3D</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1388,6 +1501,10 @@
     <picklistValues>
         <picklist>final2IncrementalRoofTwo__c</picklist>
         <values>
+            <fullName>Ample</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>BOE</fullName>
             <default>false</default>
         </values>
@@ -1416,6 +1533,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Econy</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Fuzhou</fullName>
             <default>false</default>
         </values>
@@ -1436,7 +1557,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>HLF-LR</fullName>
+            <fullName>HLF</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1465,6 +1586,10 @@
         </values>
         <values>
             <fullName>Jiangmen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jingzhuo</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1508,6 +1633,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Phoenix</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>RKL</fullName>
             <default>false</default>
         </values>
@@ -1548,7 +1677,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>XX DG</fullName>
+            <fullName>XX 3D</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1567,6 +1696,10 @@
     <picklistValues>
         <picklist>finalIncrementalRoofOne__c</picklist>
         <values>
+            <fullName>Ample</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>BOE</fullName>
             <default>false</default>
         </values>
@@ -1595,6 +1728,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Econy</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Fuzhou</fullName>
             <default>false</default>
         </values>
@@ -1615,7 +1752,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>HLF-LR</fullName>
+            <fullName>HLF</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1644,6 +1781,10 @@
         </values>
         <values>
             <fullName>Jiangmen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jingzhuo</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1687,6 +1828,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Phoenix</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>RKL</fullName>
             <default>false</default>
         </values>
@@ -1727,7 +1872,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>XX DG</fullName>
+            <fullName>XX 3D</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1746,6 +1891,10 @@
     <picklistValues>
         <picklist>finalIncrementalRoofTwo__c</picklist>
         <values>
+            <fullName>Ample</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>BOE</fullName>
             <default>false</default>
         </values>
@@ -1774,6 +1923,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Econy</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Fuzhou</fullName>
             <default>false</default>
         </values>
@@ -1794,7 +1947,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>HLF-LR</fullName>
+            <fullName>HLF</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1823,6 +1976,10 @@
         </values>
         <values>
             <fullName>Jiangmen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jingzhuo</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1866,6 +2023,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Phoenix</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>RKL</fullName>
             <default>false</default>
         </values>
@@ -1906,7 +2067,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>XX DG</fullName>
+            <fullName>XX 3D</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1993,6 +2154,10 @@
     <picklistValues>
         <picklist>incrementalLCCMOne__c</picklist>
         <values>
+            <fullName>Ample</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>BOE</fullName>
             <default>false</default>
         </values>
@@ -2021,6 +2186,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Econy</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Fuzhou</fullName>
             <default>false</default>
         </values>
@@ -2041,7 +2210,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>HLF-LR</fullName>
+            <fullName>HLF</fullName>
             <default>false</default>
         </values>
         <values>
@@ -2070,6 +2239,10 @@
         </values>
         <values>
             <fullName>Jiangmen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jingzhuo</fullName>
             <default>false</default>
         </values>
         <values>
@@ -2113,6 +2286,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Phoenix</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>RKL</fullName>
             <default>false</default>
         </values>
@@ -2153,7 +2330,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>XX DG</fullName>
+            <fullName>XX 3D</fullName>
             <default>false</default>
         </values>
         <values>
@@ -2172,6 +2349,10 @@
     <picklistValues>
         <picklist>incrementalLCCMTwo__c</picklist>
         <values>
+            <fullName>Ample</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>BOE</fullName>
             <default>false</default>
         </values>
@@ -2200,6 +2381,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Econy</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Fuzhou</fullName>
             <default>false</default>
         </values>
@@ -2220,7 +2405,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>HLF-LR</fullName>
+            <fullName>HLF</fullName>
             <default>false</default>
         </values>
         <values>
@@ -2249,6 +2434,10 @@
         </values>
         <values>
             <fullName>Jiangmen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jingzhuo</fullName>
             <default>false</default>
         </values>
         <values>
@@ -2292,6 +2481,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Phoenix</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>RKL</fullName>
             <default>false</default>
         </values>
@@ -2332,7 +2525,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>XX DG</fullName>
+            <fullName>XX 3D</fullName>
             <default>false</default>
         </values>
         <values>
@@ -2351,6 +2544,10 @@
     <picklistValues>
         <picklist>incrementalRoofOneS2__c</picklist>
         <values>
+            <fullName>Ample</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>BOE</fullName>
             <default>false</default>
         </values>
@@ -2379,6 +2576,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Econy</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Fuzhou</fullName>
             <default>false</default>
         </values>
@@ -2399,7 +2600,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>HLF-LR</fullName>
+            <fullName>HLF</fullName>
             <default>false</default>
         </values>
         <values>
@@ -2428,6 +2629,10 @@
         </values>
         <values>
             <fullName>Jiangmen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jingzhuo</fullName>
             <default>false</default>
         </values>
         <values>
@@ -2471,6 +2676,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Phoenix</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>RKL</fullName>
             <default>false</default>
         </values>
@@ -2511,7 +2720,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>XX DG</fullName>
+            <fullName>XX 3D</fullName>
             <default>false</default>
         </values>
         <values>
@@ -2530,6 +2739,10 @@
     <picklistValues>
         <picklist>incrementalRoofOne__c</picklist>
         <values>
+            <fullName>Ample</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>BOE</fullName>
             <default>false</default>
         </values>
@@ -2558,6 +2771,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Econy</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Fuzhou</fullName>
             <default>false</default>
         </values>
@@ -2578,7 +2795,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>HLF-LR</fullName>
+            <fullName>HLF</fullName>
             <default>false</default>
         </values>
         <values>
@@ -2607,6 +2824,10 @@
         </values>
         <values>
             <fullName>Jiangmen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jingzhuo</fullName>
             <default>false</default>
         </values>
         <values>
@@ -2650,6 +2871,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Phoenix</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>RKL</fullName>
             <default>false</default>
         </values>
@@ -2690,7 +2915,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>XX DG</fullName>
+            <fullName>XX 3D</fullName>
             <default>false</default>
         </values>
         <values>
@@ -2709,6 +2934,10 @@
     <picklistValues>
         <picklist>incrementalRoofTwoS2__c</picklist>
         <values>
+            <fullName>Ample</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>BOE</fullName>
             <default>false</default>
         </values>
@@ -2737,6 +2966,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Econy</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Fuzhou</fullName>
             <default>false</default>
         </values>
@@ -2757,7 +2990,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>HLF-LR</fullName>
+            <fullName>HLF</fullName>
             <default>false</default>
         </values>
         <values>
@@ -2786,6 +3019,10 @@
         </values>
         <values>
             <fullName>Jiangmen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jingzhuo</fullName>
             <default>false</default>
         </values>
         <values>
@@ -2829,6 +3066,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Phoenix</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>RKL</fullName>
             <default>false</default>
         </values>
@@ -2869,7 +3110,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>XX DG</fullName>
+            <fullName>XX 3D</fullName>
             <default>false</default>
         </values>
         <values>
@@ -2888,6 +3129,10 @@
     <picklistValues>
         <picklist>incrementalRoofTwo__c</picklist>
         <values>
+            <fullName>Ample</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>BOE</fullName>
             <default>false</default>
         </values>
@@ -2916,6 +3161,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Econy</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Fuzhou</fullName>
             <default>false</default>
         </values>
@@ -2936,7 +3185,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>HLF-LR</fullName>
+            <fullName>HLF</fullName>
             <default>false</default>
         </values>
         <values>
@@ -2965,6 +3214,10 @@
         </values>
         <values>
             <fullName>Jiangmen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jingzhuo</fullName>
             <default>false</default>
         </values>
         <values>
@@ -3008,6 +3261,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Phoenix</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>RKL</fullName>
             <default>false</default>
         </values>
@@ -3048,7 +3305,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>XX DG</fullName>
+            <fullName>XX 3D</fullName>
             <default>false</default>
         </values>
         <values>
@@ -3156,6 +3413,10 @@
     <picklistValues>
         <picklist>location__c</picklist>
         <values>
+            <fullName>Ample</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>BOE</fullName>
             <default>false</default>
         </values>
@@ -3180,6 +3441,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Econy</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Fuzhou</fullName>
             <default>false</default>
         </values>
@@ -3196,7 +3461,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>HLF-LR</fullName>
+            <fullName>HLF</fullName>
             <default>false</default>
         </values>
         <values>
@@ -3221,6 +3486,10 @@
         </values>
         <values>
             <fullName>Jiangmen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jingzhuo</fullName>
             <default>false</default>
         </values>
         <values>
@@ -3261,6 +3530,10 @@
         </values>
         <values>
             <fullName>Opton</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phoenix</fullName>
             <default>false</default>
         </values>
         <values>
@@ -3308,7 +3581,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>XX DG</fullName>
+            <fullName>XX 3D</fullName>
             <default>false</default>
         </values>
         <values>
@@ -3620,6 +3893,10 @@
     <picklistValues>
         <picklist>plmPricedLocations__c</picklist>
         <values>
+            <fullName>Ample</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>BOE</fullName>
             <default>false</default>
         </values>
@@ -3648,6 +3925,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Econy</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Fuzhou</fullName>
             <default>false</default>
         </values>
@@ -3668,7 +3949,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>HLF-LR</fullName>
+            <fullName>HLF</fullName>
             <default>false</default>
         </values>
         <values>
@@ -3697,6 +3978,10 @@
         </values>
         <values>
             <fullName>Jiangmen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jingzhuo</fullName>
             <default>false</default>
         </values>
         <values>
@@ -3740,6 +4025,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Phoenix</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>RKL</fullName>
             <default>false</default>
         </values>
@@ -3780,7 +4069,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>XX DG</fullName>
+            <fullName>XX 3D</fullName>
             <default>false</default>
         </values>
         <values>
@@ -3830,10 +4119,6 @@
         <picklist>qualityEngineerApproval__c</picklist>
         <values>
             <fullName>Approved - Includes Plant Eng Approval</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Approved - Requires Plant Eng Approval</fullName>
             <default>false</default>
         </values>
         <values>

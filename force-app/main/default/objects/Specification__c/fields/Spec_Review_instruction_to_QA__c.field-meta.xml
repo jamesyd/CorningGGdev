@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Spec_Review_instruction_to_QA__c</fullName>
+    <externalId>false</externalId>
+    <label>Spec Review instruction to QA</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Drawing and Spec follow Corning latest external specs</fullName>
+                <default>false</default>
+                <label>Drawing and Spec follow Corning latest external specs</label>
+            </value>
+            <value>
+                <fullName>Drawing and Specification follow customer’s files as uploaded</fullName>
+                <default>false</default>
+                <label>Drawing and Specification follow customer’s files as uploaded</label>
+            </value>
+            <value>
+                <fullName>Spec review follows previous spec (Must provide the spec ID in the Remark field)</fullName>
+                <default>false</default>
+                <label>Spec review follows previous spec (Must provide the spec ID in the Remark field)</label>
+            </value>
+            <value>
+                <fullName>Other (Must provide the details in the Remark field)</fullName>
+                <default>false</default>
+                <label>Other (Must provide the details in the Remark field)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

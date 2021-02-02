@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Primary_QE_ApprovalAE_Response_Locked</fullName>
+    <active>true</active>
+    <description>Primary QE Approval / AE Response field is locked when the status is Risk Assessment.</description>
+    <errorConditionFormula>AND( $Profile.Id = &apos;00e1J000000h0jF&apos;,
+     NOT(ISPICKVAL( status__c, &apos;Risk Assessment&apos;)),
+     Ischanged( qualityEngineerApproval__c ),
+     NOT(ISNEW()))</errorConditionFormula>
+    <errorMessage>The QA cannot change the Primary QE Approval / AE Response field once the status is Risk Assessment.</errorMessage>
+</ValidationRule>

@@ -17,14 +17,9 @@
                 <label>Reviewed - More Information Required</label>
             </value>
             <value>
-                <fullName>Approved - Requires Plant Eng Approval</fullName>
-                <default>false</default>
-                <label>Approved - Requires Plant Eng Approval</label>
-            </value>
-            <value>
                 <fullName>Approved - Includes Plant Eng Approval</fullName>
                 <default>false</default>
-                <label>Approved - Includes Plant Eng Approval</label>
+                <label>Approved</label>
             </value>
             <value>
                 <fullName>Not Approved</fullName>

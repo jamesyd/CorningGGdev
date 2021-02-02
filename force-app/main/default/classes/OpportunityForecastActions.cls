@@ -1,3 +1,7 @@
+/*
+ * 22Dec2020 - Jim Dickerson - Handle reopening of an old program/forecast
+ * 
+*/
 public without sharing class OpportunityForecastActions {
 
     @AuraEnabled
@@ -127,7 +131,7 @@ public without sharing class OpportunityForecastActions {
                 forecastToInsert = ForecastHelper.process52(olis, 'Active');
                 updateForecastList.addAll(forecastToInsert);
             }
-            // JDJD
+            // 22Dec2020 - Handle old program that is being reopened ..
             if (!isCurrentMonth && !isPrevMonth && overrideM1Date()) {
                 For (ForecastOutput52Week__c f : fList) {
                     //if(f.m1Date__c == currentMonthDate){
@@ -137,7 +141,7 @@ public without sharing class OpportunityForecastActions {
                     //}
                 }             
             }
-            // END JDJD
+            // END 22Dec2020
         }catch(Exception e){}
      System.debug('@@## updateForecastList size=' + updateForecastList.size())  ;
         return updateForecastList;
@@ -185,9 +189,8 @@ public without sharing class OpportunityForecastActions {
         List<ForecastOutput52Week__c> 
            fList = new List<ForecastOutput52Week__c>();
         String status = 'Completed';
-        // JDJD
+        // 22Dec2020 - handle special case of older programs/forecasts
         if (overrideM1date()) {
-System.debug('@@## overriding .. look for oppId=' + oppId +'status=' + status);
             fList = [Select Id, opportunity__c, m1Date__c,
                      programCompleted__c, status__c
                      FROM ForecastOutput52Week__c 
@@ -195,7 +198,7 @@ System.debug('@@## overriding .. look for oppId=' + oppId +'status=' + status);
                      AND Status__c = :status
                     ];           
         }
-        // END JDJD
+        // END 22Dec2020
         else {
             try{    
                 fList = [Select Id, opportunity__c, m1Date__c,
@@ -210,7 +213,7 @@ System.debug('@@## overriding .. look for oppId=' + oppId +'status=' + status);
         }
         return fList;
     }
-    // Method to check if we allowing current user to reopen a closed forecast ...
+    // Method to check if we allowing current user to reopen an older, closed program/forecast ...
     public static Boolean overrideM1date() {
         Set<Id> accessiblePermissionIds = new Set<Id>();
         for (SetupEntityAccess access : [
@@ -227,3 +230,5 @@ System.debug('@@## overriding .. look for oppId=' + oppId +'status=' + status);
             AND DeveloperName = 'GG_Allow_Reopen_Forecast'
     	];
     }
+
+}

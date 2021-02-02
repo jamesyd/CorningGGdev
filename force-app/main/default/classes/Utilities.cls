@@ -330,8 +330,7 @@ public class Utilities {
         return msg;
     }
     
-    public String getInnovationRecipients(Specification__c spec) {
-                
+    public String getInnovationRecipients(Specification__c spec) {          
         String invRecipients = '';
         invRecipients = spec.innovation_type__c.contains( GGPartsSpecAutoNotifications__c.getValues('AntiGlare (AG)').name )
             ? invRecipients + ',' + GGPartsSpecAutoNotifications__c.getValues('AntiGlare (AG)').userIdList__c 
@@ -359,7 +358,7 @@ public class Utilities {
             : invRecipients;
         invRecipients = spec.innovation_type__c.contains( GGPartsSpecAutoNotifications__c.getValues('DXPlus').name )
             ? invRecipients + ',' + GGPartsSpecAutoNotifications__c.getValues('DXPlus').userIdList__c 
-            : invRecipients;            
+            : invRecipients;           
         invRecipients = spec.innovation_type__c.contains( GGPartsSpecAutoNotifications__c.getValues('non-CE AR').name )
             ? invRecipients + ',' + GGPartsSpecAutoNotifications__c.getValues('non-CE AR').userIdList__c 
             : invRecipients;
@@ -398,7 +397,8 @@ public class Utilities {
             : invRecipients;      
         invRecipients = spec.innovation_type__c.contains( GGPartsSpecAutoNotifications__c.getValues('Corning Bendable Glass').name )
             ? invRecipients + ',' + GGPartsSpecAutoNotifications__c.getValues('Corning Bendable Glass').userIdList__c 
-            : invRecipients;         // CSMSF-23                                                             
+            : invRecipients;         // CSMSF-23     
+System.debug('@@ JD invRecipients=' + invRecipients);                                                     
         return invRecipients;
     }
 
